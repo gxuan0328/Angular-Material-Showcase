@@ -9,7 +9,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "format": "prettier --write \"src/**/*.{ts,html,css,json}\" \"scripts/**/*.ts\"",
-    "format:check": "prettier --check \"src/**/*.{ts,html,css,json}\" \"scripts/**/*.ts\""
+    "format:check": "prettier --check \"src/**/*.{ts,html,css,json}\" \"scripts/**/*.ts\"",
+    "bake": "tsx scripts/bake-block-sources.ts",
+    "bake:test": "tsx --test scripts/bake-block-sources.spec.ts"
   },
   "private": true,
   "dependencies": {
