@@ -1,0 +1,188 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update flyout-menus/flyout-menu-with-icons`
+-->
+
+<mat-sidenav-container class="h-[500px] md:h-auto">
+  <mat-sidenav
+    #mobileSidenav
+    mode="over"
+    position="end"
+    [opened]="mobileMenuOpen()"
+    (closed)="mobileMenuOpen.set(false)"
+  >
+    <!-- Mobile Menu Header -->
+    <mat-toolbar class="sticky top-0 bg-inherit z-10">
+      <span class="text-xl font-bold">Brand</span>
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Close menu"
+        class="ml-auto"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Mobile Menu Content -->
+    <div class="flex-1 p-4">
+      <p class="text-title-medium font-title-medium">Solutions</p>
+      <mat-nav-list>
+        @for (item of solutionsItems; track item.label) {
+        <a mat-list-item [href]="item.href">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <div matListItemTitle>{{ item.label }}</div>
+          <!-- prettier-ignore -->
+          <div
+              matListItemLine
+              class="text-xs! text-gray-600! dark:text-gray-400!">{{ item.description }}</div>
+        </a>
+        }
+      </mat-nav-list>
+
+      <p class="text-title-medium font-title-medium mt-4">Company</p>
+      <mat-nav-list>
+        @for (item of companyItems; track item.label) {
+        <a mat-list-item [href]="item.href">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <div matListItemTitle>{{ item.label }}</div>
+          <!-- prettier-ignore -->
+          <div
+              matListItemLine
+              class="text-xs! text-gray-600! dark:text-gray-400!">{{item.description}}</div>
+        </a>
+        }
+      </mat-nav-list>
+
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item href="#">Pricing</a>
+        <a mat-list-item href="#">Blog</a>
+      </mat-nav-list>
+    </div>
+
+    <!-- Mobile Menu Footer -->
+    <div class="p-4 border-t border-outline-variant space-y-2">
+      <button type="button" matButton="text" class="w-full">Sign in</button>
+      <button type="button" matButton="filled" class="w-full">
+        Get started
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="border-b border-outline-variant justify-between">
+      <!-- Logo -->
+      <span class="text-xl font-bold">Brand</span>
+
+      @if (isLessThanMD()) {
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Open menu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      } @else {
+      <!-- Navigation Links -->
+      <div class="flex items-center space-x-1">
+        <!-- Solutions Menu -->
+        <button
+          type="button"
+          matButton
+          cdkOverlayOrigin
+          #solutionsTrigger="cdkOverlayOrigin"
+          (click)="solutionsOverlay.toggleOverlay()"
+          [class]="solutionsOverlay.isOpen() ? 'bg-primary-container!' : ''"
+        >
+          Solutions
+          <mat-icon>expand_more</mat-icon>
+        </button>
+
+        <ngm-dev-block-ui-overlay-wrapper
+          #solutionsOverlay
+          [trigger]="solutionsTrigger"
+        >
+          <mat-card class="overflow-hidden">
+            <div class="p-4">
+              @for (item of solutionsItems; track item.label) {
+              <ng-container
+                *ngTemplateOutlet="
+                      menuItemTemplate;
+                      context: { item: item, overlay: solutionsOverlay }
+                    "
+              ></ng-container>
+              }
+            </div>
+          </mat-card>
+        </ngm-dev-block-ui-overlay-wrapper>
+
+        <!-- Company Menu -->
+        <button
+          type="button"
+          matButton
+          cdkOverlayOrigin
+          #companyTrigger="cdkOverlayOrigin"
+          (click)="companyOverlay.toggleOverlay()"
+          [class]="companyOverlay.isOpen() ? 'bg-primary-container!' : ''"
+        >
+          Company
+          <mat-icon>expand_more</mat-icon>
+        </button>
+
+        <ngm-dev-block-ui-overlay-wrapper
+          #companyOverlay
+          [trigger]="companyTrigger"
+        >
+          <mat-card class="overflow-hidden">
+            <div class="p-4">
+              @for (item of companyItems; track item.label) {
+              <ng-container
+                *ngTemplateOutlet="
+                      menuItemTemplate;
+                      context: { item: item, overlay: companyOverlay }
+                    "
+              ></ng-container>
+              }
+            </div>
+          </mat-card>
+        </ngm-dev-block-ui-overlay-wrapper>
+
+        <!-- Regular Links -->
+        <a href="#" matButton> Pricing </a>
+        <a href="#" matButton> Blog </a>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center space-x-2">
+        <button type="button" matButton="text">Sign in</button>
+        <button type="button" matButton="filled">Get started</button>
+      </div>
+      }
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #menuItemTemplate let-item="item" let-overlay="overlay">
+  <a
+    [href]="item.href"
+    (click)="overlay.close()"
+    class="flex items-start gap-3 px-3 py-3 rounded-lg hover:bg-primary-container/50 group"
+  >
+    <div
+      class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10"
+    >
+      <mat-icon class="text-primary!">{{ item.icon }}</mat-icon>
+    </div>
+    <div class="flex-1 min-w-0">
+      <div class="text-sm font-semibold group-hover:text-on-primary-container">
+        {{ item.label }}
+      </div>
+      <p class="mt-0.5 text-xs text-gray-600 dark:text-gray-400">
+        {{ item.description }}
+      </p>
+    </div>
+  </a>
+</ng-template>

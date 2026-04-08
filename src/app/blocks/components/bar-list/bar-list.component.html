@@ -1,0 +1,49 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/bar-list`
+-->
+
+<div [attr.aria-sort]="sortOrder()" [class]="containerClass">
+  <div class="relative w-full space-y-1.5">
+    @for (item of sortedData(); track item.key ?? item.name; let i = $index) {
+    <button
+      type="button"
+      (click)="valueChange.emit(item)"
+      [class]="buttonWrapperClass"
+    >
+      <div
+        [class]="
+            cx(rowBaseClass(), i === sortedData().length - 1 ? 'mb-0' : '')
+          "
+        [style.width.%]="widths()[i]"
+      >
+        <div class="absolute left-2 flex max-w-full pr-2">
+          @if (item.href) {
+          <a
+            [href]="item.href"
+            target="_blank"
+            rel="noreferrer"
+            [class]="nameLinkClass"
+            (click)="$event.stopPropagation()"
+            >{{ item.name }}</a
+          >
+          } @else {
+          <p [class]="nameTextClass">{{ item.name }}</p>
+          }
+        </div>
+      </div>
+    </button>
+    }
+  </div>
+
+  <div>
+    @for (item of sortedData(); track item.key ?? item.name; let i = $index) {
+    <div
+      class="flex items-center justify-end"
+      [class]="i === sortedData().length - 1 ? 'h-8 mb-0' : 'h-8 mb-1.5'"
+    >
+      <p [class]="valueTextClass">{{ valueFormatter()(item.value) }}</p>
+    </div>
+    }
+  </div>
+</div>

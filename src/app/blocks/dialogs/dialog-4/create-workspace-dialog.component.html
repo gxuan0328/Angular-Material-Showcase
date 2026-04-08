@@ -1,0 +1,56 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update dialogs/dialog-4`
+-->
+
+<form [formGroup]="workspaceForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title class="relative">
+    Create workspace
+    <button
+      type="button"
+      mat-icon-button
+      class="absolute! right-4 top-4"
+      mat-dialog-close
+      aria-label="Close"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+
+  <mat-dialog-content>
+    <p class="mt-2 font-medium">
+      Workspaces are shared environments where teams can connect to data
+      sources, run queries and create reports.
+    </p>
+
+    <mat-form-field appearance="outline" class="w-full mt-6">
+      <mat-label>Workspace Name</mat-label>
+      <input
+        matInput
+        formControlName="workspaceName"
+        placeholder="My workspace"
+        required
+      />
+      @if ( workspaceForm.get('workspaceName')?.hasError('required') &&
+      workspaceForm.get('workspaceName')?.touched ) {
+      <mat-error>Workspace name is required</mat-error>
+      }
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="block! space-y-4 pb-0!">
+    <button type="submit" matButton="filled" class="w-full">
+      Create workspace
+    </button>
+    <div
+      class="-mx-6 border-t border-outline px-6 py-4 bg-surface-container-low"
+    >
+      <mat-slide-toggle formControlName="isPrivate">
+        <div class="ml-2">
+          <label class="text-lg! font-medium">Set workspace to private</label>
+          <p>Only those invited can access or view</p>
+        </div>
+      </mat-slide-toggle>
+    </div>
+  </mat-dialog-actions>
+</form>

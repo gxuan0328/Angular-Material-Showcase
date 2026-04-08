@@ -1,0 +1,32 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/terminal`
+-->
+
+<div
+  [class]="
+    'z-0 h-full w-full rounded-xl border border-outline bg-surface overflow-hidden ' +
+    className()
+  "
+>
+  <div
+    class="flex flex-col gap-y-2 border-b border-outline px-4 py-3 bg-surface-container-high"
+  >
+    <div class="flex flex-row gap-x-2">
+      <div class="h-2 w-2 rounded-full bg-red-500"></div>
+      <div class="h-2 w-2 rounded-full bg-yellow-500"></div>
+      <div class="h-2 w-2 rounded-full bg-green-500"></div>
+    </div>
+  </div>
+  <pre
+    #pre
+    [class]="
+      'p-4 max-h-[400px] overflow-auto whitespace-pre-wrap break-words ' +
+      preClassName()
+    "
+  >
+    <code class="grid gap-y-1">
+      <ng-content />
+    </code>
+  </pre>
+</div>

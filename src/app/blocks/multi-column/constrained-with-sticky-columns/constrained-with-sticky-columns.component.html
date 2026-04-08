@@ -1,0 +1,53 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update multi-column/constrained-with-sticky-columns`
+-->
+
+<!-- Below is added to replicate body -->
+<div class="max-h-[100dvh] overflow-auto">
+  <!-- Adjust min-h-[100dvh] as needed -->
+  <div class="flex flex-col min-h-[100dvh]">
+    <mat-toolbar class="shrink-0 px-0! border-b border-outline-variant">
+      <div
+        class="flex-1 w-full max-w-7xl mx-auto flex items-center px-4 sm:px-6 md:px-8"
+      >
+        <img
+          class="size-8"
+          src="https://ui.angular-material.dev/app-ui/logo.svg"
+          alt="Your Company"
+        />
+        <span class="flex-1"></span>
+        <button mat-icon-button aria-label="View notifications">
+          <mat-icon>notifications</mat-icon>
+        </button>
+        <button mat-icon-button class="custom-avatar-button">
+          <img
+            [src]="user.imageUrl"
+            alt="User"
+            class="object-cover rounded-full"
+          />
+        </button>
+      </div>
+    </mat-toolbar>
+
+    <main
+      class="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4 lg:gap-6 p-4 lg:p-6 h-full md:h-[200dvh]"
+    >
+      <div class="col-span-1 lg:col-span-2 h-full">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 h-full">
+          <div class="col-span-1 h-96 md:sticky top-4 hidden md:block">
+            <ngm-dev-block-content-placeholder-constrained-with-sticky-columns />
+          </div>
+          <div
+            class="col-span-1 md:col-span-2 min-h-[calc(100dvh-96px)] h-full"
+          >
+            <ngm-dev-block-content-placeholder-constrained-with-sticky-columns />
+          </div>
+        </div>
+      </div>
+      <div class="col-span-1 h-112 hidden lg:block sticky top-4">
+        <ngm-dev-block-content-placeholder-constrained-with-sticky-columns />
+      </div>
+    </main>
+  </div>
+</div>

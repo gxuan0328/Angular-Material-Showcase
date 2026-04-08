@@ -1,0 +1,107 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update page-shells/page-shell-6`
+-->
+
+<div>
+  <div
+    class="border-b border-outline-variant bg-surface-container-high p-4 dark:border-gray-700 dark:bg-gray-900 sm:p-6 lg:p-8"
+  >
+    <header>
+      <h1 class="text-xl font-semibold">Report</h1>
+      <p class="text-base text-gray-600 dark:text-gray-400">
+        Explore and manage your reports
+      </p>
+      <div class="mt-8 w-full md:flex md:max-w-3xl md:items-stretch md:gap-4">
+        <mat-card class="w-full! relative md:w-7/12!">
+          <mat-card-content>
+            <div
+              class="inline-flex items-center justify-center rounded border border-gray-400 p-2 dark:border-gray-600"
+            >
+              <mat-icon>book</mat-icon>
+            </div>
+            <h3 class="mt-4 text-base font-medium">
+              <a href="#" class="focus:outline-none">
+                <!-- Extend link to entire card -->
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                Documentation
+              </a>
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+            </p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="mt-4 w-full! relative md:mt-0 md:w-5/12!">
+          <mat-card-content>
+            <div
+              class="inline-flex items-center justify-center rounded border border-gray-400 p-2 dark:border-gray-600"
+            >
+              <mat-icon>storage</mat-icon>
+            </div>
+            <h3 class="mt-4 text-base font-medium">
+              <a href="#" class="focus:outline-none">
+                <!-- Extend link to entire card -->
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                Models
+              </a>
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Lorem ipsum dolor sit amet.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </header>
+  </div>
+  <div>
+    <div class="p-4 sm:p-6 lg:p-8">
+      <main>
+        <div
+          class="flex items-start md:items-center justify-between flex-col md:flex-row gap-2"
+        >
+          <h2 class="text-xl font-semibold">Your reports</h2>
+          <div
+            class="flex items-start md:items-center gap-2 flex-col md:flex-row"
+          >
+            <mat-form-field class="w-full sm:w-fit" subscriptSizing="dynamic">
+              <mat-select
+                placeholder="Sort by"
+                [value]="selectedSort()"
+                (valueChange)="selectedSort.set($event)"
+                disableRipple
+              >
+                @for (option of sortOptions; track option.value) {
+                <mat-option [value]="option.value"
+                  >{{ option.viewValue }}</mat-option
+                >
+                }
+              </mat-select>
+            </mat-form-field>
+            <button matButton="elevated" class="hidden sm:inline">
+              <mat-icon>add</mat-icon>
+              Add report
+            </button>
+          </div>
+        </div>
+        <mat-list class="mt-6">
+          @for (item of reportData; track item.id; let isLast = $last) {
+          <a
+            mat-list-item
+            class="hover:bg-gray-100! dark:hover:bg-gray-800! rounded! cursor-pointer!"
+            [href]="item.href"
+          >
+            <span matListItemTitle>{{ item.name }}</span>
+            <span matListItemLine>{{ item.description }}</span>
+            <div matListItemMeta>
+              <mat-icon>arrow_right</mat-icon>
+            </div>
+          </a>
+          @if (!isLast) {
+          <mat-divider class="border-outline-variant!" />
+          } }
+        </mat-list>
+      </main>
+    </div>
+  </div>
+</div>

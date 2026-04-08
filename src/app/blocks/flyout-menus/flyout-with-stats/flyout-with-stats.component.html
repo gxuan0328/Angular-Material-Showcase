@@ -1,0 +1,169 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update flyout-menus/flyout-with-stats`
+-->
+
+<mat-sidenav-container class="h-[500px] md:h-auto">
+  <mat-sidenav
+    #mobileSidenav
+    mode="over"
+    position="end"
+    [opened]="mobileMenuOpen()"
+    (closed)="mobileMenuOpen.set(false)"
+  >
+    <!-- Mobile Menu Header -->
+    <mat-toolbar class="sticky top-0 bg-inherit z-10">
+      <span class="text-xl font-bold">Stats</span>
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Close menu"
+        class="ml-auto"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Mobile Menu Content -->
+    <div class="flex-1 p-4">
+      <p class="text-title-medium font-title-medium">Company</p>
+      <mat-nav-list>
+        @for (item of menuItems; track item.label) {
+        <a mat-list-item [href]="item.href">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <div matListItemTitle>{{ item.label }}</div>
+        </a>
+        }
+      </mat-nav-list>
+
+      <mat-divider class="my-4!"></mat-divider>
+
+      <!-- Stats Section -->
+      <p class="text-title-medium font-title-medium mb-4 text-center">
+        Our Impact
+      </p>
+      <div class="grid grid-cols-2 gap-4 px-4">
+        @for (stat of stats; track stat.label) {
+        <div class="text-center">
+          <div class="text-2xl font-bold text-primary mb-1">
+            {{ stat.value }}
+          </div>
+          <div class="text-xs text-gray-600 dark:text-gray-400">
+            {{ stat.label }}
+          </div>
+        </div>
+        }
+      </div>
+
+      <mat-divider class="my-4!"></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item href="#">Products</a>
+        <a mat-list-item href="#">Solutions</a>
+        <a mat-list-item href="#">Resources</a>
+      </mat-nav-list>
+    </div>
+
+    <!-- Mobile Menu Footer -->
+    <div class="p-4 border-t border-outline-variant space-y-2">
+      <button type="button" matButton="text" class="w-full">Sign in</button>
+      <button type="button" matButton="filled" class="w-full">
+        Get started
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="border-b border-outline-variant justify-between">
+      <!-- Logo -->
+      <span class="text-xl font-bold">Stats</span>
+
+      @if (isLessThanMD()) {
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Open menu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      } @else {
+      <!-- Navigation Links -->
+      <div class="flex items-center space-x-1">
+        <!-- Company Menu with Stats -->
+        <button
+          type="button"
+          matButton
+          cdkOverlayOrigin
+          #companyTrigger="cdkOverlayOrigin"
+          (click)="companyOverlay.toggleOverlay()"
+          [class]="companyOverlay.isOpen() ? 'bg-primary-container!' : ''"
+        >
+          Company
+          <mat-icon>expand_more</mat-icon>
+        </button>
+
+        <ngm-dev-block-ui-overlay-wrapper
+          #companyOverlay
+          [trigger]="companyTrigger"
+        >
+          <div
+            class="bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/10 overflow-hidden w-[480px]"
+          >
+            <!-- Menu Items -->
+            <div class="p-4">
+              <div class="grid grid-cols-2 gap-1">
+                <mat-nav-list>
+                  @for (item of menuItems.slice(0, 3); track item.label) {
+                  <a mat-list-item [href]="item.href">
+                    <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                    {{ item.label }}
+                  </a>
+                  }
+                </mat-nav-list>
+                <mat-nav-list>
+                  @for (item of menuItems.slice(3); track item.label) {
+                  <a mat-list-item [href]="item.href">
+                    <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                    {{ item.label }}
+                  </a>
+                  }
+                </mat-nav-list>
+              </div>
+
+              <!-- Stats Section -->
+              <div
+                class="bg-gray-50 dark:bg-gray-800 px-6 py-4 border-t border-gray-200 dark:border-gray-700"
+              >
+                <div class="grid grid-cols-4 gap-6">
+                  @for (stat of stats; track stat.label) {
+                  <div class="text-center">
+                    <div class="text-2xl font-bold text-primary mb-1">
+                      {{ stat.value }}
+                    </div>
+                    <div class="text-xs text-gray-600 dark:text-gray-400">
+                      {{ stat.label }}
+                    </div>
+                  </div>
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngm-dev-block-ui-overlay-wrapper>
+
+        <!-- Regular Links -->
+        <a href="#" matButton> Products </a>
+        <a href="#" matButton> Solutions </a>
+        <a href="#" matButton> Resources </a>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center space-x-2">
+        <button type="button" matButton="text">Sign in</button>
+        <button type="button" matButton="filled">Get started</button>
+      </div>
+      }
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

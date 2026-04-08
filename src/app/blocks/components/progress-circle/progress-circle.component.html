@@ -1,0 +1,52 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/progress-circle`
+-->
+
+<div
+  class="relative"
+  role="progressbar"
+  [attr.aria-label]="'Progress circle'"
+  [attr.aria-valuenow]="value()"
+  [attr.aria-valuemin]="0"
+  [attr.aria-valuemax]="max()"
+  [attr.data-max]="max()"
+  [attr.data-value]="safeValue()"
+>
+  <svg
+    [attr.width]="size()"
+    [attr.height]="size()"
+    [attr.viewBox]="viewBox()"
+    [class]="svgClasses()"
+  >
+    <!-- Background circle -->
+    <circle
+      [attr.r]="normalizedRadius()"
+      [attr.cx]="radius()"
+      [attr.cy]="radius()"
+      [attr.stroke-width]="strokeWidth()"
+      fill="transparent"
+      stroke=""
+      stroke-linecap="round"
+      [class]="backgroundClasses()"
+    />
+    <!-- Progress circle -->
+    @if (safeValue() >= 0) {
+    <circle
+      [attr.r]="normalizedRadius()"
+      [attr.cx]="radius()"
+      [attr.cy]="radius()"
+      [attr.stroke-width]="strokeWidth()"
+      [attr.stroke-dasharray]="circumference() + ' ' + circumference()"
+      [attr.stroke-dashoffset]="offset()"
+      fill="transparent"
+      stroke=""
+      stroke-linecap="round"
+      [class]="circleClasses()"
+    />
+    }
+  </svg>
+  <div class="absolute inset-0 flex items-center justify-center">
+    <ng-content></ng-content>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update empty-states/empty-state-4`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  .custom-background-spinner {
+    @include mat.progress-spinner-overrides(
+      (
+        active-indicator-color: var(--mat-sys-surface-container),
+      )
+    );
+  }
+  .custom-foreground-spinner {
+    @include mat.progress-spinner-overrides(
+      (
+        active-indicator-color: var(--mat-sys-on-surface),
+      )
+    );
+  }
+}

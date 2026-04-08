@@ -1,0 +1,20 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/word-rotate`
+-->
+
+<div class="overflow-hidden">
+  <span
+    #wordElement
+    [class]="
+      'inline-block will-change-transform text-center ' + (classes() || '')
+    "
+    [style.width]="maxWordWidth()"
+    [style.margin]="'0'"
+    [style.opacity]="opacityValue()"
+    [style.transform]="transformValue()"
+    [style.transition]="transitionValue()"
+  >
+    {{ currentWord() }}
+  </span>
+</div>

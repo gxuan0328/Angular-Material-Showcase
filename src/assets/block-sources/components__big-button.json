@@ -1,0 +1,8 @@
+{
+  "category": "components",
+  "variant": "big-button",
+  "files": {
+    "big-button.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update components/big-button`\n-->\n",
+    "big-button.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update components/big-button`\n*/\n\nimport { Component } from '@angular/core';\n\n@Component({\n  selector: 'ngm-dev-block-ui-big-button',\n  templateUrl: './big-button.component.html',\n})\nexport class BigButtonComponent {}\n"
+  }
+}

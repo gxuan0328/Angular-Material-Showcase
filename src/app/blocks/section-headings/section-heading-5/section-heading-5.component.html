@@ -1,0 +1,38 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update section-headings/section-heading-5`
+-->
+
+<div class="p-6">
+  <div
+    class="border-b border-outline-variant pb-4 mb-6 flex gap-4 sm:gap-0 justify-start sm:justify-between items-start sm:items-center flex-col sm:flex-row"
+  >
+    <h3 class="text-title-large font-medium">{{ title }}</h3>
+    <div class="flex items-center w-full sm:w-auto">
+      <mat-form-field subscriptSizing="dynamic" class="w-full sm:w-auto">
+        <input matInput placeholder="Search candidates" />
+        <mat-icon matPrefix>search</mat-icon>
+        @if (isHandset$ | async) {
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="$event.stopPropagation()"
+          aria-label="Sort"
+        >
+          <mat-icon>sort</mat-icon>
+        </button>
+        } @else {
+        <button
+          matButton="outlined"
+          matSuffix
+          class="custom-sort-button"
+          (click)="$event.stopPropagation()"
+        >
+          <mat-icon>sort</mat-icon>
+          Sort
+        </button>
+        }
+      </mat-form-field>
+    </div>
+  </div>
+</div>

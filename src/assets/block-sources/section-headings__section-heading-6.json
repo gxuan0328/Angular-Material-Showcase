@@ -1,0 +1,8 @@
+{
+  "category": "section-headings",
+  "variant": "section-heading-6",
+  "files": {
+    "section-heading-6.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-6`\n-->\n\n<div class=\"p-6\">\n  <div class=\"pb-4 mb-6\">\n    <h3 class=\"text-title-large font-medium\">{{ title }}</h3>\n    <mat-tab-group\n      fitInkBarToContent\n      mat-stretch-tabs=\"false\"\n      mat-align-tabs=\"start\"\n    >\n      <mat-tab label=\"All\" />\n      <mat-tab label=\"Applied\" />\n      <mat-tab label=\"Interviewing\" />\n      <mat-tab label=\"Hired\" />\n      <mat-tab label=\"Rejected\" />\n    </mat-tab-group>\n  </div>\n</div>\n",
+    "section-heading-6.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-6`\n*/\n\nimport { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\n\n@Component({\n  selector: 'ngm-dev-block-section-heading-6',\n  templateUrl: './section-heading-6.component.html',\n  imports: [MatTabsModule],\n})\nexport class SectionHeading6Component {\n  readonly title = 'Candidates';\n}\n"
+  }
+}

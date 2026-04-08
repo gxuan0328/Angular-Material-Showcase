@@ -1,0 +1,30 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update banners/banner-5`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.card-overrides(
+    (
+      elevated-container-color: var(--mat-sys-surface-container-lowest),
+    )
+  );
+}
+
+.step-badge {
+  @include mat.chips-overrides(
+    (
+      label-text-weight: 600,
+      label-text-line-height: normal,
+      outline-color: transparent,
+      label-text-color: var(--mat-sys-on-primary-container),
+      hover-state-layer-opacity: 0,
+      label-text-font: var(--mat-sys-label-medium-font),
+      label-text-size: var(--mat-sys-label-medium-size),
+      label-text-tracking: var(--mat-sys-label-medium-tracking),
+      container-height: 24px,
+    )
+  );
+}

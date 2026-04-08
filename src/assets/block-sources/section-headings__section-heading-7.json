@@ -1,0 +1,8 @@
+{
+  "category": "section-headings",
+  "variant": "section-heading-7",
+  "files": {
+    "section-heading-7.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-7`\n-->\n\n<div class=\"p-6\">\n  <div\n    class=\"pb-4 flex sm:justify-between sm:items-center flex-col sm:flex-row gap-4 sm:gap-0\"\n  >\n    <h3 class=\"text-title-large font-medium\">{{ title }}</h3>\n    <div class=\"flex items-center gap-2\">\n      <button matButton>Share</button>\n      <button matButton=\"filled\">Create</button>\n    </div>\n  </div>\n  <mat-tab-group\n    fitInkBarToContent\n    mat-stretch-tabs=\"false\"\n    mat-align-tabs=\"start\"\n  >\n    <mat-tab label=\"All\" />\n    <mat-tab label=\"Applied\" />\n    <mat-tab label=\"Interviewing\" />\n    <mat-tab label=\"Hired\" />\n    <mat-tab label=\"Rejected\" />\n  </mat-tab-group>\n</div>\n",
+    "section-heading-7.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-7`\n*/\n\nimport { Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\nimport { MatTabsModule } from '@angular/material/tabs';\n\n@Component({\n  selector: 'ngm-dev-block-section-heading-7',\n  templateUrl: './section-heading-7.component.html',\n  imports: [MatTabsModule, MatButtonModule],\n})\nexport class SectionHeading7Component {\n  readonly title = 'Candidates';\n}\n"
+  }
+}

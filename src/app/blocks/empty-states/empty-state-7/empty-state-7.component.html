@@ -1,0 +1,69 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update empty-states/empty-state-7`
+-->
+
+<div class="max-w-7xl mx-auto p-4">
+  <mat-card appearance="outlined" class="p-0">
+    <mat-card-content class="p-0">
+      <div class="p-6">
+        <h3 class="font-medium" data-testid="heading">
+          Sales and profit overview
+        </h3>
+        <p
+          class="mt-1 text-gray-600 dark:text-gray-400"
+          data-testid="description"
+        >
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt.
+        </p>
+      </div>
+
+      <div class="border-t border-outline-variant p-6">
+        <div class="flex flex-wrap gap-x-20 gap-y-6" data-testid="data-items">
+          @for (item of data; track item.name) {
+          <div>
+            <div class="flex items-center gap-2">
+              <span
+                class="size-3 shrink-0 rounded-sm bg-surface-container-highest"
+                aria-hidden="true"
+              ></span>
+              <p class="font-semibold">{{ item.value }}</p>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400">{{ item.name }}</p>
+          </div>
+          }
+        </div>
+
+        <div
+          class="mt-6 flex h-72 items-center justify-center rounded-sm border border-outline bg-surface-container"
+        >
+          <div class="text-center">
+            <mat-icon
+              class="mx-auto h-7 w-7 text-gray-600 dark:text-gray-400"
+              data-testid="no-data-icon"
+              >bar_chart</mat-icon
+            >
+            <p class="mt-2 font-medium" data-testid="no-data-message">
+              No data to show
+            </p>
+            <p
+              class="mt-1 text-gray-600 dark:text-gray-400"
+              data-testid="additional-info-message"
+            >
+              No data sources yet available.
+            </p>
+            <button
+              matButton="filled"
+              data-testid="connect-database-button"
+              class="mt-6 flex items-center gap-1.5"
+            >
+              <mat-icon class="-ml-1 size-5 shrink-0">add</mat-icon>
+              Connect database
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

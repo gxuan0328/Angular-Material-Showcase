@@ -1,0 +1,74 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update page-headings/page-heading-7`
+-->
+
+<!-- Banner Image Container -->
+<div class="relative">
+  <!-- Banner Background -->
+  <div
+    class="h-48 md:h-56 lg:h-64 w-full bg-cover bg-center bg-no-repeat"
+    [style.background-image]="'url(' + bannerImageUrl + ')'"
+  ></div>
+
+  <!-- Content Container -->
+  <div class="relative px-4 sm:px-6 lg:px-8">
+    <!-- Desktop & Tablet Layout -->
+    @if ((isLessThanMD$ | async) === false) {
+    <div class="flex items-end justify-between -mt-8 pb-6">
+      <!-- Left side: Avatar and Name -->
+      <div class="flex items-end space-x-5">
+        <!-- Avatar -->
+        <div class="relative">
+          <img
+            class="size-24 rounded-full ring-4 ring-surface shadow-lg object-cover"
+            [src]="userAvatarUrl"
+            [alt]="userName"
+          />
+        </div>
+        <!-- Name -->
+        <div class="pb-2">
+          <h1 class="text-2xl font-bold">{{ userName }}</h1>
+        </div>
+      </div>
+
+      <!-- Right side: Action Buttons -->
+      <div class="flex space-x-3 pb-2">
+        @for (button of actionButtons; track button.label) {
+        <button matButton="outlined" (click)="button.action()">
+          <mat-icon class="icon-filled">{{ button.icon }}</mat-icon>
+          {{ button.label }}
+        </button>
+        }
+      </div>
+    </div>
+    } @else {
+    <!-- Mobile Layout -->
+    <div class="text-center -mt-10 pb-6">
+      <!-- Avatar -->
+      <div class="relative inline-block">
+        <img
+          class="size-20 sm:size-24 rounded-full ring-4 ring-surface shadow-lg object-cover mx-auto"
+          [src]="userAvatarUrl"
+          [alt]="userName"
+        />
+      </div>
+
+      <!-- Name -->
+      <div class="mt-4 mb-6">
+        <h1 class="text-xl font-bold">{{ userName }}</h1>
+      </div>
+
+      <!-- Action Buttons (Stacked) -->
+      <div class="flex flex-col space-y-3 max-w-xs mx-auto">
+        @for (button of actionButtons; track button.label) {
+        <button matButton="outlined" class="w-full" (click)="button.action()">
+          <mat-icon class="icon-filled">{{ button.icon }}</mat-icon>
+          {{ button.label }}
+        </button>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>

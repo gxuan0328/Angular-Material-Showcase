@@ -1,0 +1,183 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update flyout-menus/multi-column-flyout`
+-->
+
+<mat-sidenav-container class="h-[500px] md:h-auto">
+  <mat-sidenav
+    #mobileSidenav
+    mode="over"
+    position="end"
+    [opened]="mobileMenuOpen()"
+    (closed)="mobileMenuOpen.set(false)"
+  >
+    <!-- Mobile Menu Header -->
+    <mat-toolbar class="sticky top-0 bg-inherit z-10">
+      <span class="text-xl font-bold">Enterprise</span>
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Close menu"
+        class="ml-auto"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Mobile Menu Content -->
+    <div class="flex-1 p-4">
+      <p class="text-title-medium font-title-medium">Products</p>
+      <mat-nav-list>
+        @for (item of productItems; track item.label) {
+        <a mat-list-item [href]="item.href">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <div matListItemTitle>{{ item.label }}</div>
+          <div
+            matListItemLine
+            class="text-xs! text-gray-600! dark:text-gray-400!"
+          >
+            {{ item.description }}
+          </div>
+        </a>
+        }
+      </mat-nav-list>
+
+      <p class="text-title-medium font-title-medium mt-4">Resources</p>
+      <mat-nav-list>
+        @for (item of resourceItems; track item.label) {
+        <a mat-list-item [href]="item.href">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <div matListItemTitle>{{ item.label }}</div>
+          <div matListItemLine class="text-xs text-gray-600 dark:text-gray-400">
+            {{ item.description }}
+          </div>
+        </a>
+        }
+      </mat-nav-list>
+
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item href="#">Pricing</a>
+        <a mat-list-item href="#">About</a>
+      </mat-nav-list>
+    </div>
+
+    <!-- Mobile Menu Footer -->
+    <div class="p-4 border-t border-outline-variant space-y-2">
+      <button type="button" matButton="text" class="w-full">Sign in</button>
+      <button type="button" matButton="filled" class="w-full">
+        Start free trial
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="border-b border-outline-variant justify-between">
+      <!-- Logo -->
+      <span class="text-xl font-bold">Enterprise</span>
+
+      @if (isLessThanMD()) {
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Open menu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      } @else {
+      <!-- Navigation Links -->
+      <div class="flex items-center">
+        <!-- Products Menu -->
+        <button
+          type="button"
+          matButton
+          cdkOverlayOrigin
+          #productsTrigger="cdkOverlayOrigin"
+          (click)="productsOverlay.toggleOverlay()"
+          [class]="productsOverlay.isOpen() ? 'bg-primary-container!' : ''"
+        >
+          Products
+          <mat-icon>expand_more</mat-icon>
+        </button>
+
+        <ngm-dev-block-ui-overlay-wrapper
+          #productsOverlay
+          [trigger]="productsTrigger"
+          panelClass="horizontal-centered-panel"
+        >
+          <div
+            class="bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/10 p-6"
+          >
+            <div class="grid grid-cols-3 gap-4 w-[58rem]">
+              @for (column of productColumns; track column.title) {
+              <mat-nav-list>
+                <h3 matSubheader>{{ column.title }}</h3>
+                @for (item of column.items; track item.label) {
+                <a mat-list-item [href]="item.href">
+                  <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                  <div matListItemTitle>{{ item.label }}</div>
+                  <!-- prettier-ignore -->
+                  <div matListItemLine class="text-xs! text-gray-600! dark:text-gray-400!">{{ item.description }}</div>
+                </a>
+                }
+              </mat-nav-list>
+              }
+            </div>
+          </div>
+        </ngm-dev-block-ui-overlay-wrapper>
+
+        <!-- Resources Menu -->
+        <button
+          type="button"
+          matButton
+          cdkOverlayOrigin
+          #resourcesTrigger="cdkOverlayOrigin"
+          (click)="resourcesOverlay.toggleOverlay()"
+          [class]="resourcesOverlay.isOpen() ? 'bg-primary-container!' : ''"
+        >
+          Resources
+          <mat-icon>expand_more</mat-icon>
+        </button>
+
+        <ngm-dev-block-ui-overlay-wrapper
+          #resourcesOverlay
+          [trigger]="resourcesTrigger"
+          panelClass="horizontal-centered-panel"
+        >
+          <div
+            class="bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/10 p-6"
+          >
+            <div class="grid grid-cols-2 gap-4 w-[31rem]">
+              @for (column of resourceColumns; track column.title) {
+              <mat-nav-list>
+                <h3 matSubheader>{{ column.title }}</h3>
+                @for (item of column.items; track item.label) {
+                <a mat-list-item [href]="item.href">
+                  <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+                  <div matListItemTitle>{{ item.label }}</div>
+                  <!-- prettier-ignore -->
+                  <div matListItemLine class="text-xs! text-gray-600! dark:text-gray-400!">{{ item.description }}</div>
+                </a>
+                }
+              </mat-nav-list>
+              }
+            </div>
+          </div>
+        </ngm-dev-block-ui-overlay-wrapper>
+
+        <!-- Regular Links -->
+        <a href="#" matButton> Pricing </a>
+        <a href="#" matButton> About </a>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center space-x-1">
+        <button type="button" matButton="text">Sign in</button>
+        <button type="button" matButton="filled">Start free trial</button>
+      </div>
+      }
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

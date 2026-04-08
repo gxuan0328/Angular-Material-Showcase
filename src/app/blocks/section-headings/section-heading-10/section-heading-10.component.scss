@@ -1,0 +1,18 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update section-headings/section-heading-10`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.chips-overrides(
+    (
+      label-text-weight: 600,
+      label-text-line-height: normal,
+      label-text-color: currentColor,
+      with-icon-icon-color: currentColor,
+      hover-state-layer-opacity: 0,
+    )
+  );
+}

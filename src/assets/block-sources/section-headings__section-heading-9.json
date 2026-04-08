@@ -1,0 +1,8 @@
+{
+  "category": "section-headings",
+  "variant": "section-heading-9",
+  "files": {
+    "section-heading-9.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-9`\n-->\n\n<div class=\"p-6\">\n  <div\n    class=\"border-b border-outline-variant pb-4 mb-6 flex items-baseline flex-col sm:flex-row\"\n  >\n    <h3 class=\"text-title-large font-medium mb-2 sm:mb-0\">{{ title }}</h3>\n    <p class=\"text-body-medium text-gray-600 dark:text-gray-400 ml-0 sm:ml-4\">\n      in Engineering\n    </p>\n  </div>\n</div>\n",
+    "section-heading-9.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-9`\n*/\n\nimport { Component } from '@angular/core';\n\n@Component({\n  selector: 'ngm-dev-block-section-heading-9',\n  templateUrl: './section-heading-9.component.html',\n})\nexport class SectionHeading9Component {\n  readonly title = 'Job Postings';\n}\n"
+  }
+}

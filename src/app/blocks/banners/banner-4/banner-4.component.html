@@ -1,0 +1,53 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update banners/banner-4`
+-->
+
+<!-- Padding given for presentation purposes -->
+<div class="p-4 max-w-3xl mx-auto">
+  @if (isOpen) {
+  <mat-card role="banner" class="!border !border-outline-variant">
+    <mat-card-header>
+      <!-- Title -->
+      <mat-card-title> Welcome to your workspace </mat-card-title>
+
+      <mat-card-subtitle>
+        Follow the steps below or browse our developer documentation to start
+        using the platform.
+      </mat-card-subtitle>
+
+      <!-- Close Button -->
+      <button
+        (click)="close()"
+        aria-label="Close"
+        mat-icon-button
+        class="ml-auto"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <!-- Content -->
+    <mat-card-content>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        @for (item of data; track item) {
+        <div
+          class="flex flex-col items-start gap-2 py-1 pl-4"
+          data-testid="banner-item"
+        >
+          <h3 class="font-medium -ml-2 border-l-2 border-primary pl-2">
+            {{ item.title }}
+          </h3>
+          <p class="leading-6">{{ item.description }}</p>
+          <a
+            class="text-primary font-medium opacity-80 hover:opacity-100 text-sm"
+            [href]="item.href"
+            >{{ item.linkText }} &#8594;</a
+          >
+        </div>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

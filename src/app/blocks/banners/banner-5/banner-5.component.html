@@ -1,0 +1,55 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update banners/banner-5`
+-->
+
+<!-- Padding given for presentation purposes -->
+<div class="p-4 max-w-3xl mx-auto">
+  @if (isOpen) {
+  <mat-card role="banner">
+    <mat-card-header>
+      <!-- Title -->
+      <mat-card-title> Create your first dashboard </mat-card-title>
+
+      <mat-card-subtitle>
+        Set up your first dashboard. Connect to a data source, create metrics
+        and visualize them in the report builder.
+      </mat-card-subtitle>
+
+      <!-- Close Button -->
+      <button
+        (click)="close()"
+        aria-label="Close"
+        mat-icon-button
+        class="ml-auto"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <!-- Content -->
+    <mat-card-content>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+        @for (item of data; track item; let index = $index) {
+        <div
+          class="flex flex-col gap-2 py-1 pl-4 justify-between border-l-2 border-primary-container"
+          data-testid="step-item"
+        >
+          <mat-chip class="step-badge !bg-primary-container self-start">
+            Step {{ index + 1 }}
+          </mat-chip>
+          <h3 class="font-medium">{{ item.title }}</h3>
+          <p class="leading-6">{{ item.description }}</p>
+          <a
+            matButton="filled"
+            [disabled]="index !== currentStep"
+            [href]="item.href"
+            >{{ item.linkText }}</a
+          >
+        </div>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

@@ -1,0 +1,8 @@
+{
+  "category": "section-headings",
+  "variant": "section-heading-8",
+  "files": {
+    "section-heading-8.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-8`\n-->\n\n<div class=\"p-6\">\n  <div class=\"pb-4 mb-6 relative\">\n    <h3 class=\"text-title-large font-medium absolute top-2 left-0\">\n      {{ title }}\n    </h3>\n    <mat-tab-group\n      fitInkBarToContent\n      mat-stretch-tabs=\"false\"\n      mat-align-tabs=\"start\"\n    >\n      <mat-tab label=\"Open\" labelClass=\"ml-20\" />\n      <mat-tab label=\"Closed\" />\n    </mat-tab-group>\n  </div>\n</div>\n",
+    "section-heading-8.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-8`\n*/\n\nimport { Component } from '@angular/core';\nimport { MatTabsModule } from '@angular/material/tabs';\n\n@Component({\n  selector: 'ngm-dev-block-section-heading-8',\n  templateUrl: './section-heading-8.component.html',\n  imports: [MatTabsModule],\n})\nexport class SectionHeading8Component {\n  readonly title = 'Issues';\n}\n"
+  }
+}

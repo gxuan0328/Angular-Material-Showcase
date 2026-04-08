@@ -1,0 +1,78 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update empty-states/empty-state-6`
+-->
+
+<div class="max-w-7xl mx-auto p-4">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="py-4">
+        <h3 class="font-medium" data-testid="heading">Requests</h3>
+        <p
+          class="mt-1 text-gray-600 dark:text-gray-400"
+          data-testid="description"
+        >
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt.
+          <a href="#" class="inline-flex items-center gap-1 text-primary">
+            Learn more
+            <mat-icon class="size-[1em]! [font-size:1rem]!"
+              >open_in_new</mat-icon
+            >
+          </a>
+        </p>
+      </div>
+
+      <div class="border-t border-outline-variant p-4 -mx-4">
+        <mat-button-toggle-group
+          name="requests"
+          aria-label="Requests"
+          #toggleGroup="matButtonToggleGroup"
+          value="ratio"
+        >
+          <mat-button-toggle value="ratio">Ratio</mat-button-toggle>
+          <mat-button-toggle value="projects">Projects</mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <div
+          class="mt-6 flex flex-wrap gap-x-20 gap-y-6"
+          data-testid="categories"
+        >
+          @for ( item of toggleGroup.value === 'ratio' ? tabs[0].categories :
+          tabs[1].categories; track item.name ) {
+          <div>
+            <div class="flex items-center gap-2">
+              <span
+                class="size-3 shrink-0 rounded-sm bg-surface-container-highest"
+              ></span>
+              <p class="font-semibold">{{ item.value }}</p>
+            </div>
+            <p class="text-gray-600 dark:text-gray-400">{{ item.name }}</p>
+          </div>
+          }
+        </div>
+
+        <div
+          class="mt-6 flex h-72 items-center justify-center rounded-sm border border-outline bg-surface-container"
+        >
+          <div class="text-center">
+            <mat-icon
+              class="mx-auto h-7 w-7 text-gray-600 dark:text-gray-400"
+              data-testid="no-data-icon"
+              >bar_chart</mat-icon
+            >
+            <p class="mt-2 font-medium" data-testid="no-data-message">
+              No data to show
+            </p>
+            <p
+              class="mt-1 text-gray-600 dark:text-gray-400"
+              data-testid="additional-info-message"
+            >
+              May take 24h for data to be shown.
+            </p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

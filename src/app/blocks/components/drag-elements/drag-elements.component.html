@@ -1,0 +1,26 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/drag-elements`
+-->
+
+<div [class]="cx('relative size-full', containerClass())">
+  @for (element of dragElements(); track $index) {
+  <div
+    [class]="
+        cx(
+          'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2',
+          startResetPositions() ? 'transition-all duration-300' : ''
+        )
+      "
+    cdkDrag
+    [cdkDragBoundary]="dragBoundary()"
+    [cdkDragDisabled]="element.dragDisabled()"
+    [style.zIndex]="setZIndices().indexOf($index)"
+    [style.cursor]="isDraggingMap.get($index) ? 'grabbing' : 'grab'"
+    (cdkDragStarted)="onDragStarted($event, $index)"
+    (cdkDragEnded)="onDragEnded($event, $index)"
+  >
+    <ng-container [ngTemplateOutlet]="element.templateRef" />
+  </div>
+  }
+</div>

@@ -1,0 +1,49 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update dialogs/dialog-2`
+-->
+
+<form [formGroup]="deleteForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title class="relative">
+    Delete workspace
+    <button
+      mat-icon-button
+      aria-label="Close"
+      class="absolute! right-4 top-4"
+      mat-dialog-close
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+  <mat-dialog-content>
+    <p class="mt-2 text-gray-600 dark:text-gray-400">
+      All workspace data will be permanently deleted. There is no coming back
+      after you press delete.
+    </p>
+    <mat-form-field appearance="outline" class="mt-3 w-full">
+      <mat-label>Confirm password</mat-label>
+      <input
+        matInput
+        [type]="hidePassword() ? 'password' : 'text'"
+        formControlName="password"
+        placeholder="Password"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="togglePasswordVisibility()"
+        aria-label="Hide password"
+        [attr.aria-pressed]="hidePassword()"
+      >
+        <mat-icon
+          >{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon
+        >
+      </button>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button type="submit" matButton="filled" color="warn" class="w-full">
+      Delete workspace permanently
+    </button>
+  </mat-dialog-actions>
+</form>

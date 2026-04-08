@@ -1,0 +1,8 @@
+{
+  "category": "section-headings",
+  "variant": "section-heading-3",
+  "files": {
+    "section-heading-3.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-3`\n-->\n\n<div class=\"p-6\">\n  <div\n    class=\"border-b border-outline-variant pb-4 mb-6 flex sm:justify-between sm:items-center flex-col sm:flex-row gap-4 sm:gap-0\"\n  >\n    <h3 class=\"text-title-large font-medium\">{{ title }}</h3>\n    <div class=\"flex items-center gap-2\">\n      <button matButton>Share</button>\n      <button matButton=\"filled\">Create</button>\n    </div>\n  </div>\n</div>\n",
+    "section-heading-3.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-3`\n*/\n\nimport { Component } from '@angular/core';\nimport { MatButtonModule } from '@angular/material/button';\n\n@Component({\n  selector: 'ngm-dev-block-section-heading-3',\n  templateUrl: './section-heading-3.component.html',\n  imports: [MatButtonModule],\n})\nexport class SectionHeading3Component {\n  readonly title = 'Job Postings';\n}\n"
+  }
+}

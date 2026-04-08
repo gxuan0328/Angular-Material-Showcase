@@ -1,0 +1,75 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update dialogs/dialog-5`
+-->
+
+<form [formGroup]="inviteForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title class="relative">
+    Invite members
+    <button
+      type="button"
+      mat-icon-button
+      mat-dialog-close
+      aria-label="Close"
+      class="absolute! right-4 top-4"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </h2>
+  <mat-dialog-content>
+    <p class="mt-2">
+      Add new team members to your workspace. Please consider your
+      organization's policies when adding external people.
+    </p>
+
+    <div class="mt-6 flex items-center gap-2">
+      <mat-form-field
+        appearance="outline"
+        class="flex-1"
+        subscriptSizing="dynamic"
+      >
+        <mat-label>Email</mat-label>
+        <mat-icon matPrefix class="mr-2">person_add</mat-icon>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="Add email..."
+          type="email"
+          required
+        />
+        @if ( inviteForm.get('email')?.hasError('required') &&
+        inviteForm.get('email')?.touched ) {
+        <mat-error>Email is required</mat-error>
+        } @if ( inviteForm.get('email')?.hasError('email') &&
+        inviteForm.get('email')?.touched ) {
+        <mat-error>Please enter a valid email</mat-error>
+        }
+      </mat-form-field>
+      <button type="submit" matButton="filled" [disabled]="!inviteForm.valid">
+        Invite
+      </button>
+    </div>
+
+    <h3 class="mt-6 font-medium">People with existing access</h3>
+
+    <mat-list class="mt-2">
+      @for (member of members; track member.name) {
+      <mat-list-item>
+        <div
+          matListItemIcon
+          class="flex h-9! w-9! [font-size:14px]! leading-[1]! items-center justify-center rounded-full border font-medium"
+        >
+          {{ member.initials }}
+        </div>
+        <h3 matListItemTitle>{{ member.name }}</h3>
+        <span
+          matListItemMeta
+          class="rounded px-2 py-1 text-sm font-medium ring-1 ring-outline"
+        >
+          {{ member.status }}
+        </span>
+      </mat-list-item>
+      }
+    </mat-list>
+  </mat-dialog-content>
+</form>

@@ -1,0 +1,100 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update page-headings/page-heading-9`
+-->
+
+<!-- Card Container -->
+<div class="px-4 sm:px-6 lg:px-8 py-6">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <!-- Desktop & Tablet Layout -->
+      @if ((isLessThanMD$ | async) === false) {
+      <!-- Header Section -->
+      <div class="flex items-center justify-between mb-8">
+        <!-- Left side: Avatar and User Info -->
+        <div class="flex items-center space-x-4">
+          <!-- Avatar -->
+          <div class="flex-shrink-0">
+            <img
+              class="size-16 rounded-full object-cover"
+              [src]="userAvatarUrl"
+              [alt]="userName"
+            />
+          </div>
+          <!-- User Info -->
+          <div>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+              {{ welcomeMessage }}
+            </p>
+            <h1 class="text-2xl font-bold">{{ userName }}</h1>
+            <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+              {{ userRole }}
+            </p>
+          </div>
+        </div>
+
+        <!-- Right side: Action Button -->
+        <div>
+          <button matButton="outlined" (click)="onViewProfile()">
+            View profile
+          </button>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="grid grid-cols-3 gap-6">
+        @for (stat of stats; track stat.type) {
+        <div class="text-center p-4 border border-outline-variant rounded-lg">
+          <div class="text-2xl font-bold mb-1">{{ stat.value }}</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">
+            {{ stat.label }}
+          </div>
+        </div>
+        }
+      </div>
+      } @else {
+      <!-- Mobile Layout -->
+      <div class="text-center space-y-6">
+        <!-- Avatar -->
+        <div class="flex justify-center">
+          <img
+            class="size-20 rounded-full object-cover"
+            [src]="userAvatarUrl"
+            [alt]="userName"
+          />
+        </div>
+
+        <!-- User Info -->
+        <div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-1">
+            {{ welcomeMessage }}
+          </p>
+          <h1 class="text-2xl font-bold">{{ userName }}</h1>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+            {{ userRole }}
+          </p>
+        </div>
+
+        <!-- Action Button -->
+        <div>
+          <button matButton="outlined" (click)="onViewProfile()">
+            View profile
+          </button>
+        </div>
+
+        <!-- Stats (Stacked) -->
+        <div class="space-y-4">
+          @for (stat of stats; track stat.type) {
+          <div class="text-center p-4 border border-outline-variant rounded-lg">
+            <div class="text-2xl font-bold mb-1">{{ stat.value }}</div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+              {{ stat.label }}
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

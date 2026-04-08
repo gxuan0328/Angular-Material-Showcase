@@ -1,0 +1,33 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/animated-copy-button`
+-->
+
+<button
+  mat-icon-button
+  [cdkCopyToClipboard]="contentToCopy()"
+  (cdkCopyToClipboardCopied)="onCopyToClipboardCopied($event)"
+>
+  <span [class]="'relative inline-block size-6 ' + iconContainerClass()">
+    <span
+      [class]="
+        'material-symbols-outlined absolute inset-0  transition-all ' +
+        (isCopied() ? '-rotate-90 scale-0' : 'rotate-0 scale-100') +
+        ' ' +
+        iconClass()
+      "
+    >
+      content_copy
+    </span>
+    <span
+      [class]="
+        'material-symbols-outlined absolute inset-0  transition-all ' +
+        (isCopied() ? 'rotate-0 scale-100' : 'rotate-90 scale-0') +
+        ' ' +
+        iconClass()
+      "
+    >
+      check
+    </span>
+  </span>
+</button>

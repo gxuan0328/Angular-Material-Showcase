@@ -1,0 +1,47 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update multi-column/constrained-three-column`
+-->
+
+<div class="flex flex-col h-[100dvh]">
+  <mat-toolbar class="bg-primary-container! text-on-primary-container! px-0!">
+    <div
+      class="flex-1 w-full max-w-7xl mx-auto flex items-center px-4 sm:px-6 lg:px-8"
+    >
+      <img
+        class="size-8"
+        src="https://ui.angular-material.dev/app-ui/logo.svg"
+        alt="Your Company"
+      />
+      <span class="flex-1"></span>
+      <button mat-icon-button aria-label="View notifications">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      <button mat-icon-button class="custom-avatar-button">
+        <img
+          [src]="user.imageUrl"
+          alt="User"
+          class="object-cover rounded-full"
+        />
+      </button>
+    </div>
+  </mat-toolbar>
+
+  <main
+    class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 p-4 md:p-6 h-full"
+  >
+    <div class="col-span-1 md:col-span-2 h-full">
+      <div class="grid grid-cols-1 xl:grid-cols-3 gap-4 md:gap-6 h-full">
+        <div class="col-span-1 h-full">
+          <ngm-dev-block-content-placeholder-constrained-three-column />
+        </div>
+        <div class="col-span-1 xl:col-span-2 h-full">
+          <ngm-dev-block-content-placeholder-constrained-three-column />
+        </div>
+      </div>
+    </div>
+    <div class="col-span-1 h-full">
+      <ngm-dev-block-content-placeholder-constrained-three-column />
+    </div>
+  </main>
+</div>

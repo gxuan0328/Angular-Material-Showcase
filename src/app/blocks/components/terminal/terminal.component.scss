@@ -1,0 +1,21 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/terminal`
+*/
+
+/* Additional styling for the terminal component */
+:host {
+  display: block;
+}
+
+/* Ensures text in the pre block doesn't break out of the container */
+pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+/* Ensure proper line height for text in the code block */
+code {
+  line-height: 1.5;
+  font-family: var(--font-mono);
+}

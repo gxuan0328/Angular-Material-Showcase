@@ -1,0 +1,23 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update wrappers/overlay-wrapper`
+-->
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="trigger()"
+  [cdkConnectedOverlayOpen]="isOpen()"
+  [cdkConnectedOverlayPositions]="overlayPositions()"
+  [cdkConnectedOverlayHasBackdrop]="true"
+  [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+  [cdkConnectedOverlayPanelClass]="panelClass()"
+  (backdropClick)="close()"
+  (positionChange)="onPositionChange($event)"
+>
+  <div
+    [animate.enter]="enterAnimationClass()"
+    [animate.leave]="leaveAnimationClass()"
+  >
+    <ng-content />
+  </div>
+</ng-template>

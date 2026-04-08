@@ -1,0 +1,81 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update page-headings/page-heading-8`
+-->
+
+<!-- Content Container -->
+<div class="px-4 sm:px-6 lg:px-8 py-6">
+  <!-- Desktop & Tablet Layout -->
+  @if ((isLessThanMD$ | async) === false) {
+  <div class="flex items-center justify-between">
+    <!-- Left side: Avatar and User Info -->
+    <div class="flex items-center space-x-4">
+      <!-- Avatar -->
+      <div class="flex-shrink-0">
+        <img
+          class="size-16 rounded-full object-cover"
+          [src]="userAvatarUrl"
+          [alt]="userName"
+        />
+      </div>
+      <!-- User Info -->
+      <div>
+        <h1 class="text-2xl font-bold">{{ userName }}</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          {{ userRole }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Right side: Action Buttons -->
+    <div class="flex space-x-3">
+      @for (button of actionButtons; track button.label) { @if (button.label ===
+      'Advance to offer') {
+      <button matButton="filled" (click)="button.action()">
+        {{ button.label }}
+      </button>
+      } @else {
+      <button matButton="outlined" (click)="button.action()">
+        {{ button.label }}
+      </button>
+      } }
+    </div>
+  </div>
+  } @else {
+  <!-- Mobile Layout -->
+  <div class="space-y-6">
+    <!-- Avatar and User Info -->
+    <div class="flex items-center space-x-4">
+      <!-- Avatar -->
+      <div class="flex-shrink-0">
+        <img
+          class="size-16 rounded-full object-cover"
+          [src]="userAvatarUrl"
+          [alt]="userName"
+        />
+      </div>
+      <!-- User Info -->
+      <div class="flex-1 min-w-0">
+        <h1 class="text-xl font-bold">{{ userName }}</h1>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+          {{ userRole }}
+        </p>
+      </div>
+    </div>
+
+    <!-- Action Buttons (Stacked) -->
+    <div class="flex flex-col space-y-3">
+      @for (button of actionButtons; track button.label) { @if (button.label ===
+      'Advance to offer') {
+      <button matButton="filled" class="w-full" (click)="button.action()">
+        {{ button.label }}
+      </button>
+      } @else {
+      <button matButton="outlined" class="w-full" (click)="button.action()">
+        {{ button.label }}
+      </button>
+      } }
+    </div>
+  </div>
+  }
+</div>

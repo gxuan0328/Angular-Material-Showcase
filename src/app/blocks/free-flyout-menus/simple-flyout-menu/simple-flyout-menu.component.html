@@ -1,0 +1,133 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update free-flyout-menus/simple-flyout-menu`
+-->
+
+<mat-sidenav-container class="h-[500px] lg:h-auto">
+  <mat-sidenav
+    #mobileSidenav
+    mode="over"
+    position="end"
+    [opened]="mobileMenuOpen()"
+    (closed)="mobileMenuOpen.set(false)"
+    class="w-screen max-w-sm"
+  >
+    <!-- Mobile Menu Header -->
+    <mat-toolbar class="sticky top-0 bg-inherit z-10">
+      <span class="text-xl font-bold">Company</span>
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Close menu"
+        class="ml-auto"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Mobile Menu Content -->
+    <div class="flex-1 p-4">
+      <p class="text-title-medium font-title-medium">Products</p>
+      <mat-nav-list>
+        @for (category of productCategories; track category.title) {
+        <h3 matSubheader>{{ category.title }}</h3>
+        @for (item of category.items; track item.label) {
+        <mat-list-item>
+          <h4 matListItemTitle>{{ item.label }}</h4>
+        </mat-list-item>
+        } }
+      </mat-nav-list>
+      <p class="text-title-medium font-title-medium">Resources</p>
+      <mat-nav-list>
+        @for (category of resourceCategories; track category.title) {
+        <h3 matSubheader>{{ category.title }}</h3>
+        @for (item of category.items; track item.label) {
+        <mat-list-item>
+          <h4 matListItemTitle>{{ item.label }}</h4>
+        </mat-list-item>
+        } }
+      </mat-nav-list>
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item>Pricing</a>
+        <a mat-list-item>About</a>
+      </mat-nav-list>
+    </div>
+
+    <!-- Mobile Menu Footer -->
+    <div class="p-4 border-t border-outline-variant space-y-2">
+      <button type="button" matButton="text" class="w-full">Sign in</button>
+      <button type="button" matButton="filled" class="w-full">
+        Get started
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="border-b border-outline-variant justify-between">
+      <!-- Logo -->
+      <span class="text-xl font-bold">Company</span>
+
+      @if (isLessThanLG()) {
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Open menu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      } @else {
+      <!-- Navigation Links -->
+      <div class="flex items-center space-x-1">
+        <!-- Products Menu -->
+        <button matButton [matMenuTriggerFor]="productsMenu">
+          Products
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #productsMenu="matMenu">
+          @for (category of productCategories; track category.title) {
+          <mat-menu #categoryMenu="matMenu">
+            @for (item of category.items; track item.label) {
+            <button mat-menu-item>{{ item.label }}</button>
+            }
+          </mat-menu>
+          <button mat-menu-item [matMenuTriggerFor]="categoryMenu">
+            {{ category.title }}
+          </button>
+          }
+        </mat-menu>
+
+        <!-- Resources Menu -->
+        <button matButton [matMenuTriggerFor]="resourcesMenu">
+          Resources
+          <mat-icon>expand_more</mat-icon>
+        </button>
+        <mat-menu #resourcesMenu="matMenu">
+          @for (category of resourceCategories; track category.title) {
+          <mat-menu #categoryMenu="matMenu">
+            @for (item of category.items; track item.label) {
+            <button mat-menu-item>{{ item.label }}</button>
+            }
+          </mat-menu>
+          <button mat-menu-item [matMenuTriggerFor]="categoryMenu">
+            {{ category.title }}
+          </button>
+          }
+        </mat-menu>
+
+        <!-- Regular Links -->
+        <a matButton> Pricing </a>
+        <a matButton> About </a>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center space-x-2">
+        <button type="button" matButton="text">Sign in</button>
+        <button type="button" matButton="filled">Get started</button>
+      </div>
+      }
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

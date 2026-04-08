@@ -1,0 +1,148 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update page-shells/page-shell-5`
+-->
+
+<div>
+  <div
+    class="border-b border-outline-variant bg-surface-container-high p-4 sm:p-6 lg:p-8"
+  >
+    <header>
+      <h1 class="text-xl font-semibold">Report</h1>
+      <p class="text-base text-gray-600 dark:text-gray-400">
+        Explore and manage your reports
+      </p>
+      <div class="mt-8 w-full md:flex md:max-w-3xl md:items-stretch md:gap-4">
+        <mat-card class="w-full! relative md:w-7/12!">
+          <mat-card-content>
+            <div
+              class="inline-flex items-center justify-center rounded border border-gray-400 p-2 dark:border-gray-600"
+            >
+              <mat-icon class="text-gray-600 dark:text-gray-400">book</mat-icon>
+            </div>
+            <h3 class="mt-4 text-base font-medium">
+              <a href="#" class="focus:outline-none">
+                <!-- Extend link to entire card -->
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                Documentation
+              </a>
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+            </p>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="mt-4 w-full! relative md:mt-0 md:w-5/12!">
+          <mat-card-content>
+            <div
+              class="inline-flex items-center justify-center rounded border border-gray-400 p-2 dark:border-gray-600"
+            >
+              <mat-icon class="text-gray-600 dark:text-gray-400"
+                >storage</mat-icon
+              >
+            </div>
+            <h3 class="mt-4 text-base font-medium">
+              <a href="#" class="focus:outline-none">
+                <!-- Extend link to entire card -->
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                Models
+              </a>
+            </h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              Lorem ipsum dolor sit amet.
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </header>
+  </div>
+  <div>
+    <div class="p-4 sm:p-6 lg:p-8">
+      <main>
+        <div class="flex items-center justify-between flex-wrap">
+          <h2 class="text-xl font-semibold">Your reports</h2>
+          <button matButton="elevated">
+            <mat-icon>add</mat-icon>
+            Add report
+          </button>
+        </div>
+        <mat-accordion class="block mt-6" multi>
+          <mat-expansion-panel
+            [expanded]="recentExpanded()"
+            (opened)="recentExpanded.set(true)"
+            (closed)="recentExpanded.set(false)"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title
+                class="text-sm font-medium text-gray-600 dark:text-gray-400"
+              >
+                Recent (3)
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div
+              class="grid grid-cols-1 gap-4 pb-1 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              @for (item of recentReports; track item.id) {
+              <mat-card appearance="outlined" class="relative p-2">
+                <div class="h-20">
+                  <ngm-dev-block-content-placeholder-shell5
+                    [patternId]="'pattern-' + item.id"
+                  />
+                </div>
+                <h3 class="mt-2 text-base font-medium">
+                  <a [href]="item.href" class="focus:outline-none">
+                    <!-- Extend link to entire card -->
+                    <span class="absolute inset-0" aria-hidden="true"></span>
+                    {{ item.name }}
+                  </a>
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  {{ item.description }}
+                </p>
+              </mat-card>
+              }
+            </div>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel
+            class="mt-6"
+            [expanded]="allExpanded()"
+            (opened)="allExpanded.set(true)"
+            (closed)="allExpanded.set(false)"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title
+                class="text-sm font-medium text-gray-600 dark:text-gray-400"
+              >
+                All (6)
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div
+              class="grid grid-cols-1 gap-4 pb-1 sm:grid-cols-2 lg:grid-cols-3"
+            >
+              @for (item of reportData; track item.id) {
+              <mat-card appearance="outlined" class="relative p-2">
+                <div class="h-20">
+                  <ngm-dev-block-content-placeholder-shell5
+                    [patternId]="'pattern-' + item.id"
+                  />
+                </div>
+                <h3 class="mt-2 text-base font-medium">
+                  <a [href]="item.href" class="focus:outline-none">
+                    <!-- Extend link to entire card -->
+                    <span class="absolute inset-0" aria-hidden="true"></span>
+                    {{ item.name }}
+                  </a>
+                </h3>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  {{ item.description }}
+                </p>
+              </mat-card>
+              }
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </main>
+    </div>
+  </div>
+</div>

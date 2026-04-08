@@ -1,0 +1,88 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update page-shells/page-shell-3`
+-->
+
+<div>
+  <div class="border-b border-gray-200 dark:border-gray-700">
+    <div class="px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 sm:space-x-7">
+        <div class="hidden shrink-0 sm:flex sm:items-center">
+          <a href="#" class="p-1.5">
+            <ngm-dev-block-page-shell-3-logo
+              cssClass="size-5 shrink-0 "
+              width="20"
+              height="20"
+            />
+          </a>
+        </div>
+        <nav class="-mb-px flex space-x-3 md:space-x-6" aria-label="Tabs">
+          @for (item of navigation; track item.name) {
+          <a
+            [href]="item.href"
+            [class]="
+                item.current
+                  ? 'text-primary border-primary border-b-2 inline-flex items-center whitespace-nowrap px-2 text-base font-medium'
+                  : 'border-transparent text-gray-600 dark:text-gray-400 hover:border-gray-300 hover:text-on-surface hover:dark:border-gray-700 hover:dark:text-on-surface inline-flex items-center whitespace-nowrap border-b-2 px-2 text-base font-medium'
+              "
+            [attr.aria-current]="item.current ? 'page' : undefined"
+          >
+            {{ item.name }}
+          </a>
+          }
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 sm:p-6 lg:p-8">
+    <header>
+      <div class="sm:flex sm:items-center sm:justify-between">
+        <h3 class="text-xl font-semibold">Overview</h3>
+        <div class="mt-4 items-center sm:mt-0 sm:flex sm:gap-2">
+          <mat-form-field class="w-full sm:w-fit">
+            <mat-select
+              [value]="selectedTimeRange()"
+              (valueChange)="selectedTimeRange.set($event)"
+              disableRipple
+            >
+              @for (timeRange of timeRanges; track timeRange.value) {
+              <mat-option [value]="timeRange.value"
+                >{{ timeRange.viewValue }}</mat-option
+              >
+              }
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="mt-2 sm:mt-0 w-full sm:w-fit">
+            <mat-select
+              [value]="selectedLocation()"
+              (valueChange)="selectedLocation.set($event)"
+              disableRipple
+            >
+              @for (location of locations; track location.value) {
+              <mat-option [value]="location.value"
+                >{{ location.viewValue }}</mat-option
+              >
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <mat-card appearance="outlined" class="h-36 p-2">
+          <ngm-dev-block-content-placeholder-shell3 patternId="pattern-1" />
+        </mat-card>
+        <mat-card appearance="outlined" class="h-36 p-2">
+          <ngm-dev-block-content-placeholder-shell3 patternId="pattern-2" />
+        </mat-card>
+        <mat-card appearance="outlined" class="h-36 p-2">
+          <ngm-dev-block-content-placeholder-shell3 patternId="pattern-3" />
+        </mat-card>
+      </div>
+      <mat-card appearance="outlined" class="mt-4 h-96 p-2">
+        <ngm-dev-block-content-placeholder-shell3 patternId="pattern-4" />
+      </mat-card>
+    </main>
+  </div>
+</div>

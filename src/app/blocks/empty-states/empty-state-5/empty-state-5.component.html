@@ -1,0 +1,62 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update empty-states/empty-state-5`
+-->
+
+<div class="max-w-7xl mx-auto p-4">
+  <div class="sm:flex sm:items-center sm:justify-between sm:gap-2">
+    <h2 class="text-lg font-medium">Overview</h2>
+    <button matButton="filled" class="mt-2 sm:mt-0">
+      <mat-icon>add</mat-icon>
+      Add budget limits
+    </button>
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (item of data; track item.name) {
+    <mat-card appearance="outlined">
+      <mat-card-content class="pb-3!">
+        <div class="flex items-center gap-3 mt-6 mb-6!">
+          <div class="relative size-[50px]">
+            <span class="absolute inset-0 custom-background-spinner">
+              <mat-progress-spinner
+                role="presentation"
+                mode="determinate"
+                [value]="100"
+                diameter="50"
+                strokeWidth="5"
+              />
+            </span>
+            <mat-progress-spinner
+              mode="determinate"
+              [value]="item.progress"
+              diameter="50"
+              strokeWidth="5"
+              class="custom-foreground-spinner"
+            />
+            <span
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-sm font-medium"
+            >
+              {{ item.progress }}%
+            </span>
+          </div>
+          <div>
+            <p class="text-base font-medium">
+              {{ item.current }} / {{ item.budget }}
+            </p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              {{ item.name }}
+            </p>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions
+        align="end"
+        class="border-t border-outline-variant density-3"
+      >
+        <a [href]="item.href" matButton> View more → </a>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+</div>

@@ -1,0 +1,62 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update banners/banner-2`
+-->
+
+<!-- Padding given for presentation purposes -->
+<div class="p-4 max-w-3xl mx-auto">
+  @if (isOpen) {
+  <mat-card role="banner" class="!border !border-outline-variant">
+    <mat-card-header>
+      <!-- Icon Container -->
+      <div mat-card-avatar>
+        <span
+          class="flex h-10 w-10 items-center justify-center rounded-full bg-primary-container"
+        >
+          <span
+            class="size-8 bg-primary rounded-full flex items-center justify-center"
+          >
+            <mat-icon class="text-on-primary! icon-filled">menu_book</mat-icon>
+          </span>
+        </span>
+      </div>
+
+      <!-- Title -->
+      <mat-card-title> Welcome to your workspace </mat-card-title>
+
+      <!-- Close Button -->
+      <button
+        (click)="close()"
+        aria-label="Close"
+        mat-icon-button
+        class="ml-auto"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-header>
+
+    <!-- Content -->
+    <mat-card-content>
+      <div class="pl-14">
+        <p>
+          Start with our step-by-step guide to configure the workspace to your
+          needs. For further resources, our video tutorials and
+          audience-specific documentations are designed to provide you with a
+          in-depth understanding of our platform.
+        </p>
+      </div>
+    </mat-card-content>
+
+    <!-- Actions -->
+    <mat-card-actions>
+      <div class="flex pl-14">
+        <button matButton="filled">Get started</button>
+        <a matButton>
+          View tutorials
+          <mat-icon>open_in_new</mat-icon>
+        </a>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>

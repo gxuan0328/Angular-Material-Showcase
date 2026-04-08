@@ -1,0 +1,67 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update empty-states/empty-state-4`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg p-4">
+  <mat-card appearance="outlined" class="overflow-hidden">
+    <mat-card-header>
+      <mat-card-title>Capacity</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mt-2">
+        No activity measured yet.
+      </p>
+      <div class="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3 mb-8!">
+        @for (item of data; track item.name) {
+        <div class="items-center gap-4">
+          <div class="relative size-[64px] mx-auto">
+            <span
+              class="absolute inset-0 custom-background-spinner"
+              aria-hidden="true"
+              role="presentation"
+            >
+              <mat-progress-spinner
+                mode="determinate"
+                [value]="100"
+                diameter="64"
+              />
+            </span>
+            <mat-progress-spinner
+              mode="determinate"
+              [value]="item.value"
+              diameter="64"
+              class="custom-foreground-spinner"
+            />
+            <span
+              class="text-sm font-medium text-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+              >{{ item.value }}%</span
+            >
+          </div>
+          <div class="mt-2 text-center">
+            <p class="text-sm font-medium">{{ item.capacity }}</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">
+              {{ item.name }}
+            </p>
+          </div>
+        </div>
+        }
+      </div>
+    </mat-card-content>
+    <mat-card-footer
+      class="border-t border-outline-variant bg-surface-container-low px-6 py-4"
+    >
+      <h4 class="text-sm font-medium">Usage updated hourly</h4>
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        Monthly usage resets in 4 days.
+        <a
+          href="#"
+          class="inline-flex items-center gap-1 rounded text-sm text-primary hover:underline hover:underline-offset-4"
+        >
+          Manage plan
+          <mat-icon class="size-[1em]! [font-size:1rem]!">open_in_new</mat-icon>
+        </a>
+      </p>
+    </mat-card-footer>
+  </mat-card>
+</div>

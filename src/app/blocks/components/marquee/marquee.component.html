@@ -1,0 +1,18 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/marquee`
+-->
+
+<div
+  [class]="containerClasses()"
+  [style.--duration]="duration() + 's'"
+  [style.--gap]="gap() + 'rem'"
+>
+  @for (index of repeatArray; track index) {
+  <div [class]="itemClasses()">
+    @for (item of marqueeItems(); track item.templateRef) {
+    <ng-container *ngTemplateOutlet="item.templateRef" />
+    }
+  </div>
+  }
+</div>

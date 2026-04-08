@@ -1,0 +1,14 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update multi-column/full-width-secondary-right`
+*/
+
+@use '@angular/material' as mat;
+
+.custom-avatar-button {
+  @include mat.icon-button-overrides(
+    (
+      icon-size: 36px,
+    )
+  );
+}

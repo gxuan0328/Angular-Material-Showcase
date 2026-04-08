@@ -1,0 +1,68 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/tracker`
+-->
+
+<div [class]="containerClass">
+  @for (block of data(); track block.key ?? $index) { @if (tooltipTemplate()) {
+  <div
+    [class]="blockWrapperClass"
+    cdkOverlayOrigin
+    #trigger="cdkOverlayOrigin"
+    (mouseenter)="showTooltip(block.key ?? $index)"
+    (mouseleave)="hideTooltip(block.key ?? $index)"
+  >
+    <div
+      [attr.data-tooltip-open]="
+            tooltipOpen.get(block.key ?? $index) ? 'true' : undefined
+          "
+      [class]="
+            cx([
+              'size-full',
+              'rounded-[1px]',
+              'cursor-pointer',
+              block.color || defaultBackgroundColor(),
+              hoverEffect()
+                ? 'hover:opacity-50 data-tooltip-open:opacity-50'
+                : '',
+            ])
+          "
+    ></div>
+  </div>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayOpen]="
+          tooltipOpen.get(block.key ?? $index) ?? false
+        "
+    (detach)="hideTooltip(block.key ?? $index)"
+    [cdkConnectedOverlayPositions]="positions"
+  >
+    <ng-container
+      *ngTemplateOutlet="
+            tooltipTemplate();
+            context: { $implicit: block }
+          "
+    ></ng-container>
+  </ng-template>
+  } @else {
+  <div
+    [class]="blockWrapperClass"
+    [matTooltip]="block.tooltip"
+    [matTooltipPosition]="block.tooltipPosition || 'above'"
+  >
+    <div
+      [class]="
+            cx([
+              'size-full',
+              'rounded-[1px]',
+              'cursor-pointer',
+              block.color || defaultBackgroundColor(),
+              hoverEffect() ? 'hover:opacity-50' : '',
+            ])
+          "
+    ></div>
+  </div>
+  } }
+</div>

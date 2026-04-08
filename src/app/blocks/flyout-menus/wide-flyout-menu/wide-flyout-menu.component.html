@@ -1,0 +1,220 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update flyout-menus/wide-flyout-menu`
+-->
+
+<mat-sidenav-container class="h-[500px] md:h-auto">
+  <mat-sidenav
+    #mobileSidenav
+    mode="over"
+    position="end"
+    [opened]="mobileMenuOpen()"
+    (closed)="mobileMenuOpen.set(false)"
+  >
+    <!-- Mobile Menu Header -->
+    <mat-toolbar class="sticky top-0 bg-inherit z-10">
+      <span class="text-xl font-bold">Platform</span>
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Close menu"
+        class="ml-auto"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <!-- Mobile Menu Content -->
+    <div class="flex-1 p-4">
+      <p class="text-title-medium font-title-medium">Solutions</p>
+      <mat-nav-list>
+        @for (feature of features; track feature.title) {
+        <a mat-list-item [href]="feature.href">
+          <mat-icon matListItemIcon>{{ feature.icon }}</mat-icon>
+          <div matListItemTitle>{{ feature.title }}</div>
+          <!-- prettier-ignore -->
+          <div
+              matListItemLine
+              class="text-xs! text-gray-600! dark:text-gray-400!">{{ feature.description }}</div>
+        </a>
+        }
+      </mat-nav-list>
+
+      <mat-divider class="my-4!"></mat-divider>
+
+      <p class="text-title-medium font-title-medium">Quick Links</p>
+      <mat-nav-list>
+        @for (link of quickLinks; track link.label) {
+        <a mat-list-item [href]="link.href">{{ link.label }}</a>
+        }
+      </mat-nav-list>
+
+      <mat-divider class="my-4"></mat-divider>
+      <mat-nav-list>
+        <a mat-list-item href="#">Customers</a>
+        <a mat-list-item href="#">Pricing</a>
+        <a mat-list-item href="#">Docs</a>
+      </mat-nav-list>
+    </div>
+
+    <!-- Mobile Menu Footer -->
+    <div class="p-4 border-t border-outline-variant space-y-2">
+      <button type="button" matButton="text" class="w-full">Sign in</button>
+      <button type="button" matButton="filled" class="w-full">
+        {{ callToAction.buttonLabel }}
+      </button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="border-b border-outline-variant justify-between">
+      <!-- Logo -->
+      <span class="text-xl font-bold">Platform</span>
+
+      @if (isLessThanMD()) {
+      <button
+        type="button"
+        mat-icon-button
+        (click)="toggleMobileMenu()"
+        aria-label="Open menu"
+      >
+        <mat-icon>menu</mat-icon>
+      </button>
+      } @else {
+      <!-- Navigation Links -->
+      <div class="flex items-center space-x-1">
+        <!-- Solutions Wide Menu -->
+        <button
+          type="button"
+          matButton
+          cdkOverlayOrigin
+          #solutionsTrigger="cdkOverlayOrigin"
+          (click)="solutionsOverlay.toggleOverlay()"
+          [class]="solutionsOverlay.isOpen() ? 'bg-primary-container!' : ''"
+        >
+          Solutions
+          <mat-icon>expand_more</mat-icon>
+        </button>
+
+        <ngm-dev-block-ui-overlay-wrapper
+          #solutionsOverlay
+          [trigger]="solutionsTrigger"
+          [positions]="[
+              {
+                originX: 'center',
+                originY: 'bottom',
+                overlayX: 'center',
+                overlayY: 'top',
+              },
+            ]"
+          panelClass="horizontal-centered-panel"
+        >
+          <div
+            class="bg-white dark:bg-gray-900 rounded-lg shadow-lg ring-1 ring-black/5 dark:ring-white/10 overflow-hidden w-screen max-w-6xl"
+          >
+            <div class="p-8">
+              <!-- Main Features Grid -->
+              <div class="mb-8">
+                <h3
+                  class="text-sm font-semibold mb-4 text-gray-900 dark:text-white"
+                >
+                  Explore Our Solutions
+                </h3>
+                <div class="grid grid-cols-3 gap-6">
+                  @for (feature of features; track feature.title) {
+                  <ng-container
+                    *ngTemplateOutlet="
+                          featureTemplate;
+                          context: {
+                            feature: feature,
+                            overlay: solutionsOverlay,
+                          }
+                        "
+                  ></ng-container>
+                  }
+                </div>
+              </div>
+
+              <!-- Bottom Section -->
+              <div
+                class="flex xl:items-center xl:justify-between pt-6 border-t border-gray-200 dark:border-gray-700 flex-col xl:flex-row"
+              >
+                <!-- Quick Links -->
+                <div class="flex items-center gap-6 mb-10 xl:mb-0">
+                  @for (link of quickLinks; track link.label) {
+                  <a
+                    [href]="link.href"
+                    (click)="solutionsOverlay.close()"
+                    class="text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-primary"
+                  >
+                    {{ link.label }}
+                  </a>
+                  }
+                </div>
+
+                <!-- CTA -->
+                <div
+                  class="flex items-center gap-4 justify-end xl:justify-start"
+                >
+                  <div class="text-right">
+                    <div
+                      class="text-sm font-semibold text-gray-900 dark:text-white"
+                    >
+                      {{ callToAction.title }}
+                    </div>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">
+                      {{ callToAction.description }}
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    matButton="filled"
+                    [attr.href]="callToAction.href"
+                    (click)="solutionsOverlay.close()"
+                  >
+                    {{ callToAction.buttonLabel }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ngm-dev-block-ui-overlay-wrapper>
+
+        <!-- Regular Links -->
+        <a href="#" matButton> Customers </a>
+        <a href="#" matButton> Pricing </a>
+        <a href="#" matButton> Docs </a>
+      </div>
+
+      <!-- CTA Buttons -->
+      <div class="flex items-center space-x-2">
+        <button type="button" matButton="text">Sign in</button>
+        <button type="button" matButton="filled">Get started</button>
+      </div>
+      }
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #featureTemplate let-feature="feature" let-overlay="overlay">
+  <a
+    [href]="feature.href"
+    (click)="overlay.close()"
+    class="group flex flex-col gap-3 p-4 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+  >
+    <div
+      class="flex size-12 items-center justify-center rounded-lg bg-primary/10 dark:bg-primary/20"
+    >
+      <mat-icon class="text-primary size-6">{{ feature.icon }}</mat-icon>
+    </div>
+    <div>
+      <h4 class="text-sm font-semibold mb-1 group-hover:text-primary">
+        {{ feature.title }}
+      </h4>
+      <p class="text-xs text-gray-600 dark:text-gray-400">
+        {{ feature.description }}
+      </p>
+    </div>
+  </a>
+</ng-template>

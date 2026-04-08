@@ -1,0 +1,170 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-layouts/brand-nav-with-overlap`
+-->
+
+<mat-sidenav-container class="min-h-screen lg:min-h-auto">
+  @if (isTablet$ | async) {
+  <mat-sidenav
+    #drawer
+    mode="over"
+    class="bg-primary-container! text-on-primary-container!"
+  >
+    <mat-toolbar
+      class="bg-inherit! text-inherit! border-b border-outline-variant"
+    >
+      <img
+        class="size-8"
+        src="https://ui.angular-material.dev/app-ui/logo.svg"
+        alt="Your Company"
+      />
+      <button mat-icon-button (click)="toggleMenu()" class="ml-auto">
+        <mat-icon matListItemIcon>menu_opened</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-list>
+      @for (item of navigation; track item) {
+      <a
+        mat-list-item
+        [href]="item.href"
+        [activated]="item.current"
+        [attr.aria-current]="item.current ? 'page' : undefined"
+        [class]="
+              item.current
+                ? 'bg-[color-mix(in_srgb,_var(--mat-sys-primary)_10%,_transparent)]!'
+                : ''
+            "
+      >
+        {{ item.name }}
+      </a>
+      }
+      <mat-divider />
+      <div mat-subheader>
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <img
+              [src]="user.imageUrl"
+              alt=""
+              class="size-10 rounded-full object-cover"
+            />
+          </div>
+          <div class="ml-3">
+            <div class="text-base font-medium">{{ user.name }}</div>
+            <div class="text-sm font-medium text-gray-600 dark:text-gray-400">
+              {{ user.email }}
+            </div>
+          </div>
+          <button mat-icon-button class="ml-auto">
+            <mat-icon>notifications</mat-icon>
+          </button>
+        </div>
+      </div>
+      @for (item of userNavigation; track item) {
+      <a mat-list-item routerLink="." [fragment]="item.href">
+        {{ item.name }}
+      </a>
+      }
+    </mat-list>
+  </mat-sidenav>
+  }
+
+  <mat-sidenav-content>
+    <div [class]="'pb-32 bg-primary-container text-on-primary-container'">
+      <mat-toolbar
+        class="px-0! border-b border-outline-variant bg-inherit! text-inherit!"
+      >
+        <div
+          class="flex-1 w-full max-w-7xl mx-auto flex items-center px-4 sm:px-6 lg:px-8 gap-2"
+        >
+          <img
+            class="size-8"
+            src="https://ui.angular-material.dev/app-ui/logo.svg"
+            alt="Your Company"
+          />
+          @if ((isTablet$ | async) === false) {
+          <div class="ml-10 shrink-0">
+            <div class="flex items-baseline space-x-4">
+              @for (item of navigation; track item) {
+              <a
+                matButton
+                routerLink="."
+                [fragment]="item.href"
+                [class]="
+                      item.current
+                        ? 'bg-[color-mix(in_srgb,_var(--mat-sys-primary)_10%,_transparent)]!'
+                        : ''
+                    "
+                [attr.aria-current]="item.current ? 'page' : undefined"
+              >
+                {{ item.name }}
+              </a>
+              }
+            </div>
+          </div>
+          <div class="flex items-center gap-2 ml-auto">
+            <ng-container *ngTemplateOutlet="searchInput" />
+            <button mat-icon-button aria-label="View notifications">
+              <mat-icon>notifications</mat-icon>
+            </button>
+            <button
+              mat-icon-button
+              [matMenuTriggerFor]="userMenu"
+              aria-label="User menu"
+              class="p-1!"
+            >
+              <img
+                [src]="user.imageUrl"
+                alt=""
+                class="size-8! rounded-full object-cover"
+              />
+            </button>
+          </div>
+          } @if (isTablet$ | async) {
+          <div class="flex items-center gap-2 ml-auto flex-1">
+            <ng-container *ngTemplateOutlet="searchInput" />
+            <button mat-icon-button (click)="toggleMenu()" class="ml-auto">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </div>
+          }
+        </div>
+      </mat-toolbar>
+
+      <mat-menu #userMenu="matMenu">
+        @for (item of userNavigation; track item) {
+        <a mat-menu-item routerLink="." [fragment]="item.href">
+          {{ item.name }}
+        </a>
+        }
+      </mat-menu>
+
+      <header>
+        <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">
+          <h1
+            class="text-headline-large font-bold tracking-tight text-on-primary-container"
+          >
+            Dashboard
+          </h1>
+        </div>
+      </header>
+    </div>
+
+    <main class="-mt-32">
+      <div class="mx-auto max-w-7xl px-4 pb-6 sm:px-6 lg:px-8">
+        <ngm-dev-block-content-placeholder-brand-nav-with-overlap />
+      </div>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #searchInput>
+  <div class="flex justify-center lg:justify-end flex-1">
+    <mat-form-field
+      subscriptSizing="dynamic"
+      class="density-3 w-full max-w-lg md:max-w-xs"
+    >
+      <input matInput placeholder="Search" />
+      <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+  </div>
+</ng-template>

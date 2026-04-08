@@ -1,0 +1,8 @@
+{
+  "category": "section-headings",
+  "variant": "section-heading-1",
+  "files": {
+    "section-heading-1.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-1`\n-->\n\n<div class=\"p-6\">\n  <div class=\"border-b border-outline-variant pb-4 mb-6\">\n    <h3 class=\"text-title-large font-medium\">{{ title }}</h3>\n  </div>\n</div>\n",
+    "section-heading-1.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update section-headings/section-heading-1`\n*/\n\nimport { Component } from '@angular/core';\n\n@Component({\n  selector: 'ngm-dev-block-section-heading-1',\n  templateUrl: './section-heading-1.component.html',\n})\nexport class SectionHeading1Component {\n  readonly title = 'Job Postings';\n}\n"
+  }
+}

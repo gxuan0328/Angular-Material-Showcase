@@ -1,0 +1,27 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update section-headings/section-heading-7`
+-->
+
+<div class="p-6">
+  <div
+    class="pb-4 flex sm:justify-between sm:items-center flex-col sm:flex-row gap-4 sm:gap-0"
+  >
+    <h3 class="text-title-large font-medium">{{ title }}</h3>
+    <div class="flex items-center gap-2">
+      <button matButton>Share</button>
+      <button matButton="filled">Create</button>
+    </div>
+  </div>
+  <mat-tab-group
+    fitInkBarToContent
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
+  >
+    <mat-tab label="All" />
+    <mat-tab label="Applied" />
+    <mat-tab label="Interviewing" />
+    <mat-tab label="Hired" />
+    <mat-tab label="Rejected" />
+  </mat-tab-group>
+</div>

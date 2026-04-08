@@ -1,0 +1,91 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update components/category-bar`
+-->
+
+<div
+  [class]="cx('w-full')"
+  [attr.aria-label]="'Category bar'"
+  [attr.aria-valuenow]="marker()?.value"
+>
+  @if (showLabels()) {
+  <!-- Bar Labels -->
+  <div
+    [class]="
+        cx(
+          'relative mb-2 flex h-5 w-full text-sm font-medium',
+          'text-gray-700 dark:text-gray-300'
+        )
+      "
+  >
+    <div class="absolute bottom-0 left-0 flex items-center">0</div>
+    @for (labelData of generateBarLabels(); track labelData.index) {
+    <div
+      class="flex items-center justify-end pr-0.5"
+      [style.width.%]="labelData.widthPositionLeft"
+    >
+      @if (labelData.showLabel) {
+      <span [class]="cx('block translate-x-1/2 text-sm tabular-nums')">
+        {{ formatNumber(labelData.prefixSum) }}
+      </span>
+      }
+    </div>
+    }
+    <div class="absolute right-0 bottom-0 flex items-center">
+      {{ formatNumber(sumValues()) }}
+    </div>
+  </div>
+  }
+
+  <!-- Category Bar -->
+  <div class="relative flex h-2 w-full items-center">
+    <div
+      class="flex h-full flex-1 items-center gap-0.5 overflow-hidden rounded-full"
+    >
+      @for (segment of generateBarSegments(); track segment.index) { @if
+      (!segment.isHidden) {
+      <div
+        [class]="cx('h-full', segment.colorClass)"
+        [style.width.%]="segment.percentage"
+      ></div>
+      } }
+    </div>
+
+    @if (marker()) {
+    <!-- Marker -->
+    <div
+      class="absolute w-2 -translate-x-1/2"
+      [style.left.%]="markerPositionLeft()"
+    >
+      @if (marker()?.tooltip) {
+      <div
+        [matTooltip]="marker()!.tooltip!"
+        aria-hidden="true"
+        [class]="
+              cx(
+                'relative mx-auto h-4 w-1 rounded-full ring-2',
+                'ring-white dark:ring-gray-950',
+                markerBgColor()
+              )
+            "
+      >
+        <div
+          aria-hidden
+          class="absolute size-7 -translate-x-[45%] -translate-y-[15%]"
+        ></div>
+      </div>
+      } @else {
+      <div
+        [class]="
+              cx(
+                'mx-auto h-4 w-1 rounded-full ring-2',
+                'ring-white dark:ring-gray-950',
+                markerBgColor()
+              )
+            "
+      ></div>
+      }
+    </div>
+    }
+  </div>
+</div>

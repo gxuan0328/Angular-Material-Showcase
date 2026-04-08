@@ -1,0 +1,37 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update section-headings/section-heading-10`
+-->
+
+<div class="p-6">
+  <div
+    class="border-b border-outline-variant pb-4 mb-6 flex items-baseline flex-col sm:flex-row sm:justify-between gap-4 sm:gap-0"
+  >
+    <div class="space-y-2">
+      <h3 class="text-title-large font-medium">{{ title }}</h3>
+      <p class="text-body-medium text-gray-600 dark:text-gray-400">
+        Checkout and Payments Team
+      </p>
+    </div>
+    <div
+      class="flex items-center gap-2 justify-between w-full sm:w-auto sm:justify-end"
+    >
+      <mat-chip-set>
+        <mat-chip
+          class="bg-emerald-100! text-emerald-800 dark:bg-emerald-400/20 dark:text-emerald-500"
+        >
+          Open
+        </mat-chip>
+      </mat-chip-set>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Edit</button>
+  <button mat-menu-item>Duplicate</button>
+  <button mat-menu-item>Archive</button>
+</mat-menu>

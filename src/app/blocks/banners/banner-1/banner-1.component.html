@@ -1,0 +1,35 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update banners/banner-1`
+-->
+
+<!-- Padding given for presentation purposes -->
+<div class="p-4 max-w-3xl mx-auto">
+  @if (isOpen) {
+  <mat-card role="banner">
+    <mat-card-header class="flex justify-between">
+      <mat-card-title>Welcome to your workspace</mat-card-title>
+      <button (click)="close()" aria-label="Close" mat-icon-button>
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Start with our step-by-step guide to configure the workspace to your
+        needs. For further resources, our video tutorials and audience-specific
+        documentations are designed to provide you with a in-depth understanding
+        of our platform.
+      </p>
+    </mat-card-content>
+
+    <!-- Actions -->
+    <mat-card-actions>
+      <button matButton="filled">Get started</button>
+      <a matButton>
+        View tutorials
+        <mat-icon>open_in_new</mat-icon>
+      </a>
+    </mat-card-actions>
+  </mat-card>
+  }
+</div>
