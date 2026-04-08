@@ -1,0 +1,604 @@
+{
+  "capturedAt": "2026-04-08T14:07:14.580Z",
+  "baseUrl": "http://localhost:4200",
+  "total": 85,
+  "ok": 85,
+  "failed": 0,
+  "results": [
+    {
+      "category": "page-shells",
+      "variant": "page-shell-1",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-shells__page-shell-1.png",
+      "bytes": 26959
+    },
+    {
+      "category": "page-shells",
+      "variant": "page-shell-2",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-shells__page-shell-2.png",
+      "bytes": 36507
+    },
+    {
+      "category": "page-shells",
+      "variant": "page-shell-3",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-shells__page-shell-3.png",
+      "bytes": 33621
+    },
+    {
+      "category": "page-shells",
+      "variant": "page-shell-4",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-shells__page-shell-4.png",
+      "bytes": 35172
+    },
+    {
+      "category": "page-shells",
+      "variant": "page-shell-5",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-shells__page-shell-5.png",
+      "bytes": 50486
+    },
+    {
+      "category": "page-shells",
+      "variant": "page-shell-6",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-shells__page-shell-6.png",
+      "bytes": 55379
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "nav-with-page-header",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__nav-with-page-header.png",
+      "bytes": 33862
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "brand-nav-with-overlap",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__brand-nav-with-overlap.png",
+      "bytes": 35314
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "brand-nav-with-page-header",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__brand-nav-with-page-header.png",
+      "bytes": 33187
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "branded-nav-compact-header",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__branded-nav-compact-header.png",
+      "bytes": 33744
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "nav-compact-header",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__nav-compact-header.png",
+      "bytes": 32653
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "nav-on-gray-background",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__nav-on-gray-background.png",
+      "bytes": 35187
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "nav-with-bottom-border",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__nav-with-bottom-border.png",
+      "bytes": 34805
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "nav-with-overlap",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__nav-with-overlap.png",
+      "bytes": 33124
+    },
+    {
+      "category": "stacked-layouts",
+      "variant": "two-row-nav-overlap",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/stacked-layouts__two-row-nav-overlap.png",
+      "bytes": 45064
+    },
+    {
+      "category": "multi-column",
+      "variant": "full-width-three-column",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/multi-column__full-width-three-column.png",
+      "bytes": 58256
+    },
+    {
+      "category": "multi-column",
+      "variant": "constrained-three-column",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/multi-column__constrained-three-column.png",
+      "bytes": 42755
+    },
+    {
+      "category": "multi-column",
+      "variant": "constrained-with-sticky-columns",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/multi-column__constrained-with-sticky-columns.png",
+      "bytes": 39328
+    },
+    {
+      "category": "multi-column",
+      "variant": "full-width-secondary-right",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/multi-column__full-width-secondary-right.png",
+      "bytes": 59309
+    },
+    {
+      "category": "multi-column",
+      "variant": "full-width-with-narrow-sidebar",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/multi-column__full-width-with-narrow-sidebar.png",
+      "bytes": 45326
+    },
+    {
+      "category": "multi-column",
+      "variant": "full-width-with-narrow-sidebar-header",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/multi-column__full-width-with-narrow-sidebar-header.png",
+      "bytes": 47664
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-1",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-1.png",
+      "bytes": 32615
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-2",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-2.png",
+      "bytes": 22179
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-3",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-3.png",
+      "bytes": 22882
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-4",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-4.png",
+      "bytes": 25865
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-5",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-5.png",
+      "bytes": 27755
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-6",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-6.png",
+      "bytes": 32732
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-7",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-7.png",
+      "bytes": 552914
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-8",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-8.png",
+      "bytes": 35294
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-9",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-9.png",
+      "bytes": 39186
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-10",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-10.png",
+      "bytes": 36045
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-11",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-11.png",
+      "bytes": 36485
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-12",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-12.png",
+      "bytes": 24189
+    },
+    {
+      "category": "page-headings",
+      "variant": "page-heading-13",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/page-headings__page-heading-13.png",
+      "bytes": 22561
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-1",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-1.png",
+      "bytes": 14111
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-2",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-2.png",
+      "bytes": 26194
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-3",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-3.png",
+      "bytes": 16209
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-4",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-4.png",
+      "bytes": 16437
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-5",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-5.png",
+      "bytes": 17222
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-6",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-6.png",
+      "bytes": 16546
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-7",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-7.png",
+      "bytes": 19952
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-8",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-8.png",
+      "bytes": 14829
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-9",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-9.png",
+      "bytes": 15280
+    },
+    {
+      "category": "section-headings",
+      "variant": "section-heading-10",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/section-headings__section-heading-10.png",
+      "bytes": 19538
+    },
+    {
+      "category": "components",
+      "variant": "animated-copy-button",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__animated-copy-button.png",
+      "bytes": 12992
+    },
+    {
+      "category": "components",
+      "variant": "bar-list",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__bar-list.png",
+      "bytes": 18513
+    },
+    {
+      "category": "components",
+      "variant": "big-button",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__big-button.png",
+      "bytes": 27036
+    },
+    {
+      "category": "components",
+      "variant": "breadcrumbs",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__breadcrumbs.png",
+      "bytes": 15785
+    },
+    {
+      "category": "components",
+      "variant": "category-bar",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__category-bar.png",
+      "bytes": 13275
+    },
+    {
+      "category": "components",
+      "variant": "drag-elements",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__drag-elements.png",
+      "bytes": 15768
+    },
+    {
+      "category": "components",
+      "variant": "marquee",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__marquee.png",
+      "bytes": 21810
+    },
+    {
+      "category": "components",
+      "variant": "progress-circle",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__progress-circle.png",
+      "bytes": 26889
+    },
+    {
+      "category": "components",
+      "variant": "terminal",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__terminal.png",
+      "bytes": 44609
+    },
+    {
+      "category": "components",
+      "variant": "tracker",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__tracker.png",
+      "bytes": 11377
+    },
+    {
+      "category": "components",
+      "variant": "word-rotate",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/components__word-rotate.png",
+      "bytes": 12039
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "simple-flyout-menu",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__simple-flyout-menu.png",
+      "bytes": 20811
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "flyout-menu-with-icons",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__flyout-menu-with-icons.png",
+      "bytes": 19135
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "flyout-with-avatars",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__flyout-with-avatars.png",
+      "bytes": 18612
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "flyout-with-cards",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__flyout-with-cards.png",
+      "bytes": 19580
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "flyout-with-preview",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__flyout-with-preview.png",
+      "bytes": 18833
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "flyout-with-stats",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__flyout-with-stats.png",
+      "bytes": 19522
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "flyout-with-tabs",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__flyout-with-tabs.png",
+      "bytes": 18237
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "multi-column-flyout",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__multi-column-flyout.png",
+      "bytes": 19182
+    },
+    {
+      "category": "flyout-menus",
+      "variant": "wide-flyout-menu",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/flyout-menus__wide-flyout-menu.png",
+      "bytes": 19561
+    },
+    {
+      "category": "dialogs",
+      "variant": "dialog-1",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/dialogs__dialog-1.png",
+      "bytes": 15436
+    },
+    {
+      "category": "dialogs",
+      "variant": "dialog-2",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/dialogs__dialog-2.png",
+      "bytes": 14392
+    },
+    {
+      "category": "dialogs",
+      "variant": "dialog-3",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/dialogs__dialog-3.png",
+      "bytes": 15778
+    },
+    {
+      "category": "dialogs",
+      "variant": "dialog-4",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/dialogs__dialog-4.png",
+      "bytes": 14791
+    },
+    {
+      "category": "dialogs",
+      "variant": "dialog-5",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/dialogs__dialog-5.png",
+      "bytes": 14692
+    },
+    {
+      "category": "dialogs",
+      "variant": "dialog-6",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/dialogs__dialog-6.png",
+      "bytes": 15340
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-1",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-1.png",
+      "bytes": 23371
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-2",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-2.png",
+      "bytes": 21346
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-3",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-3.png",
+      "bytes": 28201
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-4",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-4.png",
+      "bytes": 33060
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-5",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-5.png",
+      "bytes": 26631
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-6",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-6.png",
+      "bytes": 37321
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-7",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-7.png",
+      "bytes": 35690
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-8",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-8.png",
+      "bytes": 29975
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-9",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-9.png",
+      "bytes": 44206
+    },
+    {
+      "category": "empty-states",
+      "variant": "empty-state-10",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/empty-states__empty-state-10.png",
+      "bytes": 33705
+    },
+    {
+      "category": "banners",
+      "variant": "banner-1",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/banners__banner-1.png",
+      "bytes": 39188
+    },
+    {
+      "category": "banners",
+      "variant": "banner-2",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/banners__banner-2.png",
+      "bytes": 36934
+    },
+    {
+      "category": "banners",
+      "variant": "banner-3",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/banners__banner-3.png",
+      "bytes": 48829
+    },
+    {
+      "category": "banners",
+      "variant": "banner-4",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/banners__banner-4.png",
+      "bytes": 46406
+    },
+    {
+      "category": "banners",
+      "variant": "banner-5",
+      "status": "ok",
+      "file": "docs/verification/m1-visual-check/variants/banners__banner-5.png",
+      "bytes": 50758
+    }
+  ]
+}
