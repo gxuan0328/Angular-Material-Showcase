@@ -60,25 +60,113 @@ export const CATALOG_ROUTES: Routes = [
     loadComponent: () => import('./blocks/banners.page').then(m => m.BannersCatalogPage),
   },
 
-  // === M2-M4 COMING SOON (33) ===
-  // Application (19 remaining)
+  // === M2 SHIPPED (18) ===
+  {
+    path: 'authentication',
+    title: 'Authentication · Catalog',
+    loadComponent: () =>
+      import('./blocks/authentication.page').then(m => m.AuthenticationCatalogPage),
+  },
+  {
+    path: 'area-charts',
+    title: 'Area Charts · Catalog',
+    loadComponent: () => import('./blocks/area-charts.page').then(m => m.AreaChartsCatalogPage),
+  },
+  {
+    path: 'spark-area-charts',
+    title: 'Spark Area Charts · Catalog',
+    loadComponent: () =>
+      import('./blocks/spark-area-charts.page').then(m => m.SparkAreaChartsCatalogPage),
+  },
+  {
+    path: 'donut-charts',
+    title: 'Donut Charts · Catalog',
+    loadComponent: () => import('./blocks/donut-charts.page').then(m => m.DonutChartsCatalogPage),
+  },
+  {
+    path: 'lists',
+    title: 'Lists · Catalog',
+    loadComponent: () => import('./blocks/lists.page').then(m => m.ListsCatalogPage),
+  },
+  {
+    path: 'hero-sections',
+    title: 'Hero Sections · Catalog',
+    loadComponent: () => import('./blocks/hero-sections.page').then(m => m.HeroSectionsCatalogPage),
+  },
+  {
+    path: 'feature-sections',
+    title: 'Feature Sections · Catalog',
+    loadComponent: () =>
+      import('./blocks/feature-sections.page').then(m => m.FeatureSectionsCatalogPage),
+  },
+  {
+    path: 'pricing-sections',
+    title: 'Pricing Sections · Catalog',
+    loadComponent: () =>
+      import('./blocks/pricing-sections.page').then(m => m.PricingSectionsCatalogPage),
+  },
+  {
+    path: 'cta-sections',
+    title: 'CTA Sections · Catalog',
+    loadComponent: () => import('./blocks/cta-sections.page').then(m => m.CtaSectionsCatalogPage),
+  },
+  {
+    path: 'header-sections',
+    title: 'Header Sections · Catalog',
+    loadComponent: () =>
+      import('./blocks/header-sections.page').then(m => m.HeaderSectionsCatalogPage),
+  },
+  {
+    path: 'stats-sections',
+    title: 'Stats Sections · Catalog',
+    loadComponent: () =>
+      import('./blocks/stats-sections.page').then(m => m.StatsSectionsCatalogPage),
+  },
+  {
+    path: 'bento-grids',
+    title: 'Bento Grids · Catalog',
+    loadComponent: () => import('./blocks/bento-grids.page').then(m => m.BentoGridsCatalogPage),
+  },
+  {
+    path: 'testimonial-sections',
+    title: 'Testimonial Sections · Catalog',
+    loadComponent: () =>
+      import('./blocks/testimonial-sections.page').then(m => m.TestimonialSectionsCatalogPage),
+  },
+  {
+    path: 'newsletter-sections',
+    title: 'Newsletter Sections · Catalog',
+    loadComponent: () =>
+      import('./blocks/newsletter-sections.page').then(m => m.NewsletterSectionsCatalogPage),
+  },
+  {
+    path: 'contact-sections',
+    title: 'Contact Sections · Catalog',
+    loadComponent: () =>
+      import('./blocks/contact-sections.page').then(m => m.ContactSectionsCatalogPage),
+  },
+  {
+    path: 'fancy',
+    title: 'Fancy · Catalog',
+    loadComponent: () => import('./blocks/fancy.page').then(m => m.FancyCatalogPage),
+  },
+  {
+    path: 'blog-sections',
+    title: 'Blog Sections · Catalog',
+    loadComponent: () => import('./blocks/blog-sections.page').then(m => m.BlogSectionsCatalogPage),
+  },
+  {
+    path: 'kpi-cards',
+    title: 'KPI Cards · Catalog',
+    loadComponent: () => import('./blocks/kpi-cards.page').then(m => m.KpiCardsCatalogPage),
+  },
+
+  // === M3-M4 COMING SOON (15) ===
   {
     path: 'account-user-management',
     component: ComingSoon,
     title: 'Account & User Management · Catalog',
     data: { id: 'account-user-management' },
-  },
-  {
-    path: 'area-charts',
-    component: ComingSoon,
-    title: 'Area Charts · Catalog',
-    data: { id: 'area-charts' },
-  },
-  {
-    path: 'authentication',
-    component: ComingSoon,
-    title: 'Authentication · Catalog',
-    data: { id: 'authentication' },
   },
   { path: 'badges', component: ComingSoon, title: 'Badges · Catalog', data: { id: 'badges' } },
   {
@@ -112,12 +200,6 @@ export const CATALOG_ROUTES: Routes = [
     data: { id: 'chart-tooltips' },
   },
   {
-    path: 'donut-charts',
-    component: ComingSoon,
-    title: 'Donut Charts · Catalog',
-    data: { id: 'donut-charts' },
-  },
-  {
     path: 'file-upload',
     component: ComingSoon,
     title: 'File Upload · Catalog',
@@ -147,13 +229,6 @@ export const CATALOG_ROUTES: Routes = [
     title: 'Line Charts · Catalog',
     data: { id: 'line-charts' },
   },
-  { path: 'lists', component: ComingSoon, title: 'Lists · Catalog', data: { id: 'lists' } },
-  {
-    path: 'spark-area-charts',
-    component: ComingSoon,
-    title: 'Spark Area Charts · Catalog',
-    data: { id: 'spark-area-charts' },
-  },
   {
     path: 'stacked-lists',
     component: ComingSoon,
@@ -167,79 +242,4 @@ export const CATALOG_ROUTES: Routes = [
     data: { id: 'status-monitoring' },
   },
   { path: 'tables', component: ComingSoon, title: 'Tables · Catalog', data: { id: 'tables' } },
-
-  // Marketing (13)
-  {
-    path: 'bento-grids',
-    component: ComingSoon,
-    title: 'Bento Grids · Catalog',
-    data: { id: 'bento-grids' },
-  },
-  {
-    path: 'blog-sections',
-    component: ComingSoon,
-    title: 'Blog Sections · Catalog',
-    data: { id: 'blog-sections' },
-  },
-  {
-    path: 'contact-sections',
-    component: ComingSoon,
-    title: 'Contact Sections · Catalog',
-    data: { id: 'contact-sections' },
-  },
-  {
-    path: 'cta-sections',
-    component: ComingSoon,
-    title: 'CTA Sections · Catalog',
-    data: { id: 'cta-sections' },
-  },
-  { path: 'fancy', component: ComingSoon, title: 'Fancy · Catalog', data: { id: 'fancy' } },
-  {
-    path: 'feature-sections',
-    component: ComingSoon,
-    title: 'Feature Sections · Catalog',
-    data: { id: 'feature-sections' },
-  },
-  {
-    path: 'header-sections',
-    component: ComingSoon,
-    title: 'Header Sections · Catalog',
-    data: { id: 'header-sections' },
-  },
-  {
-    path: 'hero-sections',
-    component: ComingSoon,
-    title: 'Hero Sections · Catalog',
-    data: { id: 'hero-sections' },
-  },
-  {
-    path: 'kpi-cards',
-    component: ComingSoon,
-    title: 'KPI Cards · Catalog',
-    data: { id: 'kpi-cards' },
-  },
-  {
-    path: 'newsletter-sections',
-    component: ComingSoon,
-    title: 'Newsletter Sections · Catalog',
-    data: { id: 'newsletter-sections' },
-  },
-  {
-    path: 'pricing-sections',
-    component: ComingSoon,
-    title: 'Pricing Sections · Catalog',
-    data: { id: 'pricing-sections' },
-  },
-  {
-    path: 'stats-sections',
-    component: ComingSoon,
-    title: 'Stats Sections · Catalog',
-    data: { id: 'stats-sections' },
-  },
-  {
-    path: 'testimonial-sections',
-    component: ComingSoon,
-    title: 'Testimonial Sections · Catalog',
-    data: { id: 'testimonial-sections' },
-  },
 ];

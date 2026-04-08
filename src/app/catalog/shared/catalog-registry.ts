@@ -35,7 +35,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Charts',
     summary: '面積圖呈現時間序列趨勢',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'authentication',
@@ -43,7 +43,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Forms',
     summary: '登入、註冊、密碼重設等表單',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'badges',
@@ -115,7 +115,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Charts',
     summary: '甜甜圈圖呈現比例分佈',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'empty-states',
@@ -179,7 +179,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Lists',
     summary: '上手清單與訊息流',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'multi-column',
@@ -219,7 +219,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Charts',
     summary: '迷你面積圖',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'stacked-layouts',
@@ -269,7 +269,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '不規則格狀展示',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'blog-sections',
@@ -277,7 +277,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '部落格摘要區塊',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'contact-sections',
@@ -285,7 +285,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '聯絡資訊區塊',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'cta-sections',
@@ -293,7 +293,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '行動呼籲區塊',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'fancy',
@@ -301,7 +301,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '互動式視覺效果',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'feature-sections',
@@ -309,7 +309,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '產品特色介紹',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'header-sections',
@@ -317,7 +317,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '頂部導覽區塊',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'hero-sections',
@@ -325,7 +325,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: 'Landing 首屏',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'kpi-cards',
@@ -333,7 +333,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '指標卡片',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'newsletter-sections',
@@ -341,7 +341,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '訂閱電子報區塊',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'pricing-sections',
@@ -349,7 +349,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '方案訂價區塊',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'stats-sections',
@@ -357,7 +357,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '公司實績統計',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'testimonial-sections',
@@ -365,7 +365,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'marketing',
     subcategory: 'Page Sections',
     summary: '使用者見證',
-    status: 'coming-soon',
+    status: 'shipped',
   },
 ];
 
