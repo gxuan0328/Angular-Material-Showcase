@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tailwind v4 */
+@import "tailwindcss";
+
+/* Global tokens — light mode defaults. Dark mode overrides land on the `.dark`
+ * class when ThemeStore toggles the document root. Material 3 token wiring is
+ * layered in during M1 when the first Material component is introduced.
+ */
+:root {
+  color-scheme: light;
+}
+
+:root.dark {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
