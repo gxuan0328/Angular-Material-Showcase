@@ -42,6 +42,7 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-# M0 integration verification artifacts
+# M0 / M1 integration verification artifacts
 .playwright-mcp/
 /m0-*.png
+/m1-*.png
