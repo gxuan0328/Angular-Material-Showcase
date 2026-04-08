@@ -1,1 +1,55 @@
-{}
+{
+  "app.brand": "Glacier Analytics",
+  "app.tagline": "範例網站，收錄 Angular Material Block 全部元件目錄",
+  "app.description": "探索並預覽所有 Angular Material 可複用元件區塊",
+
+  "nav.home": "首頁",
+  "nav.catalog": "元件目錄",
+  "nav.dashboard": "儀表板",
+  "nav.signIn": "登入",
+  "nav.signOut": "登出",
+  "nav.skipToContent": "跳至主要內容",
+
+  "theme.light": "亮色模式",
+  "theme.dark": "暗色模式",
+  "theme.system": "跟隨系統",
+  "theme.toggle": "切換色彩主題",
+
+  "auth.email": "電子郵件",
+  "auth.password": "密碼",
+  "auth.signIn": "登入",
+  "auth.signOut": "登出",
+  "auth.signInError": "電子郵件或密碼不正確",
+  "auth.passwordMinLength": "密碼至少需要 6 個字元",
+
+  "catalog.totalCount": "總共",
+  "catalog.shippedSuffix": "個元件已上線",
+  "catalog.application": "Application",
+  "catalog.marketing": "Marketing",
+  "catalog.shipped": "已上線",
+  "catalog.comingSoon": "即將推出",
+  "catalog.searchPlaceholder": "搜尋元件…",
+  "catalog.noResults": "找不到符合條件的元件",
+
+  "catalog.zone.preview": "即時預覽",
+  "catalog.zone.code": "原始碼",
+  "catalog.zone.api": "API 與屬性",
+  "catalog.zone.bestPractices": "最佳實務",
+
+  "catalog.variant.label": "變體",
+  "catalog.variant.count": "共 {count} 種變體",
+
+  "catalog.bestPractices.whenToUse": "何時使用",
+  "catalog.bestPractices.whenNotToUse": "何時不該使用",
+  "catalog.bestPractices.pitfalls": "常見陷阱",
+  "catalog.bestPractices.accessibility": "無障礙重點",
+
+  "dashboard.welcome": "歡迎回來，{name}",
+  "dashboard.lastLogin": "上次登入：{date}",
+
+  "error.notFound": "找不到頁面",
+  "error.notFoundDetail": "您所尋找的頁面不存在或已被移除",
+  "error.goHome": "返回首頁",
+
+  "footer.copyright": "© 2026 Glacier Analytics"
+}
