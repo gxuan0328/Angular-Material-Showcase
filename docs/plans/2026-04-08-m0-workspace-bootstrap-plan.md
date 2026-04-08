@@ -8,7 +8,7 @@
 
 **Architecture:** Single Angular application organised by feature area (no Nx). Top-level routing splits into four lazy-loaded shells: Landing / Catalog / Admin / Auth. State management uses signal-based singleton stores. Block source comes from `@ngm-dev/cli add` into `src/app/blocks/<registry-category>/<variant>/`, then a build-time Node script bakes those files into `src/assets/block-sources/<registry-category>__<variant>.json` for Catalog pages to inline. No runtime MCP dependency.
 
-**Tech Stack:** Angular 20 (zoneless) · Angular Material 20.2.5 · Angular CDK 20.2.5 · Tailwind CSS 4.1.12 · PostCSS 8.5.6 · `@ngm-dev/cli` 2.0.2 · `ng2-charts` ^8 · `chart.js` ^4 · Karma + Jasmine · ESLint + angular-eslint + Prettier · TypeScript strict.
+**Tech Stack:** Angular 20.3.x (zoneless) · Angular Material 20.2.5 · Angular CDK 20.2.5 · Tailwind CSS 4.1.12 · PostCSS 8.5.6 · `@ngm-dev/cli` 2.0.2 · `ng2-charts` ^8 · `chart.js` ^4 · Karma + Jasmine (inline config via `@angular/build:karma`, no `karma.conf.js`) · Chromium via Playwright cache (`CHROME_BIN`) · ESLint + angular-eslint + Prettier · TypeScript strict.
 
 ---
 
@@ -179,7 +179,9 @@ No commit for this task.
 **Goal:** Produce a fresh Angular 20 zoneless workspace and lift its files into the project root so the Angular workspace sits alongside `CLAUDE.md` and `docs/`.
 
 **Files:**
-- Create (via `ng new`): `package.json`, `package-lock.json`, `angular.json`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.spec.json`, `karma.conf.js`, `.gitignore`, `.editorconfig`, `.vscode/extensions.json`, `src/*`, `public/favicon.ico`
+- Create (via `ng new`): `package.json`, `package-lock.json`, `angular.json`, `tsconfig.json`, `tsconfig.app.json`, `tsconfig.spec.json`, `.gitignore`, `.editorconfig`, `.vscode/{extensions,launch,tasks}.json`, `README.md`, `src/*`, `public/favicon.ico`
+
+> **Note — verified against Angular CLI 20.3.22 on 2026-04-08:** Angular CLI 20.3.22's `ng new` **does not accept `--test-runner`** (that flag exists for `ng generate application` but not for `ng new`). Karma + Jasmine is already the default so the flag is unnecessary. In this CLI version, Karma no longer generates a standalone `karma.conf.js` — the `@angular/build:karma` builder uses inline options in `angular.json`. Both are expected.
 
 - [ ] **Step 1: Confirm `ng` binary availability via `npx`**
 
@@ -201,11 +203,10 @@ npx -y @angular/cli@20 new angular-material-block-showcase \
   --strict \
   --zoneless \
   --package-manager=npm \
-  --test-runner=karma \
   --skip-install \
   --skip-git
 ```
-Expected: workspace files generated in `/tmp/ng-scaffold/` with zero errors. `--skip-install` defers `npm install` until after files are merged into the real project root.
+Expected: workspace files generated in `/tmp/ng-scaffold/` with zero errors. `--skip-install` defers `npm install` until after files are merged into the real project root. Do **not** pass `--test-runner=karma` — Karma is the default and the flag is rejected by `ng new` in v20.3.x.
 
 - [ ] **Step 3: Verify scaffold structure**
 
@@ -260,11 +261,23 @@ Expected: build succeeds. Output goes to `dist/angular-material-block-showcase/`
 
 - [ ] **Step 7: Verify the baseline test run is green**
 
-Run:
+Karma + `karma-chrome-launcher` requires a local Chrome/Chromium binary via `CHROME_BIN`. WSL Ubuntu usually has no browser preinstalled, so point at Playwright's existing chromium (Playwright is already installed on this machine for other MCP servers). Verify the binary exists before using it:
+
 ```bash
+CHROME_BIN=/home/gxuan/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome
+test -x "$CHROME_BIN" || CHROME_BIN=/home/gxuan/.cache/ms-playwright/chromium-1208/chrome-linux64/chrome
+"$CHROME_BIN" --version
+```
+Expected: prints a Chrome for Testing version (e.g. `Google Chrome for Testing 147.0.x`).
+
+If neither path exists, fall back to installing Puppeteer (`npm i -D puppeteer`) and using its bundled chromium: `CHROME_BIN=$(node -p "require('puppeteer').executablePath()")`. Escalate if still failing.
+
+Then run:
+```bash
+export CHROME_BIN
 npm test -- --watch=false --browsers=ChromeHeadless
 ```
-Expected: 1 default test (the `ng new`-generated `app.spec.ts`) passes.
+Expected: the default `ng new`-generated `app.spec.ts` passes (2 tests). Look for a line like `TOTAL: 2 SUCCESS`.
 
 - [ ] **Step 8: Commit the scaffold**
 
