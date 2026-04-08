@@ -1,0 +1,1774 @@
+{
+  "capturedAt": "2026-04-08T17:31:24.654Z",
+  "baseUrl": "http://127.0.0.1:4200",
+  "total": 196,
+  "ok": 196,
+  "failed": 0,
+  "shortHeights": 0,
+  "results": [
+    {
+      "category": "authentication",
+      "variant": "login-email-password",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/authentication__login-email-password.png",
+      "bytes": 29760,
+      "height": 499,
+      "consoleErrors": []
+    },
+    {
+      "category": "authentication",
+      "variant": "login-email-password-google",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/authentication__login-email-password-google.png",
+      "bytes": 34394,
+      "height": 571,
+      "consoleErrors": []
+    },
+    {
+      "category": "authentication",
+      "variant": "login-email-provider",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/authentication__login-email-provider.png",
+      "bytes": 40356,
+      "height": 623,
+      "consoleErrors": []
+    },
+    {
+      "category": "authentication",
+      "variant": "login-with-email-01",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/authentication__login-with-email-01.png",
+      "bytes": 42513,
+      "height": 731,
+      "consoleErrors": []
+    },
+    {
+      "category": "authentication",
+      "variant": "login-with-email-02",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/authentication__login-with-email-02.png",
+      "bytes": 49762,
+      "height": 751,
+      "consoleErrors": []
+    },
+    {
+      "category": "authentication",
+      "variant": "login-with-email-03",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/authentication__login-with-email-03.png",
+      "bytes": 42152,
+      "height": 719,
+      "consoleErrors": []
+    },
+    {
+      "category": "authentication",
+      "variant": "login-with-email-04",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/authentication__login-with-email-04.png",
+      "bytes": 44382,
+      "height": 1005,
+      "consoleErrors": []
+    },
+    {
+      "category": "authentication",
+      "variant": "workspace-login-01",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/authentication__workspace-login-01.png",
+      "bytes": 44408,
+      "height": 1005,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-1.png",
+      "bytes": 194653,
+      "height": 1040.84375,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-2.png",
+      "bytes": 178672,
+      "height": 897,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-3.png",
+      "bytes": 101486,
+      "height": 705,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-4.png",
+      "bytes": 210301,
+      "height": 1497.703125,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-5.png",
+      "bytes": 105238,
+      "height": 1109,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-6.png",
+      "bytes": 170061,
+      "height": 1021,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-7.png",
+      "bytes": 177877,
+      "height": 1200.890625,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-8.png",
+      "bytes": 70383,
+      "height": 1371.4375,
+      "consoleErrors": []
+    },
+    {
+      "category": "hero-sections",
+      "variant": "hero-section-9",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/hero-sections__hero-section-9.png",
+      "bytes": 126246,
+      "height": 1225,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-1.png",
+      "bytes": 71988,
+      "height": 721,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-2.png",
+      "bytes": 51348,
+      "height": 445,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-3.png",
+      "bytes": 50031,
+      "height": 429,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-4.png",
+      "bytes": 84116,
+      "height": 649,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-5.png",
+      "bytes": 88266,
+      "height": 905,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-6.png",
+      "bytes": 146671,
+      "height": 797,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-7.png",
+      "bytes": 173022,
+      "height": 879,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-8.png",
+      "bytes": 330021,
+      "height": 1606.75,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-9",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-9.png",
+      "bytes": 73314,
+      "height": 815,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-10",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-10.png",
+      "bytes": 92653,
+      "height": 977,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-11",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-11.png",
+      "bytes": 150748,
+      "height": 877.25,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-12",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-12.png",
+      "bytes": 160439,
+      "height": 843,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-13",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-13.png",
+      "bytes": 59053,
+      "height": 884,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-14",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-14.png",
+      "bytes": 85493,
+      "height": 777,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-15",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-15.png",
+      "bytes": 64682,
+      "height": 721,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-16",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-16.png",
+      "bytes": 33334,
+      "height": 503,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-17",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-17.png",
+      "bytes": 86855,
+      "height": 656,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-18",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-18.png",
+      "bytes": 53050,
+      "height": 619,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-19",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-19.png",
+      "bytes": 102492,
+      "height": 552.4375,
+      "consoleErrors": []
+    },
+    {
+      "category": "feature-sections",
+      "variant": "feature-section-20",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/feature-sections__feature-section-20.png",
+      "bytes": 63025,
+      "height": 737,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-1.png",
+      "bytes": 67771,
+      "height": 537,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-2.png",
+      "bytes": 63788,
+      "height": 577,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-3.png",
+      "bytes": 75488,
+      "height": 670,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-4.png",
+      "bytes": 73207,
+      "height": 681,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-5.png",
+      "bytes": 72124,
+      "height": 705,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-6.png",
+      "bytes": 79881,
+      "height": 658,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-7.png",
+      "bytes": 112392,
+      "height": 1273,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-8.png",
+      "bytes": 161646,
+      "height": 1953,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-9",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-9.png",
+      "bytes": 147947,
+      "height": 1541,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-10",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-10.png",
+      "bytes": 150625,
+      "height": 1556.234375,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-11",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-11.png",
+      "bytes": 174898,
+      "height": 1510,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-12",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-12.png",
+      "bytes": 150323,
+      "height": 1524,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-13",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-13.png",
+      "bytes": 293836,
+      "height": 2702,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-14",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-14.png",
+      "bytes": 144035,
+      "height": 1602,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-15",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-15.png",
+      "bytes": 149193,
+      "height": 1745,
+      "consoleErrors": []
+    },
+    {
+      "category": "pricing-sections",
+      "variant": "pricing-section-16",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/pricing-sections__pricing-section-16.png",
+      "bytes": 155150,
+      "height": 1801,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-1.png",
+      "bytes": 41174,
+      "height": 601,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-2.png",
+      "bytes": 44733,
+      "height": 601,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-3.png",
+      "bytes": 29536,
+      "height": 441,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-4.png",
+      "bytes": 145019,
+      "height": 569,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-5.png",
+      "bytes": 94274,
+      "height": 793,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-6.png",
+      "bytes": 41961,
+      "height": 557,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-7.png",
+      "bytes": 56305,
+      "height": 845,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-8.png",
+      "bytes": 125606,
+      "height": 909,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-9",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-9.png",
+      "bytes": 51046,
+      "height": 757,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-10",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-10.png",
+      "bytes": 47670,
+      "height": 749,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-11",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-11.png",
+      "bytes": 73992,
+      "height": 697,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-12",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-12.png",
+      "bytes": 34759,
+      "height": 473,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-13",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-13.png",
+      "bytes": 44149,
+      "height": 657,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-14",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-14.png",
+      "bytes": 49167,
+      "height": 813,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-15",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-15.png",
+      "bytes": 58719,
+      "height": 869,
+      "consoleErrors": []
+    },
+    {
+      "category": "cta-sections",
+      "variant": "cta-section-16",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/cta-sections__cta-section-16.png",
+      "bytes": 58059,
+      "height": 871,
+      "consoleErrors": []
+    },
+    {
+      "category": "header-sections",
+      "variant": "header-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/header-sections__header-section-1.png",
+      "bytes": 46523,
+      "height": 565,
+      "consoleErrors": []
+    },
+    {
+      "category": "header-sections",
+      "variant": "header-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/header-sections__header-section-2.png",
+      "bytes": 50308,
+      "height": 677,
+      "consoleErrors": []
+    },
+    {
+      "category": "header-sections",
+      "variant": "header-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/header-sections__header-section-3.png",
+      "bytes": 48767,
+      "height": 803,
+      "consoleErrors": []
+    },
+    {
+      "category": "header-sections",
+      "variant": "header-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/header-sections__header-section-4.png",
+      "bytes": 70944,
+      "height": 845,
+      "consoleErrors": []
+    },
+    {
+      "category": "header-sections",
+      "variant": "header-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/header-sections__header-section-5.png",
+      "bytes": 57728,
+      "height": 811,
+      "consoleErrors": []
+    },
+    {
+      "category": "header-sections",
+      "variant": "header-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/header-sections__header-section-6.png",
+      "bytes": 66290,
+      "height": 891,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-1.png",
+      "bytes": 42382,
+      "height": 529,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-2.png",
+      "bytes": 35104,
+      "height": 413,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-3.png",
+      "bytes": 38364,
+      "height": 561,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-4.png",
+      "bytes": 48790,
+      "height": 589,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-5.png",
+      "bytes": 61915,
+      "height": 541,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-6.png",
+      "bytes": 36705,
+      "height": 565,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-7.png",
+      "bytes": 31298,
+      "height": 405,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-8.png",
+      "bytes": 52696,
+      "height": 677,
+      "consoleErrors": []
+    },
+    {
+      "category": "stats-sections",
+      "variant": "stats-section-9",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/stats-sections__stats-section-9.png",
+      "bytes": 63245,
+      "height": 757,
+      "consoleErrors": []
+    },
+    {
+      "category": "bento-grids",
+      "variant": "bento-grid-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/bento-grids__bento-grid-1.png",
+      "bytes": 106589,
+      "height": 1312.328125,
+      "consoleErrors": []
+    },
+    {
+      "category": "bento-grids",
+      "variant": "bento-grid-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/bento-grids__bento-grid-2.png",
+      "bytes": 102581,
+      "height": 1133,
+      "consoleErrors": []
+    },
+    {
+      "category": "bento-grids",
+      "variant": "bento-grid-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/bento-grids__bento-grid-3.png",
+      "bytes": 86967,
+      "height": 961,
+      "consoleErrors": []
+    },
+    {
+      "category": "bento-grids",
+      "variant": "bento-grid-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/bento-grids__bento-grid-4.png",
+      "bytes": 96151,
+      "height": 1285,
+      "consoleErrors": []
+    },
+    {
+      "category": "bento-grids",
+      "variant": "bento-grid-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/bento-grids__bento-grid-5.png",
+      "bytes": 99570,
+      "height": 1131,
+      "consoleErrors": []
+    },
+    {
+      "category": "bento-grids",
+      "variant": "bento-grid-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/bento-grids__bento-grid-6.png",
+      "bytes": 112384,
+      "height": 1435,
+      "consoleErrors": []
+    },
+    {
+      "category": "testimonial-sections",
+      "variant": "testimonial-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/testimonial-sections__testimonial-section-1.png",
+      "bytes": 80630,
+      "height": 1031,
+      "consoleErrors": []
+    },
+    {
+      "category": "testimonial-sections",
+      "variant": "testimonial-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/testimonial-sections__testimonial-section-2.png",
+      "bytes": 97603,
+      "height": 1109,
+      "consoleErrors": []
+    },
+    {
+      "category": "testimonial-sections",
+      "variant": "testimonial-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/testimonial-sections__testimonial-section-3.png",
+      "bytes": 75924,
+      "height": 958.328125,
+      "consoleErrors": []
+    },
+    {
+      "category": "testimonial-sections",
+      "variant": "testimonial-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/testimonial-sections__testimonial-section-4.png",
+      "bytes": 61555,
+      "height": 988,
+      "consoleErrors": []
+    },
+    {
+      "category": "testimonial-sections",
+      "variant": "testimonial-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/testimonial-sections__testimonial-section-5.png",
+      "bytes": 73645,
+      "height": 874,
+      "consoleErrors": []
+    },
+    {
+      "category": "testimonial-sections",
+      "variant": "testimonial-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/testimonial-sections__testimonial-section-6.png",
+      "bytes": 139497,
+      "height": 719,
+      "consoleErrors": []
+    },
+    {
+      "category": "testimonial-sections",
+      "variant": "testimonial-section-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/testimonial-sections__testimonial-section-7.png",
+      "bytes": 69200,
+      "height": 801,
+      "consoleErrors": []
+    },
+    {
+      "category": "testimonial-sections",
+      "variant": "testimonial-section-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/testimonial-sections__testimonial-section-8.png",
+      "bytes": 96066,
+      "height": 929,
+      "consoleErrors": []
+    },
+    {
+      "category": "newsletter-sections",
+      "variant": "newsletter-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/newsletter-sections__newsletter-section-1.png",
+      "bytes": 43780,
+      "height": 677,
+      "consoleErrors": []
+    },
+    {
+      "category": "newsletter-sections",
+      "variant": "newsletter-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/newsletter-sections__newsletter-section-2.png",
+      "bytes": 47000,
+      "height": 681,
+      "consoleErrors": []
+    },
+    {
+      "category": "newsletter-sections",
+      "variant": "newsletter-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/newsletter-sections__newsletter-section-3.png",
+      "bytes": 54559,
+      "height": 613,
+      "consoleErrors": []
+    },
+    {
+      "category": "newsletter-sections",
+      "variant": "newsletter-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/newsletter-sections__newsletter-section-4.png",
+      "bytes": 50613,
+      "height": 961,
+      "consoleErrors": []
+    },
+    {
+      "category": "newsletter-sections",
+      "variant": "newsletter-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/newsletter-sections__newsletter-section-5.png",
+      "bytes": 71116,
+      "height": 773,
+      "consoleErrors": []
+    },
+    {
+      "category": "newsletter-sections",
+      "variant": "newsletter-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/newsletter-sections__newsletter-section-6.png",
+      "bytes": 56918,
+      "height": 865,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-1.png",
+      "bytes": 55338,
+      "height": 1183,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-2.png",
+      "bytes": 62266,
+      "height": 937,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-3.png",
+      "bytes": 75025,
+      "height": 1579,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-4.png",
+      "bytes": 79846,
+      "height": 1061,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-5.png",
+      "bytes": 309576,
+      "height": 965,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-6.png",
+      "bytes": 74396,
+      "height": 1253,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-7.png",
+      "bytes": 300677,
+      "height": 921,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-8.png",
+      "bytes": 53392,
+      "height": 1326,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-9",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-9.png",
+      "bytes": 79425,
+      "height": 2054.375,
+      "consoleErrors": []
+    },
+    {
+      "category": "contact-sections",
+      "variant": "contact-section-10",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/contact-sections__contact-section-10.png",
+      "bytes": 163579,
+      "height": 1210,
+      "consoleErrors": []
+    },
+    {
+      "category": "fancy",
+      "variant": "memory-album",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/fancy__memory-album.png",
+      "bytes": 85833,
+      "height": 745,
+      "consoleErrors": []
+    },
+    {
+      "category": "fancy",
+      "variant": "words-album",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/fancy__words-album.png",
+      "bytes": 32332,
+      "height": 425,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-1.png",
+      "bytes": 85335,
+      "height": 999.65625,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-2.png",
+      "bytes": 97621,
+      "height": 1415.125,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-3.png",
+      "bytes": 142375,
+      "height": 2241,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-4.png",
+      "bytes": 133551,
+      "height": 2210.0625,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-5.png",
+      "bytes": 114780,
+      "height": 1289,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-6.png",
+      "bytes": 134601,
+      "height": 1525.25,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-7.png",
+      "bytes": 181465,
+      "height": 1745,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-8.png",
+      "bytes": 72664,
+      "height": 995.65625,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-9",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-9.png",
+      "bytes": 137915,
+      "height": 1857,
+      "consoleErrors": []
+    },
+    {
+      "category": "blog-sections",
+      "variant": "blog-section-10",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/blog-sections__blog-section-10.png",
+      "bytes": 102048,
+      "height": 1716.375,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-01",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-01.png",
+      "bytes": 25304,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-02",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-02.png",
+      "bytes": 26117,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-03",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-03.png",
+      "bytes": 26847,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-04",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-04.png",
+      "bytes": 30946,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-05",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-05.png",
+      "bytes": 28144,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-06",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-06.png",
+      "bytes": 25862,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-07",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-07.png",
+      "bytes": 28703,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-08",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-08.png",
+      "bytes": 31416,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-09",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-09.png",
+      "bytes": 25953,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-10",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-10.png",
+      "bytes": 27265,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-11",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-11.png",
+      "bytes": 31271,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-12",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-12.png",
+      "bytes": 30854,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-13",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-13.png",
+      "bytes": 29683,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-14",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-14.png",
+      "bytes": 35427,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-15",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-15.png",
+      "bytes": 30414,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-16",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-16.png",
+      "bytes": 36474,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-17",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-17.png",
+      "bytes": 33294,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-18",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-18.png",
+      "bytes": 35876,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-19",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-19.png",
+      "bytes": 40872,
+      "height": 355,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-20",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-20.png",
+      "bytes": 53670,
+      "height": 427,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-21",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-21.png",
+      "bytes": 42839,
+      "height": 453,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-22",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-22.png",
+      "bytes": 46451,
+      "height": 453,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-23",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-23.png",
+      "bytes": 36863,
+      "height": 425,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-24",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-24.png",
+      "bytes": 47628,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-25",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-25.png",
+      "bytes": 36632,
+      "height": 351,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-26",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-26.png",
+      "bytes": 39690,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-27",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-27.png",
+      "bytes": 51778,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-28",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-28.png",
+      "bytes": 77698,
+      "height": 508,
+      "consoleErrors": []
+    },
+    {
+      "category": "kpi-cards",
+      "variant": "kpi-card-29",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/kpi-cards__kpi-card-29.png",
+      "bytes": 28721,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "spark-area-charts",
+      "variant": "spark-area-chart-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/spark-area-charts__spark-area-chart-1.png",
+      "bytes": 43370,
+      "height": 551,
+      "consoleErrors": []
+    },
+    {
+      "category": "spark-area-charts",
+      "variant": "spark-area-chart-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/spark-area-charts__spark-area-chart-2.png",
+      "bytes": 40920,
+      "height": 503,
+      "consoleErrors": []
+    },
+    {
+      "category": "spark-area-charts",
+      "variant": "spark-area-chart-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/spark-area-charts__spark-area-chart-3.png",
+      "bytes": 39675,
+      "height": 488,
+      "consoleErrors": []
+    },
+    {
+      "category": "spark-area-charts",
+      "variant": "spark-area-chart-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/spark-area-charts__spark-area-chart-4.png",
+      "bytes": 28238,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "spark-area-charts",
+      "variant": "spark-area-chart-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/spark-area-charts__spark-area-chart-5.png",
+      "bytes": 26924,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "spark-area-charts",
+      "variant": "spark-area-chart-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/spark-area-charts__spark-area-chart-6.png",
+      "bytes": 27807,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-1.png",
+      "bytes": 31671,
+      "height": 432,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-2.png",
+      "bytes": 38576,
+      "height": 572,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-3.png",
+      "bytes": 43325,
+      "height": 648,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-4.png",
+      "bytes": 42022,
+      "height": 625,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-5.png",
+      "bytes": 41518,
+      "height": 503,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-6.png",
+      "bytes": 42566,
+      "height": 598,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-7.png",
+      "bytes": 30046,
+      "height": 511,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-8.png",
+      "bytes": 52958,
+      "height": 696,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-9",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-9.png",
+      "bytes": 48967,
+      "height": 689,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-10",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-10.png",
+      "bytes": 47168,
+      "height": 559,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-11",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-11.png",
+      "bytes": 41680,
+      "height": 587,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-12",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-12.png",
+      "bytes": 38271,
+      "height": 610,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-13",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-13.png",
+      "bytes": 45804,
+      "height": 674,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-14",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-14.png",
+      "bytes": 46319,
+      "height": 674,
+      "consoleErrors": []
+    },
+    {
+      "category": "area-charts",
+      "variant": "area-chart-15",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/area-charts__area-chart-15.png",
+      "bytes": 60431,
+      "height": 607,
+      "consoleErrors": []
+    },
+    {
+      "category": "donut-charts",
+      "variant": "donut-chart-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/donut-charts__donut-chart-1.png",
+      "bytes": 51402,
+      "height": 707,
+      "consoleErrors": []
+    },
+    {
+      "category": "donut-charts",
+      "variant": "donut-chart-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/donut-charts__donut-chart-2.png",
+      "bytes": 52318,
+      "height": 634,
+      "consoleErrors": []
+    },
+    {
+      "category": "donut-charts",
+      "variant": "donut-chart-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/donut-charts__donut-chart-3.png",
+      "bytes": 58503,
+      "height": 820,
+      "consoleErrors": []
+    },
+    {
+      "category": "donut-charts",
+      "variant": "donut-chart-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/donut-charts__donut-chart-4.png",
+      "bytes": 57110,
+      "height": 771,
+      "consoleErrors": []
+    },
+    {
+      "category": "donut-charts",
+      "variant": "donut-chart-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/donut-charts__donut-chart-5.png",
+      "bytes": 56523,
+      "height": 701,
+      "consoleErrors": []
+    },
+    {
+      "category": "donut-charts",
+      "variant": "donut-chart-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/donut-charts__donut-chart-6.png",
+      "bytes": 44644,
+      "height": 435,
+      "consoleErrors": []
+    },
+    {
+      "category": "donut-charts",
+      "variant": "donut-chart-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/donut-charts__donut-chart-7.png",
+      "bytes": 33736,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "onboarding-feed-1",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__onboarding-feed-1.png",
+      "bytes": 65631,
+      "height": 639,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "simple-with-icons",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__simple-with-icons.png",
+      "bytes": 56375,
+      "height": 501,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "onboarding-feed-2",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__onboarding-feed-2.png",
+      "bytes": 82630,
+      "height": 841,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "onboarding-feed-3",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__onboarding-feed-3.png",
+      "bytes": 79840,
+      "height": 856,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "onboarding-feed-4",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__onboarding-feed-4.png",
+      "bytes": 48979,
+      "height": 667,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "onboarding-feed-5",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__onboarding-feed-5.png",
+      "bytes": 58287,
+      "height": 505,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "onboarding-feed-6",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__onboarding-feed-6.png",
+      "bytes": 65816,
+      "height": 605,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "onboarding-feed-7",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__onboarding-feed-7.png",
+      "bytes": 71635,
+      "height": 698,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "onboarding-feed-8",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__onboarding-feed-8.png",
+      "bytes": 47287,
+      "height": 547,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "feed-with-comments-01",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__feed-with-comments-01.png",
+      "bytes": 87295,
+      "height": 888,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "feed-with-upvote-01",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__feed-with-upvote-01.png",
+      "bytes": 121135,
+      "height": 911,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "with-comments",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__with-comments.png",
+      "bytes": 61903,
+      "height": 743,
+      "consoleErrors": []
+    },
+    {
+      "category": "lists",
+      "variant": "with-multiple-item-types",
+      "status": "ok",
+      "file": "docs/verification/m2-visual-check/variants/lists__with-multiple-item-types.png",
+      "bytes": 68363,
+      "height": 573,
+      "consoleErrors": []
+    }
+  ]
+}

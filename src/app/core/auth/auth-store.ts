@@ -1,7 +1,6 @@
 import { computed, inject, Injectable, signal, Signal } from '@angular/core';
 
 import {
-  AuthErrorCode,
   AuthResult,
   MockAuthApi,
   ResetPasswordInput,

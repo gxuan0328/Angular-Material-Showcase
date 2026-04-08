@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { HeaderSection1Component } from '../blocks/header-sections/header-section-1/header-section-1.component';
 import { HeroSection1Component } from '../blocks/hero-sections/hero-section-1/hero-section-1.component';
+import { HeroSection5Component } from '../blocks/hero-sections/hero-section-5/hero-section-5.component';
 import { StatsSection1Component } from '../blocks/free-stats-sections/stats-section-1/stats-section-1.component';
 import { FeatureSection1Component } from '../blocks/feature-sections/feature-section-1/feature-section-1.component';
 import { FeatureSection5Component } from '../blocks/feature-sections/feature-section-5/feature-section-5.component';
@@ -23,8 +23,8 @@ import { MemoryAlbumComponent } from '../blocks/free-fancy/memory-album/memory-a
 @Component({
   selector: 'app-landing-page',
   imports: [
-    HeaderSection1Component,
     HeroSection1Component,
+    HeroSection5Component,
     StatsSection1Component,
     FeatureSection1Component,
     FeatureSection5Component,
@@ -39,17 +39,19 @@ import { MemoryAlbumComponent } from '../blocks/free-fancy/memory-album/memory-a
   ],
   template: `
     <div class="landing-page">
-      <ngm-dev-block-header-section-1 class="landing-page__section landing-page__section--flush" />
-      <ngm-dev-block-hero-section-1 class="landing-page__section" />
+      <ngm-dev-block-hero-section-1 class="landing-page__section landing-page__section--flush" />
       <ngm-dev-block-stats-section-1 class="landing-page__section" />
       <ngm-dev-block-feature-section-1 class="landing-page__section" />
       <ngm-dev-block-bento-grid-1 class="landing-page__section" />
       <ngm-dev-block-feature-section-5 class="landing-page__section" />
       <ngm-dev-block-pricing-section-1 class="landing-page__section" />
       <ngm-dev-block-testimonial-section-1 class="landing-page__section" />
+      <ngm-dev-block-hero-section-5 class="landing-page__section" />
       <ngm-dev-block-blog-section-1 class="landing-page__section" />
       <ngm-dev-block-cta-section-1 class="landing-page__section" />
-      <ngm-dev-block-memory-album class="landing-page__section landing-page__section--fancy" />
+      <div class="landing-page__section landing-page__section--fancy">
+        <ngm-dev-block-memory-album class="landing-page__fancy-frame" />
+      </div>
       <ngm-dev-block-newsletter-section-1 class="landing-page__section" />
       <ngm-dev-block-contact-section-1 class="landing-page__section" />
     </div>
@@ -76,6 +78,19 @@ import { MemoryAlbumComponent } from '../blocks/free-fancy/memory-album/memory-a
     }
     .landing-page__section--fancy {
       background: var(--mat-sys-surface-container-low, #f4f3f6);
+      padding: 3rem 1rem;
+    }
+    .landing-page__fancy-frame {
+      display: block;
+      position: relative;
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      height: 420px;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--mat-sys-outline-variant, #c4c6d0);
+      background: var(--mat-sys-surface, #fff);
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,

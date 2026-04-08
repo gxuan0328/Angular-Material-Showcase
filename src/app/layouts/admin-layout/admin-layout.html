@@ -8,42 +8,40 @@
     <div class="admin-layout__brand-block">
       <span class="material-symbols-outlined admin-layout__logo" aria-hidden="true">ac_unit</span>
       @if (sidenavOpen()) {
-        <div class="admin-layout__brand-text">
-          <strong>Glacier Analytics</strong>
-          <span>SaaS 管理後台</span>
-        </div>
+      <div class="admin-layout__brand-text">
+        <strong>Glacier Analytics</strong>
+        <span>SaaS 管理後台</span>
+      </div>
       }
     </div>
 
     <mat-divider />
 
     <mat-nav-list class="admin-layout__nav" aria-label="主功能導覽">
-      @for (item of navItems; track item.id) {
-        @if (item.soon) {
-          <a
-            mat-list-item
-            class="admin-layout__nav-item admin-layout__nav-item--soon"
-            [matTooltip]="item.label + ' · 即將推出'"
-            matTooltipPosition="right"
-            aria-disabled="true"
-          >
-            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-            <span matListItemTitle>{{ item.label }}</span>
-            <span matListItemMeta class="admin-layout__nav-badge">即將推出</span>
-          </a>
-        } @else {
-          <a
-            mat-list-item
-            class="admin-layout__nav-item"
-            [routerLink]="item.path"
-            routerLinkActive="admin-layout__nav-item--active"
-            [routerLinkActiveOptions]="{ exact: !!item.exact }"
-          >
-            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-            <span matListItemTitle>{{ item.label }}</span>
-          </a>
-        }
-      }
+      @for (item of navItems; track item.id) { @if (item.soon) {
+      <a
+        mat-list-item
+        class="admin-layout__nav-item admin-layout__nav-item--soon"
+        [matTooltip]="item.label + ' · 即將推出'"
+        matTooltipPosition="right"
+        aria-disabled="true"
+      >
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.label }}</span>
+        <span matListItemMeta class="admin-layout__nav-badge">即將推出</span>
+      </a>
+      } @else {
+      <a
+        mat-list-item
+        class="admin-layout__nav-item"
+        [routerLink]="item.path"
+        routerLinkActive="admin-layout__nav-item--active"
+        [routerLinkActiveOptions]="{ exact: !!item.exact }"
+      >
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.label }}</span>
+      </a>
+      } }
     </mat-nav-list>
   </mat-sidenav>
 
@@ -65,12 +63,7 @@
       <div class="admin-layout__topbar-right">
         <app-theme-palette-selector />
         <app-theme-toggle />
-        <button
-          type="button"
-          mat-icon-button
-          matTooltip="通知中心"
-          aria-label="通知中心"
-        >
+        <button type="button" mat-icon-button matTooltip="通知中心" aria-label="通知中心">
           <mat-icon>notifications_none</mat-icon>
         </button>
 

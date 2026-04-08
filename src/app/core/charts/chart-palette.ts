@@ -67,12 +67,15 @@ export class ChartPaletteService {
     // mode or active palette changes. Runs once on startup so dashboards can
     // pick up real values after first render.
     effect(() => {
-      // Dependencies — make the effect track both signals.
+      // Track BOTH effectiveMode and palette so charts rebuild on either flip.
       this.theme.effectiveMode();
+      this.theme.palette();
       if (typeof document === 'undefined') {
         return;
       }
-      untracked(() => this.recompute());
+      // Wait a tick for the CSS to apply after the class/attr changes, then
+      // read the computed tokens.
+      Promise.resolve().then(() => untracked(() => this.recompute()));
     });
   }
 

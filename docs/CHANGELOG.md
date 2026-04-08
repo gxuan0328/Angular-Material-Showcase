@@ -3,6 +3,92 @@
 All milestone deliveries are recorded here in reverse-chronological order.
 See `docs/2026-04-08-material-block-showcase-design.md` §13 for milestone definitions.
 
+## M2 — Live Showcase Core — 2026-04-09
+
+**Delivered**
+
+- **18 new catalog pages + 196 new vendor variants** installed and baked. Cumulative coverage: **28 / 43 display categories (65%) · 281 variants**.
+
+  | Category | Free | Paid | Total |
+  | --- | ---: | ---: | ---: |
+  | `authentication` | 1 | 7 | 8 |
+  | `hero-sections` | 0 | 9 | 9 |
+  | `feature-sections` | 0 | 20 | 20 |
+  | `pricing-sections` | 1 | 15 | 16 |
+  | `cta-sections` | 0 | 16 | 16 |
+  | `header-sections` | 0 | 6 | 6 |
+  | `stats-sections` | 3 | 6 | 9 |
+  | `bento-grids` | 0 | 6 | 6 |
+  | `testimonial-sections` | 0 | 8 | 8 |
+  | `newsletter-sections` | 0 | 6 | 6 |
+  | `contact-sections` | 1 | 9 | 10 |
+  | `fancy` | 2 | 0 | 2 |
+  | `blog-sections` | 1 | 9 | 10 |
+  | `kpi-cards` | 0 | 29 | 29 |
+  | `spark-area-charts` | 0 | 6 | 6 |
+  | `area-charts` | 1 | 14 | 15 |
+  | `donut-charts` | 1 | 6 | 7 |
+  | `lists` | 2 | 11 | 13 |
+  | **M2 TOTAL** | **12** | **184** | **196** |
+
+- **Glacier Analytics marketing landing** (`src/app/landing/landing-page.ts`) composes 13 vendor blocks top-to-bottom (hero · stats · feature · bento · feature · pricing · testimonial · hero · blog · cta · fancy · newsletter · contact). Each section inherits Material 3 tokens so theme + palette swaps reflow globally. The `fancy/memory-album` block is wrapped in a fixed-height frame so its absolute-positioned `h1` is contained.
+- **Admin shell** (`src/app/layouts/admin-layout/`) rewritten as a full `MatSidenavContainer` — 260px sidenav with brand lock-up, 6 nav items (dashboard live, five marked `即將推出` with tooltips), sticky Material topbar carrying the theme toggle, palette selector, notification icon, and a `MatMenu` user menu with real sign-out → `/auth/sign-in`.
+- **`/app/dashboard`** (`src/app/app-shell/dashboard/`) composes a KPI row, 90-day revenue area chart, plan-distribution donut chart, top-pages bar list, activity feed, and a dismissible onboarding checklist. Data comes from `MockDashboardApi` (HTTP-backed JSON fixtures) and charts render via `ng2-charts` `BaseChartDirective` wired to `ChartPaletteService`. An internal `effect()` rebuilds chart configs whenever either `theme.effectiveMode()` or `theme.palette()` changes.
+- **6 new auth routes** (`src/app/auth/`):
+  - `sign-in` — rewritten with `ReactiveForms` + Material outline fields, wired to `AuthStore` Result-pattern, navigates to `/app/dashboard` on success.
+  - `sign-up` — name + email + password with min-8 validation.
+  - `forgot-password` — email form with inline success banner once reset link is queued.
+  - `reset-password` — new password + confirm with cross-field mismatch validator.
+  - `two-factor` — 6-digit numeric code field (test code `123456`, `000000` triggers TooManyAttempts).
+  - `check-email` — confirmation screen with resend button.
+  - All forms surface typed `AuthErrorCode` strings via a shared `describeAuthError()` helper with zh-TW copy for every code.
+- **Mock API layer** (`src/app/core/mock-api/`):
+  - `MockAuthApi` — Result pattern covering sign-in / up / forgot / reset / verify-2fa, with deterministic failure triggers (`locked@`, `network@`, `exists@`, `unknown@`, short passwords). `AuthStore` refactored to delegate and now returns `AuthResult<AuthUser>` instead of throwing.
+  - `MockDashboardApi` — loads four JSON fixtures (`dashboard-kpis.json`, `dashboard-plans.json`, `dashboard-top-pages.json`, `dashboard-feeds.json`) via `HttpClient`, plus a deterministic 90-day revenue series computed in-memory with a growth curve + weekend dip.
+  - `OnboardingStore` — localStorage-backed `dismissed` flag + 4 default checklist steps.
+- **Chart palette utility** (`src/app/core/charts/`):
+  - `ChartPaletteService.palette()` — signal exposing `primary / secondary / tertiary / error / success / warning / surface / onSurface / onSurfaceVariant / outlineVariant / categorical` derived from `--mat-sys-*` tokens. Recomputes via an internal effect that tracks both `theme.effectiveMode()` and `theme.palette()`, so palette swaps redraw charts without manual plumbing.
+  - `lineDataset()` / `donutDataset()` helpers return chart.js-compatible dataset fragments.
+  - `chart-defaults.ts` + `applyChartDefaults()` register font family, grid color, tooltip, and legend defaults. Wired into `app.config.ts` alongside `Chart.register(...registerables)`.
+
+**New feature (beyond the original M2 spec) — M3 palette theme switcher**
+
+The user asked for all Material 3 palette options to be exposed alongside the existing light / dark toggle. We layered a complete palette switcher on top of the existing `.dark` class wiring:
+
+- **`src/styles/themes.scss`** — single SCSS source-of-truth that loops over all twelve M3 palettes (`azure`, `blue`, `violet`, `magenta`, `rose`, `red`, `orange`, `yellow`, `chartreuse`, `green`, `spring-green`, `cyan`) and emits one `:root[data-palette='…']` + `:root[data-palette='…'].dark` pair per palette via `mat.theme()`. `angular.json` now compiles this file instead of the hardcoded `azure-blue` prebuilt theme, so every Material token is available in all 12 × 2 combinations without any runtime CSS injection.
+- **`ThemeStore` extended** with `palette: Signal<ThemePalette>` and `setPalette(id)`. Two effects attach `.dark` class and `data-palette` attribute to `<html>`. Both are persisted to localStorage (`theme-mode`, `theme-palette`).
+- **`index.html` pre-paint script** reads the stored palette + mode from localStorage before Angular bootstraps, setting the correct attribute / class so there is no flash of wrong-palette content.
+- **`ThemePaletteSelector` component** — compact trigger with a swatch + palette icon opens a CDK overlay grid of twelve 24px swatches labelled in zh-TW. Keyboard-accessible (escape to close), persists selection through `ThemeStore.setPalette()`.
+- Wired into `CatalogLayout`, `LandingLayout`, `AuthLayout`, and the new `AdminLayout` — palette selector sits next to the existing `ThemeToggle` in every layout.
+
+**i18n (Task G)**
+
+- `src/assets/i18n/zh-TW.json` grew from 54 → 97 keys covering `landing.*`, `dashboard.*`, `auth.*` (+ 9 typed error codes), `admin.*`, `theme.palette.*`, and `common.*`.
+
+**Visual verification (Task H)**
+
+- `scripts/m2-bulk-variant-screenshots.mjs` — new runner that walks all 18 M2 categories, auto-detects variants from the selector, and screenshots every preview zone.
+- **Captured 196 / 196 M2 variants** with zero failures (manifest in `docs/verification/m2-visual-check/variants/_manifest.json`).
+- All feature screens (landing top & full, dashboard light & dark, palette overlay open, 6 auth routes, 4 chart catalog pages) screenshotted into `docs/verification/m2-visual-check/pages/`.
+- Full report at `docs/verification/m2-visual-check/REPORT.md`.
+
+**Fixes caught by visual check**
+
+1. Landing page — `header-section-1` duplicated the hero content and `memory-album` overflowed neighbouring sections. Swapped `header-section-1` for `hero-section-5` as a mid-page break and wrapped `memory-album` in a fixed 420px frame with `overflow: hidden`.
+2. Charts stayed on the old primary after palette swaps — `ChartPaletteService` now tracks `theme.palette()` in its effect and defers the CSS re-read one microtask.
+3. `catalog-registry` + `catalog-nav` specs hardcoded the M1 split — updated to assert 28 shipped / 15 coming-soon after the M2 flips.
+
+**Definition of Done**
+
+- `npm run lint` ✅ — all files pass linting.
+- `npm run format:check` ✅ — Prettier clean.
+- `ng build --configuration development` ✅ — bundle generation complete.
+- `ng test --watch=false --browsers=ChromeHeadless` ✅ — **113 / 113 tests green** (66 M1 baseline + 47 new M2 / palette tests).
+- 196 / 196 M2 variant screenshots captured.
+- Landing · dashboard · 6 auth routes · admin layout manually verified in light + dark + rose palette combinations.
+- M2 entry appended to `docs/CHANGELOG.md`.
+- Annotated tag `m2-live-core` on the final commit.
+
 ## M1 — Catalog Shell + 10 Display Categories — 2026-04-08
 
 **Delivered**

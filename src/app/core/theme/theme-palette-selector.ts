@@ -23,8 +23,14 @@ import { ThemePalette, ThemeStore, THEME_PALETTES } from './theme-store';
       aria-label="切換主題色調"
       (click)="toggle()"
     >
-      <span class="palette-trigger__swatch" aria-hidden="true" [style.background]="swatchColor()"></span>
-      <span class="material-symbols-outlined palette-trigger__icon" aria-hidden="true">palette</span>
+      <span
+        class="palette-trigger__swatch"
+        aria-hidden="true"
+        [style.background]="swatchColor()"
+      ></span>
+      <span class="material-symbols-outlined palette-trigger__icon" aria-hidden="true"
+        >palette</span
+      >
     </button>
 
     <ng-template
@@ -79,7 +85,9 @@ import { ThemePalette, ThemeStore, THEME_PALETTES } from './theme-store';
       border-radius: 9999px;
       cursor: pointer;
       font-size: 0.8125rem;
-      transition: background 160ms ease, border-color 160ms ease;
+      transition:
+        background 160ms ease,
+        border-color 160ms ease;
     }
     .palette-trigger:hover {
       background: var(--mat-sys-surface-container-high, #e9e7eb);
@@ -142,7 +150,9 @@ import { ThemePalette, ThemeStore, THEME_PALETTES } from './theme-store';
       background: var(--mat-sys-surface-container, #f3f4f6);
       border-radius: 10px;
       cursor: pointer;
-      transition: transform 160ms ease, border-color 160ms ease;
+      transition:
+        transform 160ms ease,
+        border-color 160ms ease;
     }
     .palette-swatch:hover {
       transform: translateY(-1px);

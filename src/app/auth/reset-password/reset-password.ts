@@ -43,8 +43,15 @@ import { describeAuthError } from '../shared/auth-error-messages';
       <form class="auth-card__form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
         <mat-form-field appearance="outline" class="auth-card__field">
           <mat-label>新密碼</mat-label>
-          <input matInput type="password" formControlName="newPassword" autocomplete="new-password" />
-          @if (form.controls.newPassword.hasError('required') && form.controls.newPassword.touched) {
+          <input
+            matInput
+            type="password"
+            formControlName="newPassword"
+            autocomplete="new-password"
+          />
+          @if (
+            form.controls.newPassword.hasError('required') && form.controls.newPassword.touched
+          ) {
             <mat-error>請輸入新密碼</mat-error>
           } @else if (form.controls.newPassword.hasError('minlength')) {
             <mat-error>密碼至少 8 個字元</mat-error>

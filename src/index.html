@@ -17,14 +17,33 @@
       (function () {
         try {
           var p = localStorage.getItem('theme-palette');
-          var valid = ['azure','blue','violet','magenta','rose','red','orange','yellow','chartreuse','green','spring-green','cyan'];
+          var valid = [
+            'azure',
+            'blue',
+            'violet',
+            'magenta',
+            'rose',
+            'red',
+            'orange',
+            'yellow',
+            'chartreuse',
+            'green',
+            'spring-green',
+            'cyan',
+          ];
           if (p && valid.indexOf(p) !== -1) {
             document.documentElement.setAttribute('data-palette', p);
           }
           var m = localStorage.getItem('theme-mode');
-          var isDark = m === 'dark' || (m === 'system' || !m) && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var isDark =
+            m === 'dark' ||
+            ((m === 'system' || !m) &&
+              window.matchMedia &&
+              window.matchMedia('(prefers-color-scheme: dark)').matches);
           if (isDark) document.documentElement.classList.add('dark');
-        } catch (e) { /* ignore */ }
+        } catch (e) {
+          /* ignore */
+        }
       })();
     </script>
   </head>

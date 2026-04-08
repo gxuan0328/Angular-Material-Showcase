@@ -30,9 +30,7 @@ import { describeAuthError } from '../shared/auth-error-messages';
       </span>
       <div>
         <h1 id="forgot-title" class="auth-card__title">忘記密碼了嗎？</h1>
-        <p class="auth-card__subtitle">
-          輸入註冊時的電子郵件，我們會寄送重設密碼的連結給你。
-        </p>
+        <p class="auth-card__subtitle">輸入註冊時的電子郵件，我們會寄送重設密碼的連結給你。</p>
       </div>
 
       @if (errorCode()) {

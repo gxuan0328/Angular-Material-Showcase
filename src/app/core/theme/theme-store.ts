@@ -116,9 +116,7 @@ export class ThemeStore {
   private readPaletteFromStorage(): ThemePalette {
     try {
       const raw = localStorage.getItem(PALETTE_KEY);
-      return VALID_PALETTES.includes(raw as ThemePalette)
-        ? (raw as ThemePalette)
-        : DEFAULT_PALETTE;
+      return VALID_PALETTES.includes(raw as ThemePalette) ? (raw as ThemePalette) : DEFAULT_PALETTE;
     } catch {
       return DEFAULT_PALETTE;
     }

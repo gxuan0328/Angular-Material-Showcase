@@ -15,8 +15,7 @@ export const AUTH_ROUTES: Routes = [
   {
     path: 'forgot-password',
     title: '忘記密碼 · Glacier Analytics',
-    loadComponent: () =>
-      import('./forgot-password/forgot-password').then(m => m.ForgotPassword),
+    loadComponent: () => import('./forgot-password/forgot-password').then(m => m.ForgotPassword),
   },
   {
     path: 'reset-password',

@@ -44,7 +44,9 @@ import { describeAuthError } from '../shared/auth-error-messages';
         <mat-form-field appearance="outline" class="auth-card__field">
           <mat-label>姓名</mat-label>
           <input matInput type="text" formControlName="displayName" autocomplete="name" />
-          @if (form.controls.displayName.hasError('required') && form.controls.displayName.touched) {
+          @if (
+            form.controls.displayName.hasError('required') && form.controls.displayName.touched
+          ) {
             <mat-error>請輸入姓名</mat-error>
           }
         </mat-form-field>
@@ -61,12 +63,7 @@ import { describeAuthError } from '../shared/auth-error-messages';
 
         <mat-form-field appearance="outline" class="auth-card__field">
           <mat-label>設定密碼</mat-label>
-          <input
-            matInput
-            type="password"
-            formControlName="password"
-            autocomplete="new-password"
-          />
+          <input matInput type="password" formControlName="password" autocomplete="new-password" />
           <mat-hint>至少 8 個字元，建議混合英數與符號</mat-hint>
           @if (form.controls.password.hasError('required') && form.controls.password.touched) {
             <mat-error>請輸入密碼</mat-error>
