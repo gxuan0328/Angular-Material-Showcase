@@ -1,0 +1,13 @@
+{
+  "pages": [
+    { "path": "/pricing", "label": "定價方案", "views": 24310, "percent": 18.4 },
+    { "path": "/features/analytics", "label": "分析功能", "views": 18290, "percent": 13.8 },
+    { "path": "/", "label": "首頁", "views": 16450, "percent": 12.4 },
+    { "path": "/docs/getting-started", "label": "快速開始文件", "views": 14120, "percent": 10.7 },
+    { "path": "/integrations/ga4", "label": "GA4 整合", "views": 11380, "percent": 8.6 },
+    { "path": "/case-studies", "label": "客戶案例", "views": 9270, "percent": 7.0 },
+    { "path": "/changelog", "label": "更新日誌", "views": 7840, "percent": 5.9 },
+    { "path": "/blog/dashboard-tips", "label": "Blog · 看板最佳實踐", "views": 6120, "percent": 4.6 }
+  ],
+  "totalViews": 132150
+}

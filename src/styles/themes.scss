@@ -1,0 +1,94 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+
+// ---------------------------------------------------------------------------
+// M3 palette switcher
+// ---------------------------------------------------------------------------
+// Generates one Material 3 theme per predefined palette, scoped by a
+// `data-palette="<name>"` attribute on <html>. Dark mode is handled by an
+// additional `.dark` class on the same element — ThemeStore drives both.
+//
+// The palette selector UI lives in `src/app/core/theme/theme-palette-selector`
+// and simply rewrites the attribute + optionally flips the `.dark` class.
+// ---------------------------------------------------------------------------
+
+$palettes: (
+  'azure': mat.$azure-palette,
+  'blue': mat.$blue-palette,
+  'violet': mat.$violet-palette,
+  'magenta': mat.$magenta-palette,
+  'rose': mat.$rose-palette,
+  'red': mat.$red-palette,
+  'orange': mat.$orange-palette,
+  'yellow': mat.$yellow-palette,
+  'chartreuse': mat.$chartreuse-palette,
+  'green': mat.$green-palette,
+  'spring-green': mat.$spring-green-palette,
+  'cyan': mat.$cyan-palette,
+);
+
+@each $name, $palette in $palettes {
+  // Light variant — rendered whenever the <html> element carries the matching
+  // data-palette attribute and the .dark class is absent.
+  :root[data-palette='#{$name}'] {
+    @include mat.theme(
+      (
+        color: (
+          theme-type: light,
+          primary: $palette,
+        ),
+        typography: Roboto,
+        density: 0,
+      )
+    );
+    color-scheme: light;
+  }
+
+  // Dark variant — wins via specificity (class + attribute > attribute alone).
+  :root[data-palette='#{$name}'].dark {
+    @include mat.theme(
+      (
+        color: (
+          theme-type: dark,
+          primary: $palette,
+        ),
+        typography: Roboto,
+        density: 0,
+      )
+    );
+    color-scheme: dark;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Default fallback — if no data-palette attribute is present (e.g., before the
+// ThemeStore hydrates from localStorage) render the azure theme so first paint
+// is never un-themed.
+// ---------------------------------------------------------------------------
+:root:not([data-palette]) {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: light,
+        primary: mat.$azure-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+  color-scheme: light;
+}
+
+:root:not([data-palette]).dark {
+  @include mat.theme(
+    (
+      color: (
+        theme-type: dark,
+        primary: mat.$azure-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+  color-scheme: dark;
+}

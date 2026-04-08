@@ -1,0 +1,10 @@
+{
+  "plans": [
+    { "id": "starter", "label": "Starter", "count": 1420, "mrr": 14200, "color": "primary" },
+    { "id": "growth", "label": "Growth", "count": 3680, "mrr": 36800, "color": "tertiary" },
+    { "id": "business", "label": "Business", "count": 2910, "mrr": 23280, "color": "secondary" },
+    { "id": "enterprise", "label": "Enterprise", "count": 330, "mrr": 10620, "color": "error" }
+  ],
+  "totalCustomers": 8340,
+  "totalMrr": 84900
+}

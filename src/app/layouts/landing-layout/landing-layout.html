@@ -1,6 +1,9 @@
 <header class="landing-layout__header">
   <span class="landing-layout__brand">Glacier Analytics</span>
-  <app-theme-toggle />
+  <div class="landing-layout__controls">
+    <app-theme-palette-selector />
+    <app-theme-toggle />
+  </div>
 </header>
 <main class="landing-layout__main">
   <router-outlet />

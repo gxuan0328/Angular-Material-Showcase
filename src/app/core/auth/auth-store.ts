@@ -1,4 +1,12 @@
-import { computed, Injectable, signal, Signal } from '@angular/core';
+import { computed, inject, Injectable, signal, Signal } from '@angular/core';
+
+import {
+  AuthErrorCode,
+  AuthResult,
+  MockAuthApi,
+  ResetPasswordInput,
+  SignUpInput,
+} from '../mock-api/mock-auth-api';
 
 export interface AuthUser {
   readonly id: string;
@@ -12,15 +20,10 @@ export interface AuthState {
   readonly expiresAt: number | null;
 }
 
+export type { AuthErrorCode, AuthResult } from '../mock-api/mock-auth-api';
+
 const STORAGE_KEY = 'auth';
 const EIGHT_HOURS_MS = 1000 * 60 * 60 * 8;
-
-function createId(): string {
-  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
-    return crypto.randomUUID();
-  }
-  return `u_${Math.random().toString(36).slice(2, 11)}`;
-}
 
 function generateMockJwt(user: AuthUser): string {
   const payload = { sub: user.id, email: user.email, iat: Date.now() };
@@ -29,6 +32,7 @@ function generateMockJwt(user: AuthUser): string {
 
 @Injectable({ providedIn: 'root' })
 export class AuthStore {
+  private readonly api = inject(MockAuthApi);
   private readonly _state = signal<AuthState>({
     user: null,
     token: null,
@@ -42,26 +46,37 @@ export class AuthStore {
     return !!s.token && (s.expiresAt ?? 0) > Date.now();
   });
 
-  async signIn(email: string, password: string): Promise<void> {
-    if (password.length < 6) {
-      throw new Error('Password must be at least 6 characters');
+  /** Sign the user in and persist a mock session. Returns a typed Result. */
+  async signIn(email: string, password: string): Promise<AuthResult<AuthUser>> {
+    const result = await this.api.signIn(email, password);
+    if (!result.ok) {
+      return result;
     }
-    const user: AuthUser = {
-      id: createId(),
-      email,
-      displayName: email.split('@')[0] ?? email,
-    };
-    const next: AuthState = {
-      user,
-      token: generateMockJwt(user),
-      expiresAt: Date.now() + EIGHT_HOURS_MS,
-    };
-    this._state.set(next);
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
-    } catch {
-      // ignore storage errors
+    const user: AuthUser = result.value;
+    this.persistSession(user);
+    return { ok: true, value: user };
+  }
+
+  async signUp(input: SignUpInput): Promise<AuthResult<AuthUser>> {
+    const result = await this.api.signUp(input);
+    if (!result.ok) {
+      return result;
     }
+    const user: AuthUser = result.value;
+    this.persistSession(user);
+    return { ok: true, value: user };
+  }
+
+  forgotPassword(email: string): Promise<AuthResult<{ sentTo: string }>> {
+    return this.api.forgotPassword(email);
+  }
+
+  resetPassword(input: ResetPasswordInput): Promise<AuthResult<{ reset: boolean }>> {
+    return this.api.resetPassword(input);
+  }
+
+  verifyTwoFactor(code: string): Promise<AuthResult<{ verified: boolean }>> {
+    return this.api.verifyTwoFactor(code);
   }
 
   signOut(): void {
@@ -91,5 +106,19 @@ export class AuthStore {
       return;
     }
     this._state.set(parsed);
+  }
+
+  private persistSession(user: AuthUser): void {
+    const next: AuthState = {
+      user,
+      token: generateMockJwt(user),
+      expiresAt: Date.now() + EIGHT_HOURS_MS,
+    };
+    this._state.set(next);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    } catch {
+      // ignore storage errors
+    }
   }
 }

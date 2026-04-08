@@ -15,6 +15,11 @@
 .landing-layout__brand {
   font-weight: 600;
 }
+.landing-layout__controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .landing-layout__main {
   flex: 1;
 }

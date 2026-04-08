@@ -7,6 +7,7 @@ describe('ThemeStore', () => {
   beforeEach(() => {
     localStorage.clear();
     document.documentElement.classList.remove('dark');
+    document.documentElement.removeAttribute('data-palette');
 
     TestBed.configureTestingModule({
       providers: [provideZonelessChangeDetection(), ThemeStore],
@@ -49,5 +50,37 @@ describe('ThemeStore', () => {
     localStorage.setItem('theme-mode', 'neon');
     const store = create();
     expect(store.mode()).toBe('system');
+  });
+
+  it('defaults the palette to azure when localStorage is empty', () => {
+    const store = create();
+    expect(store.palette()).toBe('azure');
+  });
+
+  it('restores a previously saved palette from localStorage', () => {
+    localStorage.setItem('theme-palette', 'violet');
+    const store = create();
+    expect(store.palette()).toBe('violet');
+  });
+
+  it('setPalette writes to localStorage and updates the data-palette attribute', () => {
+    const store = create();
+    store.setPalette('rose');
+    TestBed.tick();
+    expect(store.palette()).toBe('rose');
+    expect(localStorage.getItem('theme-palette')).toBe('rose');
+    expect(document.documentElement.getAttribute('data-palette')).toBe('rose');
+  });
+
+  it('ignores unknown palette identifiers', () => {
+    const store = create();
+    store.setPalette('neon' as unknown as 'azure');
+    expect(store.palette()).toBe('azure');
+  });
+
+  it('falls back to azure when stored palette is corrupt', () => {
+    localStorage.setItem('theme-palette', 'neon');
+    const store = create();
+    expect(store.palette()).toBe('azure');
   });
 });

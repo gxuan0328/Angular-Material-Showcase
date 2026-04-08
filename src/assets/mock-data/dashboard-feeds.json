@@ -1,0 +1,46 @@
+{
+  "feeds": [
+    {
+      "id": "f-001",
+      "type": "signup",
+      "user": { "name": "Aaron Tsai", "email": "aaron@northfield.io", "avatar": "AT" },
+      "message": "新使用者註冊了 Growth 方案",
+      "timestamp": "2026-04-08T14:22:00+08:00"
+    },
+    {
+      "id": "f-002",
+      "type": "upgrade",
+      "user": { "name": "Tina Chou", "email": "tina@bluewave.co", "avatar": "TC" },
+      "message": "從 Starter 升級為 Business",
+      "timestamp": "2026-04-08T13:48:00+08:00"
+    },
+    {
+      "id": "f-003",
+      "type": "alert",
+      "user": { "name": "系統警示", "email": "system@glacier.internal", "avatar": "SA" },
+      "message": "API 延遲於 15 分鐘平均 198ms，已低於警戒閾值",
+      "timestamp": "2026-04-08T12:32:00+08:00"
+    },
+    {
+      "id": "f-004",
+      "type": "invoice",
+      "user": { "name": "Orbit Labs", "email": "billing@orbitlabs.dev", "avatar": "OL" },
+      "message": "收到 $1,280 USD 月度發票付款",
+      "timestamp": "2026-04-08T11:05:00+08:00"
+    },
+    {
+      "id": "f-005",
+      "type": "comment",
+      "user": { "name": "Maya Lin", "email": "maya@glacier.io", "avatar": "ML" },
+      "message": "在 Q2 營收看板留下留言",
+      "timestamp": "2026-04-08T09:41:00+08:00"
+    },
+    {
+      "id": "f-006",
+      "type": "signup",
+      "user": { "name": "Felix Kuo", "email": "felix@cobaltco.io", "avatar": "FK" },
+      "message": "新使用者註冊了 Starter 方案",
+      "timestamp": "2026-04-08T08:18:00+08:00"
+    }
+  ]
+}

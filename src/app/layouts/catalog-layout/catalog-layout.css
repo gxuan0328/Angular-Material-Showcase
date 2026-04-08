@@ -21,6 +21,11 @@
 .catalog-layout__brand:hover {
   text-decoration: underline;
 }
+.catalog-layout__theme-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .catalog-layout__nav {
   border-right: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
   background: var(--mat-sys-surface-container-lowest, #fafafa);

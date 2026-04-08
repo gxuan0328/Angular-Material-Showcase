@@ -1,6 +1,9 @@
 <header class="catalog-layout__topbar">
   <a class="catalog-layout__brand" routerLink="/catalog">Glacier Analytics · Catalog</a>
-  <app-theme-toggle />
+  <div class="catalog-layout__theme-controls">
+    <app-theme-palette-selector />
+    <app-theme-toggle />
+  </div>
 </header>
 <aside class="catalog-layout__nav" aria-label="元件目錄導覽">
   <app-catalog-nav />

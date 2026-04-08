@@ -33,7 +33,7 @@ describe('CatalogNav', () => {
     const fixture = TestBed.createComponent(CatalogNav);
     await fixture.whenStable();
     const badges = fixture.nativeElement.querySelectorAll('.catalog-nav__badge');
-    // 33 of the 43 entries are coming-soon
-    expect(badges.length).toBe(33);
+    // After M2: 15 of the 43 entries remain coming-soon (28 shipped)
+    expect(badges.length).toBe(15);
   });
 });

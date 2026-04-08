@@ -24,10 +24,11 @@ describe('catalog-registry', () => {
     expect(uniques.size).toBe(43);
   });
 
-  it('marks the 10 M1-shipped categories as shipped', () => {
+  it('marks the 28 M1+M2-shipped categories as shipped', () => {
     const shipped = CATALOG_REGISTRY.filter(e => e.status === 'shipped').map(e => e.id);
     expect(shipped.sort()).toEqual(
       [
+        // M1
         'banners',
         'components',
         'dialogs',
@@ -38,13 +39,32 @@ describe('catalog-registry', () => {
         'page-shells',
         'section-headings',
         'stacked-layouts',
+        // M2
+        'area-charts',
+        'authentication',
+        'bento-grids',
+        'blog-sections',
+        'contact-sections',
+        'cta-sections',
+        'donut-charts',
+        'fancy',
+        'feature-sections',
+        'header-sections',
+        'hero-sections',
+        'kpi-cards',
+        'lists',
+        'newsletter-sections',
+        'pricing-sections',
+        'spark-area-charts',
+        'stats-sections',
+        'testimonial-sections',
       ].sort(),
     );
   });
 
-  it('marks the remaining 33 categories as coming-soon', () => {
+  it('marks the remaining 15 categories as coming-soon', () => {
     const comingSoon = CATALOG_REGISTRY.filter(e => e.status === 'coming-soon');
-    expect(comingSoon.length).toBe(33);
+    expect(comingSoon.length).toBe(15);
   });
 
   it('findCatalogEntry returns the matching entry', () => {
