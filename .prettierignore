@@ -1,0 +1,15 @@
+# Vendor block source files installed by @ngm-dev/cli — never reformat
+# (the CLI ships its own formatter and we update via 'npx @ngm-dev/cli update')
+src/app/blocks/**
+
+# Auto-generated block source JSON produced by scripts/bake-block-sources.ts
+src/assets/block-sources/**
+
+# Build outputs and dependency caches
+dist/
+.angular/
+node_modules/
+package-lock.json
+
+# Asset placeholder files
+**/.gitkeep
