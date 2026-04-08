@@ -1,0 +1,64 @@
+@let block = meta();
+
+<header class="catalog-page__heading">
+  <p class="catalog-page__breadcrumb">
+    <a routerLink="/catalog">Catalog</a> · <span>{{ block.subcategory }}</span>
+  </p>
+  <h1 class="catalog-page__title">{{ block.title }}</h1>
+  <p class="catalog-page__summary">{{ block.summary }}</p>
+  @if (block.tags.length > 0) {
+  <ul class="catalog-page__tags" aria-label="標籤">
+    @for (tag of block.tags; track tag) {
+    <li class="catalog-page__tag">{{ tag }}</li>
+    }
+  </ul>
+  }
+</header>
+
+<section class="catalog-page__zone" aria-labelledby="zone-preview">
+  <h2 id="zone-preview" class="catalog-page__zone-title">即時預覽</h2>
+  @if (hasVariants()) {
+  <ng-content select="[slot=preview]" />
+  } @else {
+  <p class="catalog-page__placeholder">即將推出 — 尚未綁定變體</p>
+  }
+</section>
+
+<section class="catalog-page__zone" aria-labelledby="zone-code">
+  <h2 id="zone-code" class="catalog-page__zone-title">原始碼</h2>
+  @if (hasVariants()) {
+  <ng-content select="[slot=code]" />
+  } @else {
+  <p class="catalog-page__placeholder">即將推出</p>
+  }
+</section>
+
+<section class="catalog-page__zone" aria-labelledby="zone-api">
+  <h2 id="zone-api" class="catalog-page__zone-title">API 與屬性</h2>
+  <ng-content select="[slot=api]" />
+</section>
+
+<section class="catalog-page__zone" aria-labelledby="zone-best-practices">
+  <h2 id="zone-best-practices" class="catalog-page__zone-title">最佳實務</h2>
+  <ng-content select="[slot=best-practices]" />
+</section>
+
+<nav class="catalog-page__pager" aria-label="目錄前後頁">
+  @if (previousEntry(); as prev) {
+  <a
+    class="catalog-page__pager-link catalog-page__pager-link--prev"
+    [routerLink]="['/catalog', prev.id]"
+  >
+    ← {{ prev.title }}
+  </a>
+  } @else {
+  <span></span>
+  } @if (nextEntry(); as next) {
+  <a
+    class="catalog-page__pager-link catalog-page__pager-link--next"
+    [routerLink]="['/catalog', next.id]"
+  >
+    {{ next.title }} →
+  </a>
+  }
+</nav>
