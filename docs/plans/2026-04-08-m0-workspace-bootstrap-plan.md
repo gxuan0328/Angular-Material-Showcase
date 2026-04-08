@@ -341,7 +341,15 @@ cat src/app/app.config.ts
 ```
 Expected: file already imports `provideZonelessChangeDetection` (or equivalent) because `--zoneless` was passed. Note the exact import.
 
-- [ ] **Step 4: Replace `src/app/app.config.ts` content**
+- [ ] **Step 4: Install `@angular/animations` (required by `provideAnimationsAsync`)**
+
+`ng new` in Angular 20.3.x does **not** install `@angular/animations` by default. `provideAnimationsAsync()` dynamically `import()`s `@angular/animations/browser`, which fails the bundler at build time with `Could not resolve "@angular/animations/browser"`. Install it now:
+
+```bash
+npm install @angular/animations@^20.3.0
+```
+
+- [ ] **Step 5: Replace `src/app/app.config.ts` content**
 
 Write:
 ```ts
@@ -369,7 +377,7 @@ export const appConfig: ApplicationConfig = {
 
 If `provideBrowserGlobalErrorListeners` is not exported in the installed Angular version, remove that line and the import (Angular 20.0 vs 20.2 vary). Run `npm ls @angular/core | head -5` to confirm the installed minor version if needed.
 
-- [ ] **Step 5: Replace `src/app/app.ts` content**
+- [ ] **Step 6: Replace `src/app/app.ts` content**
 
 Write:
 ```ts
@@ -386,32 +394,69 @@ import { RouterOutlet } from '@angular/router';
 export class App {}
 ```
 
-- [ ] **Step 6: Replace `src/app/app.html` content**
+- [ ] **Step 7: Replace `src/app/app.html` content**
 
 Write:
 ```html
 <router-outlet />
 ```
 
-- [ ] **Step 7: Verify build and tests still pass**
+- [ ] **Step 8: Rewrite `src/app/app.spec.ts` to follow testing rules**
+
+The scaffold `app.spec.ts` calls `fixture.detectChanges()` and asserts against the Angular welcome page `h1` (`"Hello, angular-material-block-showcase"`) that we just removed. Both must be fixed to comply with `.claude/rules/testing.md` (no `detectChanges`, use `await fixture.whenStable()`). Write:
+
+```ts
+import { provideZonelessChangeDetection } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
+
+import { App } from './app';
+
+describe('App', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [App],
+      providers: [provideZonelessChangeDetection(), provideRouter([])],
+    }).compileComponents();
+  });
+
+  it('should create the app', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should render a router-outlet', async () => {
+    const fixture = TestBed.createComponent(App);
+    await fixture.whenStable();
+    const outlet = fixture.nativeElement.querySelector('router-outlet');
+    expect(outlet).toBeTruthy();
+  });
+});
+```
+
+- [ ] **Step 9: Verify build and tests still pass**
 
 Run:
 ```bash
 npm run build -- --configuration development
+export CHROME_BIN=/home/gxuan/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome
 npm test -- --watch=false --browsers=ChromeHeadless
 ```
-Expected: both pass.
+Expected: both pass. Expect `TOTAL: 2 SUCCESS` from the tests.
 
-- [ ] **Step 8: Commit**
+- [ ] **Step 10: Commit**
 
 Run:
 ```bash
-git add tsconfig.json src/app/app.config.ts src/app/app.ts src/app/app.html
+git add tsconfig.json src/app/app.config.ts src/app/app.ts src/app/app.html src/app/app.css src/app/app.spec.ts package.json package-lock.json
 git commit -m "feat(m0): tune app shell for zoneless + feature-area layout
 
 - Add @core/* and @layouts/* path aliases
-- Trim app.ts to router-outlet host
-- Wire HttpClient (fetch), async animations, component input binding"
+- Trim app.ts to router-outlet host with OnPush
+- Wire HttpClient (fetch), async animations, component input binding
+- Install @angular/animations (dynamic dep of provideAnimationsAsync)
+- Rewrite app.spec.ts to follow .claude/rules/testing.md"
 ```
 
 ---
