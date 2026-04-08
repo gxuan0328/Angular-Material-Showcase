@@ -1,0 +1,22 @@
+<label class="variant-selector__label" for="variant-select">變體</label>
+<select
+  id="variant-select"
+  class="variant-selector__select"
+  [value]="selectedId()"
+  (change)="onChange($event)"
+>
+  @if (freeVariants().length > 0) {
+  <optgroup label="Free">
+    @for (variant of freeVariants(); track variant.id) {
+    <option [value]="variant.id">{{ variant.label }}</option>
+    }
+  </optgroup>
+  } @if (paidVariants().length > 0) {
+  <optgroup label="Paid">
+    @for (variant of paidVariants(); track variant.id) {
+    <option [value]="variant.id">{{ variant.label }}</option>
+    }
+  </optgroup>
+  }
+</select>
+<span class="variant-selector__count">共 {{ variants().length }} 種變體</span>

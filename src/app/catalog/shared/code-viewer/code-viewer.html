@@ -1,0 +1,21 @@
+@if (error(); as msg) {
+<p class="code-viewer__error" role="alert">無法載入原始碼：{{ msg }}</p>
+} @else if (baked(); as data) {
+<div class="code-viewer__tabs" role="tablist" aria-label="原始碼檔案">
+  @for (name of fileNames(); track name) {
+  <button
+    type="button"
+    role="tab"
+    class="code-viewer__tab"
+    [class.code-viewer__tab--active]="name === selectedFile()"
+    [attr.aria-selected]="name === selectedFile()"
+    (click)="selectFile(name)"
+  >
+    {{ name }}
+  </button>
+  }
+</div>
+<pre class="code-viewer__pre"><code>{{ selectedContent() }}</code></pre>
+} @else {
+<p class="code-viewer__loading">載入原始碼中…</p>
+}

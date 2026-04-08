@@ -1,0 +1,57 @@
+:host {
+  display: block;
+}
+
+.best-practices-panel__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.best-practices-panel__card {
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: var(--mat-sys-surface-container, #f3f4f6);
+  border-left: 4px solid var(--mat-sys-outline, #d1d5db);
+}
+
+.best-practices-panel__card--good {
+  border-left-color: #16a34a;
+}
+.best-practices-panel__card--bad {
+  border-left-color: #dc2626;
+}
+.best-practices-panel__card--warn {
+  border-left-color: #d97706;
+}
+.best-practices-panel__card--info {
+  border-left-color: #2563eb;
+}
+
+.best-practices-panel__title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+
+.best-practices-panel__icon {
+  font-size: 1rem;
+}
+
+.best-practices-panel__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.best-practices-panel__empty,
+.best-practices-panel__empty-section {
+  color: var(--mat-sys-on-surface-variant, #6b7280);
+  font-size: 0.875rem;
+}

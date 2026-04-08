@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.block-preview__chrome {
+  border: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--mat-sys-surface, #fff);
+}
+
+.block-preview__viewport {
+  min-height: 240px;
+  padding: 0;
+  overflow: auto;
+  resize: vertical;
+}

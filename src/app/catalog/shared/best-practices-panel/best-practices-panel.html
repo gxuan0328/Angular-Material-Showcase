@@ -1,0 +1,29 @@
+@if (!hasAny()) {
+<p class="best-practices-panel__empty">尚未撰寫此元件的最佳實務筆記</p>
+} @else {
+<div class="best-practices-panel__grid">
+  @for (section of sections(); track section.title) {
+  <article
+    class="best-practices-panel__card"
+    [class.best-practices-panel__card--good]="section.tone === 'good'"
+    [class.best-practices-panel__card--bad]="section.tone === 'bad'"
+    [class.best-practices-panel__card--warn]="section.tone === 'warn'"
+    [class.best-practices-panel__card--info]="section.tone === 'info'"
+  >
+    <h3 class="best-practices-panel__title">
+      <span class="best-practices-panel__icon" aria-hidden="true">{{ section.icon }}</span>
+      {{ section.title }}
+    </h3>
+    @if (section.items.length === 0) {
+    <p class="best-practices-panel__empty-section">—</p>
+    } @else {
+    <ul class="best-practices-panel__list">
+      @for (item of section.items; track item) {
+      <li>{{ item }}</li>
+      }
+    </ul>
+    }
+  </article>
+  }
+</div>
+}

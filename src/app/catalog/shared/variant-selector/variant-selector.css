@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: var(--mat-sys-surface-container, #f3f4f6);
+  border-radius: 8px;
+}
+
+.variant-selector__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.variant-selector__select {
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--mat-sys-outline, #d1d5db);
+  background: var(--mat-sys-surface, #fff);
+  color: inherit;
+  font-size: 0.875rem;
+  min-width: 14rem;
+}
+
+.variant-selector__count {
+  font-size: 0.75rem;
+  color: var(--mat-sys-on-surface-variant, #6b7280);
+}

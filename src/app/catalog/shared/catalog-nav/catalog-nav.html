@@ -1,0 +1,30 @@
+<nav class="catalog-nav__root" aria-label="元件目錄">
+  @for (section of sections(); track section.category) {
+  <section class="catalog-nav__section">
+    <h2 class="catalog-nav__section-title">{{ section.title }}</h2>
+    @for (group of section.groups; track group.subcategory) {
+    <div class="catalog-nav__group">
+      <h3 class="catalog-nav__group-title">{{ group.subcategory }}</h3>
+      <ul class="catalog-nav__list">
+        @for (entry of group.entries; track entry.id) {
+        <li>
+          <a
+            class="catalog-nav__link"
+            [class.catalog-nav__link--coming-soon]="entry.status === 'coming-soon'"
+            [routerLink]="['/catalog', entry.id]"
+            routerLinkActive="catalog-nav__link--active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <span class="catalog-nav__link-label">{{ entry.title }}</span>
+            @if (entry.status === 'coming-soon') {
+            <span class="catalog-nav__badge" aria-label="即將推出">soon</span>
+            }
+          </a>
+        </li>
+        }
+      </ul>
+    </div>
+    }
+  </section>
+  }
+</nav>

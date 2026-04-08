@@ -1,0 +1,29 @@
+@if (!hasAny()) {
+<p class="api-table__empty">此元件無公開 API（純展示型 block）</p>
+} @else { @for (section of sections(); track section.title) {
+<section class="api-table__section">
+  <h3 class="api-table__heading">{{ section.title }}</h3>
+  <table class="api-table__table">
+    <thead>
+      <tr>
+        <th scope="col">名稱</th>
+        <th scope="col">型別</th>
+        <th scope="col">預設</th>
+        <th scope="col">必填</th>
+        <th scope="col">說明</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (entry of section.entries; track entry.name) {
+      <tr>
+        <td><code>{{ entry.name }}</code></td>
+        <td><code>{{ entry.type }}</code></td>
+        <td><code>{{ entry.default ?? '—' }}</code></td>
+        <td>{{ entry.required ? '是' : '否' }}</td>
+        <td>{{ entry.description }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
+} }
