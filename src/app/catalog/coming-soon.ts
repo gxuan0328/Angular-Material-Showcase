@@ -4,6 +4,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
 
 import { findCatalogEntry } from './shared/catalog-registry';
 
+interface ComingSoonRouteData {
+  readonly id?: string;
+}
+
 @Component({
   selector: 'app-coming-soon',
   imports: [RouterLink],
@@ -72,10 +76,10 @@ import { findCatalogEntry } from './shared/catalog-registry';
 export class ComingSoon {
   private readonly route = inject(ActivatedRoute);
 
-  private readonly params = toSignal(this.route.paramMap, { requireSync: true });
+  private readonly data = toSignal(this.route.data, { requireSync: true });
 
   protected readonly registryEntry = computed(() => {
-    const id = this.params().get('id') ?? '';
+    const id = (this.data() as ComingSoonRouteData).id ?? '';
     return findCatalogEntry(id);
   });
 }
