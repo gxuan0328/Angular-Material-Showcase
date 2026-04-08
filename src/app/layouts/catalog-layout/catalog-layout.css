@@ -1,0 +1,11 @@
+:host {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 100vh;
+}
+.catalog-layout__nav {
+  border-right: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
+}
+.catalog-layout__body {
+  padding: 1.5rem 2rem;
+}
