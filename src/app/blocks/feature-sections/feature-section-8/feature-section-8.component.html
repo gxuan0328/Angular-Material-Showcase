@@ -1,0 +1,41 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-8`
+-->
+
+<div class="mx-auto w-full max-w-6xl px-3 py-20">
+  <div class="space-y-24">
+    @for (feature of features; track feature.title; let i = $index) {
+    <div [class]="getGridClasses(i)">
+      <div [class]="getContentClasses(i)">
+        <div
+          class="w-fit rounded-xl bg-violet-100/50 p-3 shadow-lg shadow-violet-500/10 ring-1 ring-violet-200/20 dark:bg-violet-900/20 dark:ring-violet-800/30"
+        >
+          <mat-icon
+            aria-hidden="true"
+            class="text-[2rem]! size-[1em]! text-violet-600! dark:text-violet-400!"
+            >{{ feature.icon }}</mat-icon
+          >
+        </div>
+        <h3
+          class="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50 sm:text-4xl"
+        >
+          {{ feature.title }}
+        </h3>
+        <p class="mt-4 text-lg leading-7 text-gray-600 dark:text-gray-400">
+          {{ feature.description }}
+        </p>
+      </div>
+      <div [class]="getImageClasses(i)">
+        <div
+          class="absolute inset-0 flex items-center justify-center text-violet-400/20 dark:text-violet-500/20"
+        >
+          <mat-icon class="text-[12rem]! size-[1em]!" aria-hidden="true"
+            >{{ feature.icon }}</mat-icon
+          >
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

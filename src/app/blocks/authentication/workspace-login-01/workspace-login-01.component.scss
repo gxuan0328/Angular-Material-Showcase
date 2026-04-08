@@ -1,0 +1,17 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update authentication/workspace-login-01`
+*/
+
+@use '@angular/material' as mat;
+
+.find-workspace-url-button {
+  background: var(--mat-sys-primary);
+  margin-right: 7px;
+  border-radius: 2px;
+  @include mat.icon-button-overrides(
+    (
+      icon-color: var(--mat-sys-on-primary),
+    )
+  );
+}

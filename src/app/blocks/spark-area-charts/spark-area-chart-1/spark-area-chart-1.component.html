@@ -1,0 +1,47 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update spark-area-charts/spark-area-chart-1`
+-->
+
+<div class="space-y-6 sm:mx-auto sm:max-w-md" role="list">
+  @for (stock of summary; track stock.ticker) {
+  <mat-card appearance="outlined" role="listitem">
+    <mat-card-content>
+      <div class="flex items-center justify-between space-x-4">
+        <div class="truncate">
+          <p
+            class="truncate text-sm font-medium text-gray-900 dark:text-gray-50"
+          >
+            {{ stock.ticker }}
+          </p>
+          <p class="truncate text-xs text-gray-500 dark:text-gray-500">
+            {{ stock.description }}
+          </p>
+        </div>
+        <div class="flex items-center space-x-3">
+          <div class="h-8 w-24 flex-none sm:w-28" #chartContainer>
+            <canvas
+              baseChart
+              [data]="stock.chartData"
+              [options]="chartOptions"
+              [type]="chartType"
+            ></canvas>
+          </div>
+          <div
+            [class]="getStockColorClasses(stock.changeType)"
+            class="flex w-28 items-center justify-end space-x-2 sm:w-32"
+          >
+            <span class="text-sm font-medium">{{ stock.value }}</span>
+            <span
+              [class]="getChangeColorClasses(stock.changeType)"
+              class="rounded px-1.5 py-1 text-xs font-medium tabular-nums"
+            >
+              {{ stock.change }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

@@ -1,0 +1,96 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update contact-sections/contact-section-2`
+-->
+
+<div class="bg-gray-50 dark:bg-gray-800">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-24">
+      <div>
+        <h2
+          class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+        >
+          Let's Work Together
+        </h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+          Have a project in mind? We're here to help bring your ideas to life.
+          Fill out the form and our team will get back to you within 24 hours.
+        </p>
+        <dl
+          class="mt-10 space-y-6 text-base leading-7 text-gray-600 dark:text-gray-400"
+        >
+          <div class="flex gap-x-4">
+            <dt class="flex-none">
+              <span class="material-icons text-gray-600 dark:text-gray-400"
+                >location_on</span
+              >
+            </dt>
+            <dd>456 Innovation Drive, Tech Park, CA 94025</dd>
+          </div>
+          <div class="flex gap-x-4">
+            <dt class="flex-none">
+              <span class="material-icons text-gray-600 dark:text-gray-400"
+                >phone</span
+              >
+            </dt>
+            <dd>
+              <a
+                href="tel:+1987654321"
+                class="hover:text-gray-900 dark:hover:text-white"
+                >+1 (987) 654-3210</a
+              >
+            </dd>
+          </div>
+          <div class="flex gap-x-4">
+            <dt class="flex-none">
+              <span class="material-icons text-gray-600 dark:text-gray-400"
+                >email</span
+              >
+            </dt>
+            <dd>
+              <a
+                href="mailto:hello@company.com"
+                class="hover:text-gray-900 dark:hover:text-white"
+                >hello&#64;company.com</a
+              >
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <div class="rounded-2xl bg-white p-8 shadow-lg dark:bg-gray-900">
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Email Address</mat-label>
+            <input matInput type="email" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Company</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Your Message</mat-label>
+            <textarea matInput rows="4"></textarea>
+          </mat-form-field>
+
+          <button matButton="filled" type="submit" class="w-full">
+            Submit Request
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

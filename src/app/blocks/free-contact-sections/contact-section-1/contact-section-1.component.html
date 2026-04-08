@@ -1,0 +1,65 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update free-contact-sections/contact-section-1`
+-->
+
+<div class="bg-white dark:bg-gray-900">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2
+        class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+      >
+        Get in Touch
+      </h2>
+      <p class="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        We'd love to hear from you. Send us a message and we'll respond as soon
+        as possible.
+      </p>
+    </div>
+    <div class="mx-auto mt-16 max-w-xl">
+      <form class="space-y-6">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Full Name</mat-label>
+          <input matInput type="text" placeholder="John Doe" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="john@example.com" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Message</mat-label>
+          <textarea
+            matInput
+            rows="4"
+            placeholder="Tell us how we can help..."
+          ></textarea>
+        </mat-form-field>
+
+        <button matButton="filled" type="submit" class="w-full">
+          Send Message
+        </button>
+      </form>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3">
+        @for (method of contactMethods; track method.icon) {
+        <a
+          [href]="method.link"
+          class="flex flex-col items-center rounded-lg border border-gray-200 p-6 text-center transition-all hover:border-gray-300 hover:shadow-md dark:border-gray-700 dark:hover:border-gray-600"
+        >
+          <span class="material-icons text-4xl text-gray-600 dark:text-gray-400"
+            >{{ method.icon }}</span
+          >
+          <h3 class="mt-4 font-semibold text-gray-900 dark:text-white">
+            {{ method.title }}
+          </h3>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            {{ method.description }}
+          </p>
+        </a>
+        }
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+{
+  "category": "cta-sections",
+  "variant": "cta-section-3",
+  "files": {
+    "cta-section-3.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update cta-sections/cta-section-3`\n-->\n\n<div class=\"bg-white dark:bg-gray-900\">\n  <div\n    class=\"mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:flex lg:items-center lg:justify-between lg:px-8\"\n  >\n    <h2\n      class=\"text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white\"\n    >\n      Ready to dive in?\n      <br />\n      Start building with us today.\n    </h2>\n    <div class=\"mt-10 flex items-center gap-x-6 lg:mt-0 lg:flex-shrink-0\">\n      <button matButton=\"filled\">Get started</button>\n      <a matButton href=\"#\">Contact sales <span aria-hidden=\"true\">→</span></a>\n    </div>\n  </div>\n</div>\n",
+    "cta-section-3.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update cta-sections/cta-section-3`\n*/\n\nimport { ChangeDetectionStrategy, Component } from '@angular/core';\nimport { MatButton } from '@angular/material/button';\n\n@Component({\n  selector: 'ngm-dev-block-cta-section-3',\n  templateUrl: './cta-section-3.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [MatButton],\n})\nexport class CtaSection3Component {}\n"
+  }
+}

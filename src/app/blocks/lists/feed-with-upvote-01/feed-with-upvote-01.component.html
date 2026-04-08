@@ -1,0 +1,81 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/feed-with-upvote-01`
+-->
+
+<div class="max-w-3xl mx-auto p-6 space-y-4">
+  @for (post of posts; track post.id) {
+  <mat-card appearance="outlined" class="hover:shadow-md transition-shadow">
+    <mat-card-content>
+      <div class="flex gap-4">
+        <!-- Upvote Button -->
+        <div class="flex flex-col items-center gap-1">
+          <button
+            mat-icon-button
+            [color]="post.isUpvoted ? 'primary' : ''"
+            (click)="onUpvote(post)"
+            class="density-3"
+          >
+            <mat-icon
+              [attr.data-upvoted]="post.isUpvoted"
+              class="data-[upvoted=true]:icon-filled"
+              >arrow_upward</mat-icon
+            >
+          </button>
+          <span class="text-sm font-medium">{{ post.upvotes }}</span>
+        </div>
+
+        <!-- Post Content -->
+        <div class="flex-1 space-y-3">
+          <!-- Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <img
+                [ngSrc]="post.author.img"
+                width="32"
+                height="32"
+                class="rounded-full"
+                [alt]="post.author.name"
+              />
+              <span class="text-sm">{{ post.author.name }}</span>
+              <span class="text-sm text-slate-700 dark:text-slate-400"
+                >{{ post.timestamp }}</span
+              >
+            </div>
+            <mat-chip-set>
+              <mat-chip
+                highlighted
+                [ngClass]="{
+                    'in-progress': post.status === 'In Progress',
+                    completed: post.status === 'Completed',
+                    planned: post.status === 'Planned',
+                  }"
+                >{{ post.status }}</mat-chip
+              >
+            </mat-chip-set>
+          </div>
+
+          <!-- Title and Content -->
+          <div>
+            <h3 class="text-lg font-medium mb-1">{{ post.title }}</h3>
+            <p class="text-gray-600 dark:text-gray-400">{{ post.content }}</p>
+          </div>
+
+          <!-- Footer -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              @for (tag of post.tags; track tag) {
+              <mat-chip class="text-xs">{{ tag }}</mat-chip>
+              }
+            </div>
+            <button matButton class="density-3">
+              <mat-icon>chat_bubble_outline</mat-icon>
+              {{ post.comments }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

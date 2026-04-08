@@ -1,0 +1,94 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/onboarding-feed-7`
+-->
+
+<div class="max-w-7xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8" data-testid="header-section">
+    <h2 class="text-2xl font-semibold mb-2" data-testid="header-title">
+      Workspace Setup
+    </h2>
+    <p
+      class="text-gray-600 dark:text-gray-400"
+      data-testid="header-description"
+    >
+      Complete these tasks to set up your workspace
+    </p>
+  </div>
+
+  <!-- Tabs -->
+  <mat-tab-group dynamicHeight fitInkBarToContent data-testid="tabs-container">
+    @for (tab of tabs; track tab.id) {
+    <mat-tab [attr.data-testid]="'tab-' + tab.id">
+      <ng-template mat-tab-label>
+        <span
+          class="flex items-center gap-2 px-6"
+          [attr.data-testid]="'tab-label-' + tab.id"
+        >
+          {{ tab.label }}
+          <span
+            class="inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded-full bg-surface-container-high"
+            [attr.data-testid]="'tab-count-' + tab.id"
+          >
+            {{ tab.count }}
+          </span>
+        </span>
+      </ng-template>
+
+      <!-- Tab Content -->
+      <div
+        class="max-h-[400px] overflow-y-auto pr-2 pt-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-primary [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-track]:bg-surface-container"
+        [attr.data-testid]="'tab-content-' + tab.id"
+      >
+        @for (step of getFilteredSteps(tab.id); track step.id) {
+        <div
+          class="flex items-start gap-3 mb-3 p-3 rounded-lg hover:bg-surface-container-low transition-colors"
+          [attr.data-testid]="'step-item-' + step.id"
+        >
+          <!-- Status Icon -->
+          <div
+            class="shrink-0"
+            [attr.data-testid]="'step-icon-container-' + step.id"
+          >
+            <mat-icon
+              [ngClass]="getStatusClass(step.status)"
+              [attr.data-testid]="'step-icon-' + step.id"
+              >{{ getStatusIcon(step.status) }}</mat-icon
+            >
+          </div>
+
+          <!-- Content -->
+          <div
+            class="flex-grow min-w-0"
+            [attr.data-testid]="'step-content-' + step.id"
+          >
+            <div class="flex items-center justify-between gap-3 mb-0.5">
+              <h3
+                class="text-base font-medium truncate"
+                [attr.data-testid]="'step-title-' + step.id"
+              >
+                {{ step.title }}
+              </h3>
+              @if (step.timestamp) {
+              <span
+                class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap"
+                [attr.data-testid]="'step-timestamp-' + step.id"
+                >{{ step.timestamp }}</span
+              >
+              }
+            </div>
+            <p
+              class="text-sm text-gray-600 dark:text-gray-400"
+              [attr.data-testid]="'step-description-' + step.id"
+            >
+              {{ step.description }}
+            </p>
+          </div>
+        </div>
+        }
+      </div>
+    </mat-tab>
+    }
+  </mat-tab-group>
+</div>

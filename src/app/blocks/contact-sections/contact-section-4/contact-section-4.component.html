@@ -1,0 +1,126 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update contact-sections/contact-section-4`
+-->
+
+<div class="bg-white dark:bg-gray-900">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="grid grid-cols-1 gap-16 lg:grid-cols-5">
+      <div class="lg:col-span-2">
+        <h2
+          class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+        >
+          Ready to Get Started?
+        </h2>
+        <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+          Fill out the form and our team will reach out to discuss your project
+          requirements and how we can help.
+        </p>
+
+        <div class="mt-10 space-y-6">
+          <div class="flex items-start gap-4">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900"
+            >
+              <span class="material-icons text-blue-600 dark:text-blue-400"
+                >schedule</span
+              >
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">
+                Quick Response
+              </h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                We respond to all inquiries within 2 business hours
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900"
+            >
+              <span class="material-icons text-blue-600 dark:text-blue-400"
+                >verified_user</span
+              >
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">
+                Secure Communication
+              </h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                Your information is encrypted and protected
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div
+              class="flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 dark:bg-blue-900"
+            >
+              <span class="material-icons text-blue-600 dark:text-blue-400"
+                >support_agent</span
+              >
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900 dark:text-white">
+                Expert Consultation
+              </h3>
+              <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                Get personalized advice from industry professionals
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-3">
+        <form class="space-y-6">
+          <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>First Name</mat-label>
+              <input matInput type="text" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Last Name</mat-label>
+              <input matInput type="text" required />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Work Email</mat-label>
+            <input matInput type="email" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Phone Number</mat-label>
+            <input matInput type="tel" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>Company Name</mat-label>
+            <input matInput type="text" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-full">
+            <mat-label>How can we help you?</mat-label>
+            <textarea matInput rows="5"></textarea>
+          </mat-form-field>
+
+          <div>
+            <mat-checkbox>
+              <span class="text-sm text-gray-600 dark:text-gray-400">
+                I agree to the privacy policy and terms of service
+              </span>
+            </mat-checkbox>
+          </div>
+
+          <button matButton="filled" type="submit" class="w-full">
+            Submit Inquiry
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

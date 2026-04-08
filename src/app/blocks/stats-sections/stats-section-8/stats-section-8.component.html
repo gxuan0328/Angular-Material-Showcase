@@ -1,0 +1,37 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stats-sections/stats-section-8`
+-->
+
+<div class="py-16 md:py-24 bg-surface-container-lowest">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <div class="text-center">
+      <div class="inline-flex items-center justify-center mb-6">
+        <mat-icon class="text-6xl w-16 h-16 text-primary">
+          trending_up
+        </mat-icon>
+      </div>
+      <div class="text-6xl font-bold md:text-7xl lg:text-8xl">
+        {{ mainStat.value }}
+      </div>
+      <div class="mt-4 text-2xl font-medium md:text-3xl">
+        {{ mainStat.label }}
+      </div>
+      <div
+        class="mt-3 text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+      >
+        {{ mainStat.description }}
+      </div>
+      <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+        @for (stat of supportingStats; track stat.id) {
+        <div class="flex flex-col items-center">
+          <div class="text-2xl font-bold md:text-3xl">{{ stat.value }}</div>
+          <div class="mt-2 text-base text-gray-600 dark:text-gray-400">
+            {{ stat.label }}
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

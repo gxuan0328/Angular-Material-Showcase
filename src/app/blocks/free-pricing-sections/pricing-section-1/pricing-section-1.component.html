@@ -1,0 +1,66 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update free-pricing-sections/pricing-section-1`
+-->
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 p-4 md:p-6 max-w-7xl mx-auto">
+  <div class="p-4 md:p-6">
+    <h3 class="font-semibold">Unlock all features</h3>
+    <p class="mt-2 leading-6 text-gray-600 dark:text-gray-400">
+      Get the full potential of your data with our enhanced features that enable
+      advanced data analytics and informed decision-making.
+    </p>
+    <div class="mt-8 space-y-6">
+      <div class="relative border-l-2 border-outline-variant pl-4">
+        <h4 class="font-medium">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend link to entire card -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Talk to Sales &#8594;
+          </a>
+        </h4>
+        <p class="mt-1 text-gray-600 dark:text-gray-400">
+          Schedule a call with one of our sales representative
+        </p>
+      </div>
+      <div class="relative border-l-2 border-outline-variant pl-4">
+        <h4 class="font-medium">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend link to entire card -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Book a demo &#8594;
+          </a>
+        </h4>
+        <p class="mt-1 text-gray-600 dark:text-gray-400">
+          Try out our premium features in a demo
+        </p>
+      </div>
+    </div>
+  </div>
+  <mat-card>
+    <mat-card-header class="w-full justify-between">
+      <div mat-card-avatar class="w-auto! order-2">
+        <span class="text-4xl font-semibold">$89</span>
+        <span class="text-gray-600 dark:text-gray-400">/mo</span>
+      </div>
+      <mat-card-title class="order-1">
+        Professional Plan Subscription
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        @for (feature of features; track feature.id) {
+        <mat-list-item>
+          <mat-icon matListItemIcon class="text-primary! icon-filled"
+            >check_circle</mat-icon
+          >
+          <span matListItemTitle>{{ feature.name }}</span>
+        </mat-list-item>
+        }
+      </mat-list>
+    </mat-card-content>
+    <mat-card-actions>
+      <a href="#" matButton="filled" class="w-full"> Upgrade </a>
+    </mat-card-actions>
+  </mat-card>
+</div>

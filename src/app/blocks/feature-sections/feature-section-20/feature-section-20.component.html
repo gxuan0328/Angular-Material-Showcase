@@ -1,0 +1,43 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-20`
+-->
+
+<div class="mx-auto w-full max-w-3xl px-3 py-20">
+  <div class="text-center">
+    <span
+      class="inline-block rounded-lg border border-violet-200/20 bg-violet-50/50 px-3 py-1.5 font-semibold uppercase leading-4 tracking-tighter dark:border-violet-800/30 dark:bg-violet-900/20 sm:text-sm"
+    >
+      <span
+        class="bg-gradient-to-b from-violet-500 to-violet-600 bg-clip-text text-transparent dark:from-violet-200 dark:to-violet-400"
+      >
+        Questions
+      </span>
+    </span>
+    <h2 class="mt-4 text-4xl font-bold tracking-tighter sm:text-5xl">
+      Common questions answered
+    </h2>
+    <p
+      class="mx-auto mt-6 max-w-2xl text-lg leading-7 text-gray-600 dark:text-gray-400"
+    >
+      Find answers to the most common questions about our platform. Need more
+      help? Reach out to our team.
+    </p>
+  </div>
+  <div class="mt-12 space-y-4">
+    @for (faq of faqs; track faq.question) {
+    <mat-expansion-panel
+      class="rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900"
+    >
+      <mat-expansion-panel-header class="px-6">
+        <mat-panel-title
+          class="text-base font-semibold text-gray-900 dark:text-gray-50"
+        >
+          {{ faq.question }}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p class="px-6 pb-4 text-gray-600 dark:text-gray-400">{{ faq.answer }}</p>
+    </mat-expansion-panel>
+    }
+  </div>
+</div>

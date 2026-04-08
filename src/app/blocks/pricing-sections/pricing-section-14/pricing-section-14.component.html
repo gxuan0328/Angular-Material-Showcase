@@ -1,0 +1,175 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update pricing-sections/pricing-section-14`
+-->
+
+<div class="bg-surface py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto max-w-4xl text-center mb-16">
+      <h2 class="text-base font-semibold leading-7 text-primary">
+        Flexible Pricing
+      </h2>
+      <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+        Choose a pricing plan
+      </p>
+      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Select the perfect plan that fits your business needs and budget. Switch
+        between plans anytime.
+      </p>
+    </div>
+
+    <!-- Two Column Layout -->
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <!-- Left Column: Plan Selection -->
+      <div class="space-y-4">
+        @for (plan of plans; track plan.id) {
+        <mat-card
+          class="cursor-pointer transition-all duration-200"
+          [class]="
+              selectedPlan().id === plan.id
+                ? 'ring-2! ring-primary! bg-primary-container!'
+                : 'hover:bg-surface-container!'
+            "
+          (click)="selectPlan(plan)"
+          role="button"
+        >
+          <mat-card-content class="p-6">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <div
+                  class="flex size-12 items-center justify-center rounded-lg bg-primary-container"
+                >
+                  <mat-icon class="text-on-primary-container!"
+                    >{{ plan.icon }}</mat-icon
+                  >
+                </div>
+                <div>
+                  <h3 class="text-lg font-semibold">{{ plan.name }}</h3>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ plan.shortDescription }}
+                  </p>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="text-2xl font-bold">{{ plan.price }}</div>
+                <div class="text-sm text-gray-600 dark:text-gray-400">
+                  {{ plan.period }}
+                </div>
+              </div>
+            </div>
+
+            @if (selectedPlan().id === plan.id) {
+            <div class="mt-4 pt-4 border-t border-on-primary-container">
+              <div class="flex items-center gap-2 text-on-primary-container">
+                <mat-icon class="text-lg! size-[1em]! leading-none! icon-filled"
+                  >check_circle</mat-icon
+                >
+                <span class="text-sm font-medium">Currently selected</span>
+              </div>
+            </div>
+            }
+          </mat-card-content>
+        </mat-card>
+        }
+      </div>
+
+      <!-- Right Column: Plan Details -->
+      <div>
+        <mat-card>
+          <mat-card-header>
+            <div
+              mat-card-avatar
+              class="size-16 flex items-center justify-center rounded-lg! bg-primary-container"
+            >
+              <mat-icon class="text-on-primary-container!"
+                >{{ selectedPlan().icon }}</mat-icon
+              >
+            </div>
+            <mat-card-title> {{ selectedPlan().name }} </mat-card-title>
+            <mat-card-subtitle class="text-sm!">
+              {{ selectedPlan().shortDescription }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <!-- Pricing -->
+            <div class="my-8">
+              <div class="flex items-baseline gap-2">
+                <span class="text-5xl font-bold"
+                  >{{ selectedPlan().price }}</span
+                >
+                <span class="text-lg text-gray-600 dark:text-gray-400"
+                  >{{ selectedPlan().period }}</span
+                >
+              </div>
+              @if (selectedPlan().priceNote) {
+              <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+                {{ selectedPlan().priceNote }}
+              </p>
+              }
+            </div>
+
+            <!-- CTA Button -->
+            <button matButton="filled" class="w-full mb-8">
+              {{ selectedPlan().cta }}
+            </button>
+
+            <!-- Features List -->
+            <div>
+              <h4 class="text-lg font-semibold mb-6">
+                {{ selectedPlan().featuresTitle }}
+              </h4>
+              <mat-list class="space-y-3">
+                @for (feature of selectedPlan().features; track feature.id) {
+                <mat-list-item [disabled]="!feature.included">
+                  <mat-icon
+                    matListItemIcon
+                    [class]="
+                        feature.included
+                          ? 'text-primary!'
+                          : 'text-gray-600 dark:text-gray-400!'
+                      "
+                  >
+                    {{ feature.included ? 'check' : 'close' }}
+                  </mat-icon>
+                  <span
+                    matListItemTitle
+                    [class]="feature.included ? '' : 'line-through!'"
+                  >
+                    {{ feature.name }}
+                  </span>
+                  @if (feature.included && feature.description) {
+                  <span matListItemLine class="text-xs pl-1">
+                    {{ feature.description }}
+                  </span>
+                  }
+                </mat-list-item>
+                }
+              </mat-list>
+            </div>
+
+            <!-- Additional Info -->
+            @if (selectedPlan().additionalInfo) {
+            <div class="mt-8 p-4 bg-surface-container-highest rounded-lg">
+              <h5 class="font-medium mb-2">
+                {{ selectedPlan().additionalInfo?.title }}
+              </h5>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {{ selectedPlan().additionalInfo?.description }}
+              </p>
+            </div>
+            }
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Bottom Info -->
+        <div class="mt-6 text-center">
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            All plans include a 30-day money-back guarantee.
+            <a href="#" class="underline"> Learn more </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

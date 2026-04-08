@@ -1,0 +1,44 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-08`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="text-sm font-medium">{{ item.name }}</div>
+      <div class="mt-1 flex items-baseline space-x-2.5">
+        <p class="text-3xl font-semibold">{{ item.stat }}</p>
+        <p class="text-sm">from {{ item.previousStat }}</p>
+      </div>
+      <div class="mt-4 flex items-center space-x-2">
+        <p class="flex items-center space-x-0.5">
+          @if (item.changeType === 'positive') {
+          <mat-icon
+            class="size-[1em]! text-lg! leading-none! shrink-0 text-emerald-700! dark:text-emerald-500!"
+            >arrow_upward</mat-icon
+          >
+          } @else {
+          <mat-icon
+            class="size-[1em]! text-lg! leading-none! shrink-0 text-red-700! dark:text-red-500!"
+            >arrow_downward</mat-icon
+          >
+          }
+          <span
+            [class]="
+                item.changeType === 'positive'
+                  ? 'text-emerald-700 dark:text-emerald-500'
+                  : 'text-red-700 dark:text-red-500'
+              "
+            class="text-sm font-medium"
+          >
+            {{ item.change }}
+          </span>
+        </p>
+        <p class="text-sm">from last month</p>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

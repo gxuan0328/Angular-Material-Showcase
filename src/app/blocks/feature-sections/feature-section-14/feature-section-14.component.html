@@ -1,0 +1,62 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-14`
+-->
+
+<div class="mx-auto w-full max-w-6xl px-3 py-20">
+  <div class="text-center">
+    <span
+      class="inline-block rounded-lg border border-violet-200/20 bg-violet-50/50 px-3 py-1.5 font-semibold uppercase leading-4 tracking-tighter dark:border-violet-800/30 dark:bg-violet-900/20 sm:text-sm"
+    >
+      <span
+        class="bg-gradient-to-b from-violet-500 to-violet-600 bg-clip-text text-transparent dark:from-violet-200 dark:to-violet-400"
+      >
+        Success stories
+      </span>
+    </span>
+    <h2 class="mt-4 text-4xl font-bold tracking-tighter sm:text-5xl">
+      Trusted by organizations globally
+    </h2>
+    <p
+      class="mx-auto mt-6 max-w-2xl text-lg leading-7 text-gray-600 dark:text-gray-400"
+    >
+      Read how our platform has helped teams achieve their goals and transform
+      their workflows.
+    </p>
+  </div>
+  <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+    @for (testimonial of testimonials; track testimonial.author) {
+    <div
+      class="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm dark:border-gray-800 dark:bg-gray-900"
+    >
+      <div class="flex items-center gap-1 text-violet-600 dark:text-violet-400">
+        @for (star of [1, 2, 3, 4, 5]; track star) {
+        <mat-icon aria-hidden="true" class="text-lg!">star</mat-icon>
+        }
+      </div>
+      <blockquote class="mt-4 text-gray-700 dark:text-gray-300">
+        <p>"{{ testimonial.quote }}"</p>
+      </blockquote>
+      <div class="mt-6 flex items-center gap-4">
+        <div
+          class="flex size-12 items-center justify-center rounded-full bg-violet-100 dark:bg-violet-900/30"
+        >
+          <span
+            class="text-lg font-semibold text-violet-600 dark:text-violet-400"
+          >
+            {{ testimonial.author.charAt(0) }}
+          </span>
+        </div>
+        <div>
+          <div class="font-semibold text-gray-900 dark:text-gray-50">
+            {{ testimonial.author }}
+          </div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">
+            {{ testimonial.role }}, {{ testimonial.company }}
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+</div>

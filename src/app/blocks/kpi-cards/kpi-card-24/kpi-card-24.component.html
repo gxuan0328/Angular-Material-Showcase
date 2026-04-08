@@ -1,0 +1,48 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-24`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="flex flex-nowrap items-center gap-2 text-sm font-semibold">
+        <div
+          class="rounded-md p-1.5 shadow ring-1 ring-black/5 dark:ring-white/15"
+        >
+          <mat-icon class="text-xl! leading-none! size-[1em]! align-middle"
+            >{{ item.icon }}</mat-icon
+          >
+        </div>
+        <span>{{ item.name }}</span>
+      </div>
+      <div class="mt-3 flex items-baseline justify-between space-x-2.5">
+        <span class="text-3xl font-semibold"> {{ item.stat }} </span>
+        <span
+          [class]="{
+              'text-emerald-700 dark:text-emerald-500':
+                item.changeType === 'positive',
+              'text-red-700 dark:text-red-500': item.changeType === 'negative',
+            }"
+          class="text-sm font-medium"
+        >
+          {{ item.change }}
+        </span>
+      </div>
+      <div class="mt-5 flex flex-col gap-3">
+        @for (entry of item.top3 | keyvalue; track entry.key) {
+        <div class="flex justify-between text-sm">
+          <div class="truncate text-gray-600 dark:text-gray-400">
+            {{ entry.key }}
+          </div>
+          <div class="font-medium">
+            {{ formatValue(entry.value, item.name) }}
+          </div>
+        </div>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

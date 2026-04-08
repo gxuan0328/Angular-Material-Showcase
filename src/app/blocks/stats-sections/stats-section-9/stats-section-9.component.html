@@ -1,0 +1,32 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stats-sections/stats-section-9`
+-->
+
+<div class="py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">
+        Why companies choose us
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+      @for (stat of stats; track stat.id) {
+      <div class="relative p-6 border border-outline-variant rounded-lg">
+        <div
+          class="absolute -top-3 left-6 px-3 py-1 bg-primary-container text-on-primary-container text-xs font-medium rounded-full"
+        >
+          {{ stat.badge }}
+        </div>
+        <div class="mt-2">
+          <div class="text-3xl font-bold md:text-4xl">{{ stat.value }}</div>
+          <div class="mt-3 text-base font-medium">{{ stat.label }}</div>
+          <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            {{ stat.description }}
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

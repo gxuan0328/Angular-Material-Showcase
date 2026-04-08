@@ -1,0 +1,34 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-18`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card class="sm:mx-auto sm:max-w-lg" appearance="outlined">
+    <mat-card-content>
+      <div class="flex items-baseline justify-between">
+        <div class="text-sm">{{ item.name }}</div>
+        <div
+          class="rounded-md bg-gray-100 px-1.5 py-0.5 text-sm text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+        >
+          {{ item.change }}
+        </div>
+      </div>
+      <div class="mt-2 flex items-baseline justify-between">
+        <span class="font-semibold"> {{ item.currentValue }} </span>
+        <span class="text-sm"> On {{ item.date }} </span>
+      </div>
+      <div class="mt-8 h-20">
+        <canvas
+          baseChart
+          [type]="'line'"
+          [data]="item.chartData"
+          [options]="chartOptions"
+        >
+        </canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

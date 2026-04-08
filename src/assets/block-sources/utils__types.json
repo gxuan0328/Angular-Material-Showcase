@@ -1,0 +1,8 @@
+{
+  "category": "utils",
+  "variant": "types",
+  "files": {
+    "custom-chart-configuration.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update utils/types`\n*/\n\nimport {\n  ChartConfiguration,\n  ChartOptions,\n  ChartType,\n  DefaultDataPoint,\n} from 'chart.js';\n\nexport type VerticalHoverLineOptions = {\n  color?: string;\n};\n\nexport type HoverSegmentOptions = {\n  color?: string;\n  indexAxis?: 'x' | 'y';\n};\n\ntype PluginsOf<TType extends ChartType> =\n  ChartOptions<TType> extends { plugins?: infer P } ? NonNullable<P> : never;\n\nexport type CustomPluginOptionsByType<TType extends ChartType> =\n  PluginsOf<TType> & {\n    verticalHoverLine?: VerticalHoverLineOptions;\n    hoverSegment?: HoverSegmentOptions;\n  };\n\nexport type CustomChartOptions<TType extends ChartType = ChartType> = Omit<\n  ChartOptions<TType>,\n  'plugins'\n> & {\n  plugins?: CustomPluginOptionsByType<TType>;\n};\n\nexport type CustomChartConfiguration<\n  TType extends ChartType = ChartType,\n  TData = DefaultDataPoint<TType>,\n  TLabel = unknown,\n> = Omit<ChartConfiguration<TType, TData, TLabel>, 'options'> & {\n  options?: CustomChartOptions<TType>;\n};\n",
+    "index.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update utils/types`\n*/\n\nexport * from './custom-chart-configuration';\n"
+  }
+}

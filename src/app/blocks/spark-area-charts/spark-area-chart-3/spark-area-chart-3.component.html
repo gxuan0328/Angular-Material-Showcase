@@ -1,0 +1,65 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update spark-area-charts/spark-area-chart-3`
+-->
+
+<div class="sm:mx-auto sm:max-w-md">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-subtitle>Portfolio</mat-card-subtitle>
+      <mat-card-title class="text-display-small! font-display-small!"
+        >$92,154.75</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <p class="mt-1 text-sm font-medium">
+        <span class="text-emerald-700 dark:text-emerald-500">
+          +$1,247.82 (1.4%)
+        </span>
+        <span class="font-normal text-gray-500 dark:text-gray-500 ml-1">
+          Today
+        </span>
+      </p>
+
+      <mat-tab-group class="mt-6">
+        @for (tab of tabs; track tab.name; let i = $index) {
+        <mat-tab [label]="tab.name">
+          <div class="mt-8">
+            <div role="list" class="space-y-6">
+              @for (stock of tab.stocks; track stock.ticker) {
+              <div
+                class="flex items-center justify-between space-x-6"
+                role="listitem"
+              >
+                <div>
+                  <p
+                    class="text-sm font-medium text-gray-900 dark:text-gray-50"
+                  >
+                    {{ stock.description }}
+                  </p>
+                  <p
+                    [class]="getChangeColorClasses(stock.changeType)"
+                    class="flex items-center space-x-1 text-sm"
+                  >
+                    <span class="font-medium">{{ stock.value }}</span>
+                    <span>({{ stock.change }})</span>
+                  </p>
+                </div>
+                <div class="h-10 w-36 flex-none sm:w-44">
+                  <canvas
+                    baseChart
+                    [data]="stock.chartData"
+                    [options]="chartOptions"
+                    [type]="chartType"
+                  ></canvas>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </mat-tab>
+        }
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

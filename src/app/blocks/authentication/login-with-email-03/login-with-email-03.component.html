@@ -1,0 +1,58 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update authentication/login-with-email-03`
+-->
+
+<div class="p-4 max-w-7xl mx-auto">
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="max-w-md mx-auto space-y-8">
+        <div class="flex flex-col items-center space-y-4">
+          <img
+            src="https://ui.angular-material.dev/app-ui/logo.svg"
+            alt="Logo"
+            height="48"
+            width="48"
+            class="inline"
+          />
+          <h1 class="text-3xl text-center">Log in to App</h1>
+        </div>
+
+        <div class="flex flex-col space-y-4">
+          <button matButton="filled" type="button" class="github-button">
+            <mat-icon svgIcon="github" />
+            <span>Login with Github</span>
+          </button>
+          <button matButton="filled" type="button" class="gitlab-button">
+            <mat-icon svgIcon="gitlab" />
+            <span>Login with Gitlab</span>
+          </button>
+          <button matButton="filled" type="button" class="bitbucket-button">
+            <mat-icon svgIcon="bitbucket" />
+            <span>Login with Bitbucket</span>
+          </button>
+        </div>
+
+        <div class="flex py-5 items-center" role="separator">
+          <div class="flex-grow h-px bg-outline-variant"></div>
+          <span class="flex-shrink mx-4">OR</span>
+          <div class="flex-grow h-px bg-outline-variant"></div>
+        </div>
+
+        <div class="flex flex-col space-y-4">
+          <button matButton="filled" type="button">
+            Continue with SAML SSO
+          </button>
+          <button matButton="outlined" type="button">
+            <mat-icon>passkey</mat-icon>
+            <span>Login with Passkey</span>
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions align="end" class="density-3">
+      <span class="text-sm">Not a member?</span>
+      <a matButton>Create your account</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

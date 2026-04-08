@@ -1,0 +1,39 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-13`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content class="px-6 pt-6">
+      <div class="flex items-center space-x-3">
+        <ngm-dev-block-ui-progress-circle
+          [value]="item.progress"
+          [radius]="25"
+          [strokeWidth]="5"
+        >
+          <span class="text-xs font-medium"> {{ item.progress }}&#37; </span>
+        </ngm-dev-block-ui-progress-circle>
+        <div>
+          <div class="text-sm font-medium">
+            {{ item.current }} / {{ item.budget }}
+          </div>
+          <div class="text-sm">Budget {{ item.name }}</div>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-footer
+      align="end"
+      class="px-6 py-3 border-t border-outline-variant mt-3"
+    >
+      <a
+        [href]="item.href"
+        class="text-sm font-medium text-primary hover:underline"
+      >
+        View more &#8594;
+      </a>
+    </mat-card-footer>
+  </mat-card>
+  }
+</div>

@@ -1,0 +1,61 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update testimonial-sections/testimonial-section-5`
+-->
+
+<section class="bg-white py-24 sm:py-32 dark:bg-gray-900">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2
+        class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+      >
+        What our customers are saying
+      </h2>
+      <p class="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Real feedback from real users who have experienced the difference.
+      </p>
+    </div>
+    <div
+      class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-3"
+    >
+      @for (testimonial of testimonials; track testimonial.author) {
+      <div class="flex flex-col rounded-2xl bg-gray-50 p-8 dark:bg-gray-800">
+        <div class="flex gap-x-1">
+          @for (star of [1, 2, 3, 4, 5]; track star) {
+          <mat-icon
+            class="h-5 w-5"
+            [class.text-yellow-500]="star <= testimonial.rating"
+            [class.text-gray-300]="star > testimonial.rating"
+            [class.dark:text-gray-600]="star > testimonial.rating"
+          >
+            star
+          </mat-icon>
+          }
+        </div>
+        <blockquote
+          class="mt-6 flex-1 text-base leading-7 text-gray-700 dark:text-gray-300"
+        >
+          {{ testimonial.content }}
+        </blockquote>
+        <figcaption
+          class="mt-8 flex items-center gap-x-4 border-t border-gray-200 pt-6 dark:border-gray-700"
+        >
+          <img
+            class="h-12 w-12 rounded-full object-cover"
+            [src]="testimonial.image"
+            [alt]="testimonial.author"
+          />
+          <div>
+            <div class="font-semibold text-gray-900 dark:text-white">
+              {{ testimonial.author }}
+            </div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+              {{ testimonial.role }}, {{ testimonial.company }}
+            </div>
+          </div>
+        </figcaption>
+      </div>
+      }
+    </div>
+  </div>
+</section>

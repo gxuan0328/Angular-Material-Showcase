@@ -1,0 +1,24 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stats-sections/stats-section-7`
+-->
+
+<div class="py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <div
+      class="grid grid-cols-1 divide-y divide-outline-variant md:grid-cols-4 md:divide-y-0 md:divide-x"
+    >
+      @for (stat of stats; track stat.id) {
+      <div class="flex flex-col items-center text-center py-8 md:py-0 px-4">
+        <div class="text-4xl font-bold md:text-5xl">{{ stat.value }}</div>
+        <div class="mt-3 text-base font-medium">{{ stat.label }}</div>
+        @if (stat.subtext) {
+        <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          {{ stat.subtext }}
+        </div>
+        }
+      </div>
+      }
+    </div>
+  </div>
+</div>

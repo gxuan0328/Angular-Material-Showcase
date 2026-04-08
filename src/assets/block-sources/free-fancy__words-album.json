@@ -1,0 +1,8 @@
+{
+  "category": "free-fancy",
+  "variant": "words-album",
+  "files": {
+    "words-album.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update free-fancy/words-album`\n-->\n\n<div\n  class=\"size-full overflow-hidden bg-[#1f464d] text-[#1f464d]\"\n  #constraintsRef\n>\n  <ngm-dev-block-uidrag-elements class=\"p-40\" [dragBoundary]=\"constraintsRef\">\n    <div\n      *ngmDevBlockUiDragElement\n      class=\"text-2xl md:text-6xl px-6 py-3 md:px-8 md:py-4 rounded-full bg-[#e794da] shadow-lg rotate-[-2deg] justify-center items-center whitespace-nowrap\"\n    >\n      super fun ✿\n    </div>\n    <div\n      *ngmDevBlockUiDragElement\n      class=\"text-2xl md:text-6xl px-6 py-3 md:px-8 md:py-4 rounded-full bg-[#e794da] shadow-lg rotate-[2deg] justify-center items-center whitespace-nowrap\"\n    >\n      funky time! ✴\n    </div>\n    <div\n      *ngmDevBlockUiDragElement\n      class=\"text-2xl md:text-6xl px-6 py-3 md:px-8 md:py-4 rounded-full bg-[#e794da] shadow-lg rotate-[-4deg] justify-center items-center whitespace-nowrap\"\n    >\n      awesome ✺\n    </div>\n  </ngm-dev-block-uidrag-elements>\n</div>\n",
+    "words-album.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update free-fancy/words-album`\n*/\n\nimport { Component } from '@angular/core';\nimport {\n  DragElementDirective,\n  DragElementsComponent,\n} from '../../components/drag-elements/drag-elements.component';\n\n@Component({\n  selector: 'ngm-dev-block-words-album',\n  templateUrl: './words-album.component.html',\n  imports: [DragElementsComponent, DragElementDirective],\n})\nexport class WordsAlbumComponent {}\n"
+  }
+}

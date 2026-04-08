@@ -1,0 +1,39 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update spark-area-charts/spark-area-chart-6`
+-->
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
+  @for (item of summary; track item.name) {
+  <mat-card appearance="outlined" role="listitem">
+    <mat-card-content>
+      <div class="flex items-center justify-between space-x-4">
+        <div class="truncate">
+          <div class="flex items-center space-x-1.5">
+            <p class="text-sm font-medium text-gray-900 dark:text-gray-50">
+              {{ item.name }}
+            </p>
+            <span
+              [class]="getBadgeColorClasses(item.changeType)"
+              class="inline-flex items-center rounded px-2 py-0.5 text-xs"
+            >
+              {{ item.change }}
+            </span>
+          </div>
+          <p class="mt-0.5 truncate text-xs text-gray-500 dark:text-gray-500">
+            {{ item.description }}
+          </p>
+        </div>
+        <div class="h-10 flex-none w-28">
+          <canvas
+            baseChart
+            [data]="item.chartData"
+            [options]="chartOptions"
+            [type]="chartType"
+          ></canvas>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

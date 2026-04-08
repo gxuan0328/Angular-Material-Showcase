@@ -1,0 +1,95 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update pricing-sections/pricing-section-3`
+-->
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2 max-w-7xl mx-auto p-4 md:p-6">
+  <div class="p-6">
+    <h3 class="font-semibold">Unlock all features</h3>
+    <p class="mt-2 leading-6 text-gray-600 dark:text-gray-400">
+      Get the full potential of your data with our enhanced features that enable
+      advanced data analytics and informed decision-making.
+    </p>
+    <div class="mt-8 space-y-6">
+      <div class="relative border-l-2 border-outline-variant pl-4">
+        <h4 class="font-medium">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend link to entire card -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Talk to Sales &#8594;
+          </a>
+        </h4>
+        <p class="mt-1 text-gray-600 dark:text-gray-400">
+          Schedule a call with one of our sales representative
+        </p>
+      </div>
+      <div class="relative border-l-2 border-outline-variant pl-4">
+        <h4 class="font-medium">
+          <a href="#" class="focus:outline-none">
+            <!-- Extend link to entire card -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            Book a demo &#8594;
+          </a>
+        </h4>
+        <p class="mt-1 text-gray-600 dark:text-gray-400">
+          Try out our premium features in a demo
+        </p>
+      </div>
+    </div>
+  </div>
+  <form (ngSubmit)="onSubmit()" #planForm="ngForm">
+    <mat-card>
+      <mat-card-content>
+        <h3 class="font-semibold">Professional Plan Subscription</h3>
+        <mat-radio-group
+          [(ngModel)]="selectedPlan"
+          name="plan"
+          class="mt-4 block space-y-4"
+        >
+          @for (plan of plans; track plan.name) {
+          <mat-radio-button
+            [value]="plan"
+            class="border border-outline-variant rounded-md block [&_.mat-internal-form-field]:flex! [&_.mdc-label]:w-full!"
+          >
+            <div
+              class="flex items-center justify-between space-x-6 pr-4 py-4 sm:pr-6"
+            >
+              <div class="flex items-center space-x-3 truncate">
+                <div class="block items-center space-x-3 truncate lg:flex">
+                  <span class="truncate font-semibold"> {{ plan.name }} </span>
+                  @if (plan.isRecommended) {
+                  <span
+                    class="hidden items-center rounded bg-primary-container px-2 py-1 text-body-small font-medium text-on-primary-container ring-1 ring-inset ring-outline-variant lg:inline-flex"
+                  >
+                    Save 10%
+                  </span>
+                  }
+                </div>
+              </div>
+              <p class="flex items-baseline">
+                <span class="font-semibold sm:text-2xl">
+                  {{ plan.price }}
+                </span>
+                <span class="text-gray-600 dark:text-gray-400"> /mo </span>
+              </p>
+            </div>
+          </mat-radio-button>
+          }
+        </mat-radio-group>
+        <mat-list>
+          @for (feature of features; track feature.id) {
+          <mat-list-item>
+            <mat-icon matListItemIcon class="text-primary! icon-filled"
+              >check_circle</mat-icon
+            >
+            <span matListItemTitle>{{ feature.name }}</span>
+          </mat-list-item>
+          }
+        </mat-list>
+      </mat-card-content>
+      <mat-card-actions class="border-t border-outline-variant">
+        <button matButton="filled" class="w-full">Buy and upgrade</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

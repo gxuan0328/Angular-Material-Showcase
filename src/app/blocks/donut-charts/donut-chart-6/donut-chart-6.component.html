@@ -1,0 +1,59 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update donut-charts/donut-chart-6`
+-->
+
+<div class="mx-auto max-w-xl">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Investment Portfolio</mat-card-title>
+      <mat-card-subtitle>
+        Strategic asset allocation optimized for long-term growth.
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mt-6 grid grid-cols-1 gap-0 sm:grid-cols-2 sm:gap-8 pb-3">
+        <!-- Chart Container -->
+        <div class="h-48 relative" #chartImage>
+          <div
+            class="absolute inset-0 flex items-center justify-center flex-col"
+          >
+            <span class="text-body-large font-body-large">
+              {{ currencyFormatter(getTotal(chartData.datasets[0].data)) }}
+            </span>
+          </div>
+
+          <!-- Chart -->
+          <canvas
+            class="relative z-1"
+            baseChart
+            [data]="chartData"
+            [options]="chartOptions"
+            [type]="chartType"
+          ></canvas>
+        </div>
+
+        <!-- Legend -->
+        <mat-list>
+          @for (item of data; track item.name) {
+          <mat-list-item>
+            <span
+              class="h-[60%]! w-1! rounded-sm ml-0!"
+              [style.background]="item.color"
+              aria-hidden="true"
+              matListItemIcon
+            ></span>
+            <span matListItemTitle>
+              <span class="tabular-nums">
+                {{ currencyFormatter(item.amount) }}
+              </span>
+              <span class="text-gray-500"> ({{ item.share }}) </span>
+            </span>
+            <span matListItemLine> {{ item.name }} </span>
+          </mat-list-item>
+          }
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,38 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-25`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (card of cards; track card.title) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="text-sm font-medium">{{ card.title }}</div>
+      <div class="mt-1 text-3xl font-semibold">{{ card.value }}</div>
+      <div class="mt-6">
+        <ngm-dev-block-ui-category-bar
+          [values]="card.categoryValues"
+          [colors]="card.categoryColors"
+          [showLabels]="false"
+        />
+      </div>
+      <ul role="list" class="mt-4 flex flex-wrap gap-x-8 gap-y-4 text-sm">
+        @for (item of card.categories; track item.label) {
+        <li>
+          <span class="text-base font-semibold"> {{ item.percentage }}% </span>
+          <div class="flex items-center gap-2">
+            <span
+              [class]="item.color"
+              class="size-2.5 shrink-0 rounded-sm"
+              aria-hidden="true"
+            >
+            </span>
+            <span class="text-sm"> {{ item.label }} </span>
+          </div>
+        </li>
+        }
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

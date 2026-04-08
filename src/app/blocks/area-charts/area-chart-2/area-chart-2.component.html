@@ -1,0 +1,118 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update area-charts/area-chart-2`
+-->
+
+<div class="mx-auto max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Follower Metrics</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="mt-6 h-48 relative" #chartImage>
+        <!-- tooltip -->
+        <div
+          #tooltipElement
+          [class]="
+            'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 ' +
+            (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+          "
+          [style.transform]="
+            getTooltipTransform(
+              tooltip?.caretX ?? 0,
+              tooltipElement.offsetWidth,
+              chartImage.offsetWidth
+            )
+          "
+        >
+          <h3 class="text-body-large font-medium my-2 px-3">
+            {{ tooltip?.title?.[0] }}
+          </h3>
+          <mat-divider class="border-outline-variant!" />
+          <div class="p-3">
+            @for (item of tooltip?.dataPoints; track item; let i = $index) {
+            <div class="flex items-center w-full justify-between">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="h-1 w-3 shrink-0 rounded-sm"
+                  [style.background]="
+                      tooltip?.labelColors?.[i]?.borderColor?.toString()
+                    "
+                  aria-hidden="true"
+                ></span>
+                <span class="text-body-medium font-body-small"
+                  >{{ item?.dataset?.label }}</span
+                >
+              </div>
+              <span class="text-body-medium font-medium text-right"
+                >{{ item?.formattedValue }}</span
+              >
+            </div>
+            }
+          </div>
+        </div>
+
+        <canvas
+          class="z-2 relative"
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [plugins]="chartPlugins"
+          [type]="chartType"
+        ></canvas>
+      </div>
+      <mat-list>
+        @for (item of summary; track item.name; let last = $last) {
+        <mat-list-item class="density-2">
+          <span
+            class="h-1! w-3! rounded-sm"
+            [style.background]="item.color"
+            aria-hidden="true"
+            matListItemIcon
+          ></span>
+          <span class="flex items-center justify-between w-full">
+            <span class="text-body-medium font-body-small"
+              >{{ item.name }}</span
+            >
+            <span class="text-body-medium font-medium text-right"
+              >{{ item.value | number }}</span
+            >
+          </span>
+        </mat-list-item>
+        @if (!last) {
+        <mat-divider class="border-outline-variant!" />
+        } }
+      </mat-list>
+      @if (isOpen()) {
+      <div
+        class="mt-3 rounded-md bg-gray-50 px-4 py-3 ring-1 ring-inset ring-gray-200 dark:bg-gray-800 dark:ring-gray-700"
+      >
+        <div class="flex items-center justify-between gap-4">
+          <div class="flex items-center gap-2">
+            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">
+              More power?
+              <a
+                href="#"
+                class="font-normal text-primary hover:underline hover:underline-offset-4"
+              >
+                Upgrade
+              </a>
+              <span class="font-normal text-gray-600 dark:text-gray-400">
+                to get more insights.
+              </span>
+            </p>
+          </div>
+          <button
+            mat-icon-button
+            (click)="isOpen.set(false)"
+            aria-label="Close"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+      </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

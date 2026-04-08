@@ -1,0 +1,124 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bento-grids/bento-grid-5`
+-->
+
+<div class="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">
+      Scale with confidence
+    </h2>
+    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+      Built to grow with your business, from startup to enterprise.
+    </p>
+  </div>
+
+  <div class="mx-auto mt-16 grid max-w-7xl gap-6 lg:grid-cols-4">
+    <!-- Large card spanning multiple columns -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface lg:col-span-2 lg:row-span-2"
+    >
+      <div class="flex h-full flex-col p-8">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+        >
+          <mat-icon class="text-primary">insights</mat-icon>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold">Real-time Insights</h3>
+        <p class="mt-4 text-base leading-7 text-gray-600 dark:text-gray-400">
+          Monitor your business metrics and make informed decisions with live
+          data visualization.
+        </p>
+        <div class="mt-8 flex-1">
+          <img
+            src="https://placehold.co/700x500/10b981/white?text=Analytics+View"
+            alt="Analytics"
+            class="h-full w-full rounded-lg object-cover"
+          />
+        </div>
+        <div class="mt-6 grid grid-cols-3 gap-4">
+          @for (stat of stats; track stat.label) {
+          <div class="text-center">
+            <div class="text-2xl font-bold text-primary">{{ stat.value }}</div>
+            <div class="mt-1 text-xs text-gray-600 dark:text-gray-400">
+              {{ stat.label }}
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Small cards -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-gradient-to-br from-secondary/10 to-transparent p-8 lg:col-span-2"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10"
+      >
+        <mat-icon class="text-secondary">language</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">Global Infrastructure</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        Deploy across 25+ regions worldwide for low latency and high
+        availability.
+      </p>
+      <div class="mt-6 flex items-center gap-2 text-sm">
+        <mat-icon class="text-sm text-primary">public</mat-icon>
+        <span class="text-gray-600 dark:text-gray-400"
+          >Active in 150+ countries</span
+        >
+      </div>
+    </div>
+
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-tertiary/10"
+      >
+        <mat-icon class="text-tertiary">shield</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">DDoS Protection</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        Advanced security measures to keep your service running smoothly.
+      </p>
+    </div>
+
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+      >
+        <mat-icon class="text-primary">update</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">Auto-scaling</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        Automatically scales to handle traffic spikes without downtime.
+      </p>
+    </div>
+
+    <!-- Full width bottom card -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8 lg:col-span-4"
+    >
+      <div class="flex flex-wrap items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div
+            class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+          >
+            <mat-icon class="text-primary">support</mat-icon>
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold">Enterprise Support</h3>
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+              Dedicated support team available 24/7 to help you succeed.
+            </p>
+          </div>
+        </div>
+        <button matButton="filled">Contact Sales</button>
+      </div>
+    </div>
+  </div>
+</div>

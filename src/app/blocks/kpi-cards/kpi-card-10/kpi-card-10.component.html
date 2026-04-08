@@ -1,0 +1,39 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-10`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="text-sm font-medium">{{ item.name }}</div>
+      <div class="text-3xl font-semibold">{{ item.stat }}</div>
+      <div
+        [class]="
+            item.status === 'within'
+              ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-400/10 dark:text-emerald-500'
+              : item.status === 'observe'
+                ? 'bg-yellow-100 text-yellow-800 dark:bg-yellow-400/10 dark:text-yellow-500'
+                : 'bg-red-100 text-red-800 dark:bg-red-400/10 dark:text-red-500'
+          "
+        class="mt-4 inline-flex items-center gap-x-1.5 rounded-md px-2 py-1.5 text-xs font-medium"
+      >
+        @if (item.status === 'within') {
+        <mat-icon class="size-[1em]! text-lg! leading-none! shrink-0"
+          >check</mat-icon
+        >
+        } @else if (item.status === 'observe') {
+        <mat-icon class="size-[1em]! text-lg! leading-none! shrink-0"
+          >visibility</mat-icon
+        >
+        } @else {
+        <mat-icon class="size-[1em]! text-lg! leading-none! shrink-0"
+          >error</mat-icon
+        >
+        } {{ item.status }}: {{ item.range }}
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

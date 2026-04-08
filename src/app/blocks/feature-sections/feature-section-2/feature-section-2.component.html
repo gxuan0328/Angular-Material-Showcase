@@ -1,0 +1,39 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-2`
+-->
+
+<div class="mx-auto w-full max-w-6xl px-3 py-20" data-testid="feature-section">
+  <dl class="grid grid-cols-4 gap-10" data-testid="features-container">
+    @for (feature of features; track feature.name) {
+    <div
+      class="col-span-full sm:col-span-2 lg:col-span-1"
+      data-testid="feature-item"
+    >
+      <div
+        class="w-fit rounded-lg p-2 shadow-md shadow-violet-400/30 ring-1 ring-black/5 dark:shadow-violet-600/30 dark:ring-white/5 flex items-center justify-center"
+        data-testid="feature-icon-container"
+      >
+        <mat-icon
+          aria-hidden="true"
+          class="text-[1.5rem]! size-[1em]! text-violet-600! dark:text-violet-400!"
+          data-testid="feature-icon"
+          >{{ feature.icon }}</mat-icon
+        >
+      </div>
+      <dt
+        class="mt-6 font-semibold text-gray-900 dark:text-gray-50"
+        data-testid="feature-name"
+      >
+        {{ feature.name }}
+      </dt>
+      <dd
+        class="mt-2 leading-7 text-gray-600 dark:text-gray-400"
+        data-testid="feature-description"
+      >
+        {{ feature.description }}
+      </dd>
+    </div>
+    }
+  </dl>
+</div>

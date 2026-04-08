@@ -1,0 +1,25 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-15`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="text-sm">{{ item.name }}</div>
+      <div class="text-3xl font-semibold">{{ item.stat }}</div>
+      <mat-progress-bar
+        class="mt-6 rounded-full"
+        [value]="item.percentage"
+        mode="determinate"
+      >
+      </mat-progress-bar>
+      <div class="mt-2 flex items-center justify-between text-sm">
+        <span class="text-primary"> {{ item.percentage }}&#37; </span>
+        <span> {{ item.stat }} of {{ item.limit }} </span>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

@@ -1,0 +1,8 @@
+{
+  "category": "header-sections",
+  "variant": "header-section-1",
+  "files": {
+    "header-section-1.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update header-sections/header-section-1`\n-->\n\n<div class=\"mx-auto w-full max-w-7xl px-6 py-16 sm:py-24 lg:px-8\">\n  <div class=\"text-center\">\n    <p class=\"text-base font-semibold text-primary\">Introducing</p>\n    <h1 class=\"mt-4 text-4xl font-bold tracking-tight sm:text-6xl\">\n      Transform Your Business with AI\n    </h1>\n    <p class=\"mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400\">\n      Leverage cutting-edge artificial intelligence to automate workflows, gain\n      insights, and accelerate your growth. Join thousands of companies already\n      transforming their operations.\n    </p>\n    <div class=\"mt-10 flex items-center justify-center gap-x-6\">\n      <button mat-flat-button>Get Started</button>\n      <button mat-button>Learn More</button>\n    </div>\n  </div>\n</div>\n",
+    "header-section-1.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update header-sections/header-section-1`\n*/\n\nimport { ChangeDetectionStrategy, Component } from '@angular/core';\nimport { MatButton } from '@angular/material/button';\n\n@Component({\n  selector: 'ngm-dev-block-header-section-1',\n  templateUrl: './header-section-1.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [MatButton],\n})\nexport class HeaderSection1Component {}\n"
+  }
+}

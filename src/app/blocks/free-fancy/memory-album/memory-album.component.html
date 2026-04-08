@@ -1,0 +1,54 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update free-fancy/memory-album`
+-->
+
+<div class="size-full overflow-hidden" #constraintsRef>
+  <h1
+    class="absolute text-xl md:text-4xl -ml-16 md:ml-4 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center text-muted-foreground uppercase w-full"
+  >
+    all your
+    <span
+      class="inline-block font-bold text-foreground dark:text-muted md:ml-52"
+    >
+      memories.
+    </span>
+  </h1>
+
+  <ngm-dev-block-uidrag-elements
+    containerClass="p-80"
+    [dragBoundary]="constraintsRef"
+    #dragElements
+  >
+    <ng-template
+      ngmDevBlockUiDragElement
+      [ngmDevBlockUiDragElementDragDisabled]="true"
+    >
+      <button mat-icon-button (click)="dragElements.resetPositions()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+    </ng-template>
+    @for (image of images; track image; let index = $index) {
+    <div
+      class="flex items-start justify-center bg-surface-container-high shadow-2xl p-1 md:p-2"
+      [style.transform]="'rotate(' + image.rotation + 'deg)'"
+      [style.width.px]="
+          (isHandSet$ | async) === true ? image.width * 0.7 : image.width
+        "
+      [style.height.px]="
+          (isHandSet$ | async) === true ? image.height * 0.7 : image.height
+        "
+      *ngmDevBlockUiDragElement
+    >
+      <div class="relative overflow-hidden size-full">
+        <img
+          [src]="image.url"
+          class="object-cover size-full"
+          draggable="false"
+          [alt]="'memory-' + index"
+        />
+      </div>
+    </div>
+    }
+  </ngm-dev-block-uidrag-elements>
+</div>

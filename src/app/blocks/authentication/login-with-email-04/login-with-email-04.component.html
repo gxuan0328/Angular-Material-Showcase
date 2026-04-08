@@ -1,0 +1,76 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update authentication/login-with-email-04`
+-->
+
+<div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
+  <div class="flex flex-col">
+    <!-- Navbar -->
+    <nav class="flex justify-between items-center px-6 py-4">
+      <img
+        src="https://ui.angular-material.dev/app-ui/logo.svg"
+        alt="Logo"
+        height="32"
+        width="32"
+        class="inline"
+      />
+      <div class="flex items-center gap-2 density-3">
+        <span class="text-sm">Not working?</span>
+        <a matButton>Get help</a>
+      </div>
+    </nav>
+    <div class="flex flex-col justify-center">
+      <!-- Main Content -->
+      <div class="max-w-md mx-auto px-6 py-12 space-y-4">
+        <!-- Header -->
+        <div class="flex flex-col items-center space-y-4">
+          <h1 class="text-3xl text-center m-0">Sign in your account</h1>
+          <p class="text-on-surface m-0">
+            New to our platform?
+            <a href="#" class="text-primary no-underline hover:underline"
+              >Create an account</a
+            >
+          </p>
+        </div>
+
+        <!-- Social Buttons -->
+        <div class="flex flex-col space-y-4">
+          <button matButton="filled" type="button" class="google-button">
+            <mat-icon svgIcon="google" class="mr-2 h-5 w-5" />
+            Continue with Google
+          </button>
+          <button matButton="outlined" type="button" class="w-full">
+            <mat-icon svgIcon="microsoft" />
+            Continue with Microsoft
+          </button>
+          <button matButton="outlined" type="button" class="w-full">
+            <mat-icon svgIcon="apple" />
+            Continue with Apple
+          </button>
+        </div>
+
+        <!-- Divider -->
+        <div class="flex py-5 items-center" role="separator">
+          <div class="flex-grow h-px bg-outline-variant"></div>
+          <span class="flex-shrink mx-4">OR</span>
+          <div class="flex-grow h-px bg-outline-variant"></div>
+        </div>
+
+        <!-- Email Form -->
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" />
+        </mat-form-field>
+
+        <button matButton="filled" type="button" class="w-full">
+          Continue
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image Side -->
+  <div class="hidden lg:flex bg-primary-container items-center justify-center">
+    <mat-icon>image</mat-icon>
+  </div>
+</div>

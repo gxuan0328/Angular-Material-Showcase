@@ -1,0 +1,118 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bento-grids/bento-grid-6`
+-->
+
+<div class="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">
+      Experience the difference
+    </h2>
+    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+      Join thousands of companies who trust our platform for their
+      mission-critical applications.
+    </p>
+  </div>
+
+  <div class="mx-auto mt-16 grid max-w-7xl gap-6 md:grid-cols-3">
+    <!-- Testimonial card spanning 2 columns -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-gradient-to-br from-primary/5 to-secondary/5 p-8 md:col-span-2"
+    >
+      <div class="flex gap-1 text-yellow-500">
+        @for (star of [1, 2, 3, 4, 5]; track star) {
+        <mat-icon class="text-base">star</mat-icon>
+        }
+      </div>
+      <blockquote class="mt-6 text-xl font-medium leading-8">
+        "This platform has completely transformed how we work. The automation
+        features alone have saved us countless hours every week."
+      </blockquote>
+      <div class="mt-6 flex items-center gap-4">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-white font-semibold"
+        >
+          JD
+        </div>
+        <div>
+          <div class="font-semibold">Jane Doe</div>
+          <div class="text-sm text-gray-600 dark:text-gray-400">
+            CEO, TechCorp
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust badges -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+      >
+        <mat-icon class="text-primary">verified</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">Trusted by Leaders</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        Industry-leading companies rely on our platform.
+      </p>
+      <div class="mt-6 space-y-3">
+        @for (badge of trustBadges; track badge) {
+        <div class="flex items-center gap-2 text-sm">
+          <mat-icon class="text-sm text-primary">check_circle</mat-icon>
+          <span class="text-gray-600 dark:text-gray-400">{{ badge }}</span>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Feature highlights in a grid -->
+    @for (feature of features; track feature.title) {
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg"
+        [ngClass]="feature.colorClass"
+      >
+        <mat-icon [class]="feature.iconColorClass">{{ feature.icon }}</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">{{ feature.title }}</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        {{ feature.description }}
+      </p>
+      @if (feature.badge) {
+      <div class="mt-4">
+        <span
+          class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
+        >
+          {{ feature.badge }}
+        </span>
+      </div>
+      }
+    </div>
+    }
+
+    <!-- CTA card -->
+    <div
+      class="overflow-hidden rounded-2xl border-2 border-primary bg-gradient-to-br from-primary/5 to-transparent p-8 md:col-span-3"
+    >
+      <div class="flex flex-col items-center text-center">
+        <div
+          class="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10"
+        >
+          <mat-icon class="text-2xl text-primary">rocket_launch</mat-icon>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold">Ready to get started?</h3>
+        <p class="mt-4 max-w-2xl text-base text-gray-600 dark:text-gray-400">
+          Join over 10,000 teams already using our platform to build better
+          products faster.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+          <button matButton="filled">Start free trial</button>
+          <button matButton>Schedule demo</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

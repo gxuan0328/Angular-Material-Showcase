@@ -1,0 +1,49 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update header-sections/header-section-3`
+-->
+
+<div
+  class="relative overflow-hidden bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"
+>
+  <div class="mx-auto w-full max-w-7xl px-6 py-20 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <h1 class="text-5xl font-bold tracking-tight sm:text-7xl">
+        The Future of
+        <span
+          class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
+        >
+          Cloud Computing
+        </span>
+      </h1>
+      <p class="mt-8 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Deploy applications at scale with unmatched reliability and performance.
+        Experience the next generation of cloud infrastructure.
+      </p>
+      <div
+        class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+      >
+        <button mat-flat-button class="w-full sm:w-auto">
+          Get Started Free
+        </button>
+        <button mat-stroked-button class="w-full sm:w-auto">
+          Schedule Demo
+        </button>
+      </div>
+      <div class="mt-12 grid gap-6 sm:grid-cols-3">
+        @for (feature of features; track feature.text) {
+        <div
+          class="flex items-center gap-3 rounded-lg border border-outline-variant bg-surface p-4"
+        >
+          <div
+            class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10"
+          >
+            <mat-icon class="text-primary">{{ feature.icon }}</mat-icon>
+          </div>
+          <span class="text-sm font-medium">{{ feature.text }}</span>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

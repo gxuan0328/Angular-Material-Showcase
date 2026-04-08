@@ -1,0 +1,105 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bento-grids/bento-grid-3`
+-->
+
+<div class="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">
+      Transform your workflow
+    </h2>
+    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+      Streamline operations with intelligent automation and powerful
+      integrations.
+    </p>
+  </div>
+
+  <div class="mx-auto mt-16 grid max-w-7xl gap-6 lg:grid-cols-3">
+    <!-- Tall card spanning 2 rows -->
+    <div
+      class="flex flex-col overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8 lg:row-span-2"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+      >
+        <mat-icon class="text-primary">rocket_launch</mat-icon>
+      </div>
+      <h3 class="mt-6 text-2xl font-semibold">Launch Faster</h3>
+      <p class="mt-4 text-base leading-7 text-gray-600 dark:text-gray-400">
+        Deploy in minutes, not days. Our streamlined workflow gets you from idea
+        to production faster.
+      </p>
+      <div class="mt-8 space-y-4">
+        @for (step of launchSteps; track step.title) {
+        <div class="flex items-start gap-3">
+          <div
+            class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-primary text-xs font-semibold text-white"
+          >
+            {{ step.number }}
+          </div>
+          <div class="flex-1">
+            <div class="font-medium">{{ step.title }}</div>
+            <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+              {{ step.description }}
+            </div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Wide card -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface lg:col-span-2"
+    >
+      <div class="p-8">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10"
+        >
+          <mat-icon class="text-secondary">dashboard_customize</mat-icon>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold">Customizable Dashboards</h3>
+        <p class="mt-4 text-base leading-7 text-gray-600 dark:text-gray-400">
+          Create personalized views with drag-and-drop widgets and real-time
+          data visualization.
+        </p>
+      </div>
+      <div class="px-8 pb-8">
+        <img
+          src="https://placehold.co/800x300/8b5cf6/white?text=Dashboard+View"
+          alt="Dashboard"
+          class="h-full w-full rounded-lg object-cover"
+        />
+      </div>
+    </div>
+
+    <!-- Two side-by-side cards -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-tertiary/10"
+      >
+        <mat-icon class="text-tertiary">sync</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">Real-time Sync</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        Changes sync instantly across all devices and team members.
+      </p>
+    </div>
+
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+      >
+        <mat-icon class="text-primary">cloud_done</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">Cloud Native</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        Built on modern cloud infrastructure for reliability and scale.
+      </p>
+    </div>
+  </div>
+</div>

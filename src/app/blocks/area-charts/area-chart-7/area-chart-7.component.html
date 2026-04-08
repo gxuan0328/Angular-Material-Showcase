@@ -1,0 +1,101 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update area-charts/area-chart-7`
+-->
+
+<div class="mx-auto max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ formattedValue() }}</mat-card-title>
+      <mat-card-subtitle>Revenue by month</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="mt-1 flex items-baseline justify-between">
+        <span class="text-sm text-gray-600 dark:text-gray-400">
+          On {{ currentDate() }}
+        </span>
+        <span
+          [class]="
+            'rounded-md px-2 py-1 text-sm font-medium ' + changeColorClass()
+          "
+        >
+          {{ changeText() }}
+        </span>
+      </p>
+      <div class="mt-8 h-48 relative" #chartImage>
+        <!-- tooltip -->
+        <div
+          #tooltipElement
+          [class]="
+            'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 ' +
+            (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+          "
+          [style.transform]="
+            getTooltipTransform(
+              tooltip?.caretX ?? 0,
+              tooltipElement.offsetWidth,
+              chartImage.offsetWidth
+            )
+          "
+        >
+          <h3 class="text-body-large font-medium my-2 px-3">
+            {{ tooltip?.title?.[0] }}
+          </h3>
+          <mat-divider class="border-outline-variant!" />
+          <div class="p-3">
+            @for (item of tooltip?.dataPoints; track item; let i = $index) {
+            <div class="flex items-center w-full justify-between gap-x-2">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="h-1 w-3 shrink-0 rounded-sm"
+                  [style.background]="
+                      tooltip?.labelColors?.[i]?.borderColor?.toString()
+                    "
+                  aria-hidden="true"
+                ></span>
+                <span class="text-body-medium font-body-small"
+                  >{{ item?.dataset?.label }}</span
+                >
+              </div>
+              <span class="text-body-medium font-medium text-right"
+                >{{ Number(item?.raw) | currency }}</span
+              >
+            </div>
+            }
+          </div>
+        </div>
+
+        <canvas
+          class="z-2 relative"
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [plugins]="chartPlugins"
+          [type]="chartType"
+        ></canvas>
+      </div>
+      <mat-list>
+        @for (item of summary; track item.name; let last = $last) {
+        <mat-list-item class="density-2">
+          <span
+            class="h-1! w-3! rounded-sm"
+            [style.background]="item.color"
+            aria-hidden="true"
+            matListItemIcon
+          ></span>
+          <span class="flex items-center justify-between w-full">
+            <span class="text-body-medium font-body-small"
+              >{{ item.name }}</span
+            >
+            <span class="text-body-medium font-medium text-right"
+              >{{ item.value | number }}</span
+            >
+          </span>
+        </mat-list-item>
+        @if (!last) {
+        <mat-divider class="border-outline-variant!" />
+        } }
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>

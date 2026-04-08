@@ -1,0 +1,38 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-04`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content class="px-4 py-4">
+      <div class="flex items-start justify-between space-x-2">
+        <span class="truncate text-sm"> {{ item.name }} </span>
+        <span
+          [class]="
+              item.changeType === 'positive'
+                ? 'text-emerald-700 dark:text-emerald-500'
+                : 'text-red-700 dark:text-red-500'
+            "
+          class="text-sm font-medium"
+        >
+          {{ item.change }}
+        </span>
+      </div>
+      <div class="mt-1 text-3xl font-semibold">{{ item.value }}</div>
+    </mat-card-content>
+    <mat-card-footer
+      align="end"
+      class="px-4 py-3 border-t border-outline-variant mt-3"
+    >
+      <a
+        [href]="item.href"
+        class="text-sm font-medium text-primary hover:underline"
+      >
+        View more &#8594;
+      </a>
+    </mat-card-footer>
+  </mat-card>
+  }
+</div>

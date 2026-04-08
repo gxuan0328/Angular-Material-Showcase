@@ -1,0 +1,142 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/with-multiple-item-types`
+-->
+
+<div class="max-w-2xl mx-auto p-6" data-testid="multiple-item-types-container">
+  <div class="relative" data-testid="timeline-container">
+    <!-- Vertical Line -->
+    <div
+      class="absolute left-4 top-8 bottom-2 w-[2px] bg-outline-variant"
+      aria-hidden="true"
+      data-testid="timeline-line"
+    ></div>
+
+    <div class="space-y-6" data-testid="activities-list">
+      @for (item of activities; track item.id) {
+      <div class="flex gap-4" [attr.data-testid]="'activity-item-' + item.id">
+        <!-- User Avatar -->
+        <div class="relative w-8 h-8 ring-4 ring-surface">
+          <img
+            [ngSrc]="item.user.avatar!"
+            width="32"
+            height="32"
+            class="rounded-full"
+            [alt]="item.user.name"
+            [attr.data-testid]="'user-avatar-' + item.id"
+          />
+          @if (item.type === 'comment') {
+          <span
+            class="flex items-center justify-center absolute -bottom-2 -right-2 p-1 rounded-full bg-surface"
+            [attr.data-testid]="'comment-icon-' + item.id"
+          >
+            <mat-icon class="h-4! w-4! [font-size:16px]!">comment</mat-icon>
+          </span>
+          }
+        </div>
+
+        <!-- Content -->
+        <div class="flex-1" [attr.data-testid]="'activity-content-' + item.id">
+          <!-- Header -->
+          <div
+            class="flex mb-1 items-center"
+            [ngClass]="{
+                'flex-wrap': item.type === 'comment',
+                'gap-2': item.type !== 'comment',
+              }"
+            [attr.data-testid]="'activity-header-' + item.id"
+          >
+            <span
+              class="font-medium"
+              [attr.data-testid]="'user-name-' + item.id"
+              >{{ item.user.name }}</span
+            >
+            @if (item.type === 'comment') {
+            <div class="basis-full h-0"></div>
+            <span
+              class="text-gray-600 dark:text-gray-400"
+              [attr.data-testid]="'comment-timestamp-' + item.id"
+            >
+              <span>commented {{ item.timestamp }}</span>
+            </span>
+            } @else if (item.type === 'assignment') {
+            <span
+              class="flex gap-2 items-center"
+              [attr.data-testid]="'assignment-info-' + item.id"
+            >
+              <span class="text-gray-600 dark:text-gray-400">assigned</span>
+              <img
+                [ngSrc]="item.assignedTo?.avatar!"
+                width="32"
+                height="32"
+                class="rounded-full"
+                [alt]="item.assignedTo?.name"
+                [attr.data-testid]="'assigned-user-avatar-' + item.id"
+              />
+              <span
+                class="font-medium"
+                [attr.data-testid]="'assigned-user-name-' + item.id"
+                >{{ item.assignedTo?.name }}</span
+              >
+              <span
+                class="text-gray-600 dark:text-gray-400"
+                [attr.data-testid]="'assignment-timestamp-' + item.id"
+                >{{ item.timestamp }}</span
+              >
+            </span>
+            } @else {
+            <span
+              class="flex gap-1 text-gray-600 dark:text-gray-400"
+              [attr.data-testid]="'tag-timestamp-' + item.id"
+            >
+              <span>added tags {{ item.timestamp }}</span>
+            </span>
+            }
+          </div>
+
+          <!-- Comment Content -->
+          @if (item.type === 'comment') {
+          <p
+            class="text-gray-600 dark:text-gray-400"
+            [attr.data-testid]="'comment-content-' + item.id"
+          >
+            {{ item.content }}
+          </p>
+          }
+
+          <!-- Tags -->
+          @if (item.type === 'tag') {
+          <div
+            class="flex gap-2 mt-2"
+            [attr.data-testid]="'tags-container-' + item.id"
+          >
+            @for (tag of item.tags; track tag.label) {
+            <mat-chip [attr.data-testid]="'tag-' + item.id + '-' + tag.label">
+              <span class="flex items-center justify-center">
+                <span
+                  class="rounded-full size-2 mr-2"
+                  [ngClass]="{
+                          'bg-error': tag.color === 'error',
+                          'bg-secondary': tag.color === 'secondary',
+                        }"
+                  [attr.data-testid]="
+                          'tag-color-' + item.id + '-' + tag.label
+                        "
+                ></span>
+                <span
+                  [attr.data-testid]="
+                          'tag-label-' + item.id + '-' + tag.label
+                        "
+                  >{{ tag.label }}</span
+                >
+              </span>
+            </mat-chip>
+            }
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update cta-sections/cta-section-16`
+-->
+
+<div class="bg-white dark:bg-gray-900">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2
+        class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+      >
+        Choose your path to success
+      </h2>
+      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Whether you're just starting out or running a large enterprise, we have
+        the perfect solution for you.
+      </p>
+    </div>
+    <div
+      class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 sm:mt-20 lg:max-w-4xl lg:grid-cols-3"
+    >
+      @for (item of ctaItems; track item.title) {
+      <div
+        class="relative flex flex-col overflow-hidden rounded-3xl border border-gray-200 p-8 shadow-sm dark:border-gray-700"
+      >
+        <div
+          class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-600 dark:bg-indigo-500"
+        >
+          <mat-icon class="h-6 w-6 text-white">{{ item.icon }}</mat-icon>
+        </div>
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+          {{ item.title }}
+        </h3>
+        <p
+          class="mt-4 flex-auto text-sm leading-6 text-gray-600 dark:text-gray-400"
+        >
+          {{ item.description }}
+        </p>
+        <button matButton="filled" class="mt-8 w-full">
+          {{ item.action }}
+        </button>
+      </div>
+      }
+    </div>
+  </div>
+</div>

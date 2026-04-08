@@ -1,0 +1,40 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-18`
+-->
+
+<div class="mx-auto w-full max-w-4xl px-3 py-20 text-center">
+  <h2
+    class="text-4xl font-bold tracking-tighter text-gray-900 dark:text-gray-50 sm:text-5xl"
+  >
+    Get started in minutes
+  </h2>
+  <p
+    class="mx-auto mt-6 max-w-2xl text-lg leading-7 text-gray-600 dark:text-gray-400"
+  >
+    A streamlined platform that makes complex tasks simple and intuitive.
+  </p>
+  <div class="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-3">
+    @for (feature of features; track feature.name) {
+    <div
+      class="rounded-lg border border-gray-200 bg-white p-6 text-center dark:border-gray-800 dark:bg-gray-900"
+    >
+      <div
+        class="mx-auto flex size-12 items-center justify-center rounded-full bg-violet-100 dark:bg-violet-900/30"
+      >
+        <mat-icon
+          aria-hidden="true"
+          class="text-violet-600! dark:text-violet-400! text-2xl!"
+          >check_circle</mat-icon
+        >
+      </div>
+      <h3 class="mt-4 font-semibold text-gray-900 dark:text-gray-50">
+        {{ feature.name }}
+      </h3>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+        {{ feature.description }}
+      </p>
+    </div>
+    }
+  </div>
+</div>

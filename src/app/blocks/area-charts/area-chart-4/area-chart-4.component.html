@@ -1,0 +1,119 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update area-charts/area-chart-4`
+-->
+
+<div class="mx-auto max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Active subscriptions (cumulative)</mat-card-title>
+      <mat-card-subtitle>{{ total | number }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Desktop chart -->
+      <div class="mt-6 h-48 relative" #chartImage>
+        <!-- tooltip -->
+        <div
+          #tooltipElement
+          [class]="
+            'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 ' +
+            (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+          "
+          [style.transform]="
+            getTooltipTransform(
+              tooltip?.caretX ?? 0,
+              tooltipElement.offsetWidth,
+              chartImage.offsetWidth
+            )
+          "
+        >
+          <h3 class="text-body-large font-medium my-2 px-3">
+            {{ tooltip?.title?.[0] }}
+          </h3>
+          <mat-divider class="border-outline-variant!" />
+          <div class="p-3">
+            @for (item of tooltip?.dataPoints; track item; let i = $index) {
+            <div class="flex items-center w-full justify-between">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="h-1 w-3 shrink-0 rounded-sm"
+                  [style.background]="
+                      tooltip?.labelColors?.[i]?.borderColor?.toString()
+                    "
+                  aria-hidden="true"
+                ></span>
+                <span class="text-body-medium font-body-small"
+                  >{{ item?.dataset?.label }}</span
+                >
+              </div>
+              <span class="text-body-medium font-medium text-right"
+                >{{ item?.formattedValue }}</span
+              >
+            </div>
+            }
+          </div>
+        </div>
+
+        <canvas
+          class="z-2 relative"
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [plugins]="chartPlugins"
+          [type]="chartType"
+        ></canvas>
+      </div>
+
+      <mat-list>
+        @for (item of summary; track item.name; let last = $last) {
+        <mat-list-item class="density-2">
+          <span
+            class="h-1! w-3! rounded-sm"
+            [style.background]="item.color"
+            aria-hidden="true"
+            matListItemIcon
+          ></span>
+          <span class="flex items-center justify-between w-full">
+            <span class="text-body-medium font-body-small"
+              >{{ item.name }}</span
+            >
+            <span class="text-body-medium font-medium text-right"
+              >{{ item.value | number }}</span
+            >
+          </span>
+        </mat-list-item>
+        @if (!last) {
+        <mat-divider class="border-outline-variant!" />
+        } }
+      </mat-list>
+
+      @if (isOpen()) {
+      <div
+        class="relative mt-4 rounded-md border border-gray-200 bg-gray-50 p-4 dark:border-gray-700 dark:bg-gray-800"
+      >
+        <div class="flex items-center space-x-2.5">
+          <mat-icon class="text-primary!">trending_up</mat-icon>
+          <h4 class="text-sm font-medium text-primary">
+            Significant increase since May
+          </h4>
+        </div>
+        <div class="absolute right-0 top-0 pr-1 pt-1">
+          <button
+            mat-icon-button
+            (click)="isOpen.set(false)"
+            aria-label="Close"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam
+          nonumy eirmod tempor invidunt. At vero eos et accusam et justo duo
+          dolores.
+        </p>
+      </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

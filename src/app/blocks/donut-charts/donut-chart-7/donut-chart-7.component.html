@@ -1,0 +1,60 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update donut-charts/donut-chart-7`
+-->
+
+<div class="max-w-7xl">
+  <h3 class="text-title-medium font-medium">Asset Distribution</h3>
+  <div class="mt-6 lg:flex lg:items-end lg:justify-between">
+    <!-- Chart and Total -->
+    <div class="flex items-center justify-start space-x-4 lg:items-end">
+      <!-- Chart Container -->
+      <div class="h-20 w-20 relative" #chartImage>
+        <!-- Chart -->
+        <canvas
+          class="relative z-1"
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [type]="chartType"
+        ></canvas>
+      </div>
+
+      <!-- Total Value -->
+      <div>
+        <p class="text-title-large font-semibold">
+          {{ currencyFormatter(getTotal(chartData.datasets[0].data)) }}
+        </p>
+        <p class="text-body-medium text-gray-600 dark:text-gray-400">
+          Total portfolio value
+        </p>
+      </div>
+    </div>
+
+    <!-- Asset Legend Grid -->
+    <ul
+      role="list"
+      class="mt-6 grid grid-cols-1 gap-px bg-outline-variant lg:mt-0 lg:grid-cols-3"
+    >
+      @for (item of data; track item.name) {
+      <li class="bg-surface px-0 py-3 lg:px-4 lg:py-0 lg:text-right">
+        <p class="text-body-medium font-semibold">
+          {{ currencyFormatter(item.amount) }}
+          <span class="font-normal text-gray-600 dark:text-gray-400"
+            >({{ item.share }})</span
+          >
+        </p>
+        <div class="flex items-center space-x-2 lg:justify-end">
+          <span
+            [class]="item.borderColor + ' size-2.5 shrink-0 rounded-sm'"
+            aria-hidden="true"
+          ></span>
+          <p class="text-body-medium text-gray-600 dark:text-gray-400">
+            {{ item.name }}
+          </p>
+        </div>
+      </li>
+      }
+    </ul>
+  </div>
+</div>

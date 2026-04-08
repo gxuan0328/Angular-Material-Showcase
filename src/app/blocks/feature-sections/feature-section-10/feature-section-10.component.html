@@ -1,0 +1,60 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-10`
+-->
+
+<div class="mx-auto w-full max-w-4xl px-3 py-20 text-center">
+  <span
+    class="inline-block rounded-lg border border-violet-200/20 bg-violet-50/50 px-3 py-1.5 font-semibold uppercase leading-4 tracking-tighter dark:border-violet-800/30 dark:bg-violet-900/20 sm:text-sm"
+  >
+    <span
+      class="bg-gradient-to-b from-violet-500 to-violet-600 bg-clip-text text-transparent dark:from-violet-200 dark:to-violet-400"
+    >
+      Complete solution
+    </span>
+  </span>
+  <h2 class="mt-4 text-4xl font-bold tracking-tighter sm:text-5xl">
+    All your tools in one unified platform
+  </h2>
+  <p
+    class="mx-auto mt-6 max-w-2xl text-lg leading-7 text-gray-600 dark:text-gray-400"
+  >
+    Access everything you need to manage projects, collaborate with teams, and
+    drive business success.
+  </p>
+  <div class="mx-auto mt-12 grid max-w-3xl grid-cols-1 gap-6 sm:grid-cols-2">
+    @for (feature of features; track feature.name) {
+    <div
+      class="flex items-start gap-4 rounded-lg border border-gray-200 bg-white p-6 text-left shadow-sm dark:border-gray-800 dark:bg-gray-900"
+    >
+      <div
+        class="flex size-10 shrink-0 items-center justify-center rounded-lg bg-violet-100 dark:bg-violet-900/30"
+      >
+        <mat-icon
+          aria-hidden="true"
+          class="text-violet-600! dark:text-violet-400! text-xl!"
+          >check</mat-icon
+        >
+      </div>
+      <div class="flex-1">
+        <h3 class="font-semibold text-gray-900 dark:text-gray-50">
+          {{ feature.name }}
+        </h3>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          {{ feature.description }}
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+  <div
+    class="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+  >
+    <div class="px-8">
+      <button matButton="filled">Get started</button>
+    </div>
+    <div class="px-8">
+      <button matButton="outlined">Learn more</button>
+    </div>
+  </div>
+</div>

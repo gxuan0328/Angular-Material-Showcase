@@ -1,0 +1,59 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/onboarding-feed-4`
+-->
+
+<div class="max-w-2xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2">Getting started</h2>
+    <p class="text-gray-600 dark:text-gray-400">
+      Follow the steps to set up your workspace
+    </p>
+  </div>
+
+  <!-- Steps List -->
+  <mat-accordion>
+    @for (step of steps; track step.id) {
+    <mat-expansion-panel
+      [expanded]="isExpanded(step)"
+      class="mb-4 dark:border border-outline-variant"
+      [ngClass]="getStepContentClass(step)"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="flex items-center justify-between">
+          <span>
+            <span class="text-gray-500">{{ step.id }}.</span>
+            {{ step.title }}
+          </span>
+          @if (step.status === 'completed') {
+          <mat-icon
+            class="icon-filled ml-auto"
+            [ngClass]="getStepIconClass(step)"
+            >check_circle</mat-icon
+          >
+          }
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <!-- Expanded Content -->
+      @if (step.content) {
+      <div
+        class="flex flex-col items-center text-center p-6 border border-outline-variant rounded-lg bg-surface-container"
+        [ngClass]="{ 'opacity-75': step.status === 'completed' }"
+      >
+        <h4 class="text-lg font-medium mb-2">{{ step.content.title }}</h4>
+        <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+          {{ step.content.description }}
+        </p>
+        <button matButton="filled" [disabled]="step.status === 'completed'">
+          @if (step.content.action.icon) {
+          <mat-icon>{{ step.content.action.icon }}</mat-icon>
+          } {{ step.content.action.label }}
+        </button>
+      </div>
+      }
+    </mat-expansion-panel>
+    }
+  </mat-accordion>
+</div>

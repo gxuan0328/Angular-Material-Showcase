@@ -1,0 +1,68 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update donut-charts/donut-chart-2`
+-->
+
+<div class="mx-auto max-w-xl">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Revenue Performance by Region (%)</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+        <!-- Chart Container -->
+        <div class="relative h-48" #chartImage>
+          <div
+            class="absolute inset-0 flex items-center justify-center flex-col"
+          >
+            <span class="text-body-small font-body-small"> Avg. </span>
+            <span class="text-body-large font-body-large">
+              {{ average }}%
+            </span>
+          </div>
+
+          <!-- Chart -->
+          <canvas
+            class="relative z-1"
+            baseChart
+            [data]="chartData"
+            [options]="chartOptions"
+            [type]="chartType"
+          ></canvas>
+        </div>
+        <!-- Legend List -->
+        <mat-list class="mt-4 density-3">
+          @for (region of data; track region.region) {
+          <div matSubheader class="mb-0! mt-6!">
+            <div class="flex items-center space-x-2 justify-between w-full">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="size-2.5 rounded-sm align-middle"
+                  [style.background]="region.color"
+                  aria-hidden="true"
+                ></span>
+                <span>{{ region.region }}</span>
+              </div>
+              <p class="text-body-medium font-medium">{{ region.value }}%</p>
+            </div>
+          </div>
+          @for ( subregion of region.subregions; track subregion.name; let last
+          = $last ) {
+          <mat-list-item>
+            <div class="flex items-center space-x-2 justify-between w-full">
+              <span class="text-body-medium text-gray-600 dark:text-gray-400"
+                >{{ subregion.name }}</span
+              >
+              <span class="text-body-medium text-gray-600 dark:text-gray-400"
+                >{{ subregion.value }}</span
+              >
+            </div>
+          </mat-list-item>
+          @if (!last) {
+          <mat-divider class="border-outline-variant!" />
+          } } }
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

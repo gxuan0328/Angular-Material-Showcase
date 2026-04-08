@@ -1,0 +1,37 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-06`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="flex items-center justify-between">
+        <div class="text-sm font-medium">{{ item.name }}</div>
+        <div
+          [class]="
+              item.changeType === 'positive'
+                ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-400/10 dark:text-emerald-500'
+                : 'bg-red-100 text-red-800 dark:bg-red-400/10 dark:text-red-500'
+            "
+          class="inline-flex items-center gap-x-1 rounded-md px-1.5 py-0.5 text-xs font-medium"
+        >
+          @if (item.changeType === 'positive') {
+          <mat-icon
+            class="-ml-0.5 size-[1em]! text-base! leading-none! shrink-0"
+            >arrow_upward</mat-icon
+          >
+          } @else {
+          <mat-icon
+            class="-ml-0.5 size-[1em]! text-base! leading-none! shrink-0"
+            >arrow_downward</mat-icon
+          >
+          } {{ item.change }}
+        </div>
+      </div>
+      <div class="text-3xl font-semibold">{{ item.stat }}</div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

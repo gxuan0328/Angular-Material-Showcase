@@ -1,0 +1,41 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-21`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="truncate text-sm">{{ item.name }}</div>
+      <div class="mt-1 text-3xl font-semibold">{{ item.total }}</div>
+      <div class="mt-6">
+        <ngm-dev-block-ui-category-bar
+          [values]="item.split"
+          [colors]="['cyan', 'indigo']"
+          [showLabels]="false"
+        >
+        </ngm-dev-block-ui-category-bar>
+      </div>
+      <ul role="list" class="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+        @for (category of item.details; track category.name) {
+        <li class="flex items-center space-x-2">
+          <span
+            [class]="getLegendColorClass(category.name)"
+            class="size-3 shrink-0 rounded-sm"
+            aria-hidden="true"
+          >
+          </span>
+          <span class="text-sm">
+            <span class="font-medium text-gray-600 dark:text-gray-400">
+              {{ category.value }}
+            </span>
+            {{ category.name }}
+          </span>
+        </li>
+        }
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

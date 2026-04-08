@@ -1,0 +1,56 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update testimonial-sections/testimonial-section-7`
+-->
+
+<section class="bg-gray-50 py-24 sm:py-32 dark:bg-gray-950">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2
+        class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+      >
+        Success stories from our clients
+      </h2>
+      <p class="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Learn how businesses like yours have transformed their operations.
+      </p>
+    </div>
+    <div
+      class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-12 sm:mt-20 lg:max-w-none lg:grid-cols-2"
+    >
+      @for (testimonial of testimonials; track testimonial.author) {
+      <div class="flex flex-col">
+        <div
+          class="relative flex-1 rounded-2xl bg-white p-8 shadow-sm ring-1 ring-gray-200 dark:bg-gray-900 dark:ring-gray-800"
+        >
+          <mat-icon
+            class="absolute -top-4 left-8 h-10 w-10 rounded-full bg-indigo-600 p-2 text-white"
+          >
+            format_quote
+          </mat-icon>
+          <blockquote
+            class="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300"
+          >
+            {{ testimonial.content }}
+          </blockquote>
+        </div>
+        <figcaption class="mt-8 flex items-center gap-x-4 px-8">
+          <img
+            class="h-14 w-14 rounded-full object-cover ring-2 ring-indigo-600"
+            [src]="testimonial.image"
+            [alt]="testimonial.author"
+          />
+          <div>
+            <div class="text-base font-semibold text-gray-900 dark:text-white">
+              {{ testimonial.author }}
+            </div>
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+              {{ testimonial.role }} at {{ testimonial.company }}
+            </div>
+          </div>
+        </figcaption>
+      </div>
+      }
+    </div>
+  </div>
+</section>

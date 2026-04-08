@@ -1,0 +1,105 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update area-charts/area-chart-14`
+-->
+
+<div class="mx-auto max-w-lg">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>System Health</mat-card-title>
+      <mat-card-subtitle
+        >Monitor system health and incident response metrics</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <div class="border-t border-outline-variant pt-6 mt-6">
+        <mat-chip-set class="mb-6">
+          <mat-chip>
+            Success rate
+            <span
+              class="inline-block h-4 align-middle w-px bg-outline-variant mx-2"
+              aria-hidden="true"
+            ></span>
+            <span
+              class="inline-block size-2 rounded-full bg-emerald-600 mx-1"
+              aria-hidden="true"
+            ></span>
+            <span class="font-semibold text-gray-900 dark:text-gray-100">
+              Avg. performance
+            </span>
+          </mat-chip>
+        </mat-chip-set>
+        <div class="flex flex-wrap items-center gap-x-10 gap-y-4">
+          @for (item of summary; track item.name) {
+          <div>
+            <div class="flex space-x-3">
+              <span
+                [class]="'w-1 rounded-sm ' + item.color"
+                aria-hidden="true"
+              ></span>
+              <div>
+                <p class="font-semibold text-gray-900 dark:text-gray-100">
+                  {{ item.total }}
+                </p>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  {{ item.name }}
+                </p>
+              </div>
+            </div>
+          </div>
+          }
+        </div>
+        <div class="mt-10 h-72 relative" #chartImage>
+          <!-- tooltip -->
+          <div
+            #tooltipElement
+            [class]="
+              'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 ' +
+              (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+            "
+            [style.transform]="
+              getTooltipTransform(
+                tooltip?.caretX ?? 0,
+                tooltipElement.offsetWidth,
+                chartImage.offsetWidth
+              )
+            "
+          >
+            <h3 class="text-body-large font-medium my-2 px-3">
+              {{ tooltip?.title?.[0] }}
+            </h3>
+            <mat-divider class="border-outline-variant!" />
+            <div class="p-3">
+              @for (item of tooltip?.dataPoints; track item; let i = $index) {
+              <div class="flex items-center w-full justify-between gap-x-2">
+                <div class="flex items-center space-x-2">
+                  <span
+                    class="h-1 w-3 shrink-0 rounded-sm"
+                    [style.background]="
+                        tooltip?.labelColors?.[i]?.borderColor?.toString()
+                      "
+                    aria-hidden="true"
+                  ></span>
+                  <span class="text-body-medium font-body-small"
+                    >{{ item?.dataset?.label }}</span
+                  >
+                </div>
+                <span class="text-body-medium font-medium text-right"
+                  >{{ getMinutesSeconds(Number(item?.raw)) }}</span
+                >
+              </div>
+              }
+            </div>
+          </div>
+          <canvas
+            class="z-2 relative"
+            baseChart
+            [data]="chartData"
+            [options]="chartOptions"
+            [type]="chartType"
+          ></canvas>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

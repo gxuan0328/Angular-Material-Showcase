@@ -1,0 +1,67 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/onboarding-feed-5`
+-->
+
+<div class="max-w-2xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2">Workspace history</h2>
+    <p class="text-gray-600 dark:text-gray-400">
+      Track all changes made to your workspace
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <div class="relative">
+    <!-- Timeline Line -->
+    <div class="absolute left-2 top-3 bottom-3 w-px bg-outline-variant"></div>
+
+    <!-- Timeline Events -->
+    <div class="space-y-6">
+      @for (event of events; track event.id; let last = $last) {
+      <div class="flex gap-4" data-testid="timeline-event">
+        <!-- Timeline Indicator -->
+        <div
+          class="relative z-10 shrink-0 size-4 flex items-center justify-center mt-2"
+          role="presentation"
+        >
+          <div
+            class="w-2 h-2 rounded-full border-2 border-outline-variant ring-2 ring-offset-2 ring-surface"
+            [ngClass]="{
+                'bg-surface': last,
+                'bg-gray-200 dark:bg-gray-700': !last,
+              }"
+          ></div>
+        </div>
+
+        <!-- Avatar -->
+        <div class="shrink-0">
+          <avvvatars
+            [value]="event.user.avatar"
+            style="character"
+            [size]="32"
+            [borderSize]="0"
+          />
+        </div>
+
+        <!-- Content -->
+        <div class="flex-grow mt-1.5">
+          <div class="flex items-baseline justify-between gap-2">
+            <div>
+              <span class="font-medium">{{ event.user.name }}</span>
+              <span class="text-gray-600 dark:text-gray-400 ml-1"
+                >{{ event.action }}</span
+              >
+            </div>
+            <span
+              class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap"
+              >{{ event.timestamp }}</span
+            >
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

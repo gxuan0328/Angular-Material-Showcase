@@ -1,0 +1,101 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update area-charts/area-chart-11`
+-->
+
+<div class="mx-auto max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>System Monitoring</mat-card-title>
+      <mat-card-subtitle
+        >Real-time system performance and error tracking</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <div class="flex flex-wrap items-center gap-x-10 gap-y-4 mt-6">
+        @for (item of summary; track item.name) {
+        <div>
+          <div class="flex items-center space-x-2">
+            <span
+              class="h-3 w-3 shrink-0 rounded-sm"
+              [style.background]="item.color"
+              aria-hidden="true"
+            ></span>
+            <p class="font-semibold text-gray-900 dark:text-gray-100">
+              {{ item.value | number }}
+            </p>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            {{ item.name }}
+          </p>
+        </div>
+        }
+        <div>
+          <div class="flex items-center space-x-2">
+            <mat-icon
+              class="text-xl! leading-none! size-[1em]! icon-filled shrink-0 text-emerald-500!"
+              aria-hidden="true"
+              >check_circle</mat-icon
+            >
+            <p class="font-semibold text-gray-900 dark:text-gray-100">
+              {{ successRate | number: '1.1-1' }}%
+            </p>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Success rate</p>
+        </div>
+      </div>
+      <div class="mt-10 h-72 relative" #chartImage>
+        <!-- tooltip -->
+        <div
+          #tooltipElement
+          [class]="
+            'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 ' +
+            (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+          "
+          [style.transform]="
+            getTooltipTransform(
+              tooltip?.caretX ?? 0,
+              tooltipElement.offsetWidth,
+              chartImage.offsetWidth
+            )
+          "
+        >
+          <h3 class="text-body-large font-medium my-2 px-3">
+            {{ tooltip?.title?.[0] }}
+          </h3>
+          <mat-divider class="border-outline-variant!" />
+          <div class="p-3">
+            @for (item of tooltip?.dataPoints; track item; let i = $index) {
+            <div class="flex items-center w-full justify-between gap-x-2">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="h-1 w-3 shrink-0 rounded-sm"
+                  [style.background]="
+                      tooltip?.labelColors?.[i]?.borderColor?.toString()
+                    "
+                  aria-hidden="true"
+                ></span>
+                <span class="text-body-medium font-body-small"
+                  >{{ item?.dataset?.label }}</span
+                >
+              </div>
+              <span class="text-body-medium font-medium text-right"
+                >{{ item?.formattedValue }}</span
+              >
+            </div>
+            }
+          </div>
+        </div>
+
+        <canvas
+          class="z-2 relative"
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [plugins]="chartPlugins"
+          [type]="chartType"
+        ></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

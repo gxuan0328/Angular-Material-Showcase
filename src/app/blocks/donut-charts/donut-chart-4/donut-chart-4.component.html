@@ -1,0 +1,87 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update donut-charts/donut-chart-4`
+-->
+
+<div class="mx-auto max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Portfolio Allocation</mat-card-title>
+      <mat-card-subtitle
+        >Strategic distribution of investment assets across different
+        categories.</mat-card-subtitle
+      >
+    </mat-card-header>
+    <mat-card-content class="px-0!">
+      <mat-tab-group
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+        fitInkBarToContent="true"
+        class="mt-4"
+      >
+        @for (dataset of chartDatasets; track dataset.name; let i = $index) {
+        <mat-tab [label]="'By ' + dataset.name">
+          <div class="px-4">
+            <!-- Chart Container -->
+            <div class="mt-8 h-48 relative" #chartImage>
+              <div
+                class="absolute inset-0 flex items-center justify-center flex-col"
+              >
+                <span class="text-body-large font-body-large">
+                  {{ currencyFormatter(
+                  getTotal(dataset.chartData.datasets[0].data) ) }}
+                </span>
+              </div>
+
+              <!-- Chart -->
+              <canvas
+                class="relative z-1"
+                baseChart
+                [data]="dataset.chartData"
+                [options]="chartOptions"
+                [type]="chartType"
+              ></canvas>
+            </div>
+
+            <div
+              class="mt-8 flex items-center justify-between text-label-medium text-gray-600 dark:text-gray-400 pr-4"
+            >
+              <span>{{ dataset.name }}</span>
+              <span>Amount / Share</span>
+            </div>
+
+            <mat-list class="mt-2">
+              @for ( item of summary[i].data; track item.name; let last = $last
+              ) {
+              <mat-list-item>
+                <span
+                  class="h-[80%]! w-1! rounded-sm ml-0!"
+                  [style.background]="item.color"
+                  aria-hidden="true"
+                  matListItemIcon
+                ></span>
+                <div class="flex justify-between w-full">
+                  {{ item.name }}
+                  <span class="flex space-x-2">
+                    <span class="font-medium tabular-nums">
+                      {{ currencyFormatter(item.amount) }}
+                    </span>
+                    <span
+                      class="text-xs p-1 rounded-sm bg-surface-container-highest text-gray-600 dark:text-gray-400"
+                    >
+                      {{ item.share }}
+                    </span>
+                  </span>
+                </div>
+              </mat-list-item>
+              @if (!last) {
+              <mat-divider class="border-outline-variant!" />
+              } }
+            </mat-list>
+          </div>
+        </mat-tab>
+        }
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

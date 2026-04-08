@@ -1,0 +1,88 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update authentication/workspace-login-01`
+-->
+
+<div class="min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-md mx-auto p-6 space-y-8">
+    <div class="flex flex-col items-center space-y-4">
+      <img
+        src="https://ui.angular-material.dev/app-ui/logo.svg"
+        alt="Logo"
+        height="48"
+        width="48"
+        class="inline"
+      />
+      <h1 class="text-3xl text-center">Sign in to your workspace</h1>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="space-y-4">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Enter your team's ID</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="workspace"
+            placeholder="myteam"
+          />
+          <span matTextSuffix>.app.com</span>
+          @if ( form.get('workspace')?.touched &&
+          form.get('workspace')?.hasError('required') ) {
+          <mat-error>
+            <mat-icon class="form-field-error-icon">error</mat-icon>
+            Workspace URL is required
+          </mat-error>
+          }
+        </mat-form-field>
+
+        <button matButton="filled" type="submit" class="w-full">
+          Continue
+        </button>
+      </div>
+
+      <!-- Divider -->
+      <div class="flex py-5 items-center" role="separator">
+        <div class="flex-grow h-px bg-outline-variant"></div>
+        <span class="flex-shrink mx-4">OR</span>
+        <div class="flex-grow h-px bg-outline-variant"></div>
+      </div>
+
+      <p
+        class="text-center text-primary cursor-pointer hover:underline"
+        data-testid="find-workspace-url"
+      >
+        Find your workspace URL
+      </p>
+      <mat-form-field appearance="outline" class="w-full">
+        <mat-label>Enter your email address</mat-label>
+        <input
+          matInput
+          type="email"
+          formControlName="email"
+          placeholder="john@doe.com"
+        />
+        <button mat-icon-button matSuffix class="find-workspace-url-button">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+        @if ( form.get('email')?.touched && form.get('email')?.hasError('email')
+        ) {
+        <mat-error>
+          <mat-icon class="form-field-error-icon">error</mat-icon>
+          Email is invalid
+        </mat-error>
+        }
+      </mat-form-field>
+    </form>
+
+    <p class="text-center mt-8 text-sm">
+      Don't have an account?
+      <a
+        href="#"
+        class="text-primary no-underline hover:underline"
+        data-testid="create-workspace-link"
+        >Create your first workspace</a
+      >
+    </p>
+  </div>
+</div>

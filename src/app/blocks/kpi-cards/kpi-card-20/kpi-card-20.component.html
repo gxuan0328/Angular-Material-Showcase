@@ -1,0 +1,46 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-20`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="text-sm font-medium">{{ item.name }}</div>
+      <div class="flex items-baseline space-x-2">
+        <span class="text-3xl font-semibold">{{ item.stat }}</span>
+        <span class="text-sm font-medium">{{ item.unit }}</span>
+      </div>
+      <div class="mt-6 flex justify-between text-xs">
+        <span>Activity share</span>
+        <span>Range</span>
+      </div>
+      <ul role="list" class="mt-2 space-y-2">
+        @for (activity of item.activities; track activity.type) {
+        <li
+          class="relative flex w-full items-center space-x-3 rounded-md bg-gray-100/60 p-1 hover:bg-gray-100 dark:bg-gray-800/60 hover:dark:bg-gray-800"
+        >
+          <span
+            class="inline-flex w-20 justify-center rounded bg-primary py-1.5 text-sm font-semibold text-on-primary"
+          >
+            {{ activity.share }}
+          </span>
+          <p
+            class="flex w-full items-center justify-between space-x-4 truncate text-sm font-medium"
+          >
+            <span class="truncate">
+              <a [href]="activity.href" class="focus:outline-none">
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                {{ activity.type }}
+              </a>
+            </span>
+            <span class="pr-1.5"> {{ activity.zone }} </span>
+          </p>
+        </li>
+        }
+      </ul>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

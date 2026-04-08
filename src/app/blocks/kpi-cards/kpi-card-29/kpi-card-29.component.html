@@ -1,0 +1,36 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-29`
+-->
+
+<mat-card class="mx-auto w-fit py-4" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Performance Overview</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="mt-6 flex flex-wrap items-center gap-x-12 gap-y-8">
+      @for (metric of metrics; track metric.label) {
+      <div>
+        <div class="text-sm font-medium">{{ metric.label }}</div>
+        <div class="mt-1.5 flex items-center gap-2">
+          <div class="flex gap-0.5">
+            @for (bar of getBars(metric.value); track $index) {
+            <div
+              [class]="bar"
+              class="h-3.5 w-1 rounded-sm"
+              aria-hidden="true"
+            ></div>
+            }
+          </div>
+          <p class="text-lg font-semibold">
+            {{ metric.percentage }}
+            <span class="ml-1 font-medium text-gray-400 dark:text-gray-600">
+              - {{ metric.fraction }}
+            </span>
+          </p>
+        </div>
+      </div>
+      }
+    </div>
+  </mat-card-content>
+</mat-card>

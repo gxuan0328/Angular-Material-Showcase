@@ -1,0 +1,16 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update authentication/login-with-email-04`
+*/
+
+@use '@angular/material' as mat;
+
+.google-button {
+  border: 1px solid var(--mat-sys-outline-variant);
+  @include mat.theme-overrides(
+    (
+      primary: #ffffff,
+      on-primary: #09090b,
+    )
+  );
+}

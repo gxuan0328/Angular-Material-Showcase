@@ -1,0 +1,40 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-4`
+-->
+
+<div class="mx-auto px-4 py-20" data-testid="feature-section-4-container">
+  <h2
+    class="bg-gradient-to-t from-gray-900 to-gray-800 bg-clip-text py-2 text-3xl font-bold tracking-tighter text-transparent dark:from-gray-50 dark:to-gray-300 md:text-5xl"
+    data-testid="feature-section-4-title"
+  >
+    What's in for you
+  </h2>
+  <dl
+    class="mt-8 grid grid-cols-4 gap-x-10 gap-y-8 sm:mt-12 sm:gap-y-10"
+    data-testid="feature-section-4-benefits-list"
+  >
+    @for (benefit of benefits; track benefit.title) {
+    <div
+      class="col-span-4 sm:col-span-2 lg:col-span-1"
+      data-testid="feature-section-4-benefit-item"
+    >
+      <dt
+        class="relative font-semibold text-gray-900 dark:text-gray-50"
+        data-testid="feature-section-4-benefit-title"
+      >
+        {{ benefit.title }}
+        <div
+          class="absolute -left-2 top-1 h-4 w-0.5 rounded-full bg-indigo-500"
+        ></div>
+      </dt>
+      <dd
+        class="mt-2 leading-7 text-gray-600 dark:text-gray-400"
+        data-testid="feature-section-4-benefit-description"
+      >
+        {{ benefit.description }}
+      </dd>
+    </div>
+    }
+  </dl>
+</div>

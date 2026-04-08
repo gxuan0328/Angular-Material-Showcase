@@ -1,0 +1,124 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/onboarding-feed-8`
+-->
+
+<div class="max-w-xl mx-auto p-6">
+  <!-- Header -->
+  <h3 class="text-lg font-semibold" data-testid="header-title">
+    Deploy Pipeline
+  </h3>
+  <p
+    class="mt-1 text-sm text-gray-600 dark:text-gray-400"
+    data-testid="header-description"
+  >
+    Track the progress of your pipeline deployment steps
+  </p>
+
+  <!-- Progress Bars -->
+  <div
+    class="mt-6 flex items-center gap-2"
+    data-testid="progress-bars-container"
+  >
+    @for (step of steps; track step.id) {
+    <div class="w-full truncate">
+      <mat-progress-bar
+        mode="determinate"
+        [value]="step.value"
+        class="h-1.5"
+        [attr.data-testid]="'progress-bar-' + step.id"
+      />
+      <div class="mt-1 flex items-center gap-1 truncate">
+        <mat-icon
+          class="icon-filled w-4! h-4! [font-size:16px]!"
+          [ngClass]="getStatusClass(step)"
+          [attr.data-testid]="'step-icon-' + step.id"
+          >{{ getStatusIcon(step) }}</mat-icon
+        >
+        <p
+          class="truncate text-xs text-gray-600 dark:text-gray-400"
+          [attr.data-testid]="'progress-bar-description-' + step.id"
+        >
+          {{ step.description }}
+        </p>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Logs Accordion -->
+  <mat-accordion class="block mt-6" data-testid="logs-accordion">
+    <mat-expansion-panel expanded data-testid="logs-panel">
+      <mat-expansion-panel-header data-testid="logs-panel-header">
+        <mat-panel-title data-testid="logs-panel-title">
+          Logs overview ({{ steps.length }})
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ul class="mt-2 space-y-6 pb-2 pl-0" data-testid="logs-list">
+        @for (step of steps; track step.id; let i = $index) {
+        <li
+          class="relative flex gap-3"
+          [attr.data-testid]="'log-item-' + step.id"
+        >
+          <!-- Timeline Line -->
+          <div
+            class="absolute left-0 top-0 flex w-6 justify-center"
+            [class.h-6]="isLastStep(i)"
+            [class.-bottom-6]="!isLastStep(i)"
+            [attr.data-testid]="'timeline-line-' + step.id"
+          >
+            <span class="w-[2px] bg-outline-variant" aria-hidden="true"></span>
+          </div>
+
+          <!-- Timeline Content -->
+          <div
+            class="flex items-start gap-2.5"
+            [attr.data-testid]="'timeline-content-' + step.id"
+          >
+            <div
+              class="relative flex h-6 w-6 flex-none items-center justify-center bg-surface"
+              [attr.data-testid]="'timeline-dot-container-' + step.id"
+            >
+              <div
+                class="h-3 w-3 rounded-full border bg-gray-200 dark:bg-gray-700 ring-4 ring-surface"
+                [ngClass]="
+                    step.type !== 'created'
+                      ? 'border-primary border-dashed border-2 animate-spin'
+                      : 'border-outline-variant'
+                  "
+                [attr.data-testid]="'timeline-dot-' + step.id"
+              ></div>
+            </div>
+
+            <div [attr.data-testid]="'log-content-' + step.id">
+              <p
+                class="mt-0.5 text-sm font-medium"
+                [attr.data-testid]="'log-description-' + step.id"
+              >
+                {{ step.description }}
+              </p>
+              @if (step.type === 'created') {
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400"
+                [attr.data-testid]="'log-details-created-' + step.id"
+              >
+                Created on {{ step.createdOn }}, Runtime: {{ step.runTime }}
+              </p>
+              } @else {
+              <p
+                class="text-sm text-gray-600 dark:text-gray-400"
+                [attr.data-testid]="'log-details-in-progress-' + step.id"
+              >
+                {{ step.tasksCompleted }}/{{ step.totalTasks }} tasks completed,
+                Running now...
+              </p>
+              }
+            </div>
+          </div>
+        </li>
+        }
+      </ul>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

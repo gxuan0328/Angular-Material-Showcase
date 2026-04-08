@@ -1,0 +1,112 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-13`
+-->
+
+<div class="mx-auto w-full max-w-6xl px-3 py-20">
+  <div class="text-center">
+    <span
+      class="inline-block rounded-lg border border-violet-200/20 bg-violet-50/50 px-3 py-1.5 font-semibold uppercase leading-4 tracking-tighter dark:border-violet-800/30 dark:bg-violet-900/20 sm:text-sm"
+    >
+      <span
+        class="bg-gradient-to-b from-violet-500 to-violet-600 bg-clip-text text-transparent dark:from-violet-200 dark:to-violet-400"
+      >
+        Pricing tiers
+      </span>
+    </span>
+    <h2 class="mt-4 text-4xl font-bold tracking-tighter sm:text-5xl">
+      Find the perfect plan for your needs
+    </h2>
+    <p
+      class="mx-auto mt-6 max-w-2xl text-lg leading-7 text-gray-600 dark:text-gray-400"
+    >
+      Review the features included in each tier to select the best option for
+      your organization.
+    </p>
+  </div>
+  <div class="mt-12 overflow-x-auto">
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="border-b border-gray-200 dark:border-gray-800">
+          <th
+            class="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-gray-50"
+          >
+            Features
+          </th>
+          <th
+            class="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-gray-50"
+          >
+            Basic
+          </th>
+          <th
+            class="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-gray-50"
+          >
+            Pro
+          </th>
+          <th
+            class="px-6 py-4 text-center text-sm font-semibold text-gray-900 dark:text-gray-50"
+          >
+            Enterprise
+          </th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200 dark:divide-gray-800">
+        @for (feature of features; track feature.name) {
+        <tr class="hover:bg-gray-50 dark:hover:bg-gray-900/50">
+          <td
+            class="px-6 py-4 text-sm font-medium text-gray-900 dark:text-gray-50"
+          >
+            {{ feature.name }}
+          </td>
+          <td
+            class="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400"
+          >
+            @if (typeof feature.basic === 'boolean') { @if (feature.basic) {
+            <mat-icon
+              aria-hidden="true"
+              class="mx-auto text-green-600! dark:text-green-400! text-xl!"
+              >check</mat-icon
+            >
+            } @else {
+            <mat-icon aria-hidden="true" class="mx-auto text-gray-400! text-xl!"
+              >close</mat-icon
+            >
+            } } @else { {{ feature.basic }} }
+          </td>
+          <td
+            class="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400"
+          >
+            @if (typeof feature.pro === 'boolean') { @if (feature.pro) {
+            <mat-icon
+              aria-hidden="true"
+              class="mx-auto text-green-600! dark:text-green-400! text-xl!"
+              >check</mat-icon
+            >
+            } @else {
+            <mat-icon aria-hidden="true" class="mx-auto text-gray-400! text-xl!"
+              >close</mat-icon
+            >
+            } } @else { {{ feature.pro }} }
+          </td>
+          <td
+            class="px-6 py-4 text-center text-sm text-gray-600 dark:text-gray-400"
+          >
+            @if (typeof feature.enterprise === 'boolean') { @if
+            (feature.enterprise) {
+            <mat-icon
+              aria-hidden="true"
+              class="mx-auto text-green-600! dark:text-green-400! text-xl!"
+              >check</mat-icon
+            >
+            } @else {
+            <mat-icon aria-hidden="true" class="mx-auto text-gray-400! text-xl!"
+              >close</mat-icon
+            >
+            } } @else { {{ feature.enterprise }} }
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>

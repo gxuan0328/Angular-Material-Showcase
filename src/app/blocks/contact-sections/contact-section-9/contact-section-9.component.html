@@ -1,0 +1,106 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update contact-sections/contact-section-9`
+-->
+
+<div class="bg-white dark:bg-gray-900">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2
+        class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+      >
+        Visit Our Offices
+      </h2>
+      <p class="mt-4 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Find us at one of our global locations or send us a message online.
+      </p>
+    </div>
+
+    <div class="mt-16">
+      <div
+        class="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800"
+      >
+        <img
+          src="https://placehold.co/1600x900/e5e7eb/6b7280?text=World+Map"
+          alt="Office locations"
+          class="h-full w-full object-cover"
+        />
+      </div>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+      @for (office of offices; track office.city) {
+      <div class="rounded-2xl border border-gray-200 p-8 dark:border-gray-700">
+        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+          {{ office.city }}
+        </h3>
+        <dl class="mt-6 space-y-4 text-sm">
+          <div class="flex items-start gap-3">
+            <dt>
+              <span class="material-icons text-gray-400">location_on</span>
+            </dt>
+            <dd class="text-gray-600 dark:text-gray-400">
+              {{ office.address }}
+            </dd>
+          </div>
+          <div class="flex items-start gap-3">
+            <dt>
+              <span class="material-icons text-gray-400">phone</span>
+            </dt>
+            <dd>
+              <a
+                [href]="'tel:' + office.phone"
+                class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              >
+                {{ office.phone }}
+              </a>
+            </dd>
+          </div>
+          <div class="flex items-start gap-3">
+            <dt>
+              <span class="material-icons text-gray-400">email</span>
+            </dt>
+            <dd>
+              <a
+                [href]="'mailto:' + office.email"
+                class="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+              >
+                {{ office.email }}
+              </a>
+            </dd>
+          </div>
+        </dl>
+      </div>
+      }
+    </div>
+
+    <div class="mt-16 rounded-2xl bg-gray-50 p-8 dark:bg-gray-800 sm:p-12">
+      <h3 class="text-center text-2xl font-bold text-gray-900 dark:text-white">
+        Can't visit in person?
+      </h3>
+      <p class="mt-2 text-center text-gray-600 dark:text-gray-400">
+        Send us a message and we'll get back to you right away.
+      </p>
+      <form class="mx-auto mt-8 max-w-xl space-y-6">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Message</mat-label>
+          <textarea matInput rows="4" required></textarea>
+        </mat-form-field>
+
+        <button matButton="filled" type="submit" class="w-full">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

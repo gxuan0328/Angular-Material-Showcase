@@ -1,0 +1,38 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-22`
+-->
+
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+  @for (category of data; track category.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="text-sm">{{ category.name }}</div>
+      <div class="mt-1 text-3xl font-semibold">{{ category.total }}</div>
+      <div class="mt-4 space-y-3">
+        @for (item of category.details; track item.name) {
+        <div class="lg:flex lg:items-center lg:space-x-3">
+          <p
+            class="flex shrink-0 items-center justify-between space-x-2 text-sm lg:w-5/12"
+          >
+            <span class="truncate"> {{ item.name }} </span>
+            <span class="whitespace-nowrap font-semibold">
+              {{ item.value }}
+              <span class="font-normal">
+                ({{ item.percentageValue }}&#37;)
+              </span>
+            </span>
+          </p>
+          <mat-progress-bar
+            [value]="item.percentageValue"
+            mode="determinate"
+            class="mt-2 rounded-full lg:mt-0"
+          >
+          </mat-progress-bar>
+        </div>
+        }
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

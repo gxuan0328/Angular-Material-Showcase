@@ -1,0 +1,45 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-27`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (card of cards; track card.title) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="text-sm font-medium">{{ card.title }}</div>
+      <div
+        class="mt-4 grid grid-cols-1 md:grid-cols-3 items-center gap-x-8 gap-y-4"
+      >
+        <div class="gap-3 whitespace-nowrap col-span-1 flex md:flex-col">
+          @for (item of card.items; track item.label) {
+          <div>
+            <div class="flex items-center gap-2">
+              <span
+                [class]="item.color"
+                class="size-2.5 shrink-0 rounded-sm"
+                aria-hidden="true"
+              >
+              </span>
+              <span class="text-sm"> {{ item.label }} </span>
+            </div>
+            <span class="mt-1 block text-2xl font-semibold">
+              {{ item.value }}
+            </span>
+          </div>
+          }
+        </div>
+        <div class="h-28 col-span-1 md:col-span-2">
+          <canvas
+            baseChart
+            [type]="'line'"
+            [data]="card.chartData"
+            [options]="chartOptions"
+          >
+          </canvas>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

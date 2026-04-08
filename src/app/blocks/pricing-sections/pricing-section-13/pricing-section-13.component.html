@@ -1,0 +1,184 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update pricing-sections/pricing-section-13`
+-->
+
+<div class="bg-surface py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="text-base font-semibold leading-7 text-primary">
+        Smart Pricing
+      </h2>
+      <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+        Pricing that scales with your success
+      </p>
+      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Start free and only pay as you grow. Our flexible pricing model adapts
+        to your business needs at every stage.
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div
+      class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-5xl lg:grid-cols-3"
+    >
+      @for (plan of plans; track plan.id) {
+      <mat-card
+        [class]="
+            plan.highlighted
+              ? 'ring-2! ring-primary! transform scale-100 lg:scale-105 relative'
+              : ''
+          "
+      >
+        @if (plan.highlighted) {
+        <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span
+            class="rounded-full bg-primary px-2 py-1 text-xs font-semibold text-on-primary"
+          >
+            {{ plan.badge }}
+          </span>
+        </div>
+        }
+        <mat-card-content>
+          <div class="mt-6">
+            <div class="flex items-center gap-3">
+              <mat-icon [class]="'text-' + plan.iconColor"
+                >{{ plan.icon }}</mat-icon
+              >
+              <h3 class="text-xl font-semibold">{{ plan.name }}</h3>
+            </div>
+            <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+              {{ plan.description }}
+            </p>
+
+            <div class="mt-6">
+              @if (plan.price === 'Free') {
+              <div class="flex items-baseline">
+                <span class="text-4xl font-bold">Free</span>
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400"
+                  >{{ plan.priceNote }}</span
+                >
+              </div>
+              } @else if (plan.price === 'Custom') {
+              <div class="flex items-baseline">
+                <span class="text-4xl font-bold">Custom</span>
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400"
+                  >{{ plan.priceNote }}</span
+                >
+              </div>
+              } @else {
+              <div class="flex items-baseline">
+                <span class="text-4xl font-bold">{{ plan.price }}</span>
+                <span
+                  class="ml-1 text-sm font-medium text-gray-600 dark:text-gray-400"
+                  >{{ plan.period }}</span
+                >
+              </div>
+              }
+            </div>
+
+            <button
+              [matButton]="plan.highlighted ? 'filled' : 'outlined'"
+              class="w-full mt-6"
+            >
+              {{ plan.cta }}
+            </button>
+          </div>
+
+          <mat-divider class="my-8!" />
+
+          <div>
+            <h4 class="text-sm font-semibold mb-4">{{ plan.featuresTitle }}</h4>
+            <mat-list class="space-y-2">
+              @for (feature of plan.features; track feature) {
+              <mat-list-item>
+                <mat-icon matListItemIcon class="text-primary"
+                  >{{ feature.included ? 'check' : 'close' }}</mat-icon
+                >
+                <span
+                  matListItemTitle
+                  [class]="
+                        feature.included
+                          ? 'text-gray-600 dark:text-gray-400'
+                          : 'text-gray-600 dark:text-gray-400/50 line-through'
+                      "
+                >
+                  {{ feature.name }}
+                </span>
+              </mat-list-item>
+              }
+            </mat-list>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+
+    <!-- Additional Features Section -->
+    <div class="mt-24">
+      <div class="text-center">
+        <h3 class="text-2xl font-bold">Everything you need to succeed</h3>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          Powerful features designed to help you build, grow, and scale your
+          business.
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-8 lg:grid-cols-3">
+        @for (feature of additionalFeatures; track feature.id) {
+        <div class="text-center">
+          <div
+            class="mx-auto flex size-16 items-center justify-center rounded-lg bg-primary/10"
+          >
+            <mat-icon class="text-primary! text-2xl! size-[1em]! leading-none!"
+              >{{ feature.icon }}</mat-icon
+            >
+          </div>
+          <h4 class="mt-6 text-lg font-semibold">{{ feature.title }}</h4>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            {{ feature.description }}
+          </p>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="mt-24">
+      <div class="text-center">
+        <h3 class="text-2xl font-bold">Frequently asked questions</h3>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          Have questions? We're here to help you choose the right plan.
+        </p>
+      </div>
+
+      <div class="mt-16 grid gap-8 lg:grid-cols-2">
+        @for (faq of faqs; track faq.id) {
+        <div>
+          <h4 class="text-lg font-semibold">{{ faq.question }}</h4>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            {{ faq.answer }}
+          </p>
+        </div>
+        }
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-24 text-center">
+      <p class="text-lg font-semibold">Ready to get started?</p>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+        Join thousands of businesses already using our platform to grow their
+        success.
+      </p>
+      <div class="mt-8 flex justify-center gap-4 density-3">
+        <button matButton="filled">Start free trial</button>
+        <button matButton="outlined">Talk to sales</button>
+      </div>
+      <p class="mt-4 text-xs text-gray-600 dark:text-gray-400">
+        No credit card required • 14-day free trial • Cancel anytime
+      </p>
+    </div>
+  </div>
+</div>

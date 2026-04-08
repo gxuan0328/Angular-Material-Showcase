@@ -1,0 +1,104 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bento-grids/bento-grid-1`
+-->
+
+<div class="mx-auto w-full max-w-7xl px-6 py-20 lg:px-8">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="text-3xl font-bold tracking-tight sm:text-5xl">
+      Everything you need to succeed
+    </h2>
+    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+      Powerful tools and features designed to help you build, launch, and scale
+      your business faster than ever before.
+    </p>
+  </div>
+
+  <div class="mx-auto mt-16 grid max-w-7xl gap-6 lg:grid-cols-2">
+    <!-- Large feature card -->
+    <div
+      class="relative overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8 lg:col-span-1 lg:row-span-2"
+    >
+      <div class="flex h-full flex-col">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10"
+        >
+          <mat-icon class="text-primary">analytics</mat-icon>
+        </div>
+        <h3 class="mt-6 text-2xl font-semibold">Advanced Analytics</h3>
+        <p class="mt-4 text-base leading-7 text-gray-600 dark:text-gray-400">
+          Get deep insights into your data with our powerful analytics engine.
+          Track metrics that matter and make data-driven decisions with
+          confidence.
+        </p>
+        <div class="mt-8 flex-1">
+          <img
+            src="https://placehold.co/600x400/4f46e5/white?text=Analytics+Dashboard"
+            alt="Analytics Dashboard"
+            class="h-full w-full rounded-lg object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Smaller feature cards -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-secondary/10"
+      >
+        <mat-icon class="text-secondary">security</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">Enterprise Security</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        Bank-level encryption and compliance certifications keep your data safe
+        and secure.
+      </p>
+    </div>
+
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8"
+    >
+      <div
+        class="flex h-12 w-12 items-center justify-center rounded-lg bg-tertiary/10"
+      >
+        <mat-icon class="text-tertiary">speed</mat-icon>
+      </div>
+      <h3 class="mt-6 text-xl font-semibold">Lightning Fast</h3>
+      <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+        Optimized for performance with sub-second response times across all
+        operations.
+      </p>
+    </div>
+
+    <!-- Full width card -->
+    <div
+      class="overflow-hidden rounded-2xl border border-outline-variant bg-surface p-8 lg:col-span-2"
+    >
+      <div class="flex items-start gap-x-6">
+        <div
+          class="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10"
+        >
+          <mat-icon class="text-primary">integration_instructions</mat-icon>
+        </div>
+        <div class="flex-1">
+          <h3 class="text-xl font-semibold">Seamless Integrations</h3>
+          <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+            Connect with your favorite tools and services. Over 100+
+            integrations available including Slack, GitHub, Jira, and more.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            @for (integration of integrations; track integration) {
+            <span
+              class="inline-flex items-center rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300"
+            >
+              {{ integration }}
+            </span>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/onboarding-feed-6`
+-->
+
+<div class="max-w-2xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2">Setup Progress</h2>
+    <p class="text-gray-600 dark:text-gray-400">
+      Track your workspace configuration and setup progress
+    </p>
+  </div>
+
+  <!-- Timeline -->
+  <div class="relative">
+    <!-- Timeline Line -->
+    <div
+      class="absolute left-4 top-6 bottom-2 w-[2px] bg-outline-variant"
+    ></div>
+
+    <!-- Timeline Events -->
+    <div class="space-y-6" data-testid="timeline-events">
+      @for (step of steps; track step.id) {
+      <div class="flex gap-4">
+        <!-- Status Icon -->
+        <div
+          class="flex size-8 items-center justify-center bg-surface z-10 relative"
+        >
+          <mat-icon class="ml-[2px]" [ngClass]="getStepIconClass(step)"
+            >{{ getStepIcon(step) }}</mat-icon
+          >
+        </div>
+
+        <!-- Content -->
+        <div class="flex-grow mt-1">
+          <div class="flex items-baseline justify-between gap-2">
+            <div>
+              <h3 class="text-base font-medium mb-1">{{ step.title }}</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                {{ step.description }}
+              </p>
+            </div>
+            @if (step.timestamp) {
+            <span
+              class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap"
+              >{{ step.timestamp }}</span
+            >
+            } @else if (step.status === 'in_progress') {
+            <span
+              class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap"
+              >In progress...</span
+            >
+            } @else {
+            <span
+              class="text-sm text-gray-600 dark:text-gray-400 whitespace-nowrap"
+              >Pending</span
+            >
+            }
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

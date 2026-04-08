@@ -1,0 +1,86 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/onboarding-feed-3`
+-->
+
+<div class="max-w-2xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2" data-testid="header-title">
+      Welcome aboard
+    </h2>
+    <p
+      class="text-gray-600 dark:text-gray-400"
+      data-testid="header-description"
+    >
+      Complete these steps to set up your analytics workspace and create your
+      first insights dashboard.
+    </p>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="mb-4">
+    <div class="flex justify-between items-center mb-2">
+      <span class="text-sm text-gray-600 dark:text-gray-400"
+        >Progress {{ currentStep }}/{{ totalSteps }}</span
+      >
+      <span class="text-sm text-gray-600 dark:text-gray-400"
+        >{{ (currentStep / totalSteps) * 100 }}% Completed</span
+      >
+    </div>
+    <mat-progress-bar
+      mode="determinate"
+      [value]="(currentStep / totalSteps) * 100"
+      class="rounded-full"
+    />
+  </div>
+
+  <!-- Steps List -->
+  <div class="space-y-4" data-testid="steps-list">
+    @for (step of steps; track step.id) {
+    <div
+      class="flex flex-col gap-3 p-4 rounded-lg border border-outline-variant"
+      [ngClass]="{ 'bg-surface-container': step.status === 'current' }"
+    >
+      <!-- Step Content -->
+      <div class="flex items-center gap-2" [ngClass]="getStepStatus(step)">
+        <!-- Step Icon -->
+        <div>
+          @if (step.status === 'completed') {
+          <mat-icon
+            [attr.data-testid]="'step-icon-' + step.id"
+            [class]="getStepIconClass(step)"
+            [ngClass]="getStepStatus(step)"
+            >check_circle</mat-icon
+          >
+          } @else {
+          <div class="flex items-center justify-center size-6">
+            <span class="text-base" [attr.data-step-status]="step.status"
+              >{{ step.id }}</span
+            >
+          </div>
+          }
+        </div>
+        <h3 class="text-base font-medium">{{ step.title }}</h3>
+      </div>
+      <p class="text-sm text-gray-600 dark:text-gray-400 pl-8">
+        {{ step.description }}
+      </p>
+    </div>
+    }
+  </div>
+
+  <!-- Need Help Section -->
+  <div class="mt-8 pt-6 border-t border-outline-variant">
+    <p class="text-sm text-gray-600 dark:text-gray-400 mb-0">
+      Questions? Our support team is here to help at
+      <a
+        data-testid="help-link"
+        href="mailto:help@analytics.com"
+        class="text-primary no-underline hover:underline"
+      >
+        help&#64;analytics.com</a
+      >.
+    </p>
+  </div>
+</div>

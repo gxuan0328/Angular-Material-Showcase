@@ -1,0 +1,32 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stats-sections/stats-section-5`
+-->
+
+<div class="py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16 items-center">
+      <div>
+        <h2 class="text-3xl font-bold tracking-tight md:text-4xl">
+          Proven results that speak for themselves
+        </h2>
+        <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+          We've helped thousands of companies achieve their goals through
+          innovative solutions and dedicated support.
+        </p>
+        <a href="#" matButton="filled" class="mt-6"> Learn more </a>
+      </div>
+      <div class="grid grid-cols-2 gap-6">
+        @for (stat of stats; track stat.id) {
+        <div class="flex flex-col">
+          <div class="text-3xl font-bold md:text-4xl">{{ stat.value }}</div>
+          <div class="mt-2 text-base font-medium">{{ stat.label }}</div>
+          <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+            {{ stat.description }}
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

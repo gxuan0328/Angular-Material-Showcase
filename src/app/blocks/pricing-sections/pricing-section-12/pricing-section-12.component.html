@@ -1,0 +1,163 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update pricing-sections/pricing-section-12`
+-->
+
+<div class="bg-surface py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="text-base font-semibold leading-7 text-primary">
+        Flexible Plans
+      </h2>
+      <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+        Plans that grow with your business
+      </p>
+      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Choose between our standard plans or customize a solution that fits your
+        unique requirements.
+      </p>
+    </div>
+
+    <!-- Plan Type Toggle -->
+    <div class="mt-16 flex justify-center">
+      <mat-button-toggle-group
+        [value]="selectedPlanType()"
+        (change)="onPlanTypeChange($event.value)"
+        class="rounded-lg bg-surface-container"
+      >
+        <mat-button-toggle value="standard"> Standard Plans </mat-button-toggle>
+        <mat-button-toggle value="custom"> Custom Solutions </mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+
+    <!-- Standard Plans -->
+    @if (selectedPlanType() === 'standard') {
+    <div
+      class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-3"
+    >
+      @for (plan of standardPlans; track plan.id) {
+      <mat-card
+        [class]="
+              plan.popular
+                ? 'ring-2! ring-primary! transform scale-100 md:scale-105'
+                : ''
+            "
+      >
+        <mat-card-content>
+          @if (plan.popular) {
+          <div class="flex justify-center">
+            <span
+              class="inline-flex items-center rounded-full bg-primary px-3 py-1 text-xs font-medium text-on-primary"
+            >
+              Most Popular
+            </span>
+          </div>
+          }
+
+          <div class="mt-6">
+            <h3 class="text-xl font-semibold">{{ plan.name }}</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              {{ plan.description }}
+            </p>
+
+            <div class="mt-6 flex items-baseline">
+              <span class="text-4xl font-bold">{{ plan.price }}</span>
+              <span
+                class="ml-1 text-sm font-medium text-gray-600 dark:text-gray-400"
+                >{{ plan.period }}</span
+              >
+            </div>
+
+            <button
+              [matButton]="plan.popular ? 'filled' : 'outlined'"
+              class="w-full mt-6"
+            >
+              {{ plan.cta }}
+            </button>
+          </div>
+
+          <mat-divider class="my-6!" />
+
+          <div>
+            <h4 class="text-sm font-medium mb-4">Key Features</h4>
+            <mat-list>
+              @for (feature of plan.features; track feature) {
+              <mat-list-item>
+                <mat-icon matListItemIcon class="text-primary!">check</mat-icon>
+                <span matListItemTitle class="text-sm">{{ feature }}</span>
+              </mat-list-item>
+              }
+            </mat-list>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+    }
+
+    <!-- Custom Solutions -->
+    @if (selectedPlanType() === 'custom') {
+    <div class="mx-auto mt-16 max-w-4xl">
+      <div class="grid gap-8 lg:grid-cols-2">
+        @for (solution of customSolutions; track solution.id) {
+        <mat-card class="h-full">
+          <mat-card-header>
+            <div
+              mat-card-avatar
+              class="size-12 bg-primary-container flex items-center justify-center"
+            >
+              <mat-icon class="text-on-primary-container!"
+                >{{ solution.icon }}</mat-icon
+              >
+            </div>
+            <mat-card-title> {{ solution.name }} </mat-card-title>
+            <mat-card-subtitle class="text-sm!">
+              {{ solution.description }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-list class="mt-6">
+              @for (feature of solution.features; track feature) {
+              <mat-list-item>
+                <mat-icon matListItemIcon class="text-primary!"
+                  >arrow_forward</mat-icon
+                >
+                <span matListItemTitle class="text-sm">{{ feature }}</span>
+              </mat-list-item>
+              }
+            </mat-list>
+          </mat-card-content>
+          <mat-card-actions>
+            <button matButton="outlined" class="w-full">
+              {{ solution.cta }}
+            </button>
+          </mat-card-actions>
+        </mat-card>
+        }
+      </div>
+
+      <!-- Contact Section for Custom Solutions -->
+      <div class="mt-12 text-center">
+        <p class="text-lg font-medium">Ready to build something unique?</p>
+        <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          Our team will work with you to create a tailored solution that meets
+          your exact needs.
+        </p>
+        <div class="mt-6 flex justify-center gap-4 density-3">
+          <button matButton="filled">Schedule consultation</button>
+          <button matButton="outlined">View case studies</button>
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- Additional Info -->
+    <div class="mt-16 text-center">
+      <p class="text-sm text-gray-600 dark:text-gray-400">
+        All plans include 30-day money-back guarantee • Switch plans anytime •
+        No setup fees
+      </p>
+    </div>
+  </div>
+</div>

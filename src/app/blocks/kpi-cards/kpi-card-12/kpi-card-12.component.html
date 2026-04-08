@@ -1,0 +1,45 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-12`
+-->
+
+<div>
+  <h2 class="text-lg font-medium">Plan overview</h2>
+  <p class="mt-1 text-sm/6">
+    You are currently on the
+    <span class="font-medium"> professional plan </span>
+    .
+    <a
+      href="#"
+      class="inline-flex items-center gap-1 text-primary hover:underline hover:underline-offset-4"
+    >
+      View other plans
+      <mat-icon class="size-[1em]! text-lg! leading-none!"
+        >open_in_new</mat-icon
+      >
+    </a>
+  </p>
+  <div class="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (item of data; track item.name) {
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <div class="flex items-center space-x-3">
+          <ngm-dev-block-ui-progress-circle
+            [value]="item.capacity"
+            [radius]="25"
+            [strokeWidth]="5"
+          >
+            <span class="text-xs font-medium"> {{ item.capacity }}&#37; </span>
+          </ngm-dev-block-ui-progress-circle>
+          <div>
+            <div class="text-sm font-medium">{{ item.name }}</div>
+            <div class="text-sm">
+              {{ item.current }} of {{ item.allowed }} used
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+</div>

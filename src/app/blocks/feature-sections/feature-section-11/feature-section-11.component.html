@@ -1,0 +1,75 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-11`
+-->
+
+<div class="mx-auto w-full max-w-6xl px-3 py-20">
+  <div class="text-center">
+    <span
+      class="inline-block rounded-lg border border-violet-200/20 bg-violet-50/50 px-3 py-1.5 font-semibold uppercase leading-4 tracking-tighter dark:border-violet-800/30 dark:bg-violet-900/20 sm:text-sm"
+    >
+      <span
+        class="bg-gradient-to-b from-violet-500 to-violet-600 bg-clip-text text-transparent dark:from-violet-200 dark:to-violet-400"
+      >
+        Explore
+      </span>
+    </span>
+    <h2 class="mt-4 text-4xl font-bold tracking-tighter sm:text-5xl">
+      Discover what makes us different
+    </h2>
+  </div>
+  <div class="mt-12">
+    <mat-tab-group [(selectedIndex)]="selectedTab" class="w-full">
+      @for (tab of tabs; track tab.id; let i = $index) {
+      <mat-tab [label]="tab.label">
+        <div class="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <div class="flex flex-col justify-center">
+            <div
+              class="w-fit rounded-xl bg-violet-100/50 p-3 shadow-lg shadow-violet-500/10 ring-1 ring-violet-200/20 dark:bg-violet-900/20 dark:ring-violet-800/30"
+            >
+              <mat-icon
+                aria-hidden="true"
+                class="text-[2rem]! size-[1em]! text-violet-600! dark:text-violet-400!"
+                >{{ tab.icon }}</mat-icon
+              >
+            </div>
+            <h3
+              class="mt-6 text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-50"
+            >
+              {{ tab.title }}
+            </h3>
+            <p class="mt-4 text-lg leading-7 text-gray-600 dark:text-gray-400">
+              {{ tab.description }}
+            </p>
+            <ul class="mt-6 space-y-3">
+              @for (feature of tab.features; track feature) {
+              <li class="flex items-center gap-3">
+                <mat-icon
+                  aria-hidden="true"
+                  class="text-violet-600! dark:text-violet-400! text-xl!"
+                  >check_circle</mat-icon
+                >
+                <span class="text-gray-700 dark:text-gray-300">
+                  {{ feature }}
+                </span>
+              </li>
+              }
+            </ul>
+          </div>
+          <div
+            class="relative aspect-[4/3] overflow-hidden rounded-2xl bg-gradient-to-br from-violet-100 to-violet-200 dark:from-violet-900/50 dark:to-violet-800/50"
+          >
+            <div
+              class="absolute inset-0 flex items-center justify-center text-violet-400/20 dark:text-violet-500/20"
+            >
+              <mat-icon class="text-[12rem]! size-[1em]!" aria-hidden="true"
+                >{{ tab.icon }}</mat-icon
+              >
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+      }
+    </mat-tab-group>
+  </div>
+</div>

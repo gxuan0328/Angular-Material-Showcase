@@ -1,0 +1,14 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update spark-area-charts/spark-area-chart-2`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.list-overrides(
+    (
+      list-item-one-line-container-height: 68px,
+    )
+  );
+}

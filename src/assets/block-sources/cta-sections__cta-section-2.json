@@ -1,0 +1,8 @@
+{
+  "category": "cta-sections",
+  "variant": "cta-section-2",
+  "files": {
+    "cta-section-2.component.html": "<!--\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update cta-sections/cta-section-2`\n-->\n\n<div class=\"bg-indigo-700 dark:bg-indigo-900\">\n  <div class=\"px-6 py-24 sm:px-6 sm:py-32 lg:px-8\">\n    <div class=\"mx-auto max-w-2xl text-center\">\n      <h2 class=\"text-3xl font-bold tracking-tight text-white sm:text-4xl\">\n        Accelerate your business growth\n      </h2>\n      <p class=\"mx-auto mt-6 max-w-xl text-lg leading-8 text-indigo-200\">\n        Experience the next generation of business automation. Our platform\n        combines cutting-edge technology with intuitive design to help you\n        achieve your goals faster.\n      </p>\n      <div class=\"mt-10 flex items-center justify-center gap-x-6\">\n        <button\n          matButton=\"filled\"\n          class=\"!bg-white !text-indigo-600 hover:!bg-indigo-50\"\n        >\n          Get started\n        </button>\n        <a matButton href=\"#\" class=\"!text-white\">\n          View pricing <span aria-hidden=\"true\">→</span>\n        </a>\n      </div>\n    </div>\n  </div>\n</div>\n",
+    "cta-section-2.component.ts": "/*\n\tInstalled from https://ui.angular-material.dev/\n\tUpdate this file using `npx @ngm-dev/cli update cta-sections/cta-section-2`\n*/\n\nimport { ChangeDetectionStrategy, Component } from '@angular/core';\nimport { MatButton } from '@angular/material/button';\n\n@Component({\n  selector: 'ngm-dev-block-cta-section-2',\n  templateUrl: './cta-section-2.component.html',\n  changeDetection: ChangeDetectionStrategy.OnPush,\n  imports: [MatButton],\n})\nexport class CtaSection2Component {}\n"
+  }
+}

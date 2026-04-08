@@ -1,0 +1,176 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/with-comments`
+-->
+
+<div class="max-w-md mx-auto p-6" data-testid="with-comments-container">
+  <!-- Activity Timeline -->
+  <div class="space-y-6 mb-8" data-testid="activity-timeline">
+    @for (item of activities; track item.id) {
+    <div
+      class="flex items-start gap-4"
+      [attr.data-testid]="'activity-item-' + item.id"
+    >
+      <!-- Activity Icon or Avatar -->
+      @if (item.type === 'commented') {
+      <img
+        [ngSrc]="item.user.avatar!"
+        width="32"
+        height="32"
+        class="rounded-full"
+        [alt]="item.user.name"
+        [attr.data-testid]="'activity-avatar-' + item.id"
+      />
+      } @else {
+      <div
+        class="rounded-full flex items-center justify-center w-8 h-8"
+        [ngClass]="{
+              'bg-gray-200 dark:bg-gray-800': item.type !== 'paid',
+              'bg-green-200 dark:bg-green-900': item.type === 'paid',
+            }"
+        [attr.data-testid]="'activity-icon-container-' + item.id"
+      >
+        @if (item.type === 'paid') {
+        <mat-icon
+          class="text-green-700 dark:text-green-400 icon-filled"
+          [attr.data-testid]="'activity-icon-paid-' + item.id"
+          >check_circle</mat-icon
+        >
+        } @else {
+        <mat-icon
+          class="text-gray-700 dark:text-gray-400 icon-filled"
+          [attr.data-testid]="'activity-icon-' + item.id"
+          >fiber_manual_record</mat-icon
+        >
+        }
+      </div>
+      }
+
+      <!-- Activity Content -->
+      <div
+        class="flex-1 text-sm"
+        [attr.data-testid]="'activity-content-' + item.id"
+      >
+        <div
+          class="flex items-start justify-between gap-4"
+          [ngClass]="{
+              'p-2 border border-outline rounded-sm': item.type === 'commented',
+              'mt-1.5': item.type !== 'commented',
+            }"
+          [attr.data-testid]="'activity-content-container-' + item.id"
+        >
+          <div [attr.data-testid]="'activity-details-' + item.id">
+            <div
+              class="flex items-center gap-1"
+              [attr.data-testid]="'activity-user-action-' + item.id"
+            >
+              <span
+                class="font-medium"
+                [attr.data-testid]="'activity-user-name-' + item.id"
+                >{{ item.user.name }}</span
+              >
+              <span [attr.data-testid]="'activity-action-' + item.id"
+                >{{ item.action }}</span
+              >
+            </div>
+            @if (item.comment) {
+            <p
+              class="my-2 text-gray-600 dark:text-gray-400"
+              [attr.data-testid]="'activity-comment-' + item.id"
+            >
+              {{ item.comment }}
+            </p>
+            }
+          </div>
+          <div
+            class="text-gray-600 dark:text-gray-400 whitespace-nowrap"
+            [attr.data-testid]="'activity-timestamp-' + item.id"
+          >
+            {{ item.timestamp }}
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
+
+  <!-- Comment Form -->
+  <div class="flex items-start gap-4" data-testid="comment-form">
+    <img
+      [ngSrc]="currentUser.avatar"
+      width="32"
+      height="32"
+      class="rounded-full"
+      [alt]="currentUser.name"
+      data-testid="current-user-avatar"
+    />
+    <div class="flex-1" data-testid="comment-form-container">
+      <mat-form-field class="w-full" data-testid="comment-input-field">
+        <mat-label>Add your comment...</mat-label>
+        <textarea
+          matInput
+          #commentInput
+          rows="3"
+          placeholder="What are your thoughts?"
+          data-testid="comment-input"
+        ></textarea>
+      </mat-form-field>
+      <div class="flex justify-end gap-2" data-testid="comment-actions">
+        <button mat-icon-button data-testid="attach-file-button">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          data-testid="feel-button"
+        >
+          <span class="flex items-center justify-center">
+            <mat-icon data-testid="selected-feel-icon">
+              {{ selectedFeel ? feelIcons[selectedFeel] : 'sentiment_satisfied'
+              }}
+            </mat-icon>
+          </span>
+        </button>
+        <mat-menu #menu="matMenu" data-testid="feel-menu">
+          @for (feel of feelOptions; track feel.value) {
+          <button
+            mat-menu-item
+            (click)="selectedFeel = feel.value"
+            [attr.data-testid]="'feel-option-' + feel.value"
+          >
+            <span class="flex items-center gap-2">
+              <span
+                class="flex items-center justify-center p-2 rounded-full"
+                [ngClass]="{
+                    'bg-green-200 dark:bg-green-700': feel.value === 'happy',
+                    'bg-yellow-200 dark:bg-yellow-700': feel.value === 'sad',
+                    'bg-pink-200 dark:bg-pink-700': feel.value === 'surprised',
+                    'bg-gray-200 dark:bg-gray-700': feel.value === 'neutral',
+                    'bg-red-200 dark:bg-red-700': feel.value === 'angry',
+                  }"
+                [attr.data-testid]="'feel-icon-container-' + feel.value"
+              >
+                <mat-icon
+                  class="mr-0!"
+                  [attr.data-testid]="'feel-icon-' + feel.value"
+                  >{{ feelIcons[feel.value] }}</mat-icon
+                >
+              </span>
+              <span [attr.data-testid]="'feel-label-' + feel.value"
+                >{{ feel.label }}</span
+              >
+            </span>
+          </button>
+          }
+        </mat-menu>
+        <button
+          matButton="outlined"
+          (click)="addComment(commentInput.value); commentInput.value = ''"
+          data-testid="submit-comment-button"
+        >
+          Comment
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

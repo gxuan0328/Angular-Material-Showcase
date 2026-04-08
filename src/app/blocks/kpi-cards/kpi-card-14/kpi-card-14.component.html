@@ -1,0 +1,51 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update kpi-cards/kpi-card-14`
+-->
+
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+  @for (item of data; track item.name) {
+  <mat-card appearance="outlined">
+    <mat-card-content>
+      <div class="text-sm font-medium">
+        {{ item.name }}
+        <span class="font-normal">({{ item.symbol }})</span>
+      </div>
+      <div class="mt-1 flex items-baseline justify-between">
+        <div
+          [class]="
+              item.changeType === 'positive'
+                ? 'text-emerald-700 dark:text-emerald-500'
+                : 'text-red-700 dark:text-red-500'
+            "
+          class="text-lg font-semibold"
+        >
+          {{ item.value }}
+        </div>
+        <div class="flex items-center space-x-1 text-sm">
+          <span class="font-medium"> {{ item.change }} </span>
+          <span
+            [class]="
+                item.changeType === 'positive'
+                  ? 'text-emerald-700 dark:text-emerald-500'
+                  : 'text-red-700 dark:text-red-500'
+              "
+            class="text-sm font-medium"
+          >
+            ({{ item.percentageChange }})
+          </span>
+        </div>
+      </div>
+      <div class="mt-4 h-10">
+        <canvas
+          baseChart
+          [type]="'line'"
+          [data]="item.chartData"
+          [options]="chartOptions"
+        >
+        </canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

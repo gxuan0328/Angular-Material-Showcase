@@ -1,0 +1,151 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update pricing-sections/pricing-section-8`
+-->
+
+<div class="relative isolate bg-surface px-6 py-24 sm:py-32 lg:px-8">
+  <!-- Header -->
+  <div class="mx-auto max-w-4xl text-center">
+    <h2 class="text-base font-semibold leading-7 text-primary">
+      Choose Your Plan
+    </h2>
+    <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+      Simple, transparent pricing
+    </p>
+    <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+      Get started with our flexible pricing plans designed to grow with your
+      business needs.
+    </p>
+  </div>
+
+  <!-- Pricing Cards -->
+  <div
+    class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-3"
+  >
+    @for (plan of plans; track plan.id) {
+    <mat-card [class]="plan.featured ? 'ring-2 ring-primary' : ''">
+      <mat-card-content>
+        <div class="flex items-center justify-between">
+          <h3 class="text-lg font-semibold leading-8">{{ plan.name }}</h3>
+          @if (plan.featured) {
+          <span
+            class="rounded-full bg-primary px-2.5 py-1 text-xs font-semibold text-on-primary"
+          >
+            Most popular
+          </span>
+          }
+        </div>
+        <p class="mt-4 text-sm leading-6 text-gray-600 dark:text-gray-400">
+          {{ plan.description }}
+        </p>
+        <p class="mt-6 flex items-baseline gap-x-1">
+          <span class="text-4xl font-bold tracking-tight">
+            {{ plan.price }}
+          </span>
+          <span
+            class="text-sm font-semibold leading-6 text-gray-600 dark:text-gray-400"
+          >
+            /{{ plan.period }}
+          </span>
+        </p>
+        <button
+          [matButton]="plan.featured ? 'filled' : 'outlined'"
+          class="w-full mt-6"
+        >
+          Get started
+        </button>
+        <mat-list class="mt-8">
+          @for (feature of plan.features; track feature) {
+          <mat-list-item>
+            <mat-icon matListItemIcon class="text-primary!">check</mat-icon>
+            <span
+              matListItemTitle
+              class="text-sm leading-6 text-gray-600 dark:text-gray-400!"
+              >{{ feature }}</span
+            >
+          </mat-list-item>
+          }
+        </mat-list>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+
+  <!-- Comparison Table -->
+  <div class="mx-auto mt-24 max-w-7xl">
+    <div class="text-center">
+      <h3 class="text-2xl font-bold tracking-tight">Compare all features</h3>
+      <p class="mt-4 text-lg text-gray-600 dark:text-gray-400">
+        Everything you need to know about our plans and features.
+      </p>
+    </div>
+
+    <div class="mt-12 h-128 overflow-auto border border-outline-variant">
+      <table mat-table [dataSource]="comparisonData()" class="w-full">
+        <!-- Feature column -->
+        <ng-container matColumnDef="feature">
+          <th mat-header-cell *matHeaderCellDef class="text-left font-semibold">
+            Features
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="py-4 text-sm text-gray-600 dark:text-gray-400"
+          >
+            {{ element.feature }}
+          </td>
+        </ng-container>
+
+        <!-- Plan columns -->
+        @for (plan of plans; track plan.id) {
+        <ng-container [matColumnDef]="plan.id">
+          <th mat-header-cell *matHeaderCellDef class="text-center">
+            <div class="flex flex-col gap-1">
+              <span class="font-semibold">{{ plan.name }}</span>
+              <span class="text-sm text-gray-600 dark:text-gray-400"
+                >{{ plan.price }}/{{ plan.period }}</span
+              >
+            </div>
+          </th>
+          <td mat-cell *matCellDef="let element" class="py-4 text-center">
+            @if (element[plan.id] === true) {
+            <mat-icon class="text-primary! icon-filled">check</mat-icon>
+            } @else if (element[plan.id] === false) {
+            <mat-icon class="text-gray-600 dark:text-gray-400! icon-filled"
+              >close</mat-icon
+            >
+            } @else {
+            <span class="text-sm text-gray-600 dark:text-gray-400"
+              >{{ element[plan.id] }}</span
+            >
+            }
+          </td>
+        </ng-container>
+        }
+
+        <!-- Category rows -->
+        <ng-container matColumnDef="category">
+          <th
+            mat-cell
+            *matCellDef="let element"
+            class="bg-surface-container-high px-4 py-3 text-left font-medium border-b border-outline-variant"
+            [attr.colspan]="displayedColumns.length"
+          >
+            {{ element.category }}
+          </th>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['category']; when: isCategoryRow"
+          class="h-auto"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

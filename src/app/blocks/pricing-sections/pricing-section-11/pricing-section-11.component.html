@@ -1,0 +1,113 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update pricing-sections/pricing-section-11`
+-->
+
+<div class="bg-surface py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="text-base font-semibold leading-7 text-primary">
+        Transparent Pricing
+      </h2>
+      <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+        Pricing built for businesses of all sizes
+      </p>
+      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Start free and scale as you grow. No setup fees, no hidden costs, no
+        surprises.
+      </p>
+    </div>
+
+    <!-- Pricing Grid -->
+    <div
+      class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-6 sm:mt-20 lg:max-w-4xl lg:grid-cols-2 xl:max-w-none xl:mx-0 xl:grid-cols-4"
+    >
+      @for (plan of plans; track plan.id) {
+      <mat-card
+        [class]="
+            plan.recommended
+              ? 'ring-2! ring-primary! transform scale-100 xl:scale-105'
+              : ''
+          "
+      >
+        <mat-card-content>
+          @if (plan.recommended) {
+          <div class="flex justify-center">
+            <span
+              class="inline-flex items-center rounded-full bg-primary px-3 py-1 text-xs font-medium text-on-primary"
+            >
+              Recommended
+            </span>
+          </div>
+          }
+
+          <div class="mt-6">
+            <h3 class="text-lg font-semibold">{{ plan.name }}</h3>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              {{ plan.description }}
+            </p>
+
+            <div class="mt-6">
+              @if (plan.price === 'Free') {
+              <span class="text-4xl font-bold">Free</span>
+              } @else if (plan.price === 'Custom') {
+              <span class="text-4xl font-bold">Custom</span>
+              } @else {
+              <span class="text-4xl font-bold">{{ plan.price }}</span>
+              <span
+                class="text-base font-medium text-gray-600 dark:text-gray-400"
+                >/month</span
+              >
+              }
+            </div>
+
+            @if (plan.note) {
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              {{ plan.note }}
+            </p>
+            }
+
+            <button
+              [matButton]="plan.recommended ? 'filled' : 'outlined'"
+              class="w-full mt-6"
+            >
+              {{ plan.cta }}
+            </button>
+          </div>
+
+          <mat-divider class="my-6!" />
+
+          <div>
+            <h4 class="text-sm font-medium mb-4">{{ plan.featuresTitle }}</h4>
+            <mat-list>
+              @for (feature of plan.features; track feature) {
+              <mat-list-item>
+                <mat-icon matListItemIcon class="text-primary!">check</mat-icon>
+                <span
+                  matListItemTitle
+                  class="text-sm text-gray-600 dark:text-gray-400!"
+                  >{{ feature }}</span
+                >
+              </mat-list-item>
+              }
+            </mat-list>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="mt-16 text-center density-3">
+      <p class="text-lg font-medium">Need a custom solution?</p>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+        Contact our sales team for enterprise pricing and custom features.
+      </p>
+      <div class="mt-6">
+        <button matButton="filled" class="mr-4">Schedule a demo</button>
+        <button matButton>Contact sales</button>
+      </div>
+    </div>
+  </div>
+</div>

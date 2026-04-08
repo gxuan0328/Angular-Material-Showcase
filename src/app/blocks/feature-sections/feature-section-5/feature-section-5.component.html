@@ -1,0 +1,105 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update feature-sections/feature-section-5`
+-->
+
+<div
+  class="mx-auto w-full max-w-4xl px-3 py-20 sm:text-center"
+  data-testid="feature-section-5-container"
+>
+  <span
+    class="block bg-gradient-to-b from-gray-700 to-gray-400 bg-clip-text text-lg font-semibold text-transparent dark:from-violet-200 dark:to-violet-400 sm:text-xl"
+    data-testid="feature-section-5-subtitle"
+  >
+    Analytics
+  </span>
+  <h2
+    class="mt-2 block bg-gradient-to-br from-gray-900 to-gray-800 bg-clip-text py-2 text-4xl font-bold tracking-tighter text-transparent dark:from-gray-50 dark:to-gray-300 sm:text-6xl"
+    data-testid="feature-section-5-title"
+  >
+    Insights made for everyone
+  </h2>
+  <div
+    class="group relative mt-12 h-[30rem] transition mx-auto"
+    data-testid="feature-section-5-charts-container"
+  >
+    <div
+      class="absolute top-12 left-1/2 -translate-x-1/2 h-80 aspect-16/9 transform-gpu rounded-lg bg-white shadow-md shadow-black/5 ring-1 ring-black/5 transition-all delay-75 duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:top-52 group-hover:rotate-6"
+      data-testid="feature-section-5-area-chart-container"
+    >
+      <div class="relative h-full w-full p-2 flex items-center justify-center">
+        <div
+          class="absolute left-2.5 top-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute right-2.5 top-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute bottom-2.5 left-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute bottom-2.5 right-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <canvas
+          baseChart
+          [data]="areaChartData"
+          [options]="areaChartOptions"
+          [type]="'line'"
+          data-testid="feature-section-5-area-chart"
+        ></canvas>
+      </div>
+    </div>
+    <div
+      class="delay-50 absolute left-1/2 -translate-x-1/2 top-6 h-80 aspect-16/9 scale-[102.5%] transform-gpu rounded-lg bg-white shadow-md shadow-black/5 ring-1 ring-black/5 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:top-16 group-hover:-rotate-3"
+      data-testid="feature-section-5-line-chart-container"
+    >
+      <div class="relative h-full w-full p-2 flex items-center justify-center">
+        <div
+          class="absolute left-2.5 top-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute right-2.5 top-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute bottom-2.5 left-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute bottom-2.5 right-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <canvas
+          baseChart
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [type]="'line'"
+          data-testid="feature-section-5-line-chart"
+        ></canvas>
+      </div>
+    </div>
+    <div
+      class="absolute top-0 left-1/2 -translate-x-1/2 flex h-80 aspect-16/9 scale-105 transform-gpu items-center rounded-lg bg-white shadow-xl shadow-black/5 ring-1 ring-black/5 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-top-6 group-hover:rotate-3 group-hover:scale-[102.5%]"
+      data-testid="feature-section-5-bar-chart-container"
+    >
+      <div class="relative h-full w-full p-2 flex items-center justify-center">
+        <canvas
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [type]="'bar'"
+          data-testid="feature-section-5-bar-chart"
+        ></canvas>
+        <div
+          class="absolute left-2.5 top-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute right-2.5 top-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute bottom-2.5 left-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+        <div
+          class="absolute bottom-2.5 right-2.5 size-1.5 rounded-full bg-gray-200 shadow-inner dark:bg-gray-800"
+        ></div>
+      </div>
+    </div>
+  </div>
+</div>

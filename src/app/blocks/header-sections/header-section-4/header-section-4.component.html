@@ -1,0 +1,49 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update header-sections/header-section-4`
+-->
+
+<div class="mx-auto w-full max-w-7xl px-6 py-16 sm:py-24 lg:px-8">
+  <div class="text-center">
+    <mat-chip-set class="inline-flex">
+      <mat-chip>
+        <mat-icon class="text-base! size-[1em]! leading-none!"
+          >campaign</mat-icon
+        >
+        Announcing v3.0
+      </mat-chip>
+    </mat-chip-set>
+    <h1 class="mt-6 text-4xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+      Developer Experience
+      <br />
+      <span class="text-primary">Reimagined</span>
+    </h1>
+    <p
+      class="mx-auto mt-8 max-w-2xl text-lg leading-8 text-gray-600 dark:text-gray-400"
+    >
+      A complete suite of tools designed to streamline your development
+      workflow. From ideation to deployment, we've got you covered with
+      intelligent automation and best-in-class integrations.
+    </p>
+    <div class="mt-10 flex items-center justify-center gap-x-6">
+      <button mat-flat-button>
+        <mat-icon>download</mat-icon>
+        Download Now
+      </button>
+      <button mat-button>
+        View Documentation
+        <mat-icon>arrow_forward</mat-icon>
+      </button>
+    </div>
+    <div class="mt-16 grid gap-8 sm:grid-cols-3">
+      @for (stat of stats; track stat.label) {
+      <div class="flex flex-col items-center">
+        <div class="text-4xl font-bold text-primary">{{ stat.value }}</div>
+        <div class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          {{ stat.label }}
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

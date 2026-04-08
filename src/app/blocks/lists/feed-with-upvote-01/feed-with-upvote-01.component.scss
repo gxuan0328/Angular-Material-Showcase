@@ -1,0 +1,51 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update lists/feed-with-upvote-01`
+*/
+
+@use '@angular/material' as mat;
+
+.in-progress {
+  @include mat.theme-overrides(
+    (
+      secondary-container: light-dark(
+          var(--color-blue-200),
+          var(--color-blue-800)
+        ),
+      on-secondary-container: light-dark(
+          var(--color-blue-900),
+          var(--color-blue-50)
+        ),
+    )
+  );
+}
+
+.completed {
+  @include mat.theme-overrides(
+    (
+      secondary-container: light-dark(
+          var(--color-green-200),
+          var(--color-green-800)
+        ),
+      on-secondary-container: light-dark(
+          var(--color-green-900),
+          var(--color-green-50)
+        ),
+    )
+  );
+}
+
+.planned {
+  @include mat.theme-overrides(
+    (
+      secondary-container: light-dark(
+          var(--color-yellow-200),
+          var(--color-yellow-800)
+        ),
+      on-secondary-container: light-dark(
+          var(--color-yellow-900),
+          var(--color-yellow-50)
+        ),
+    )
+  );
+}

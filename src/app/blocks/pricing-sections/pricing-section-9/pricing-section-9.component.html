@@ -1,0 +1,102 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update pricing-sections/pricing-section-9`
+-->
+
+<div class="bg-surface py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="text-base font-semibold leading-7 text-primary">
+        Flexible Pricing
+      </h2>
+      <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+        Plans that scale with your business
+      </p>
+      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Choose the perfect plan for your team's needs. Upgrade or downgrade at
+        any time with no hidden fees.
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div
+      class="isolate mx-auto mt-16 grid max-w-md grid-cols-1 gap-y-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-8 xl:gap-x-12"
+    >
+      @for (tier of tiers; track tier.id) {
+      <mat-card
+        [class]="
+            tier.mostPopular
+              ? 'ring-2 ring-primary scale-105 lg:z-10'
+              : 'lg:mt-8'
+          "
+      >
+        <mat-card-content>
+          @if (tier.mostPopular) {
+          <div class="flex items-center justify-center">
+            <span
+              class="rounded-full bg-primary px-2 py-1 text-xs font-medium text-on-primary"
+            >
+              Most Popular
+            </span>
+          </div>
+          }
+          <div class="mt-0 lg:mt-6 flex items-center">
+            <h3 class="text-lg font-semibold leading-8">{{ tier.name }}</h3>
+          </div>
+          <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+            {{ tier.description }}
+          </p>
+          <p class="mt-6 flex items-baseline gap-x-1">
+            <span class="text-5xl font-bold tracking-tight">
+              {{ tier.priceMonthly }}
+            </span>
+            <span
+              class="text-sm font-semibold leading-6 text-gray-600 dark:text-gray-400"
+            >
+              /month
+            </span>
+          </p>
+          <button
+            matButton="filled"
+            [class]="
+                tier.mostPopular
+                  ? 'bg-primary text-on-primary w-full mt-8'
+                  : 'bg-surface-container-highest  w-full mt-8'
+              "
+          >
+            {{ tier.cta }}
+          </button>
+
+          <mat-list class="mt-8">
+            @for (feature of tier.features; track feature) {
+            <mat-list-item>
+              <mat-icon matListItemIcon class="text-primary">check</mat-icon>
+              <span
+                matListItemTitle
+                class="text-sm leading-6 text-gray-600 dark:text-gray-400"
+                >{{ feature }}</span
+              >
+            </mat-list-item>
+            }
+          </mat-list>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+
+    <!-- Additional Info -->
+    <div class="mt-16 text-center density-3">
+      <p class="text-sm leading-6 text-gray-600 dark:text-gray-400">
+        All plans include 14-day free trial. No credit card required. Cancel
+        anytime.
+      </p>
+      <div class="mt-4 flex items-center justify-center gap-x-6">
+        <a href="#" matButton="outlined">
+          View feature comparison <span aria-hidden="true">→</span>
+        </a>
+        <a href="#" matButton> Contact sales </a>
+      </div>
+    </div>
+  </div>
+</div>

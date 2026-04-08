@@ -1,0 +1,46 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update cta-sections/cta-section-9`
+-->
+
+<div class="bg-white dark:bg-gray-900">
+  <div class="mx-auto max-w-7xl px-6 py-24 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2
+        class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white"
+      >
+        Join the revolution
+      </h2>
+      <p
+        class="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600 dark:text-gray-400"
+      >
+        Thousands of businesses trust our platform to streamline their
+        operations and drive growth. See why industry leaders choose us.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <button matButton="filled">Get started today</button>
+        <a matButton href="#"
+          >Book a consultation <span aria-hidden="true">→</span></a
+        >
+      </div>
+    </div>
+    <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24">
+      <dl
+        class="grid grid-cols-1 gap-x-8 gap-y-10 text-center sm:grid-cols-3 lg:gap-y-16"
+      >
+        @for (stat of stats; track stat.value) {
+        <div class="mx-auto flex max-w-xs flex-col gap-y-4">
+          <dt class="text-base leading-7 text-gray-600 dark:text-gray-400">
+            {{ stat.label }}
+          </dt>
+          <dd
+            class="order-first text-3xl font-semibold tracking-tight text-gray-900 sm:text-5xl dark:text-white"
+          >
+            {{ stat.value }}
+          </dd>
+        </div>
+        }
+      </dl>
+    </div>
+  </div>
+</div>

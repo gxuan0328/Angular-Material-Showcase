@@ -1,0 +1,150 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update pricing-sections/pricing-section-15`
+-->
+
+<div class="bg-surface py-24 sm:py-32">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <!-- Header -->
+    <div class="mx-auto max-w-4xl text-center">
+      <h2 class="text-base font-semibold leading-7 text-primary">
+        Simple Pricing
+      </h2>
+      <p class="mt-2 text-4xl font-bold tracking-tight sm:text-5xl">
+        Choose what works for you
+      </p>
+      <p class="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Transparent pricing with no hidden fees. Start free and upgrade when
+        you're ready to scale.
+      </p>
+    </div>
+
+    <!-- Pricing Cards -->
+    <div
+      class="mx-auto mt-16 grid max-w-lg grid-cols-1 gap-8 lg:max-w-4xl lg:grid-cols-3"
+    >
+      @for (plan of plans; track plan.id) {
+      <mat-card [class]="plan.featured ? 'ring-2! ring-primary!' : ''">
+        <mat-card-content>
+          @if (plan.featured) {
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span
+              class="rounded-full bg-primary px-2 py-1 text-xs font-semibold text-on-primary"
+            >
+              {{ plan.badge }}
+            </span>
+          </div>
+          }
+          <div class="text-center">
+            <!-- Plan Icon -->
+            <div
+              class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary-container my-6"
+            >
+              <mat-icon
+                class="text-primary! text-2xl! leading-none! size-[1em]!"
+                >{{ plan.icon }}</mat-icon
+              >
+            </div>
+
+            <!-- Plan Name -->
+            <h3 class="text-xl font-semibold mb-2">{{ plan.name }}</h3>
+
+            <!-- Plan Description -->
+            <p class="text-sm text-gray-600 dark:text-gray-400 mb-6">
+              {{ plan.description }}
+            </p>
+
+            <!-- Pricing -->
+            <div class="mb-8">
+              @if (plan.price === 'Free') {
+              <div class="text-4xl font-bold">Free</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                {{ plan.period }}
+              </div>
+              } @else if (plan.price === 'Custom') {
+              <div class="text-4xl font-bold">Custom</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                {{ plan.period }}
+              </div>
+              } @else {
+              <div class="text-4xl font-bold">{{ plan.price }}</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400 mt-1">
+                {{ plan.period }}
+              </div>
+              }
+            </div>
+
+            <!-- CTA Button -->
+            <button
+              [matButton]="plan.featured ? 'filled' : 'outlined'"
+              class="w-full mb-8"
+            >
+              {{ plan.cta }}
+            </button>
+
+            <!-- Features -->
+            <div class="text-left">
+              <h4 class="text-sm font-semibold mb-4 text-center">
+                {{ plan.featuresTitle }}
+              </h4>
+              <mat-list class="space-y-2">
+                @for (feature of plan.features; track feature) {
+                <mat-list-item>
+                  <mat-icon matListItemIcon class="text-primary!"
+                    >check</mat-icon
+                  >
+                  <span
+                    matListItemTitle
+                    class="text-sm text-gray-600 dark:text-gray-400!"
+                    >{{ feature }}</span
+                  >
+                </mat-list-item>
+                }
+              </mat-list>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      }
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="mx-auto mt-16 max-w-4xl text-center">
+      <div class="bg-surface-container-highest rounded-2xl p-8">
+        <h3 class="text-xl font-semibold mb-4">Need something different?</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-6">
+          Our team can create a custom solution that fits your specific
+          requirements and budget.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <button matButton="filled">Schedule a demo</button>
+          <button matButton>Contact sales team</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Trust Indicators -->
+    <div class="mx-auto mt-12 max-w-4xl text-center">
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        <div
+          class="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400"
+        >
+          <mat-icon class="text-primary! icon-filled">security</mat-icon>
+          <span>Enterprise-grade security</span>
+        </div>
+        <div
+          class="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400"
+        >
+          <mat-icon class="text-primary! icon-filled">support_agent</mat-icon>
+          <span>24/7 customer support</span>
+        </div>
+        <div
+          class="flex items-center justify-center gap-2 text-sm text-gray-600 dark:text-gray-400"
+        >
+          <mat-icon class="text-primary! icon-filled">cached</mat-icon>
+          <span>30-day money back guarantee</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

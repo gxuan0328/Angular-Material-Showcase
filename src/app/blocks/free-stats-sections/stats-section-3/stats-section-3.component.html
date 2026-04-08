@@ -1,0 +1,30 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update free-stats-sections/stats-section-3`
+-->
+
+<div class="py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl font-bold tracking-tight md:text-4xl">
+        Powering the modern web
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      @for (stat of stats; track stat.id) {
+      <div class="flex flex-col items-center text-center">
+        <div
+          class="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-container"
+        >
+          <mat-icon class="text-on-primary-container">{{ stat.icon }}</mat-icon>
+        </div>
+        <div class="mt-4 text-4xl font-bold">{{ stat.value }}</div>
+        <div class="mt-2 text-base font-medium">{{ stat.label }}</div>
+        <div class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          {{ stat.description }}
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+</div>

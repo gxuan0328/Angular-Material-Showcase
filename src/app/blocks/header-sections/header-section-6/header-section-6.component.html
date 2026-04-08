@@ -1,0 +1,61 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update header-sections/header-section-6`
+-->
+
+<div class="relative overflow-hidden">
+  <div
+    class="absolute inset-0 -z-10 bg-[radial-gradient(45rem_50rem_at_top,theme(colors.primary.DEFAULT/20%),transparent)]"
+  ></div>
+  <div class="mx-auto w-full max-w-7xl px-6 py-20 sm:py-32 lg:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <div
+        class="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-on-primary shadow-lg"
+      >
+        <mat-icon class="text-base">stars</mat-icon>
+        <span>Start Your 14-Day Free Trial</span>
+      </div>
+      <h1 class="mt-8 text-5xl font-bold tracking-tight sm:text-7xl">
+        Supercharge Your Productivity
+      </h1>
+      <p class="mt-8 text-lg leading-8 text-gray-600 dark:text-gray-400">
+        Join over 100,000 professionals who have transformed their workflow. Get
+        instant access to premium features and experience the difference.
+      </p>
+      <div class="mt-12">
+        <form class="mx-auto flex max-w-md gap-3">
+          <mat-form-field class="flex-1" subscriptSizing="dynamic">
+            <input matInput type="email" placeholder="Enter your email" />
+            <mat-icon matSuffix>email</mat-icon>
+          </mat-form-field>
+          <button mat-flat-button type="submit" class="flex-shrink-0">
+            Get Started
+          </button>
+        </form>
+        <div
+          class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2"
+        >
+          @for (benefit of benefits; track benefit.text) {
+          <div
+            class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400"
+          >
+            <mat-icon class="text-base text-green-500"
+              >{{ benefit.icon }}</mat-icon
+            >
+            <span>{{ benefit.text }}</span>
+          </div>
+          }
+        </div>
+      </div>
+      <div
+        class="mt-16 overflow-hidden rounded-2xl border border-outline-variant bg-surface shadow-2xl"
+      >
+        <img
+          src="https://placehold.co/1200x700/6366f1/white?text=Dashboard+Preview"
+          alt="Dashboard Preview"
+          class="w-full"
+        />
+      </div>
+    </div>
+  </div>
+</div>
