@@ -1,0 +1,17 @@
+.check-email__illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 9999px;
+  background: var(--mat-sys-primary-container, #d7e3ff);
+  color: var(--mat-sys-on-primary-container, #00458f);
+  margin: 0 auto;
+}
+
+.check-email__illustration mat-icon {
+  font-size: 2rem;
+  width: 2rem;
+  height: 2rem;
+}

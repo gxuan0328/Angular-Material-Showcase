@@ -1,0 +1,164 @@
+<div class="dashboard">
+  <header class="dashboard__header">
+    <div>
+      <p class="dashboard__eyebrow">Glacier Analytics · SaaS</p>
+      <h1 class="dashboard__title">儀表板總覽</h1>
+      <p class="dashboard__subtitle">追蹤月經常性收入、活躍使用者與服務品質指標</p>
+    </div>
+    <div class="dashboard__header-actions">
+      <button mat-stroked-button type="button">
+        <mat-icon>calendar_today</mat-icon>
+        <span>本月</span>
+      </button>
+      <button mat-flat-button type="button" color="primary">
+        <mat-icon>download</mat-icon>
+        <span>匯出報表</span>
+      </button>
+    </div>
+  </header>
+
+  @if (!onboarding.dismissed()) {
+    <mat-card appearance="outlined" class="dashboard__onboarding">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="dashboard__onboarding-avatar">rocket_launch</mat-icon>
+        <mat-card-title>快速開始引導</mat-card-title>
+        <mat-card-subtitle>
+          已完成 {{ completedSteps() }} / {{ onboarding.steps().length }} 個步驟
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="onboardingProgress()"
+          aria-label="完成進度"
+        />
+
+        <ul class="dashboard__onboarding-steps" role="list">
+          @for (step of onboarding.steps(); track step.id) {
+            <li
+              class="dashboard__onboarding-step"
+              [class.dashboard__onboarding-step--done]="step.done"
+            >
+              <mat-icon class="dashboard__onboarding-step-icon">{{ stepIcon(step) }}</mat-icon>
+              <div class="dashboard__onboarding-step-text">
+                <strong>{{ step.title }}</strong>
+                <span>{{ step.description }}</span>
+              </div>
+            </li>
+          }
+        </ul>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button mat-button type="button" (click)="dismissOnboarding()">稍後提醒</button>
+        <button mat-flat-button type="button" color="primary">
+          繼續下一步
+          <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  }
+
+  <section class="dashboard__kpi-row" aria-label="核心指標">
+    @for (kpi of dashboard.kpis(); track kpi.id) {
+      <mat-card appearance="outlined" class="dashboard__kpi-card">
+        <mat-card-content>
+          <p class="dashboard__kpi-label">{{ kpi.label }}</p>
+          <p class="dashboard__kpi-value">{{ formatKpi(kpi.value, kpi.unit) }}</p>
+          <p
+            class="dashboard__kpi-delta"
+            [class.dashboard__kpi-delta--up]="kpi.trend === 'up' && kpi.delta >= 0"
+            [class.dashboard__kpi-delta--down]="kpi.trend === 'down' || kpi.delta < 0"
+          >
+            <mat-icon>{{ kpi.delta >= 0 ? 'trending_up' : 'trending_down' }}</mat-icon>
+            <span>{{ deltaLabel(kpi.delta) }} · 相較上月</span>
+          </p>
+        </mat-card-content>
+      </mat-card>
+    }
+  </section>
+
+  <section class="dashboard__charts">
+    <mat-card appearance="outlined" class="dashboard__chart-card dashboard__chart-card--wide">
+      <mat-card-header>
+        <mat-card-title>90 天營收趨勢</mat-card-title>
+        <mat-card-subtitle>日維度 · USD · 含週末季節性</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="dashboard__chart-canvas">
+          <canvas baseChart [type]="'line'" [data]="revenueChart().data" [options]="revenueChart().options"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card appearance="outlined" class="dashboard__chart-card dashboard__chart-card--narrow">
+      <mat-card-header>
+        <mat-card-title>方案分布</mat-card-title>
+        <mat-card-subtitle>
+          共 {{ dashboard.plans().totalCustomers | number }} 位付費客戶
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="dashboard__chart-canvas dashboard__chart-canvas--donut">
+          <canvas baseChart [type]="'doughnut'" [data]="plansChart().data" [options]="plansChart().options"></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <section class="dashboard__lists">
+    <mat-card appearance="outlined" class="dashboard__list-card">
+      <mat-card-header>
+        <mat-card-title>熱門頁面</mat-card-title>
+        <mat-card-subtitle>過去 7 天 · 依瀏覽量排序</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ul class="dashboard__bar-list" role="list">
+          @for (page of dashboard.topPages().pages; track page.path) {
+            <li class="dashboard__bar-item">
+              <div class="dashboard__bar-label">
+                <code>{{ page.path }}</code>
+                <span>{{ page.label }}</span>
+              </div>
+              <div class="dashboard__bar-track">
+                <div class="dashboard__bar-fill" [style.width.%]="page.percent"></div>
+              </div>
+              <div class="dashboard__bar-value">
+                <strong>{{ page.views | number }}</strong>
+                <span>{{ page.percent }}%</span>
+              </div>
+            </li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card appearance="outlined" class="dashboard__list-card">
+      <mat-card-header>
+        <mat-card-title>最新動態</mat-card-title>
+        <mat-card-subtitle>即時活動饋送</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <ul class="dashboard__feed" role="list">
+          @for (item of dashboard.feeds(); track item.id) {
+            <li class="dashboard__feed-item" [attr.data-type]="item.type">
+              <div class="dashboard__feed-avatar">
+                <mat-icon>{{ feedIcon(item.type) }}</mat-icon>
+              </div>
+              <div class="dashboard__feed-body">
+                <p class="dashboard__feed-head">
+                  <strong>{{ item.user.name }}</strong>
+                  <span class="dashboard__feed-time">
+                    {{ item.timestamp | date: 'MM/dd HH:mm' }}
+                  </span>
+                </p>
+                <p class="dashboard__feed-message">{{ item.message }}</p>
+              </div>
+            </li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>

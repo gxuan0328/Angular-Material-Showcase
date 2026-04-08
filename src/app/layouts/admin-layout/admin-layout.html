@@ -1,10 +1,120 @@
-<header class="admin-layout__topbar" aria-label="應用程式工具列">
-  <span class="admin-layout__brand">Glacier Analytics</span>
-  <app-theme-toggle />
-</header>
-<nav class="admin-layout__sidenav" aria-label="主功能導覽">
-  <!-- M2 populates -->
-</nav>
-<main class="admin-layout__main">
-  <router-outlet />
-</main>
+<mat-sidenav-container class="admin-layout__container" autosize>
+  <mat-sidenav
+    class="admin-layout__sidenav"
+    mode="side"
+    [opened]="sidenavOpen()"
+    [disableClose]="true"
+  >
+    <div class="admin-layout__brand-block">
+      <span class="material-symbols-outlined admin-layout__logo" aria-hidden="true">ac_unit</span>
+      @if (sidenavOpen()) {
+        <div class="admin-layout__brand-text">
+          <strong>Glacier Analytics</strong>
+          <span>SaaS 管理後台</span>
+        </div>
+      }
+    </div>
+
+    <mat-divider />
+
+    <mat-nav-list class="admin-layout__nav" aria-label="主功能導覽">
+      @for (item of navItems; track item.id) {
+        @if (item.soon) {
+          <a
+            mat-list-item
+            class="admin-layout__nav-item admin-layout__nav-item--soon"
+            [matTooltip]="item.label + ' · 即將推出'"
+            matTooltipPosition="right"
+            aria-disabled="true"
+          >
+            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+            <span matListItemTitle>{{ item.label }}</span>
+            <span matListItemMeta class="admin-layout__nav-badge">即將推出</span>
+          </a>
+        } @else {
+          <a
+            mat-list-item
+            class="admin-layout__nav-item"
+            [routerLink]="item.path"
+            routerLinkActive="admin-layout__nav-item--active"
+            [routerLinkActiveOptions]="{ exact: !!item.exact }"
+          >
+            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+            <span matListItemTitle>{{ item.label }}</span>
+          </a>
+        }
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="admin-layout__content">
+    <header class="admin-layout__topbar" aria-label="應用程式工具列">
+      <div class="admin-layout__topbar-left">
+        <button
+          type="button"
+          mat-icon-button
+          class="admin-layout__menu-toggle"
+          aria-label="切換側邊導覽"
+          (click)="toggleSidenav()"
+        >
+          <mat-icon>menu</mat-icon>
+        </button>
+        <span class="admin-layout__title">Glacier Analytics</span>
+      </div>
+
+      <div class="admin-layout__topbar-right">
+        <app-theme-palette-selector />
+        <app-theme-toggle />
+        <button
+          type="button"
+          mat-icon-button
+          matTooltip="通知中心"
+          aria-label="通知中心"
+        >
+          <mat-icon>notifications_none</mat-icon>
+        </button>
+
+        <button
+          type="button"
+          mat-button
+          class="admin-layout__user-trigger"
+          [matMenuTriggerFor]="userMenu"
+          aria-label="使用者選單"
+        >
+          <span class="admin-layout__avatar" aria-hidden="true">{{ initials() }}</span>
+          <span class="admin-layout__user-label">
+            {{ auth.user()?.displayName || auth.user()?.email || '訪客' }}
+          </span>
+          <mat-icon class="admin-layout__user-caret">expand_more</mat-icon>
+        </button>
+
+        <mat-menu #userMenu="matMenu" xPosition="before">
+          <div class="admin-layout__user-card" mat-menu-item disabled>
+            <div class="admin-layout__user-card-line">
+              <strong>{{ auth.user()?.displayName || '訪客' }}</strong>
+            </div>
+            <div class="admin-layout__user-card-line">{{ auth.user()?.email || '—' }}</div>
+          </div>
+          <mat-divider />
+          <button type="button" mat-menu-item>
+            <mat-icon>person</mat-icon>
+            <span>個人資料</span>
+          </button>
+          <button type="button" mat-menu-item>
+            <mat-icon>tune</mat-icon>
+            <span>偏好設定</span>
+          </button>
+          <mat-divider />
+          <button type="button" mat-menu-item (click)="signOut()">
+            <mat-icon>logout</mat-icon>
+            <span>登出</span>
+          </button>
+        </mat-menu>
+      </div>
+    </header>
+
+    <main class="admin-layout__main">
+      <router-outlet />
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
