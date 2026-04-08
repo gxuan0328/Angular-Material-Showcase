@@ -13,15 +13,36 @@ import { CatalogBlockMeta } from '../models/catalog-block-meta';
 
 import { AnimatedCopyButtonComponent } from '../../blocks/components/animated-copy-button/animated-copy-button.component';
 import { BarListComponent } from '../../blocks/components/bar-list/bar-list.component';
-import { BigButtonComponent } from '../../blocks/components/big-button/big-button.component';
-import { BreadcrumbsComponent } from '../../blocks/components/breadcrumbs/breadcrumbs.component';
 import { CategoryBarComponent } from '../../blocks/components/category-bar/category-bar.component';
-import { DragElementsComponent } from '../../blocks/components/drag-elements/drag-elements.component';
-import { MarqueeComponent } from '../../blocks/components/marquee/marquee.component';
-import { ProgressCircleComponent } from '../../blocks/components/progress-circle/progress-circle.component';
-import { TerminalComponent } from '../../blocks/components/terminal/terminal.component';
 import { TrackerComponent } from '../../blocks/components/tracker/tracker.component';
+import { sampleTrackerData } from '../../blocks/components/tracker/tracker.model';
 import { WordRotateComponent } from '../../blocks/components/word-rotate/word-rotate.component';
+
+// Demo wrappers for "headless" vendor blocks that can't be rendered
+// directly via ngComponentOutlet (they rely on contentChildren directives
+// or <ng-content> projection). Each wrapper provides sample content so the
+// Live Preview shows something meaningful to the developer.
+import { BigButtonDemo } from './components-demos/big-button-demo';
+import { BreadcrumbsDemo } from './components-demos/breadcrumbs-demo';
+import { DragElementsDemo } from './components-demos/drag-elements-demo';
+import { MarqueeDemo } from './components-demos/marquee-demo';
+import { ProgressCircleDemo } from './components-demos/progress-circle-demo';
+import { TerminalDemo } from './components-demos/terminal-demo';
+
+// Demo data payloads passed via ngComponentOutlet inputs for the 4 vendor
+// blocks with `input.required<T>()` declarations. Without these the preview
+// crashes with NG0950 and the component falls back to raw text content.
+const DEMO_BAR_LIST_DATA = [
+  { name: '/home', value: 1280 },
+  { name: '/pricing', value: 854 },
+  { name: '/docs', value: 612 },
+  { name: '/about', value: 390 },
+  { name: '/contact', value: 145 },
+];
+
+const DEMO_CATEGORY_BAR_VALUES = [28, 45, 18, 9];
+
+const DEMO_WORDS = ['Faster', 'Sharper', 'Accessible', 'Typed'];
 
 const VARIANTS: readonly BlockVariant[] = [
   {
@@ -30,6 +51,7 @@ const VARIANTS: readonly BlockVariant[] = [
     registryCategory: 'components',
     component: AnimatedCopyButtonComponent,
     isFree: false,
+    demoInputs: { contentToCopy: 'npm install @ngm-dev/cli' },
   },
   {
     id: 'bar-list',
@@ -37,19 +59,20 @@ const VARIANTS: readonly BlockVariant[] = [
     registryCategory: 'components',
     component: BarListComponent,
     isFree: false,
+    demoInputs: { data: DEMO_BAR_LIST_DATA },
   },
   {
     id: 'big-button',
     label: 'Big Button — 大型按鈕',
     registryCategory: 'components',
-    component: BigButtonComponent,
+    component: BigButtonDemo,
     isFree: false,
   },
   {
     id: 'breadcrumbs',
     label: 'Breadcrumbs — 麵包屑導覽',
     registryCategory: 'components',
-    component: BreadcrumbsComponent,
+    component: BreadcrumbsDemo,
     isFree: false,
   },
   {
@@ -58,33 +81,34 @@ const VARIANTS: readonly BlockVariant[] = [
     registryCategory: 'components',
     component: CategoryBarComponent,
     isFree: false,
+    demoInputs: { values: DEMO_CATEGORY_BAR_VALUES },
   },
   {
     id: 'drag-elements',
     label: 'Drag Elements — 可拖曳元素',
     registryCategory: 'components',
-    component: DragElementsComponent,
+    component: DragElementsDemo,
     isFree: false,
   },
   {
     id: 'marquee',
     label: 'Marquee — 跑馬燈',
     registryCategory: 'components',
-    component: MarqueeComponent,
+    component: MarqueeDemo,
     isFree: false,
   },
   {
     id: 'progress-circle',
     label: 'Progress Circle — 進度環',
     registryCategory: 'components',
-    component: ProgressCircleComponent,
+    component: ProgressCircleDemo,
     isFree: false,
   },
   {
     id: 'terminal',
     label: 'Terminal — 終端機模擬器',
     registryCategory: 'components',
-    component: TerminalComponent,
+    component: TerminalDemo,
     isFree: false,
   },
   {
@@ -93,6 +117,7 @@ const VARIANTS: readonly BlockVariant[] = [
     registryCategory: 'components',
     component: TrackerComponent,
     isFree: false,
+    demoInputs: { data: sampleTrackerData },
   },
   {
     id: 'word-rotate',
@@ -100,6 +125,7 @@ const VARIANTS: readonly BlockVariant[] = [
     registryCategory: 'components',
     component: WordRotateComponent,
     isFree: false,
+    demoInputs: { words: DEMO_WORDS },
   },
 ];
 
