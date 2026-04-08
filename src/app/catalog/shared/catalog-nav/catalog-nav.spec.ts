@@ -16,9 +16,9 @@ describe('CatalogNav', () => {
     const fixture = TestBed.createComponent(CatalogNav);
     await fixture.whenStable();
     const el: HTMLElement = fixture.nativeElement;
-    const titles = Array.from(
-      el.querySelectorAll<HTMLElement>('.catalog-nav__section-title'),
-    ).map(h => h.textContent?.trim() ?? '');
+    const titles = Array.from(el.querySelectorAll<HTMLElement>('.catalog-nav__section-title')).map(
+      h => h.textContent?.trim() ?? '',
+    );
     expect(titles).toEqual(['Application', 'Marketing']);
   });
 
