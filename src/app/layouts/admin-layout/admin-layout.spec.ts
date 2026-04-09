@@ -38,11 +38,11 @@ describe('AdminLayout', () => {
     expect(labels.some(l => l.includes('設定'))).toBe(true);
   });
 
-  it('marks M4 nav items as soon', async () => {
+  it('has zero soon items after M4 (all live)', async () => {
     const fixture = TestBed.createComponent(AdminLayout);
     await fixture.whenStable();
     const soonItems = fixture.nativeElement.querySelectorAll('.admin-layout__nav-item--soon');
-    // M3: dashboard + users + teams + notifications live; billing/reports/settings are M4 soon
-    expect(soonItems.length).toBe(3);
+    // After M4: all 7 nav items are live
+    expect(soonItems.length).toBe(0);
   });
 });

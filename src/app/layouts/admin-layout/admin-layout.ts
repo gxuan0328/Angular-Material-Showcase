@@ -31,16 +31,15 @@ const NAV_ITEMS: readonly NavItem[] = [
     icon: 'notifications',
     path: '/app/notifications',
   },
-  { id: 'billing', label: '計費與用量', icon: 'credit_card', path: '/app/billing', soon: true },
-  { id: 'reports', label: '報表分析', icon: 'insights', path: '/app/reports', soon: true },
-  { id: 'settings', label: '設定', icon: 'settings', path: '/app/settings', soon: true },
+  { id: 'billing', label: '計費與用量', icon: 'credit_card', path: '/app/billing' },
+  { id: 'reports', label: '報表分析', icon: 'insights', path: '/app/reports' },
+  { id: 'settings', label: '設定', icon: 'settings', path: '/app/settings' },
 ] as const;
 
 /**
  * Admin shell — left sidenav + topbar with theme controls and a user menu.
- * Nav items point at /app/* routes; destinations that M2 has not shipped
- * yet are marked `soon` and surface a "即將推出" tooltip instead of a live
- * RouterLink. Signing out returns the user to /auth/sign-in.
+ * After M4, all 7 nav items point at live /app/* routes.
+ * Signing out returns the user to /auth/sign-in.
  */
 @Component({
   selector: 'app-admin-layout',

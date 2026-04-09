@@ -30,4 +30,21 @@ export const APP_SHELL_ROUTES: Routes = [
     title: '通知中心',
     loadComponent: () => import('./notifications/notifications').then(m => m.Notifications),
   },
+  {
+    path: 'billing',
+    title: '計費與用量',
+    loadComponent: () => import('./billing/billing-shell').then(m => m.BillingShell),
+    loadChildren: () => import('./billing/billing.routes').then(m => m.BILLING_ROUTES),
+  },
+  {
+    path: 'reports',
+    title: '報表分析',
+    loadComponent: () => import('./reports/reports').then(m => m.Reports),
+  },
+  {
+    path: 'settings',
+    title: '設定',
+    loadComponent: () => import('./settings/settings-shell').then(m => m.SettingsShell),
+    loadChildren: () => import('./settings/settings.routes').then(m => m.SETTINGS_ROUTES),
+  },
 ];
