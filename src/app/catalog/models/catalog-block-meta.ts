@@ -18,4 +18,10 @@ export interface CatalogBlockMeta {
   readonly api: ApiDocumentation;
   readonly bestPractices: BestPracticeNotes;
   readonly relatedBlockIds: readonly string[];
+  /**
+   * Minimum preview-zone height (pixels) propagated to the CatalogPage shell.
+   * Chart categories (chart-compositions, chart-tooltips) need this because
+   * their tallest layouts clip at the default 900px viewport.
+   */
+  readonly previewMinHeight?: number;
 }

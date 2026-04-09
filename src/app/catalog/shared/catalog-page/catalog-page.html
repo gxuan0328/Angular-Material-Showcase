@@ -15,7 +15,11 @@
   }
 </header>
 
-<section class="catalog-page__zone" aria-labelledby="zone-preview">
+<section
+  class="catalog-page__zone catalog-page__zone--preview"
+  aria-labelledby="zone-preview"
+  [style.min-height.px]="block.previewMinHeight ?? null"
+>
   <h2 id="zone-preview" class="catalog-page__zone-title">即時預覽</h2>
   @if (hasVariants()) {
   <ng-content select="[slot=preview]" />
