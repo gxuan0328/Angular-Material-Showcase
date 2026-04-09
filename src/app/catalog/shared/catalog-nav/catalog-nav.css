@@ -67,6 +67,16 @@
   display: flex;
   flex-direction: column;
   gap: 0.125rem;
+  max-height: 1000px;
+  opacity: 1;
+  overflow: hidden;
+  transition: max-height 250ms ease, opacity 200ms ease, margin 200ms ease;
+}
+
+.catalog-nav__list--collapsed {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
 }
 
 .catalog-nav__link {

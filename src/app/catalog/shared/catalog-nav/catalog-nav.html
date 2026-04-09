@@ -16,8 +16,10 @@
           [class.catalog-nav__group-chevron--open]="isGroupExpanded(group.subcategory)"
         >›</span>
       </button>
-      @if (isGroupExpanded(group.subcategory)) {
-      <ul class="catalog-nav__list">
+      <ul
+        class="catalog-nav__list"
+        [class.catalog-nav__list--collapsed]="!isGroupExpanded(group.subcategory)"
+      >
         @for (entry of group.entries; track entry.id) {
         <li>
           <a
@@ -35,7 +37,6 @@
         </li>
         }
       </ul>
-      }
     </div>
     }
   </section>

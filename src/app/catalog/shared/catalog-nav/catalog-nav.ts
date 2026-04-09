@@ -68,8 +68,7 @@ export class CatalogNav {
       if (next.has(subcategory)) {
         next.delete(subcategory);
       } else {
-        // Expand only this group, collapse all others
-        next.clear();
+        // Allow multiple groups open simultaneously
         next.add(subcategory);
       }
       return next;
