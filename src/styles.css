@@ -45,6 +45,13 @@ body {
  * (configured via MatIconRegistry.setDefaultFontSetClass). The rule
  * mirrors what Google Fonts' CSS file injects, so ligatures work
  * even when mat-icon's own font-family overrides the inherited one. */
+/* Fix outline form-field label too close to left border.
+ * Angular Material 20 MDC outline sets a small leading notch width.
+ * Widen it to 16px so CJK labels have breathing room from the left border. */
+.mdc-notched-outline__leading {
+  width: 16px !important;
+}
+
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined', sans-serif;
   font-weight: normal;
