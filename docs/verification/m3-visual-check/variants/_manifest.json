@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-04-09T03:03:57.868Z",
+  "capturedAt": "2026-04-09T11:07:14.689Z",
   "baseUrl": "http://127.0.0.1:4200",
   "total": 93,
   "ok": 93,
@@ -19,7 +19,7 @@
       "variant": "avatars-multi-line-table",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/tables__avatars-multi-line-table.png",
-      "bytes": 69846,
+      "bytes": 69830,
       "height": 697,
       "consoleErrors": []
     },
@@ -28,7 +28,7 @@
       "variant": "comparision-table",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/tables__comparision-table.png",
-      "bytes": 176595,
+      "bytes": 169142,
       "height": 1366.5,
       "consoleErrors": []
     },
@@ -46,7 +46,7 @@
       "variant": "filter-http-data-source-table",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/tables__filter-http-data-source-table.png",
-      "bytes": 30604,
+      "bytes": 30585,
       "height": 1005,
       "consoleErrors": []
     },
@@ -64,7 +64,7 @@
       "variant": "full-width-avatar-table",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/tables__full-width-avatar-table.png",
-      "bytes": 121313,
+      "bytes": 121297,
       "height": 907,
       "consoleErrors": []
     },
@@ -100,7 +100,7 @@
       "variant": "hidden-headings-table",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/tables__hidden-headings-table.png",
-      "bytes": 80784,
+      "bytes": 80779,
       "height": 666,
       "consoleErrors": []
     },
@@ -154,7 +154,7 @@
       "variant": "table-with-chart",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/tables__table-with-chart.png",
-      "bytes": 92610,
+      "bytes": 92779,
       "height": 721.5,
       "consoleErrors": []
     },
@@ -172,7 +172,7 @@
       "variant": "simple",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/stacked-lists__simple.png",
-      "bytes": 77846,
+      "bytes": 77841,
       "height": 510,
       "consoleErrors": []
     },
@@ -190,7 +190,7 @@
       "variant": "full-width-with-links",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/stacked-lists__full-width-with-links.png",
-      "bytes": 74246,
+      "bytes": 74248,
       "height": 510,
       "consoleErrors": []
     },
@@ -226,8 +226,8 @@
       "variant": "narrow-with-small-avatars",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/stacked-lists__narrow-with-small-avatars.png",
-      "bytes": 78387,
-      "height": 770,
+      "bytes": 13182,
+      "height": 345,
       "consoleErrors": []
     },
     {
@@ -235,7 +235,7 @@
       "variant": "narrow-with-sticky-headings",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/stacked-lists__narrow-with-sticky-headings.png",
-      "bytes": 83390,
+      "bytes": 83386,
       "height": 729,
       "consoleErrors": []
     },
@@ -244,7 +244,7 @@
       "variant": "with-badges-button-action-menu",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/stacked-lists__with-badges-button-action-menu.png",
-      "bytes": 62805,
+      "bytes": 62809,
       "height": 493,
       "consoleErrors": []
     },
@@ -334,7 +334,7 @@
       "variant": "grid-list-6",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-6.png",
-      "bytes": 55342,
+      "bytes": 55335,
       "height": 413,
       "consoleErrors": []
     },
@@ -343,7 +343,7 @@
       "variant": "grid-list-7",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-7.png",
-      "bytes": 59203,
+      "bytes": 59204,
       "height": 590,
       "consoleErrors": []
     },
@@ -370,7 +370,7 @@
       "variant": "grid-list-10",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-10.png",
-      "bytes": 73572,
+      "bytes": 73573,
       "height": 678,
       "consoleErrors": []
     },
@@ -388,7 +388,7 @@
       "variant": "grid-list-12",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-12.png",
-      "bytes": 78577,
+      "bytes": 76328,
       "height": 728,
       "consoleErrors": []
     },
@@ -397,7 +397,7 @@
       "variant": "grid-list-13",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-13.png",
-      "bytes": 66108,
+      "bytes": 66101,
       "height": 792,
       "consoleErrors": []
     },
@@ -415,7 +415,7 @@
       "variant": "grid-list-15",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-15.png",
-      "bytes": 87020,
+      "bytes": 87019,
       "height": 749,
       "consoleErrors": []
     },
@@ -505,7 +505,7 @@
       "variant": "badge-10",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/badges__badge-10.png",
-      "bytes": 22597,
+      "bytes": 22586,
       "height": 345,
       "consoleErrors": []
     },
@@ -514,7 +514,7 @@
       "variant": "badge-11",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/badges__badge-11.png",
-      "bytes": 23045,
+      "bytes": 23038,
       "height": 345,
       "consoleErrors": []
     },
@@ -523,7 +523,7 @@
       "variant": "badge-12",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/badges__badge-12.png",
-      "bytes": 20875,
+      "bytes": 20869,
       "height": 345,
       "consoleErrors": []
     },
@@ -577,7 +577,7 @@
       "variant": "filterbar-6",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-6.png",
-      "bytes": 14475,
+      "bytes": 14474,
       "height": 345,
       "consoleErrors": []
     },
@@ -604,7 +604,7 @@
       "variant": "filterbar-9",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-9.png",
-      "bytes": 14226,
+      "bytes": 14222,
       "height": 345,
       "consoleErrors": []
     },
@@ -631,7 +631,7 @@
       "variant": "filterbar-12",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-12.png",
-      "bytes": 18403,
+      "bytes": 18400,
       "height": 345,
       "consoleErrors": []
     },
@@ -667,7 +667,7 @@
       "variant": "form-layout-4",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/form-layouts__form-layout-4.png",
-      "bytes": 69774,
+      "bytes": 69634,
       "height": 962,
       "consoleErrors": []
     },
@@ -694,7 +694,7 @@
       "variant": "account-user-management-1",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-1.png",
-      "bytes": 59132,
+      "bytes": 59059,
       "height": 1053,
       "consoleErrors": []
     },
@@ -703,7 +703,7 @@
       "variant": "account-user-management-2",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-2.png",
-      "bytes": 85773,
+      "bytes": 85744,
       "height": 1227,
       "consoleErrors": []
     },
@@ -730,7 +730,7 @@
       "variant": "account-user-management-5",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-5.png",
-      "bytes": 77012,
+      "bytes": 76990,
       "height": 983,
       "consoleErrors": []
     },
@@ -739,7 +739,7 @@
       "variant": "account-user-management-6",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-6.png",
-      "bytes": 78018,
+      "bytes": 77998,
       "height": 1035,
       "consoleErrors": []
     },
@@ -811,7 +811,7 @@
       "variant": "file-upload-4",
       "status": "ok",
       "file": "docs/verification/m3-visual-check/variants/file-upload__file-upload-4.png",
-      "bytes": 35016,
+      "bytes": 35015,
       "height": 505,
       "consoleErrors": []
     },
