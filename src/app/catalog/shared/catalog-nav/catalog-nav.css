@@ -22,14 +22,42 @@
 }
 
 .catalog-nav__group {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.catalog-nav__group-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.375rem 0.625rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 120ms ease;
+}
+
+.catalog-nav__group-toggle:hover {
+  background: var(--mat-sys-surface-container, #f3f4f6);
 }
 
 .catalog-nav__group-title {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--mat-sys-on-surface-variant, #6b7280);
-  margin: 0.5rem 0 0.25rem;
+  margin: 0;
+}
+
+.catalog-nav__group-chevron {
+  font-size: 0.875rem;
+  color: var(--mat-sys-on-surface-variant, #9ca3af);
+  transition: transform 200ms ease;
+  display: inline-block;
+}
+
+.catalog-nav__group-chevron--open {
+  transform: rotate(90deg);
 }
 
 .catalog-nav__list {

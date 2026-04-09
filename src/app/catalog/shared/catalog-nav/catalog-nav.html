@@ -4,7 +4,19 @@
     <h2 class="catalog-nav__section-title">{{ section.title }}</h2>
     @for (group of section.groups; track group.subcategory) {
     <div class="catalog-nav__group">
-      <h3 class="catalog-nav__group-title">{{ group.subcategory }}</h3>
+      <button
+        type="button"
+        class="catalog-nav__group-toggle"
+        [attr.aria-expanded]="isGroupExpanded(group.subcategory)"
+        (click)="toggleGroup(group.subcategory)"
+      >
+        <span class="catalog-nav__group-title">{{ group.subcategory }}</span>
+        <span
+          class="catalog-nav__group-chevron"
+          [class.catalog-nav__group-chevron--open]="isGroupExpanded(group.subcategory)"
+        >›</span>
+      </button>
+      @if (isGroupExpanded(group.subcategory)) {
       <ul class="catalog-nav__list">
         @for (entry of group.entries; track entry.id) {
         <li>
@@ -23,6 +35,7 @@
         </li>
         }
       </ul>
+      }
     </div>
     }
   </section>
