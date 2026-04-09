@@ -1,5 +1,5 @@
 {
-  "capturedAt": "2026-04-09T07:23:34.969Z",
+  "capturedAt": "2026-04-09T09:34:19.967Z",
   "baseUrl": "http://127.0.0.1:4200",
   "variants": {
     "total": 75,
@@ -11,7 +11,7 @@
         "variant": "bar-chart-1",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-1.png",
-        "bytes": 40834,
+        "bytes": 40850,
         "height": 520,
         "consoleErrors": []
       },
@@ -20,7 +20,7 @@
         "variant": "bar-chart-2",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-2.png",
-        "bytes": 43787,
+        "bytes": 43937,
         "height": 553,
         "consoleErrors": []
       },
@@ -29,7 +29,7 @@
         "variant": "bar-chart-3",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-3.png",
-        "bytes": 35634,
+        "bytes": 35991,
         "height": 527,
         "consoleErrors": []
       },
@@ -38,7 +38,7 @@
         "variant": "bar-chart-4",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-4.png",
-        "bytes": 39626,
+        "bytes": 39805,
         "height": 632,
         "consoleErrors": []
       },
@@ -47,7 +47,7 @@
         "variant": "bar-chart-5",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-5.png",
-        "bytes": 35619,
+        "bytes": 35066,
         "height": 608,
         "consoleErrors": []
       },
@@ -56,7 +56,7 @@
         "variant": "bar-chart-6",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-6.png",
-        "bytes": 35104,
+        "bytes": 34977,
         "height": 571,
         "consoleErrors": []
       },
@@ -65,7 +65,7 @@
         "variant": "bar-chart-7",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-7.png",
-        "bytes": 31942,
+        "bytes": 31820,
         "height": 497,
         "consoleErrors": []
       },
@@ -74,7 +74,7 @@
         "variant": "bar-chart-8",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-8.png",
-        "bytes": 62747,
+        "bytes": 62113,
         "height": 616,
         "consoleErrors": []
       },
@@ -83,7 +83,7 @@
         "variant": "bar-chart-9",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-9.png",
-        "bytes": 64356,
+        "bytes": 63716,
         "height": 655,
         "consoleErrors": []
       },
@@ -92,7 +92,7 @@
         "variant": "line-chart-1",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-1.png",
-        "bytes": 35522,
+        "bytes": 35523,
         "height": 479,
         "consoleErrors": []
       },
@@ -101,7 +101,7 @@
         "variant": "line-chart-2",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-2.png",
-        "bytes": 45883,
+        "bytes": 46036,
         "height": 613,
         "consoleErrors": []
       },
@@ -110,7 +110,7 @@
         "variant": "line-chart-3",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-3.png",
-        "bytes": 51917,
+        "bytes": 51432,
         "height": 565,
         "consoleErrors": []
       },
@@ -119,7 +119,7 @@
         "variant": "line-chart-4",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-4.png",
-        "bytes": 53058,
+        "bytes": 53071,
         "height": 623,
         "consoleErrors": []
       },
@@ -128,7 +128,7 @@
         "variant": "line-chart-5",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-5.png",
-        "bytes": 78892,
+        "bytes": 78849,
         "height": 503,
         "consoleErrors": []
       },
@@ -137,7 +137,7 @@
         "variant": "line-chart-6",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-6.png",
-        "bytes": 85675,
+        "bytes": 85528,
         "height": 511,
         "consoleErrors": []
       },
@@ -146,7 +146,7 @@
         "variant": "line-chart-7",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-7.png",
-        "bytes": 79482,
+        "bytes": 80471,
         "height": 753,
         "consoleErrors": []
       },
@@ -155,7 +155,7 @@
         "variant": "line-chart-8",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-8.png",
-        "bytes": 69696,
+        "bytes": 69546,
         "height": 822,
         "consoleErrors": []
       },
@@ -173,7 +173,7 @@
         "variant": "chart-composition-2",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-2.png",
-        "bytes": 62327,
+        "bytes": 62338,
         "height": 818,
         "consoleErrors": []
       },
@@ -191,7 +191,7 @@
         "variant": "chart-composition-4",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-4.png",
-        "bytes": 60684,
+        "bytes": 60608,
         "height": 756,
         "consoleErrors": []
       },
@@ -200,7 +200,7 @@
         "variant": "chart-composition-5",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-5.png",
-        "bytes": 69629,
+        "bytes": 68928,
         "height": 856,
         "consoleErrors": []
       },
@@ -209,7 +209,7 @@
         "variant": "chart-composition-6",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-6.png",
-        "bytes": 95210,
+        "bytes": 94569,
         "height": 1064,
         "consoleErrors": []
       },
@@ -218,7 +218,7 @@
         "variant": "chart-composition-8",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-8.png",
-        "bytes": 48259,
+        "bytes": 48254,
         "height": 634,
         "consoleErrors": []
       },
@@ -227,7 +227,7 @@
         "variant": "chart-composition-9",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-9.png",
-        "bytes": 50883,
+        "bytes": 50802,
         "height": 642,
         "consoleErrors": []
       },
@@ -236,7 +236,7 @@
         "variant": "chart-composition-10",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-10.png",
-        "bytes": 53186,
+        "bytes": 53194,
         "height": 758,
         "consoleErrors": []
       },
@@ -245,7 +245,7 @@
         "variant": "chart-composition-11",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-11.png",
-        "bytes": 97643,
+        "bytes": 97357,
         "height": 978,
         "consoleErrors": []
       },
@@ -254,7 +254,7 @@
         "variant": "chart-composition-12",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-12.png",
-        "bytes": 98139,
+        "bytes": 98375,
         "height": 896,
         "consoleErrors": []
       },
@@ -263,7 +263,7 @@
         "variant": "chart-composition-13",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-13.png",
-        "bytes": 69003,
+        "bytes": 69324,
         "height": 713,
         "consoleErrors": []
       },
@@ -272,7 +272,7 @@
         "variant": "chart-composition-14",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-14.png",
-        "bytes": 99683,
+        "bytes": 99257,
         "height": 1116,
         "consoleErrors": []
       },
@@ -281,7 +281,7 @@
         "variant": "chart-composition-15",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-15.png",
-        "bytes": 96197,
+        "bytes": 96174,
         "height": 932,
         "consoleErrors": []
       },
@@ -380,7 +380,7 @@
         "variant": "chart-tooltip-11",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-11.png",
-        "bytes": 20222,
+        "bytes": 20220,
         "height": 520,
         "consoleErrors": []
       },
@@ -398,7 +398,7 @@
         "variant": "chart-tooltip-13",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-13.png",
-        "bytes": 17951,
+        "bytes": 17948,
         "height": 520,
         "consoleErrors": []
       },
@@ -560,7 +560,7 @@
         "variant": "billing-usage-3",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/billing-usage__billing-usage-3.png",
-        "bytes": 48669,
+        "bytes": 48671,
         "height": 671,
         "consoleErrors": []
       },
@@ -587,7 +587,7 @@
         "variant": "billing-usage-6",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/billing-usage__billing-usage-6.png",
-        "bytes": 160039,
+        "bytes": 160019,
         "height": 1948,
         "consoleErrors": []
       },
@@ -632,7 +632,7 @@
         "variant": "status-monitoring-5",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-5.png",
-        "bytes": 31945,
+        "bytes": 31948,
         "height": 439,
         "consoleErrors": []
       },
@@ -668,7 +668,7 @@
         "variant": "status-monitoring-9",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-9.png",
-        "bytes": 35363,
+        "bytes": 35362,
         "height": 492,
         "consoleErrors": []
       },
@@ -693,7 +693,7 @@
         "path": "/app/billing/overview",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/billing-overview.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -701,7 +701,7 @@
         "path": "/app/billing/invoices",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/billing-invoices.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -709,7 +709,7 @@
         "path": "/app/billing/usage",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/billing-usage.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -717,7 +717,7 @@
         "path": "/app/billing/plans",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/billing-plans.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -725,7 +725,7 @@
         "path": "/app/reports",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/reports.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -733,7 +733,7 @@
         "path": "/app/settings/profile",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/settings-profile.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -741,7 +741,7 @@
         "path": "/app/settings/security",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/settings-security.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -749,7 +749,7 @@
         "path": "/app/settings/api-keys",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/settings-api-keys.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -757,7 +757,7 @@
         "path": "/app/settings/integrations",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/settings-integrations.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       },
       {
@@ -765,7 +765,7 @@
         "path": "/app/settings/preferences",
         "status": "ok",
         "file": "docs/verification/m4-visual-check/pages/settings-preferences.png",
-        "bytes": 41001,
+        "bytes": 41040,
         "consoleErrors": []
       }
     ]
