@@ -242,4 +242,16 @@ export const CATALOG_ROUTES: Routes = [
     loadComponent: () =>
       import('./blocks/status-monitoring.page').then(m => m.StatusMonitoringCatalogPage),
   },
+
+  // === CUSTOM SHIPPED (2) — built in-house ===
+  {
+    path: 'steppers',
+    title: 'Steppers · Catalog',
+    loadComponent: () => import('./blocks/steppers.page').then(m => m.SteppersCatalogPage),
+  },
+  {
+    path: 'sidebars',
+    title: 'Sidebars · Catalog',
+    loadComponent: () => import('./blocks/sidebars.page').then(m => m.SidebarsCatalogPage),
+  },
 ];

@@ -254,6 +254,24 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     status: 'shipped',
   },
 
+  // Custom — 2 entries (built in-house, not from ngm-dev-blocks vendor)
+  {
+    id: 'steppers',
+    title: 'Steppers',
+    category: 'application',
+    subcategory: 'Forms',
+    summary: '分階段表單導引，支援水平/垂直/線性/非線性/自訂圖示/表單驗證',
+    status: 'shipped',
+  },
+  {
+    id: 'sidebars',
+    title: 'Sidebars',
+    category: 'application',
+    subcategory: 'Application Shells',
+    summary: '側邊欄導覽列，支援固定/可收合/分組/徽章/迷你/巢狀等變體',
+    status: 'shipped',
+  },
+
   // Marketing — 14 entries
   {
     id: 'banners',

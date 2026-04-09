@@ -7,26 +7,26 @@ import {
 } from './catalog-registry';
 
 describe('catalog-registry', () => {
-  it('contains exactly 43 display categories', () => {
-    expect(CATALOG_REGISTRY.length).toBe(43);
+  it('contains exactly 45 display categories', () => {
+    expect(CATALOG_REGISTRY.length).toBe(45);
   });
 
-  it('splits into 29 application + 14 marketing entries', () => {
+  it('splits into 31 application + 14 marketing entries', () => {
     const application = CATALOG_REGISTRY.filter(e => e.category === 'application');
     const marketing = CATALOG_REGISTRY.filter(e => e.category === 'marketing');
-    expect(application.length).toBe(29);
+    expect(application.length).toBe(31);
     expect(marketing.length).toBe(14);
   });
 
   it('has unique ids', () => {
     const ids = CATALOG_REGISTRY.map(e => e.id);
     const uniques = new Set(ids);
-    expect(uniques.size).toBe(43);
+    expect(uniques.size).toBe(45);
   });
 
-  it('marks all 43 categories as shipped after M4 (100% coverage)', () => {
+  it('marks all 45 categories as shipped (100% coverage)', () => {
     const shipped = CATALOG_REGISTRY.filter(e => e.status === 'shipped');
-    expect(shipped.length).toBe(43);
+    expect(shipped.length).toBe(45);
   });
 
   it('has zero coming-soon entries after M4', () => {

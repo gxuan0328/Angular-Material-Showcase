@@ -22,11 +22,11 @@ describe('CatalogNav', () => {
     expect(titles).toEqual(['Application', 'Marketing']);
   });
 
-  it('renders 43 entries total across both sections', async () => {
+  it('renders 45 entries total across both sections', async () => {
     const fixture = TestBed.createComponent(CatalogNav);
     await fixture.whenStable();
     const links = fixture.nativeElement.querySelectorAll('.catalog-nav__link');
-    expect(links.length).toBe(43);
+    expect(links.length).toBe(45);
   });
 
   it('renders zero soon badges after M4 (100% coverage)', async () => {
