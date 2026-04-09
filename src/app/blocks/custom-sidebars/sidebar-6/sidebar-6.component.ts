@@ -71,8 +71,12 @@ const NAV_ITEMS: readonly NavItem[] = [
               <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
               <span matListItemTitle>{{ item.label }}</span>
               @if (item.children) {
-                <mat-icon matListItemMeta class="expand-icon">
-                  {{ isExpanded(item.id) ? 'expand_less' : 'expand_more' }}
+                <mat-icon
+                  matListItemMeta
+                  class="expand-icon"
+                  [class.expand-icon--open]="isExpanded(item.id)"
+                >
+                  chevron_right
                 </mat-icon>
               }
             </a>
@@ -173,6 +177,11 @@ const NAV_ITEMS: readonly NavItem[] = [
       width: 1.25rem;
       height: 1.25rem;
       color: var(--mat-sys-on-surface-variant, #44474e);
+      transition: transform 200ms ease;
+    }
+
+    .expand-icon--open {
+      transform: rotate(90deg);
     }
 
     .content {

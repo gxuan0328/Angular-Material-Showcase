@@ -39,21 +39,20 @@ const NAV_ITEMS: readonly NavItem[] = [
         aria-label="主功能導覽"
       >
         <div class="brand">
-          <mat-icon class="brand-icon">ac_unit</mat-icon>
+          <button
+            type="button"
+            mat-icon-button
+            class="toggle-btn"
+            [attr.aria-label]="collapsed() ? '展開側邊欄' : '收合側邊欄'"
+            [attr.aria-expanded]="!collapsed()"
+            (click)="toggleCollapsed()"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
           @if (!collapsed()) {
             <span class="brand-label">應用程式</span>
           }
         </div>
-
-        <button
-          type="button"
-          mat-icon-button
-          class="toggle-btn"
-          [attr.aria-label]="collapsed() ? '展開側邊欄' : '收合側邊欄'"
-          (click)="toggleCollapsed()"
-        >
-          <mat-icon>{{ collapsed() ? 'chevron_right' : 'chevron_left' }}</mat-icon>
-        </button>
 
         <mat-nav-list>
           @for (item of navItems; track item.id) {
@@ -134,8 +133,7 @@ const NAV_ITEMS: readonly NavItem[] = [
     }
 
     .toggle-btn {
-      align-self: flex-end;
-      margin: 0 0.5rem 0.25rem;
+      flex-shrink: 0;
     }
 
     mat-nav-list {

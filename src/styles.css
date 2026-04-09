@@ -59,6 +59,17 @@ mat-chip mat-icon[matchiptrailingicon] {
   vertical-align: middle !important;
 }
 
+/* Sidebar nav items: square hover/active (no border-radius per user request). */
+app-sidebar-1 mat-nav-list a,
+app-sidebar-2 mat-nav-list a,
+app-sidebar-3 mat-nav-list a,
+app-sidebar-4 .nav-item,
+app-sidebar-5 .icon-item,
+app-sidebar-6 mat-nav-list a,
+app-sidebar-6 .child-item {
+  border-radius: 0 !important;
+}
+
 /* Status Monitoring: ensure vendor block headings pick up proper font styles.
  * Some vendor blocks use Tailwind text-* utilities that may be stripped
  * by Tailwind v4's content detection. Force base heading styles. */
