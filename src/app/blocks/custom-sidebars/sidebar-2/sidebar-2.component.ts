@@ -38,7 +38,11 @@ const NAV_ITEMS: readonly NavItem[] = [
         [class.collapsed]="collapsed()"
         aria-label="主功能導覽"
       >
-        <div class="brand">
+        <div class="brand" [class.brand--collapsed]="collapsed()">
+          @if (!collapsed()) {
+            <mat-icon class="brand-icon">ac_unit</mat-icon>
+            <span class="brand-label">應用程式</span>
+          }
           <button
             type="button"
             mat-icon-button
@@ -49,9 +53,6 @@ const NAV_ITEMS: readonly NavItem[] = [
           >
             <mat-icon>menu</mat-icon>
           </button>
-          @if (!collapsed()) {
-            <span class="brand-label">應用程式</span>
-          }
         </div>
 
         <mat-nav-list>
@@ -112,11 +113,16 @@ const NAV_ITEMS: readonly NavItem[] = [
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      padding: 1rem 1.25rem;
+      gap: 0.5rem;
+      padding: 0.75rem 0.75rem 0.75rem 1.25rem;
       color: var(--mat-sys-on-surface, #1a1b1f);
       white-space: nowrap;
       overflow: hidden;
+    }
+
+    .brand--collapsed {
+      justify-content: center;
+      padding: 0.75rem;
     }
 
     .brand-icon {
@@ -130,6 +136,7 @@ const NAV_ITEMS: readonly NavItem[] = [
     .brand-label {
       font-size: 1rem;
       font-weight: 600;
+      flex: 1;
     }
 
     .toggle-btn {
