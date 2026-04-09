@@ -9,6 +9,7 @@ export type AuthErrorCode =
   | 'AccountLocked'
   | 'EmailAlreadyInUse'
   | 'UserNotFound'
+  | 'NotFound'
   | 'InvalidToken'
   | 'InvalidCode'
   | 'WeakPassword'

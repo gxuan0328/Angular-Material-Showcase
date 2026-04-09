@@ -1,0 +1,26 @@
+<div class="settings-shell">
+  <header class="settings-shell__header">
+    <p class="settings-shell__eyebrow">管理後台 · 設定</p>
+    <h1 class="settings-shell__title">帳號設定</h1>
+    <p class="settings-shell__subtitle">管理您的個人檔案、安全性、API 金鑰與偏好設定</p>
+  </header>
+
+  <nav class="settings-shell__nav" mat-tab-nav-bar [tabPanel]="tabPanel">
+    @for (tab of tabs; track tab.path) {
+      <a
+        mat-tab-link
+        [routerLink]="tab.path"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        <mat-icon>{{ tab.icon }}</mat-icon>
+        <span>{{ tab.label }}</span>
+      </a>
+    }
+  </nav>
+
+  <mat-tab-nav-panel #tabPanel class="settings-shell__panel">
+    <router-outlet />
+  </mat-tab-nav-panel>
+</div>

@@ -9,6 +9,7 @@ export const AUTH_ERROR_MESSAGES: Readonly<Record<AuthErrorCode, string>> = {
   AccountLocked: '此帳號已被暫時鎖定，請稍後再試或聯繫客服。',
   EmailAlreadyInUse: '此電子郵件已被註冊，請直接登入或使用其他信箱。',
   UserNotFound: '找不到對應的帳號，請確認電子郵件或改為註冊。',
+  NotFound: '找不到指定的資源，請確認後再試。',
   InvalidToken: '重設連結無效或已過期，請重新申請。',
   InvalidCode: '驗證碼不正確，請重新輸入。',
   WeakPassword: '密碼強度不足，請使用至少 8 個字元。',

@@ -1,0 +1,43 @@
+:host {
+  display: block;
+}
+
+.settings-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings-profile__card {
+  background: var(--mat-sys-surface, #fff);
+}
+
+.settings-profile__form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1rem;
+}
+
+.settings-profile__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.settings-profile__saved {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--mat-sys-primary, #005cbb);
+}
+
+.settings-profile__saved mat-icon {
+  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
+}

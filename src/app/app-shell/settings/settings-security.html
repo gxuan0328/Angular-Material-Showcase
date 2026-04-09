@@ -1,0 +1,152 @@
+<div class="settings-security">
+  <!-- Two-Factor Authentication -->
+  <mat-card appearance="outlined" class="settings-security__card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>security</mat-icon>
+      <mat-card-title>雙重驗證 (2FA)</mat-card-title>
+      <mat-card-subtitle>增加帳號安全性，登入時需要額外驗證步驟</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="settings-security__status">
+        <div class="settings-security__status-row">
+          <span class="settings-security__status-label">目前狀態</span>
+          <span
+            class="settings-security__status-badge"
+            [class.settings-security__status-badge--enabled]="twoFactor().enabled"
+          >
+            <mat-icon>{{ twoFactor().enabled ? 'check_circle' : 'cancel' }}</mat-icon>
+            {{ statusLabel() }}
+          </span>
+        </div>
+
+        @if (twoFactor().enabled && twoFactor().backupCodesGeneratedAt) {
+          <div class="settings-security__status-row">
+            <span class="settings-security__status-label">備用碼產生時間</span>
+            <span>{{ twoFactor().backupCodesGeneratedAt | date: 'yyyy/MM/dd HH:mm' }}</span>
+          </div>
+        }
+      </div>
+
+      @if (!twoFactor().enabled && !showEnableForm()) {
+        <div class="settings-security__actions">
+          <button mat-flat-button type="button" (click)="openEnableForm()">
+            <mat-icon>lock</mat-icon>
+            <span>啟用 2FA</span>
+          </button>
+        </div>
+      }
+
+      @if (twoFactor().enabled && !showDisableConfirm()) {
+        <div class="settings-security__actions">
+          <button mat-stroked-button type="button" (click)="openDisableConfirm()">
+            <mat-icon>lock_open</mat-icon>
+            <span>停用 2FA</span>
+          </button>
+        </div>
+      }
+
+      <!-- Enable 2FA inline form -->
+      @if (showEnableForm()) {
+        <mat-divider />
+        <form [formGroup]="enableForm" class="settings-security__inline-form">
+          <p class="settings-security__form-label">選擇驗證方式</p>
+          <mat-radio-group formControlName="method" aria-label="雙重驗證方式" class="settings-security__method-group">
+            <mat-radio-button value="totp">
+              <div class="settings-security__method-body">
+                <strong>TOTP 驗證器</strong>
+                <span>使用 Google Authenticator 或類似 App</span>
+              </div>
+            </mat-radio-button>
+            <mat-radio-button value="sms">
+              <div class="settings-security__method-body">
+                <strong>SMS 簡訊</strong>
+                <span>透過手機簡訊接收驗證碼</span>
+              </div>
+            </mat-radio-button>
+          </mat-radio-group>
+          <div class="settings-security__form-actions">
+            <button mat-button type="button" (click)="cancelEnable()">取消</button>
+            <button
+              mat-flat-button
+              type="button"
+              [disabled]="loading()"
+              (click)="confirmEnable()"
+            >
+              @if (loading()) {
+                <mat-spinner diameter="20" />
+              } @else {
+                <span>確認啟用</span>
+              }
+            </button>
+          </div>
+        </form>
+      }
+
+      <!-- Disable 2FA confirmation -->
+      @if (showDisableConfirm()) {
+        <mat-divider />
+        <div class="settings-security__inline-form">
+          <p class="settings-security__warn">
+            <mat-icon>warning</mat-icon>
+            停用雙重驗證將降低您帳號的安全性。確定要繼續嗎？
+          </p>
+          <div class="settings-security__form-actions">
+            <button mat-button type="button" (click)="cancelDisable()">取消</button>
+            <button
+              mat-flat-button
+              color="warn"
+              type="button"
+              [disabled]="loading()"
+              (click)="confirmDisable()"
+            >
+              @if (loading()) {
+                <mat-spinner diameter="20" />
+              } @else {
+                <span>確認停用</span>
+              }
+            </button>
+          </div>
+        </div>
+      }
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Active Sessions -->
+  <mat-card appearance="outlined" class="settings-security__card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>devices</mat-icon>
+      <mat-card-title>目前登入的裝置</mat-card-title>
+      <mat-card-subtitle>檢視所有已登入此帳號的裝置與工作階段</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <table class="settings-security__table" role="table" aria-label="登入裝置列表">
+        <thead>
+          <tr>
+            <th>裝置</th>
+            <th>IP 位址</th>
+            <th>最後活動</th>
+            <th>狀態</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (session of sessions; track session.id) {
+            <tr>
+              <td>{{ session.device }}</td>
+              <td class="settings-security__mono">{{ session.ip }}</td>
+              <td>{{ session.lastActive | date: 'MM/dd HH:mm' }}</td>
+              <td>
+                @if (session.current) {
+                  <span class="settings-security__current-badge">目前裝置</span>
+                } @else {
+                  <span class="settings-security__other-badge">其他</span>
+                }
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

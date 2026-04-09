@@ -1,0 +1,56 @@
+<div class="billing-invoices">
+  <mat-card appearance="outlined" class="billing-invoices__card">
+    @if (api.invoices().length === 0) {
+      <div class="billing-invoices__empty" role="status">
+        <mat-icon>receipt_long</mat-icon>
+        <p>目前沒有帳單紀錄</p>
+      </div>
+    } @else {
+      <div class="billing-invoices__table-wrapper">
+        <table class="billing-invoices__table">
+          <thead>
+            <tr>
+              <th class="billing-invoices__th">帳單編號</th>
+              <th class="billing-invoices__th">金額</th>
+              <th class="billing-invoices__th">開立日期</th>
+              <th class="billing-invoices__th">狀態</th>
+              <th class="billing-invoices__th billing-invoices__th--action">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (inv of api.invoices(); track inv.id) {
+              <tr class="billing-invoices__row">
+                <td class="billing-invoices__td">
+                  <strong>{{ inv.number }}</strong>
+                </td>
+                <td class="billing-invoices__td">
+                  {{ inv.amount | currency: inv.currency:'symbol':'1.0-0' }}
+                </td>
+                <td class="billing-invoices__td">
+                  {{ inv.issuedAt | date: 'yyyy/MM/dd' }}
+                </td>
+                <td class="billing-invoices__td">
+                  <mat-chip-set>
+                    <mat-chip [class]="'billing-invoices__status--' + inv.status">
+                      {{ statusLabel(inv.status) }}
+                    </mat-chip>
+                  </mat-chip-set>
+                </td>
+                <td class="billing-invoices__td billing-invoices__td--action">
+                  <button
+                    mat-icon-button
+                    type="button"
+                    aria-label="下載帳單"
+                    (click)="download(inv)"
+                  >
+                    <mat-icon>download</mat-icon>
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    }
+  </mat-card>
+</div>

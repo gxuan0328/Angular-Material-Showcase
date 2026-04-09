@@ -1,0 +1,126 @@
+<div class="billing-overview">
+  @if (api.currentPlan(); as plan) {
+    <div class="billing-overview__summary">
+      <mat-icon class="billing-overview__summary-icon">workspace_premium</mat-icon>
+      <div class="billing-overview__summary-text">
+        <h2 class="billing-overview__plan-name">{{ plan.name }}</h2>
+        <p class="billing-overview__plan-price">
+          {{ plan.priceMonthly | currency: plan.currency:'symbol':'1.0-0' }} / 月
+        </p>
+      </div>
+    </div>
+  }
+
+  <div class="billing-overview__grid">
+    <!-- Current plan card -->
+    <mat-card appearance="outlined" class="billing-overview__card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="billing-overview__card-icon">layers</mat-icon>
+        <mat-card-title>目前方案</mat-card-title>
+        <mat-card-subtitle>您目前訂閱的方案</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        @if (api.currentPlan(); as plan) {
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">方案名稱</span>
+            <strong>{{ plan.name }}</strong>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">月費</span>
+            <strong>{{ plan.priceMonthly | currency: plan.currency:'symbol':'1.0-0' }}</strong>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">年費</span>
+            <strong>{{ plan.priceYearly | currency: plan.currency:'symbol':'1.0-0' }}</strong>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">席位上限</span>
+            <strong>{{ plan.seatLimit }} 位</strong>
+          </div>
+        } @else {
+          <p class="billing-overview__empty">尚未選擇方案</p>
+        }
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Payment method card -->
+    <mat-card appearance="outlined" class="billing-overview__card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="billing-overview__card-icon">credit_card</mat-icon>
+        <mat-card-title>付款方式</mat-card-title>
+        <mat-card-subtitle>預設付款方式</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        @if (defaultPayment(); as pm) {
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">卡別</span>
+            <span class="billing-overview__detail-value">
+              <mat-icon>{{ brandIcon(pm.brand) }}</mat-icon>
+              {{ brandLabel(pm.brand) }}
+            </span>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">卡號末四碼</span>
+            <strong>•••• {{ pm.last4 }}</strong>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">到期日</span>
+            <strong>{{ pm.expMonth }}/{{ pm.expYear }}</strong>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">狀態</span>
+            <mat-chip-set>
+              <mat-chip highlighted>預設</mat-chip>
+            </mat-chip-set>
+          </div>
+        } @else {
+          <p class="billing-overview__empty">尚未設定付款方式</p>
+        }
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Upcoming invoice card -->
+    <mat-card appearance="outlined" class="billing-overview__card">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="billing-overview__card-icon">receipt_long</mat-icon>
+        <mat-card-title>下期帳單</mat-card-title>
+        <mat-card-subtitle>即將到期的帳單</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        @if (api.upcomingInvoice(); as inv) {
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">帳單編號</span>
+            <strong>{{ inv.number }}</strong>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">金額</span>
+            <strong>{{ inv.amount | currency: inv.currency:'symbol':'1.0-0' }}</strong>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">開立日期</span>
+            <strong>{{ inv.issuedAt | date: 'yyyy/MM/dd' }}</strong>
+          </div>
+          <mat-divider />
+          <div class="billing-overview__detail-row">
+            <span class="billing-overview__detail-label">狀態</span>
+            <mat-chip-set>
+              <mat-chip [class]="'billing-overview__status--' + inv.status">
+                {{ statusLabel(inv.status) }}
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+        } @else {
+          <p class="billing-overview__empty">目前沒有待付帳單</p>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

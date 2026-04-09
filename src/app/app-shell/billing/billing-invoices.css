@@ -1,0 +1,101 @@
+:host {
+  display: block;
+}
+
+.billing-invoices {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.billing-invoices__card {
+  background: var(--mat-sys-surface, #fff);
+  overflow: hidden;
+  padding: 0;
+}
+
+.billing-invoices__table-wrapper {
+  overflow-x: auto;
+}
+
+.billing-invoices__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.billing-invoices__th {
+  text-align: left;
+  padding: 0.875rem 1rem;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--mat-sys-on-surface-variant, #44474e);
+  border-bottom: 1px solid var(--mat-sys-outline-variant, #c4c6d0);
+  white-space: nowrap;
+}
+
+.billing-invoices__th--action {
+  text-align: center;
+  width: 80px;
+}
+
+.billing-invoices__row {
+  transition: background 120ms ease;
+}
+
+.billing-invoices__row:hover {
+  background: var(--mat-sys-surface-container-low, #f4f3f6);
+}
+
+.billing-invoices__td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--mat-sys-outline-variant, #c4c6d0);
+  vertical-align: middle;
+  color: var(--mat-sys-on-surface, #1a1b1f);
+}
+
+.billing-invoices__td--action {
+  text-align: center;
+}
+
+.billing-invoices__status--paid {
+  --mdc-chip-label-text-color: var(--mat-sys-on-tertiary-container, #0000ef);
+  --mdc-chip-elevated-container-color: var(--mat-sys-tertiary-container, #e0e0ff);
+}
+
+.billing-invoices__status--due {
+  --mdc-chip-label-text-color: var(--mat-sys-on-primary-container, #00458f);
+  --mdc-chip-elevated-container-color: var(--mat-sys-primary-container, #d7e3ff);
+}
+
+.billing-invoices__status--overdue {
+  --mdc-chip-label-text-color: var(--mat-sys-on-error-container, #93000a);
+  --mdc-chip-elevated-container-color: var(--mat-sys-error-container, #ffdad6);
+}
+
+.billing-invoices__status--refunded {
+  --mdc-chip-label-text-color: var(--mat-sys-on-surface-variant, #44474e);
+  --mdc-chip-elevated-container-color: var(--mat-sys-surface-container-high, #e9e7eb);
+}
+
+.billing-invoices__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 3rem 1rem;
+  color: var(--mat-sys-on-surface-variant, #44474e);
+}
+
+.billing-invoices__empty mat-icon {
+  font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.billing-invoices__empty p {
+  margin: 0;
+  font-size: 0.9375rem;
+}

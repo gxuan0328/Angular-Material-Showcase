@@ -1,0 +1,35 @@
+<div class="settings-preferences">
+  @for (group of preferences(); track group.id; let last = $last) {
+    <mat-card appearance="outlined" class="settings-preferences__card">
+      <mat-card-header>
+        <mat-card-title>{{ group.title }}</mat-card-title>
+        <mat-card-subtitle>{{ group.description }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <ul class="settings-preferences__list" role="list">
+          @for (option of group.options; track option.id; let optLast = $last) {
+            <li class="settings-preferences__item">
+              <div class="settings-preferences__item-text">
+                <span class="settings-preferences__item-label">{{ option.label }}</span>
+                <span class="settings-preferences__item-desc">{{ option.description }}</span>
+              </div>
+              <mat-slide-toggle
+                [checked]="option.enabled"
+                [attr.aria-label]="option.label"
+                (change)="onToggle(group, option, $event.checked)"
+              />
+            </li>
+            @if (!optLast) {
+              <mat-divider />
+            }
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    @if (!last) {
+      <div class="settings-preferences__spacer"></div>
+    }
+  }
+</div>

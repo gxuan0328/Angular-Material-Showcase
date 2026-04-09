@@ -1,0 +1,77 @@
+<div class="billing-plans">
+  <div class="billing-plans__grid">
+    @for (entry of planCards(); track entry.plan.id) {
+      <mat-card
+        appearance="outlined"
+        class="billing-plans__card"
+        [class.billing-plans__card--recommended]="entry.plan.recommended"
+        [class.billing-plans__card--current]="entry.isCurrent"
+      >
+        <!-- Badges -->
+        <div class="billing-plans__badges">
+          @if (entry.plan.recommended) {
+            <mat-chip-set>
+              <mat-chip highlighted class="billing-plans__badge--recommended">
+                <mat-icon>star</mat-icon>
+                推薦
+              </mat-chip>
+            </mat-chip-set>
+          }
+          @if (entry.isCurrent) {
+            <mat-chip-set>
+              <mat-chip highlighted class="billing-plans__badge--current">
+                <mat-icon>check_circle</mat-icon>
+                目前方案
+              </mat-chip>
+            </mat-chip-set>
+          }
+        </div>
+
+        <mat-card-header>
+          <mat-card-title class="billing-plans__name">{{ entry.plan.name }}</mat-card-title>
+          <mat-card-subtitle>
+            席位上限 {{ entry.plan.seatLimit }} 位
+          </mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content class="billing-plans__content">
+          <div class="billing-plans__pricing">
+            <span class="billing-plans__price">
+              {{ entry.plan.priceMonthly | currency: entry.plan.currency:'symbol':'1.0-0' }}
+            </span>
+            <span class="billing-plans__period">/ 月</span>
+          </div>
+          <p class="billing-plans__yearly">
+            年付 {{ entry.plan.priceYearly | currency: entry.plan.currency:'symbol':'1.0-0' }} / 年
+          </p>
+
+          <ul class="billing-plans__features">
+            @for (feature of entry.plan.features; track feature) {
+              <li class="billing-plans__feature">
+                <mat-icon class="billing-plans__feature-icon">check</mat-icon>
+                {{ feature }}
+              </li>
+            }
+          </ul>
+        </mat-card-content>
+
+        <mat-card-actions class="billing-plans__actions">
+          @if (entry.isCurrent) {
+            <button mat-stroked-button type="button" disabled>
+              目前方案
+            </button>
+          } @else {
+            <button
+              mat-flat-button
+              type="button"
+              [class.billing-plans__select--recommended]="entry.plan.recommended"
+              (click)="selectPlan(entry.plan.id)"
+            >
+              選擇方案
+            </button>
+          }
+        </mat-card-actions>
+      </mat-card>
+    }
+  </div>
+</div>

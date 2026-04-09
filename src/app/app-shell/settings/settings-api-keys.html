@@ -1,0 +1,124 @@
+<div class="settings-api-keys">
+  <mat-card appearance="outlined" class="settings-api-keys__card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>vpn_key</mat-icon>
+      <mat-card-title>API 金鑰</mat-card-title>
+      <mat-card-subtitle>管理您的 API 金鑰，用於程式化存取 API</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="settings-api-keys__toolbar">
+        <button
+          mat-flat-button
+          type="button"
+          [disabled]="showCreateForm()"
+          (click)="openCreateForm()"
+        >
+          <mat-icon>add</mat-icon>
+          <span>建立金鑰</span>
+        </button>
+      </div>
+
+      <!-- Create form -->
+      @if (showCreateForm()) {
+        <div class="settings-api-keys__create-section">
+          <mat-divider />
+          <form [formGroup]="createForm" class="settings-api-keys__create-form">
+            <p class="settings-api-keys__form-heading">建立新的 API 金鑰</p>
+
+            <mat-form-field appearance="outline">
+              <mat-label>金鑰名稱</mat-label>
+              <input matInput type="text" formControlName="label" placeholder="例如：Production API" />
+              @if (createForm.controls.label.hasError('required') &&
+                   createForm.controls.label.touched) {
+                <mat-error>請輸入金鑰名稱</mat-error>
+              }
+            </mat-form-field>
+
+            <fieldset class="settings-api-keys__scopes-fieldset">
+              <legend class="settings-api-keys__scopes-legend">權限範圍</legend>
+              <div class="settings-api-keys__scopes-list">
+                <mat-checkbox formControlName="scopeRead">讀取</mat-checkbox>
+                <mat-checkbox formControlName="scopeWrite">寫入</mat-checkbox>
+                <mat-checkbox formControlName="scopeAdmin">管理</mat-checkbox>
+                <mat-checkbox formControlName="scopeExport">匯出</mat-checkbox>
+                <mat-checkbox formControlName="scopeWebhook">Webhook</mat-checkbox>
+              </div>
+            </fieldset>
+
+            <div class="settings-api-keys__form-actions">
+              <button mat-button type="button" (click)="cancelCreate()">取消</button>
+              <button
+                mat-flat-button
+                type="button"
+                [disabled]="createForm.invalid || creating()"
+                (click)="submitCreate()"
+              >
+                @if (creating()) {
+                  <mat-spinner diameter="20" />
+                } @else {
+                  <span>建立</span>
+                }
+              </button>
+            </div>
+          </form>
+        </div>
+      }
+
+      <!-- Keys table -->
+      @if (apiKeys().length === 0) {
+        <div class="settings-api-keys__empty" role="status">
+          <mat-icon>vpn_key_off</mat-icon>
+          <p>尚未建立任何 API 金鑰</p>
+        </div>
+      } @else {
+        <table class="settings-api-keys__table" role="table" aria-label="API 金鑰列表">
+          <thead>
+            <tr>
+              <th>名稱</th>
+              <th>金鑰</th>
+              <th>權限</th>
+              <th>建立日期</th>
+              <th>最後使用</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (key of apiKeys(); track key.id) {
+              <tr>
+                <td class="settings-api-keys__label-cell">{{ key.label }}</td>
+                <td class="settings-api-keys__key-cell">
+                  <code>{{ key.prefix }}...{{ key.lastFour }}</code>
+                </td>
+                <td>
+                  <div class="settings-api-keys__scopes">
+                    @for (scope of key.scopes; track scope) {
+                      <span class="settings-api-keys__scope-chip">{{ scope }}</span>
+                    }
+                  </div>
+                </td>
+                <td>{{ key.createdAt | date: 'yyyy/MM/dd' }}</td>
+                <td>{{ key.lastUsedAt ? (key.lastUsedAt | date: 'MM/dd HH:mm') : '從未使用' }}</td>
+                <td>
+                  <button
+                    mat-icon-button
+                    type="button"
+                    aria-label="刪除金鑰"
+                    [disabled]="deleting() === key.id"
+                    (click)="deleteKey(key.id)"
+                  >
+                    @if (deleting() === key.id) {
+                      <mat-spinner diameter="18" />
+                    } @else {
+                      <mat-icon>delete</mat-icon>
+                    }
+                  </button>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

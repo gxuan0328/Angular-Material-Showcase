@@ -1,0 +1,60 @@
+<div class="settings-integrations">
+  <mat-card appearance="outlined" class="settings-integrations__header-card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>extension</mat-icon>
+      <mat-card-title>整合服務</mat-card-title>
+      <mat-card-subtitle>連接第三方服務以擴展平台功能</mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+
+  <div class="settings-integrations__grid">
+    @for (item of integrations(); track item.id) {
+      <mat-card appearance="outlined" class="settings-integrations__card">
+        <div class="settings-integrations__card-top">
+          <div class="settings-integrations__icon-wrap">
+            <mat-icon>{{ item.icon }}</mat-icon>
+          </div>
+          @if (item.connected) {
+            <span class="settings-integrations__badge settings-integrations__badge--connected">
+              已連接
+            </span>
+          }
+        </div>
+
+        <div class="settings-integrations__card-body">
+          <h3 class="settings-integrations__name">{{ item.name }}</h3>
+          <p class="settings-integrations__category">{{ categoryLabel(item.category) }}</p>
+          @if (item.connected && item.connectedAt) {
+            <p class="settings-integrations__connected-at">
+              連接於 {{ item.connectedAt | date: 'yyyy/MM/dd' }}
+            </p>
+          }
+        </div>
+
+        <div class="settings-integrations__card-actions">
+          @if (item.connected) {
+            <button
+              mat-stroked-button
+              type="button"
+              [disabled]="toggling() === item.id"
+              (click)="toggle(item)"
+            >
+              <mat-icon>link_off</mat-icon>
+              <span>中斷連接</span>
+            </button>
+          } @else {
+            <button
+              mat-stroked-button
+              type="button"
+              [disabled]="toggling() === item.id"
+              (click)="toggle(item)"
+            >
+              <mat-icon>link</mat-icon>
+              <span>連接</span>
+            </button>
+          }
+        </div>
+      </mat-card>
+    }
+  </div>
+</div>

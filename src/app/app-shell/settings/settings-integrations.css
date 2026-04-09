@@ -1,0 +1,102 @@
+:host {
+  display: block;
+}
+
+.settings-integrations {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.settings-integrations__header-card {
+  background: var(--mat-sys-surface, #fff);
+}
+
+.settings-integrations__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.settings-integrations__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.25rem;
+  background: var(--mat-sys-surface, #fff);
+}
+
+.settings-integrations__card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.settings-integrations__icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--mat-sys-surface-container-high, #e9e7eb);
+  color: var(--mat-sys-on-surface-variant, #44474e);
+}
+
+.settings-integrations__icon-wrap mat-icon {
+  font-size: 1.375rem;
+  width: 1.375rem;
+  height: 1.375rem;
+}
+
+.settings-integrations__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  background: var(--mat-sys-surface-container-high, #e9e7eb);
+  color: var(--mat-sys-on-surface-variant, #44474e);
+}
+
+.settings-integrations__badge--connected {
+  background: var(--mat-sys-tertiary-container, #e0e0ff);
+  color: var(--mat-sys-on-tertiary-container, #0000ef);
+}
+
+.settings-integrations__card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 1;
+}
+
+.settings-integrations__name {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--mat-sys-on-surface, #1a1b1f);
+}
+
+.settings-integrations__category {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--mat-sys-on-surface-variant, #44474e);
+}
+
+.settings-integrations__connected-at {
+  margin: 0;
+  font-size: 0.6875rem;
+  color: var(--mat-sys-on-surface-variant, #44474e);
+}
+
+.settings-integrations__card-actions {
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
+.settings-integrations__card-actions button {
+  width: 100%;
+}

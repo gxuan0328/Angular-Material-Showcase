@@ -32,8 +32,7 @@ export const APP_SHELL_ROUTES: Routes = [
   },
   {
     path: 'billing',
-    title: '計費與用量',
-    loadComponent: () => import('./billing/billing-shell').then(m => m.BillingShell),
+    title: '計費中心',
     loadChildren: () => import('./billing/billing.routes').then(m => m.BILLING_ROUTES),
   },
   {
@@ -44,7 +43,6 @@ export const APP_SHELL_ROUTES: Routes = [
   {
     path: 'settings',
     title: '設定',
-    loadComponent: () => import('./settings/settings-shell').then(m => m.SettingsShell),
     loadChildren: () => import('./settings/settings.routes').then(m => m.SETTINGS_ROUTES),
   },
 ];

@@ -1,0 +1,25 @@
+<div class="billing-shell">
+  <header class="billing-shell__header">
+    <p class="billing-shell__eyebrow">管理後台 · 計費</p>
+    <h1 class="billing-shell__title">計費中心</h1>
+  </header>
+
+  <nav mat-tab-nav-bar [tabPanel]="tabPanel" class="billing-shell__nav">
+    @for (tab of tabs; track tab.path) {
+      <a
+        mat-tab-link
+        [routerLink]="tab.path"
+        routerLinkActive
+        #rla="routerLinkActive"
+        [active]="rla.isActive"
+      >
+        <mat-icon>{{ tab.icon }}</mat-icon>
+        {{ tab.label }}
+      </a>
+    }
+  </nav>
+
+  <mat-tab-nav-panel #tabPanel class="billing-shell__panel">
+    <router-outlet />
+  </mat-tab-nav-panel>
+</div>

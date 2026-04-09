@@ -1,0 +1,91 @@
+<div class="reports__layout">
+  <!-- Header -->
+  <header class="reports__header">
+    <div>
+      <p class="reports__eyebrow">管理後台 · 報表</p>
+      <h1 class="reports__title">報表分析</h1>
+      <p class="reports__subtitle">
+        關鍵績效指標總覽與趨勢追蹤
+      </p>
+    </div>
+    <button mat-flat-button color="primary" type="button" (click)="exportCsv()">
+      <mat-icon>download</mat-icon>
+      <span>匯出</span>
+    </button>
+  </header>
+
+  <!-- KPI Summary Cards -->
+  <section class="reports__kpi-grid" aria-label="關鍵績效指標">
+    @for (kpi of reportsApi.kpis(); track kpi.id) {
+      <mat-card appearance="outlined" class="reports__kpi-card">
+        <mat-card-content class="reports__kpi-content">
+          <span class="reports__kpi-label">{{ kpi.label }}</span>
+          <span class="reports__kpi-value">{{ kpi.value | number }}</span>
+          <div class="reports__kpi-footer">
+            <span
+              class="reports__kpi-delta"
+              [class.reports__kpi-delta--positive]="kpi.delta >= 0"
+              [class.reports__kpi-delta--negative]="kpi.delta < 0"
+            >
+              <mat-icon class="reports__kpi-delta-icon">
+                @if (kpi.delta >= 0) { trending_up } @else { trending_down }
+              </mat-icon>
+              {{ kpi.delta >= 0 ? '+' : '' }}{{ kpi.delta }}%
+            </span>
+            <span class="reports__kpi-unit">{{ kpi.unit }}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+  </section>
+
+  <!-- Trend Summary -->
+  <section class="reports__section" aria-label="最近趨勢">
+    <h2 class="reports__section-title">最近趨勢</h2>
+    <mat-card appearance="outlined">
+      <mat-card-content class="reports__trend-content">
+        @for (summary of dimensionSummaries(); track summary.dimension) {
+          @if (!$first) {
+            <mat-divider />
+          }
+          <div class="reports__trend-row">
+            <div class="reports__trend-header">
+              <span class="reports__trend-label">{{ summary.label }}</span>
+              <span class="reports__trend-latest">
+                最新值：{{ summary.latest | number }}
+              </span>
+            </div>
+            <div class="reports__trend-sparkline" aria-label="{{ summary.label }} 趨勢圖">
+              {{ sparkline(summary.points) }}
+            </div>
+            <div class="reports__trend-range">
+              <span>{{ formatMonth(summary.points[0].date) }}</span>
+              <span class="reports__trend-minmax">
+                最低 {{ summary.min | number }} — 最高 {{ summary.max | number }}
+              </span>
+              <span>{{ formatMonth(summary.points[summary.points.length - 1].date) }}</span>
+            </div>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!-- Top Items -->
+  <section class="reports__section" aria-label="熱門頁面">
+    <h2 class="reports__section-title">熱門頁面</h2>
+    <mat-card appearance="outlined">
+      <mat-list>
+        @for (item of reportsApi.topItems(); track item.id) {
+          <mat-list-item class="reports__top-item">
+            <span matListItemAvatar class="reports__top-rank">{{ $index + 1 }}</span>
+            <span matListItemTitle>{{ item.label }}</span>
+            <span matListItemLine class="reports__top-value">
+              {{ item.value | number }} {{ item.unit }}
+            </span>
+          </mat-list-item>
+        }
+      </mat-list>
+    </mat-card>
+  </section>
+</div>

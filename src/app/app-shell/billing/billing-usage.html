@@ -1,0 +1,48 @@
+<div class="billing-usage">
+  @if (showUpgradeBanner()) {
+    <div class="billing-usage__banner" role="alert">
+      <mat-icon class="billing-usage__banner-icon">warning</mat-icon>
+      <div class="billing-usage__banner-text">
+        <strong>用量即將達到上限</strong>
+        <p>部分資源使用率已超過 80%，建議升級方案以避免服務中斷。</p>
+      </div>
+    </div>
+  }
+
+  <div class="billing-usage__grid">
+    @for (metric of api.usageMetrics(); track metric.id) {
+      <mat-card appearance="outlined" class="billing-usage__card">
+        <mat-card-content>
+          <div class="billing-usage__metric-header">
+            <span class="billing-usage__metric-label">{{ metric.label }}</span>
+            <span class="billing-usage__metric-pct">{{ percentage(metric) }}%</span>
+          </div>
+
+          <div class="billing-usage__bar-wrapper">
+            <progress
+              class="billing-usage__bar {{ severityClass(metric) }}"
+              [attr.value]="metric.value"
+              [attr.max]="metric.limit"
+              [attr.aria-label]="metric.label + ' 使用率'"
+            >
+              {{ percentage(metric) }}%
+            </progress>
+          </div>
+
+          <div class="billing-usage__metric-detail">
+            <span>{{ metric.value | number }} / {{ metric.limit | number }} {{ metric.unit }}</span>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    }
+  </div>
+
+  @if (api.usageMetrics().length === 0) {
+    <mat-card appearance="outlined" class="billing-usage__empty-card">
+      <div class="billing-usage__empty" role="status">
+        <mat-icon>data_usage</mat-icon>
+        <p>目前沒有用量資料</p>
+      </div>
+    </mat-card>
+  }
+</div>

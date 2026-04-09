@@ -1,0 +1,157 @@
+:host {
+  display: block;
+}
+
+.billing-usage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Upgrade banner */
+.billing-usage__banner {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background: var(--mat-sys-error-container, #ffdad6);
+  color: var(--mat-sys-on-error-container, #93000a);
+  border-radius: 12px;
+}
+
+.billing-usage__banner-icon {
+  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.billing-usage__banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.billing-usage__banner-text strong {
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+.billing-usage__banner-text p {
+  margin: 0;
+  font-size: 0.8125rem;
+  opacity: 0.9;
+}
+
+/* Metrics grid */
+.billing-usage__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.billing-usage__card {
+  background: var(--mat-sys-surface, #fff);
+}
+
+.billing-usage__metric-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.625rem;
+}
+
+.billing-usage__metric-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--mat-sys-on-surface, #1a1b1f);
+}
+
+.billing-usage__metric-pct {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--mat-sys-on-surface-variant, #44474e);
+}
+
+/* Progress bar */
+.billing-usage__bar-wrapper {
+  margin-bottom: 0.5rem;
+}
+
+.billing-usage__bar {
+  display: block;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  border: none;
+  appearance: none;
+  -webkit-appearance: none;
+  overflow: hidden;
+  background: var(--mat-sys-surface-container-high, #e9e7eb);
+}
+
+.billing-usage__bar::-webkit-progress-bar {
+  background: var(--mat-sys-surface-container-high, #e9e7eb);
+  border-radius: 4px;
+}
+
+.billing-usage__bar--normal::-webkit-progress-value {
+  background: var(--mat-sys-primary, #005cbb);
+  border-radius: 4px;
+}
+
+.billing-usage__bar--normal::-moz-progress-bar {
+  background: var(--mat-sys-primary, #005cbb);
+  border-radius: 4px;
+}
+
+.billing-usage__bar--warning::-webkit-progress-value {
+  background: var(--mat-sys-tertiary, #5b5b9e);
+  border-radius: 4px;
+}
+
+.billing-usage__bar--warning::-moz-progress-bar {
+  background: var(--mat-sys-tertiary, #5b5b9e);
+  border-radius: 4px;
+}
+
+.billing-usage__bar--critical::-webkit-progress-value {
+  background: var(--mat-sys-error, #ba1a1a);
+  border-radius: 4px;
+}
+
+.billing-usage__bar--critical::-moz-progress-bar {
+  background: var(--mat-sys-error, #ba1a1a);
+  border-radius: 4px;
+}
+
+.billing-usage__metric-detail {
+  font-size: 0.75rem;
+  color: var(--mat-sys-on-surface-variant, #44474e);
+}
+
+/* Empty state */
+.billing-usage__empty-card {
+  background: var(--mat-sys-surface, #fff);
+}
+
+.billing-usage__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 3rem 1rem;
+  color: var(--mat-sys-on-surface-variant, #44474e);
+}
+
+.billing-usage__empty mat-icon {
+  font-size: 2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.billing-usage__empty p {
+  margin: 0;
+  font-size: 0.9375rem;
+}

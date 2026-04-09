@@ -1,0 +1,73 @@
+<div class="settings-profile">
+  <mat-card appearance="outlined" class="settings-profile__card">
+    <mat-card-header>
+      <mat-icon mat-card-avatar>person</mat-icon>
+      <mat-card-title>個人檔案</mat-card-title>
+      <mat-card-subtitle>更新您的顯示名稱、語言與時區設定</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form [formGroup]="form" class="settings-profile__form" (ngSubmit)="save()">
+        <mat-form-field appearance="outline">
+          <mat-label>顯示名稱</mat-label>
+          <input matInput type="text" formControlName="displayName" autocomplete="name" />
+          @if (form.controls.displayName.hasError('required') &&
+               form.controls.displayName.touched) {
+            <mat-error>請輸入顯示名稱</mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>電子郵件</mat-label>
+          <input matInput type="email" formControlName="email" autocomplete="email" />
+          <mat-hint>電子郵件無法直接修改，請聯繫管理員</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>語言</mat-label>
+          <mat-select formControlName="locale">
+            @for (option of localeOptions; track option.value) {
+              <mat-option [value]="option.value">{{ option.label }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>時區</mat-label>
+          <mat-select formControlName="timezone">
+            @for (option of timezoneOptions; track option.value) {
+              <mat-option [value]="option.value">{{ option.label }}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+
+        <div class="settings-profile__actions">
+          @if (saved()) {
+            <span class="settings-profile__saved" role="status">
+              <mat-icon>check_circle</mat-icon>
+              已儲存
+            </span>
+          }
+          @if (saving()) {
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="true"
+            >
+              <mat-spinner diameter="20" />
+            </button>
+          } @else {
+            <button
+              mat-flat-button
+              type="submit"
+              [disabled]="form.invalid"
+            >
+              <mat-icon>save</mat-icon>
+              <span>儲存變更</span>
+            </button>
+          }
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
