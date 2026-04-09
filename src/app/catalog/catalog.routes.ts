@@ -1,7 +1,6 @@
 import { Routes } from '@angular/router';
 
 import { CatalogIndex } from './catalog-index';
-import { ComingSoon } from './coming-soon';
 
 export const CATALOG_ROUTES: Routes = [
   { path: '', component: CatalogIndex, title: 'Catalog' },
@@ -204,47 +203,43 @@ export const CATALOG_ROUTES: Routes = [
     loadComponent: () => import('./blocks/file-upload.page').then(m => m.FileUploadCatalogPage),
   },
 
-  // === M4 COMING SOON (7) ===
+  // === M4 SHIPPED (7) ===
   {
     path: 'bar-charts',
-    component: ComingSoon,
     title: 'Bar Charts · Catalog',
-    data: { id: 'bar-charts' },
+    loadComponent: () => import('./blocks/bar-charts.page').then(m => m.BarChartsCatalogPage),
   },
   {
     path: 'bar-lists',
-    component: ComingSoon,
     title: 'Bar Lists · Catalog',
-    data: { id: 'bar-lists' },
+    loadComponent: () => import('./blocks/bar-lists.page').then(m => m.BarListsCatalogPage),
   },
   {
     path: 'billing-usage',
-    component: ComingSoon,
     title: 'Billing & Usage · Catalog',
-    data: { id: 'billing-usage' },
+    loadComponent: () => import('./blocks/billing-usage.page').then(m => m.BillingUsageCatalogPage),
   },
   {
     path: 'chart-compositions',
-    component: ComingSoon,
     title: 'Chart Compositions · Catalog',
-    data: { id: 'chart-compositions' },
+    loadComponent: () =>
+      import('./blocks/chart-compositions.page').then(m => m.ChartCompositionsCatalogPage),
   },
   {
     path: 'chart-tooltips',
-    component: ComingSoon,
     title: 'Chart Tooltips · Catalog',
-    data: { id: 'chart-tooltips' },
+    loadComponent: () =>
+      import('./blocks/chart-tooltips.page').then(m => m.ChartTooltipsCatalogPage),
   },
   {
     path: 'line-charts',
-    component: ComingSoon,
     title: 'Line Charts · Catalog',
-    data: { id: 'line-charts' },
+    loadComponent: () => import('./blocks/line-charts.page').then(m => m.LineChartsCatalogPage),
   },
   {
     path: 'status-monitoring',
-    component: ComingSoon,
     title: 'Status Monitoring · Catalog',
-    data: { id: 'status-monitoring' },
+    loadComponent: () =>
+      import('./blocks/status-monitoring.page').then(m => m.StatusMonitoringCatalogPage),
   },
 ];

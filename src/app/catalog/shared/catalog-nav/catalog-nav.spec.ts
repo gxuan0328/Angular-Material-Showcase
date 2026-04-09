@@ -29,11 +29,11 @@ describe('CatalogNav', () => {
     expect(links.length).toBe(43);
   });
 
-  it('marks coming-soon entries with the soon badge', async () => {
+  it('renders zero soon badges after M4 (100% coverage)', async () => {
     const fixture = TestBed.createComponent(CatalogNav);
     await fixture.whenStable();
     const badges = fixture.nativeElement.querySelectorAll('.catalog-nav__badge');
-    // After M3: 7 of the 43 entries remain coming-soon (36 shipped)
-    expect(badges.length).toBe(7);
+    // After M4: all 43 entries are shipped, no coming-soon badges
+    expect(badges.length).toBe(0);
   });
 });

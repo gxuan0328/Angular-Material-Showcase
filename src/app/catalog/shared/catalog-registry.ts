@@ -59,7 +59,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Charts',
     summary: '橫向與直向長條圖',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'bar-lists',
@@ -67,7 +67,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Charts',
     summary: '排行榜風格的條列指標',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'billing-usage',
@@ -75,7 +75,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Forms',
     summary: '訂閱、付款、用量顯示',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'chart-compositions',
@@ -83,7 +83,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Charts',
     summary: '組合多種圖表類型',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'chart-tooltips',
@@ -91,7 +91,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Charts',
     summary: '圖表懸停提示',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'components',
@@ -171,7 +171,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Charts',
     summary: '折線圖呈現趨勢',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'lists',
@@ -243,7 +243,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Components',
     summary: '系統狀態與健康儀表',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'tables',

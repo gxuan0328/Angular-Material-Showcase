@@ -24,56 +24,14 @@ describe('catalog-registry', () => {
     expect(uniques.size).toBe(43);
   });
 
-  it('marks the 36 M1+M2+M3-shipped categories as shipped', () => {
-    const shipped = CATALOG_REGISTRY.filter(e => e.status === 'shipped').map(e => e.id);
-    expect(shipped.sort()).toEqual(
-      [
-        // M1
-        'banners',
-        'components',
-        'dialogs',
-        'empty-states',
-        'flyout-menus',
-        'multi-column',
-        'page-headings',
-        'page-shells',
-        'section-headings',
-        'stacked-layouts',
-        // M2
-        'area-charts',
-        'authentication',
-        'bento-grids',
-        'blog-sections',
-        'contact-sections',
-        'cta-sections',
-        'donut-charts',
-        'fancy',
-        'feature-sections',
-        'header-sections',
-        'hero-sections',
-        'kpi-cards',
-        'lists',
-        'newsletter-sections',
-        'pricing-sections',
-        'spark-area-charts',
-        'stats-sections',
-        'testimonial-sections',
-        // M3
-        'account-user-management',
-        'badges',
-        'file-upload',
-        'filterbar',
-        'form-layouts',
-        'grid-lists',
-        'stacked-lists',
-        'tables',
-      ].sort(),
-    );
+  it('marks all 43 categories as shipped after M4 (100% coverage)', () => {
+    const shipped = CATALOG_REGISTRY.filter(e => e.status === 'shipped');
+    expect(shipped.length).toBe(43);
   });
 
-  it('marks the remaining 7 categories as coming-soon', () => {
+  it('has zero coming-soon entries after M4', () => {
     const comingSoon = CATALOG_REGISTRY.filter(e => e.status === 'coming-soon');
-    expect(comingSoon.length).toBe(7);
+    expect(comingSoon.length).toBe(0);
   });
 
   it('findCatalogEntry returns the matching entry', () => {
