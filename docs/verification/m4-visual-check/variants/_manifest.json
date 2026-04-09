@@ -1,0 +1,773 @@
+{
+  "capturedAt": "2026-04-09T07:23:34.969Z",
+  "baseUrl": "http://127.0.0.1:4200",
+  "variants": {
+    "total": 75,
+    "ok": 75,
+    "failed": 0,
+    "results": [
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-1",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-1.png",
+        "bytes": 40834,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-2",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-2.png",
+        "bytes": 43787,
+        "height": 553,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-3",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-3.png",
+        "bytes": 35634,
+        "height": 527,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-4",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-4.png",
+        "bytes": 39626,
+        "height": 632,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-5",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-5.png",
+        "bytes": 35619,
+        "height": 608,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-6",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-6.png",
+        "bytes": 35104,
+        "height": 571,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-7",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-7.png",
+        "bytes": 31942,
+        "height": 497,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-8",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-8.png",
+        "bytes": 62747,
+        "height": 616,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-charts",
+        "variant": "bar-chart-9",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-charts__bar-chart-9.png",
+        "bytes": 64356,
+        "height": 655,
+        "consoleErrors": []
+      },
+      {
+        "category": "line-charts",
+        "variant": "line-chart-1",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-1.png",
+        "bytes": 35522,
+        "height": 479,
+        "consoleErrors": []
+      },
+      {
+        "category": "line-charts",
+        "variant": "line-chart-2",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-2.png",
+        "bytes": 45883,
+        "height": 613,
+        "consoleErrors": []
+      },
+      {
+        "category": "line-charts",
+        "variant": "line-chart-3",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-3.png",
+        "bytes": 51917,
+        "height": 565,
+        "consoleErrors": []
+      },
+      {
+        "category": "line-charts",
+        "variant": "line-chart-4",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-4.png",
+        "bytes": 53058,
+        "height": 623,
+        "consoleErrors": []
+      },
+      {
+        "category": "line-charts",
+        "variant": "line-chart-5",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-5.png",
+        "bytes": 78892,
+        "height": 503,
+        "consoleErrors": []
+      },
+      {
+        "category": "line-charts",
+        "variant": "line-chart-6",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-6.png",
+        "bytes": 85675,
+        "height": 511,
+        "consoleErrors": []
+      },
+      {
+        "category": "line-charts",
+        "variant": "line-chart-7",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-7.png",
+        "bytes": 79482,
+        "height": 753,
+        "consoleErrors": []
+      },
+      {
+        "category": "line-charts",
+        "variant": "line-chart-8",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/line-charts__line-chart-8.png",
+        "bytes": 69696,
+        "height": 822,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-1",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-1.png",
+        "bytes": 106812,
+        "height": 889,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-2",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-2.png",
+        "bytes": 62327,
+        "height": 818,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-3",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-3.png",
+        "bytes": 85040,
+        "height": 1017,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-4",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-4.png",
+        "bytes": 60684,
+        "height": 756,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-5",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-5.png",
+        "bytes": 69629,
+        "height": 856,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-6",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-6.png",
+        "bytes": 95210,
+        "height": 1064,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-8",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-8.png",
+        "bytes": 48259,
+        "height": 634,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-9",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-9.png",
+        "bytes": 50883,
+        "height": 642,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-10",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-10.png",
+        "bytes": 53186,
+        "height": 758,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-11",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-11.png",
+        "bytes": 97643,
+        "height": 978,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-12",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-12.png",
+        "bytes": 98139,
+        "height": 896,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-13",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-13.png",
+        "bytes": 69003,
+        "height": 713,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-14",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-14.png",
+        "bytes": 99683,
+        "height": 1116,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-compositions",
+        "variant": "chart-composition-15",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-compositions__chart-composition-15.png",
+        "bytes": 96197,
+        "height": 932,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-1",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-1.png",
+        "bytes": 18054,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-2",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-2.png",
+        "bytes": 18768,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-3",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-3.png",
+        "bytes": 19001,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-4",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-4.png",
+        "bytes": 22684,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-5",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-5.png",
+        "bytes": 23769,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-6",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-6.png",
+        "bytes": 19433,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-7",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-7.png",
+        "bytes": 22022,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-8",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-8.png",
+        "bytes": 28973,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-9",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-9.png",
+        "bytes": 22669,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-10",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-10.png",
+        "bytes": 27848,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-11",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-11.png",
+        "bytes": 20222,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-12",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-12.png",
+        "bytes": 20119,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-13",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-13.png",
+        "bytes": 17951,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-14",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-14.png",
+        "bytes": 20097,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-15",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-15.png",
+        "bytes": 21208,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-16",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-16.png",
+        "bytes": 19739,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-17",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-17.png",
+        "bytes": 22001,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-18",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-18.png",
+        "bytes": 27235,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-19",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-19.png",
+        "bytes": 27939,
+        "height": 550,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-20",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-20.png",
+        "bytes": 27436,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "chart-tooltips",
+        "variant": "chart-tooltip-21",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/chart-tooltips__chart-tooltip-21.png",
+        "bytes": 27501,
+        "height": 520,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-lists",
+        "variant": "bar-list-1",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-lists__bar-list-1.png",
+        "bytes": 31833,
+        "height": 451,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-lists",
+        "variant": "bar-list-2",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-lists__bar-list-2.png",
+        "bytes": 31136,
+        "height": 446,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-lists",
+        "variant": "bar-list-3",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-lists__bar-list-3.png",
+        "bytes": 34322,
+        "height": 449,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-lists",
+        "variant": "bar-list-4",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-lists__bar-list-4.png",
+        "bytes": 43443,
+        "height": 557,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-lists",
+        "variant": "bar-list-5",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-lists__bar-list-5.png",
+        "bytes": 43609,
+        "height": 551,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-lists",
+        "variant": "bar-list-6",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-lists__bar-list-6.png",
+        "bytes": 26625,
+        "height": 430,
+        "consoleErrors": []
+      },
+      {
+        "category": "bar-lists",
+        "variant": "bar-list-7",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/bar-lists__bar-list-7.png",
+        "bytes": 31127,
+        "height": 483,
+        "consoleErrors": []
+      },
+      {
+        "category": "billing-usage",
+        "variant": "billing-usage-1",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/billing-usage__billing-usage-1.png",
+        "bytes": 51669,
+        "height": 674,
+        "consoleErrors": []
+      },
+      {
+        "category": "billing-usage",
+        "variant": "billing-usage-2",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/billing-usage__billing-usage-2.png",
+        "bytes": 55430,
+        "height": 738,
+        "consoleErrors": []
+      },
+      {
+        "category": "billing-usage",
+        "variant": "billing-usage-3",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/billing-usage__billing-usage-3.png",
+        "bytes": 48669,
+        "height": 671,
+        "consoleErrors": []
+      },
+      {
+        "category": "billing-usage",
+        "variant": "billing-usage-4",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/billing-usage__billing-usage-4.png",
+        "bytes": 80325,
+        "height": 1007,
+        "consoleErrors": []
+      },
+      {
+        "category": "billing-usage",
+        "variant": "billing-usage-5",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/billing-usage__billing-usage-5.png",
+        "bytes": 67158,
+        "height": 859,
+        "consoleErrors": []
+      },
+      {
+        "category": "billing-usage",
+        "variant": "billing-usage-6",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/billing-usage__billing-usage-6.png",
+        "bytes": 160039,
+        "height": 1948,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-1",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-1.png",
+        "bytes": 24261,
+        "height": 345,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-2",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-2.png",
+        "bytes": 29080,
+        "height": 387,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-3",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-3.png",
+        "bytes": 26617,
+        "height": 345,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-4",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-4.png",
+        "bytes": 39540,
+        "height": 545,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-5",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-5.png",
+        "bytes": 31945,
+        "height": 439,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-6",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-6.png",
+        "bytes": 24733,
+        "height": 345,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-7",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-7.png",
+        "bytes": 31664,
+        "height": 379,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-8",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-8.png",
+        "bytes": 36225,
+        "height": 528,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-9",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-9.png",
+        "bytes": 35363,
+        "height": 492,
+        "consoleErrors": []
+      },
+      {
+        "category": "status-monitoring",
+        "variant": "status-monitoring-10",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/variants/status-monitoring__status-monitoring-10.png",
+        "bytes": 27222,
+        "height": 351,
+        "consoleErrors": []
+      }
+    ]
+  },
+  "pages": {
+    "total": 10,
+    "ok": 10,
+    "failed": 0,
+    "results": [
+      {
+        "name": "billing-overview",
+        "path": "/app/billing/overview",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/billing-overview.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "billing-invoices",
+        "path": "/app/billing/invoices",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/billing-invoices.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "billing-usage",
+        "path": "/app/billing/usage",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/billing-usage.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "billing-plans",
+        "path": "/app/billing/plans",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/billing-plans.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "reports",
+        "path": "/app/reports",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/reports.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "settings-profile",
+        "path": "/app/settings/profile",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/settings-profile.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "settings-security",
+        "path": "/app/settings/security",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/settings-security.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "settings-api-keys",
+        "path": "/app/settings/api-keys",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/settings-api-keys.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "settings-integrations",
+        "path": "/app/settings/integrations",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/settings-integrations.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      },
+      {
+        "name": "settings-preferences",
+        "path": "/app/settings/preferences",
+        "status": "ok",
+        "file": "docs/verification/m4-visual-check/pages/settings-preferences.png",
+        "bytes": 41001,
+        "consoleErrors": []
+      }
+    ]
+  }
+}

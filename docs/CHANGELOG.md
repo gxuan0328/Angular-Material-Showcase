@@ -3,6 +3,39 @@
 All milestone deliveries are recorded here in reverse-chronological order.
 See `docs/2026-04-08-material-block-showcase-design.md` §13 for milestone definitions.
 
+## M4 — Charts, Billing, Reports, Settings (100% Coverage) — 2026-04-09
+
+**Delivered**
+
+- **7 new catalog pages + 75 new vendor variants** installed and baked. Final coverage: **43 / 43 display categories (100%) · 449 variants**.
+  - bar-charts (9), line-charts (8), chart-compositions (14), chart-tooltips (21), bar-lists (7), billing-usage (6), status-monitoring (10).
+- **10 new Live Showcase routes** under `/app/billing/*`, `/app/reports`, `/app/settings/*`:
+  - **Billing** (4 routes): overview · invoices · usage · plans. BillingShell with mat-tab-nav-bar.
+  - **Reports** (1 route): KPI summary cards · trend overview · top pages list · CSV export.
+  - **Settings** (5 routes): profile · security (2FA) · api-keys · integrations · preferences. SettingsShell with mat-tab-nav-bar.
+- **3 new Mock APIs**: MockBillingApi (plan/invoices/usage/payments), MockReportsApi (kpis/series/topItems), MockSettingsApi (profile/2FA/apiKeys/integrations/preferences).
+- **6 new fixture files**: plans.json, invoices.json, payment-methods.json, usage-metrics.json, reports-metrics.json, api-keys.json, integrations.json.
+- **Admin sidenav fully live**: 7 nav items, 0 "即將推出" badges. Billing/Reports/Settings flipped from `soon` to live.
+- **i18n expansion**: Added `billing.*`, `reports.*`, `settings.*`, `admin.nav.*`, additional `common.*` keys (80+ new entries).
+- **CatalogBlockMeta extended**: Added optional `previewMinHeight` for tall chart previews (chart-compositions: 560px, chart-tooltips: 520px).
+- **Catalog registry/routes**: All 7 entries flipped to `shipped`; ComingSoon routes replaced with `loadComponent` lazy loaders; 0 coming-soon entries remain.
+- **Tests**: 142/142 SUCCESS (11 new tests for mock APIs + updated specs).
+- **Bulk variant screenshots**: 75/75 OK + 10/10 showcase pages OK. Visual check report: `docs/verification/m4-visual-check/REPORT.md`.
+
+**Design Decisions**
+
+- D1: Sub-nav uses `mat-tab-nav-bar`, not expanded sidenav — keeps top-level nav at 7 flat items.
+- D2: All new forms use ReactiveForms with `m5-signal-forms-migration` TODO (Angular 20.3 → Signal Forms blocked on v21).
+- D3: Chart preview min-height applied via `previewMinHeight` field on CatalogBlockMeta, propagated to `.catalog-page__zone` via `[style.min-height.px]`.
+
+**Known Follow-ups**
+
+- Production build (`ng build --configuration production`) not yet verified (open tech debt from M2).
+- Signal Forms migration blocked on Angular 21.
+- Chart tooltip palette unification with ChartPaletteService (cosmetic enhancement).
+
+---
+
 ## M3 — Users, Forms, Lists & Data Collection — 2026-04-09
 
 **Delivered**
