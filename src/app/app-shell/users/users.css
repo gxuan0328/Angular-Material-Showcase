@@ -45,6 +45,7 @@
 /* Filters */
 .users__filters {
   background: var(--mat-sys-surface, #fff);
+  overflow: hidden;
 }
 .users__filters-form {
   display: flex;
@@ -52,13 +53,16 @@
   gap: 0.75rem;
   padding: 0.25rem 0;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 .users__field {
   margin: 0;
+  max-width: 100%;
 }
 .users__field--search {
   flex: 1 1 280px;
-  min-width: 240px;
+  min-width: 200px;
+  max-width: 100%;
 }
 
 /* Bulk bar */

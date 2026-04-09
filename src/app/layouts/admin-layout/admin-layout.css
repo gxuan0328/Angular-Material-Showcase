@@ -52,7 +52,7 @@
 }
 
 .admin-layout__nav-item {
-  border-radius: 12px;
+  border-radius: 0;
   margin-bottom: 0.125rem;
 }
 

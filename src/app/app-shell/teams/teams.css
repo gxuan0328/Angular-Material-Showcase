@@ -125,4 +125,23 @@
 .teams__role {
   --mdc-chip-container-height: 22px;
   font-size: 0.6875rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Ensure mat-list-item meta (role badge) doesn't get squeezed out of view */
+.teams__member-row .mat-mdc-list-item-meta,
+.teams__member-row [matlistitemMeta],
+.teams__member-row .mdc-list-item__end {
+  flex-shrink: 0;
+  margin-inline-start: 0.5rem;
+}
+
+/* Prevent email from pushing badge offscreen — truncate with ellipsis */
+.teams__member-row .mdc-list-item__secondary-text,
+.teams__member-row .mat-mdc-list-item-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 180px;
 }
