@@ -3,7 +3,14 @@
   grid-template-columns: 280px 1fr;
   grid-template-rows: 56px 1fr;
   min-height: 100vh;
+  transition: grid-template-columns 200ms ease;
 }
+
+/* When nav is hidden, collapse the sidebar column */
+:host(.catalog-layout--nav-hidden) {
+  grid-template-columns: 0 1fr;
+}
+
 .catalog-layout__topbar {
   grid-column: 1 / span 2;
   display: flex;
@@ -12,6 +19,11 @@
   padding: 0 1.5rem;
   border-bottom: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
   background: var(--mat-sys-surface, #fff);
+}
+.catalog-layout__topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .catalog-layout__brand {
   font-weight: 600;
@@ -30,6 +42,7 @@
   border-right: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
   background: var(--mat-sys-surface-container-lowest, #fafafa);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 .catalog-layout__body {
   padding: 1.5rem 2rem;

@@ -46,6 +46,36 @@ body {
  * mirrors what Google Fonts' CSS file injects, so ligatures work
  * even when mat-icon's own font-family overrides the inherited one. */
 
+/* === Vendor block CSS fixes ===
+ * These correct rendering issues in ngm-dev-blocks vendor components
+ * where Tailwind utility classes interact with Material v21 CSS. */
+
+/* Badge-4 (圓形徽章): icon inside mat-chip not vertically centered.
+ * The mat-icon with matChipTrailingIcon needs explicit vertical alignment. */
+mat-chip mat-icon[matchiptrailingicon] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  vertical-align: middle !important;
+}
+
+/* Status Monitoring: ensure vendor block headings pick up proper font styles.
+ * Some vendor blocks use Tailwind text-* utilities that may be stripped
+ * by Tailwind v4's content detection. Force base heading styles. */
+.catalog-page__zone h2,
+.catalog-page__zone h3,
+.catalog-page__zone h4 {
+  font-weight: 600;
+}
+.catalog-page__zone .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+.catalog-page__zone .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.catalog-page__zone .font-semibold { font-weight: 600; }
+.catalog-page__zone .font-medium { font-weight: 500; }
+
+/* Fancy (Memory Album): ensure flex text layout doesn't over-space.
+ * The vendor uses "flex justify-center" for the title text. */
+.catalog-page__zone .tracking-tight { letter-spacing: -0.025em; }
+
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined', sans-serif;
   font-weight: normal;
