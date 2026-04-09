@@ -83,9 +83,42 @@ app-sidebar-6 .child-item {
 .catalog-page__zone .font-semibold { font-weight: 600; }
 .catalog-page__zone .font-medium { font-weight: 500; }
 
+/* Landing page dark sections contrast: ensure vendor dark backgrounds
+ * have sufficient text contrast in both light and dark modes. */
+.landing-page .bg-gray-900 { background-color: #111827 !important; }
+.landing-page .bg-gray-900 .text-white,
+.landing-page .bg-gray-900 h1,
+.landing-page .bg-gray-900 h2,
+.landing-page .bg-gray-900 h3 { color: #ffffff !important; }
+.landing-page .bg-gray-900 .text-gray-400 { color: #9ca3af !important; }
+.landing-page .text-gray-600 { color: #4b5563 !important; }
+
 /* Fancy (Memory Album): ensure flex text layout doesn't over-space.
  * The vendor uses "flex justify-center" for the title text. */
 .catalog-page__zone .tracking-tight { letter-spacing: -0.025em; }
+
+/* Some vendor blocks use the legacy "material-icons" class instead of
+ * "material-symbols-outlined". Map it to the same font so ligatures render. */
+.material-icons {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: 'liga';
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 24;
+}
 
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined', sans-serif;
