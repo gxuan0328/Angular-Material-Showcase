@@ -161,14 +161,53 @@ export const CATALOG_ROUTES: Routes = [
     loadComponent: () => import('./blocks/kpi-cards.page').then(m => m.KpiCardsCatalogPage),
   },
 
-  // === M3-M4 COMING SOON (15) ===
+  // === M3 SHIPPED (8) ===
+  {
+    path: 'tables',
+    title: 'Tables · Catalog',
+    loadComponent: () => import('./blocks/tables.page').then(m => m.TablesCatalogPage),
+  },
+  {
+    path: 'stacked-lists',
+    title: 'Stacked Lists · Catalog',
+    loadComponent: () =>
+      import('./blocks/stacked-lists.page').then(m => m.StackedListsCatalogPage),
+  },
+  {
+    path: 'grid-lists',
+    title: 'Grid Lists · Catalog',
+    loadComponent: () => import('./blocks/grid-lists.page').then(m => m.GridListsCatalogPage),
+  },
+  {
+    path: 'badges',
+    title: 'Badges · Catalog',
+    loadComponent: () => import('./blocks/badges.page').then(m => m.BadgesCatalogPage),
+  },
+  {
+    path: 'filterbar',
+    title: 'Filter Bar · Catalog',
+    loadComponent: () => import('./blocks/filterbar.page').then(m => m.FilterbarCatalogPage),
+  },
+  {
+    path: 'form-layouts',
+    title: 'Form Layouts · Catalog',
+    loadComponent: () => import('./blocks/form-layouts.page').then(m => m.FormLayoutsCatalogPage),
+  },
   {
     path: 'account-user-management',
-    component: ComingSoon,
     title: 'Account & User Management · Catalog',
-    data: { id: 'account-user-management' },
+    loadComponent: () =>
+      import('./blocks/account-user-management.page').then(
+        m => m.AccountUserManagementCatalogPage,
+      ),
   },
-  { path: 'badges', component: ComingSoon, title: 'Badges · Catalog', data: { id: 'badges' } },
+  {
+    path: 'file-upload',
+    title: 'File Upload · Catalog',
+    loadComponent: () => import('./blocks/file-upload.page').then(m => m.FileUploadCatalogPage),
+  },
+
+  // === M4 COMING SOON (7) ===
   {
     path: 'bar-charts',
     component: ComingSoon,
@@ -200,40 +239,10 @@ export const CATALOG_ROUTES: Routes = [
     data: { id: 'chart-tooltips' },
   },
   {
-    path: 'file-upload',
-    component: ComingSoon,
-    title: 'File Upload · Catalog',
-    data: { id: 'file-upload' },
-  },
-  {
-    path: 'filterbar',
-    component: ComingSoon,
-    title: 'Filter Bar · Catalog',
-    data: { id: 'filterbar' },
-  },
-  {
-    path: 'form-layouts',
-    component: ComingSoon,
-    title: 'Form Layouts · Catalog',
-    data: { id: 'form-layouts' },
-  },
-  {
-    path: 'grid-lists',
-    component: ComingSoon,
-    title: 'Grid Lists · Catalog',
-    data: { id: 'grid-lists' },
-  },
-  {
     path: 'line-charts',
     component: ComingSoon,
     title: 'Line Charts · Catalog',
     data: { id: 'line-charts' },
-  },
-  {
-    path: 'stacked-lists',
-    component: ComingSoon,
-    title: 'Stacked Lists · Catalog',
-    data: { id: 'stacked-lists' },
   },
   {
     path: 'status-monitoring',
@@ -241,5 +250,4 @@ export const CATALOG_ROUTES: Routes = [
     title: 'Status Monitoring · Catalog',
     data: { id: 'status-monitoring' },
   },
-  { path: 'tables', component: ComingSoon, title: 'Tables · Catalog', data: { id: 'tables' } },
 ];

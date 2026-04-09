@@ -27,7 +27,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Forms',
     summary: '帳戶與使用者管理表單',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'area-charts',
@@ -51,7 +51,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Elements',
     summary: '狀態與計數標籤',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'bar-charts',
@@ -131,7 +131,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Forms',
     summary: '檔案上傳與拖放',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'filterbar',
@@ -139,7 +139,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Components',
     summary: '清單篩選列',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'flyout-menus',
@@ -155,7 +155,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Forms',
     summary: '表單版面範本',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'grid-lists',
@@ -163,7 +163,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Lists',
     summary: '網格列表',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'line-charts',
@@ -235,7 +235,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Lists',
     summary: '堆疊清單',
-    status: 'coming-soon',
+    status: 'shipped',
   },
   {
     id: 'status-monitoring',
@@ -251,7 +251,7 @@ export const CATALOG_REGISTRY: readonly CatalogRegistryEntry[] = [
     category: 'application',
     subcategory: 'Lists',
     summary: '資料表格',
-    status: 'coming-soon',
+    status: 'shipped',
   },
 
   // Marketing — 14 entries
