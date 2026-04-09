@@ -45,34 +45,6 @@ body {
  * (configured via MatIconRegistry.setDefaultFontSetClass). The rule
  * mirrors what Google Fonts' CSS file injects, so ligatures work
  * even when mat-icon's own font-family overrides the inherited one. */
-/* Fix outline form-field leading notch width.
- * Widen it to 16px so CJK labels have breathing room from the left border. */
-.mdc-notched-outline__leading {
-  width: 16px !important;
-}
-
-/* Fix the vertical-line seam inside outlined form fields.
- *
- * MDC outline renders as 3 adjacent divs: [leading | notch | trailing].
- * The notch div carries the floating label and sizes itself to the label
- * width. Its border-right (and border-left when transparent) creates a
- * visible vertical line that cuts through the input content area:
- *
- *   - Unfocused: notch border-right = 1px solid grey   → grey hairline
- *   - Focused:   notch border-right = 2px solid primary → blue line
- *
- * Both are structural artifacts — the trailing div's border-left is `none`,
- * so the notch's right border becomes an isolated vertical stroke in the
- * middle of the form field instead of a seamless junction.
- *
- * Fix: remove notch's internal left + right borders in ALL states.
- * The continuous outline is maintained by leading (left+top+bottom),
- * notch (top only when not notched; none when notched), and
- * trailing (right+top+bottom). */
-.mdc-notched-outline__notch {
-  border-left: none !important;
-  border-right: none !important;
-}
 
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined', sans-serif;
