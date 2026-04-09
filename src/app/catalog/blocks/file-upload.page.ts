@@ -12,12 +12,12 @@ import { BlockVariant } from '../models/block-variant';
 import { CatalogBlockMeta } from '../models/catalog-block-meta';
 
 import { FileUpload1Component } from '../../blocks/file-upload/file-upload-1/file-upload-1.component';
-import { FileUpload2DropzoneComponent } from '../../blocks/file-upload/file-upload-2/file-upload-2.component';
-import { FileUpload3DropzoneComponent } from '../../blocks/file-upload/file-upload-3/file-upload-3.component';
-import { FileUpload4DropzoneComponent } from '../../blocks/file-upload/file-upload-4/file-upload-4.component';
-import { FileUpload5DropzoneComponent } from '../../blocks/file-upload/file-upload-5/file-upload-5.component';
-import { FileUpload6DropzoneComponent } from '../../blocks/file-upload/file-upload-6/file-upload-6.component';
-import { FileUpload7DropzoneComponent } from '../../blocks/file-upload/file-upload-7/file-upload-7.component';
+import { FileUpload2Component } from '../../blocks/file-upload/file-upload-2/file-upload-2.component';
+import { FileUpload3Component } from '../../blocks/file-upload/file-upload-3/file-upload-3.component';
+import { FileUpload4Component } from '../../blocks/file-upload/file-upload-4/file-upload-4.component';
+import { FileUpload5Component } from '../../blocks/file-upload/file-upload-5/file-upload-5.component';
+import { FileUpload6Component } from '../../blocks/file-upload/file-upload-6/file-upload-6.component';
+import { FileUpload7Component } from '../../blocks/file-upload/file-upload-7/file-upload-7.component';
 
 const VARIANTS: readonly BlockVariant[] = [
   {
@@ -31,42 +31,42 @@ const VARIANTS: readonly BlockVariant[] = [
     id: 'file-upload-2',
     label: 'File Upload 02 — Dropzone 拖放區',
     registryCategory: 'file-upload',
-    component: FileUpload2DropzoneComponent,
+    component: FileUpload2Component,
     isFree: false,
   },
   {
     id: 'file-upload-3',
     label: 'File Upload 03 — 多檔拖放上傳',
     registryCategory: 'file-upload',
-    component: FileUpload3DropzoneComponent,
+    component: FileUpload3Component,
     isFree: false,
   },
   {
     id: 'file-upload-4',
     label: 'File Upload 04 — 含預覽的拖放區',
     registryCategory: 'file-upload',
-    component: FileUpload4DropzoneComponent,
+    component: FileUpload4Component,
     isFree: false,
   },
   {
     id: 'file-upload-5',
     label: 'File Upload 05 — 大尺寸拖放區',
     registryCategory: 'file-upload',
-    component: FileUpload5DropzoneComponent,
+    component: FileUpload5Component,
     isFree: false,
   },
   {
     id: 'file-upload-6',
     label: 'File Upload 06 — 內嵌卡片拖放區',
     registryCategory: 'file-upload',
-    component: FileUpload6DropzoneComponent,
+    component: FileUpload6Component,
     isFree: false,
   },
   {
     id: 'file-upload-7',
     label: 'File Upload 07 — 緊湊型拖放區',
     registryCategory: 'file-upload',
-    component: FileUpload7DropzoneComponent,
+    component: FileUpload7Component,
     isFree: false,
   },
 ];

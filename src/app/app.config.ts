@@ -9,6 +9,7 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { MatIconRegistry } from '@angular/material/icon';
+import { provideNativeDateAdapter } from '@angular/material/core';
 import { Chart, registerables } from 'chart.js';
 
 import { routes } from './app.routes';
@@ -23,6 +24,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
+    provideNativeDateAdapter(),
     provideAppInitializer(() => {
       inject(AuthStore).restore();
     }),

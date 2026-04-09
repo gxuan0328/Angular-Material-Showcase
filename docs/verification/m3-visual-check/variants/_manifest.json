@@ -1,0 +1,846 @@
+{
+  "capturedAt": "2026-04-09T03:03:57.868Z",
+  "baseUrl": "http://127.0.0.1:4200",
+  "total": 93,
+  "ok": 93,
+  "failed": 0,
+  "results": [
+    {
+      "category": "tables",
+      "variant": "simple-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__simple-table.png",
+      "bytes": 59328,
+      "height": 625,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "avatars-multi-line-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__avatars-multi-line-table.png",
+      "bytes": 69846,
+      "height": 697,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "comparision-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__comparision-table.png",
+      "bytes": 176595,
+      "height": 1366.5,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "condensed-content-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__condensed-content-table.png",
+      "bytes": 102821,
+      "height": 833,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "filter-http-data-source-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__filter-http-data-source-table.png",
+      "bytes": 30604,
+      "height": 1005,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "filter-select-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__filter-select-table.png",
+      "bytes": 73727,
+      "height": 621,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "full-width-avatar-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__full-width-avatar-table.png",
+      "bytes": 121313,
+      "height": 907,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "full-width-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__full-width-table.png",
+      "bytes": 59486,
+      "height": 626,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "grouped-rows-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__grouped-rows-table.png",
+      "bytes": 63376,
+      "height": 745,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "hidden-columns-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__hidden-columns-table.png",
+      "bytes": 60019,
+      "height": 625,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "hidden-headings-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__hidden-headings-table.png",
+      "bytes": 80784,
+      "height": 666,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "simple-card-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__simple-card-table.png",
+      "bytes": 58807,
+      "height": 627,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "stacked-columns-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__stacked-columns-table.png",
+      "bytes": 60082,
+      "height": 625,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "sticky-header-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__sticky-header-table.png",
+      "bytes": 71452,
+      "height": 757,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "striped-rows-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__striped-rows-table.png",
+      "bytes": 59569,
+      "height": 625,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "summary-rows-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__summary-rows-table.png",
+      "bytes": 67640,
+      "height": 765,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "table-with-chart",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__table-with-chart.png",
+      "bytes": 92610,
+      "height": 721.5,
+      "consoleErrors": []
+    },
+    {
+      "category": "tables",
+      "variant": "vertical-lines-table",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/tables__vertical-lines-table.png",
+      "bytes": 60815,
+      "height": 626,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "simple",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__simple.png",
+      "bytes": 77846,
+      "height": 510,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "full-width-with-constrained-content",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__full-width-with-constrained-content.png",
+      "bytes": 75064,
+      "height": 510,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "full-width-with-links",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__full-width-with-links.png",
+      "bytes": 74246,
+      "height": 510,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "narrow",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__narrow.png",
+      "bytes": 61164,
+      "height": 510,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "narrow-with-actions",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__narrow-with-actions.png",
+      "bytes": 75673,
+      "height": 550,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "narrow-with-badges",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__narrow-with-badges.png",
+      "bytes": 12574,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "narrow-with-small-avatars",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__narrow-with-small-avatars.png",
+      "bytes": 78387,
+      "height": 770,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "narrow-with-sticky-headings",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__narrow-with-sticky-headings.png",
+      "bytes": 83390,
+      "height": 729,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "with-badges-button-action-menu",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__with-badges-button-action-menu.png",
+      "bytes": 62805,
+      "height": 493,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "with-inline-link-action-menu",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__with-inline-link-action-menu.png",
+      "bytes": 73683,
+      "height": 558,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "with-links",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__with-links.png",
+      "bytes": 72774,
+      "height": 510,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "with-links-avatar-group",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__with-links-avatar-group.png",
+      "bytes": 74523,
+      "height": 445,
+      "consoleErrors": []
+    },
+    {
+      "category": "stacked-lists",
+      "variant": "with-links-in-card",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/stacked-lists__with-links-in-card.png",
+      "bytes": 75227,
+      "height": 494,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-1",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-1.png",
+      "bytes": 52311,
+      "height": 456,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-2",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-2.png",
+      "bytes": 75847,
+      "height": 815,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-3",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-3.png",
+      "bytes": 77004,
+      "height": 833,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-4",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-4.png",
+      "bytes": 55075,
+      "height": 654,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-5",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-5.png",
+      "bytes": 55469,
+      "height": 702,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-6",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-6.png",
+      "bytes": 55342,
+      "height": 413,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-7",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-7.png",
+      "bytes": 59203,
+      "height": 590,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-8",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-8.png",
+      "bytes": 61253,
+      "height": 592,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-9",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-9.png",
+      "bytes": 70621,
+      "height": 864,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-10",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-10.png",
+      "bytes": 73572,
+      "height": 678,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-11",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-11.png",
+      "bytes": 76957,
+      "height": 734,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-12",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-12.png",
+      "bytes": 78577,
+      "height": 728,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-13",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-13.png",
+      "bytes": 66108,
+      "height": 792,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-14",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-14.png",
+      "bytes": 68880,
+      "height": 861,
+      "consoleErrors": []
+    },
+    {
+      "category": "grid-lists",
+      "variant": "grid-list-15",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/grid-lists__grid-list-15.png",
+      "bytes": 87020,
+      "height": 749,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-1",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-1.png",
+      "bytes": 16208,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-2",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-2.png",
+      "bytes": 15877,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-3",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-3.png",
+      "bytes": 15482,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-4",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-4.png",
+      "bytes": 15255,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-5",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-5.png",
+      "bytes": 17812,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-6",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-6.png",
+      "bytes": 19164,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-7",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-7.png",
+      "bytes": 19728,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-8",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-8.png",
+      "bytes": 21713,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-9",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-9.png",
+      "bytes": 18823,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-10",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-10.png",
+      "bytes": 22597,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-11",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-11.png",
+      "bytes": 23045,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "badges",
+      "variant": "badge-12",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/badges__badge-12.png",
+      "bytes": 20875,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-1",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-1.png",
+      "bytes": 14779,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-2",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-2.png",
+      "bytes": 14659,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-3",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-3.png",
+      "bytes": 13250,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-4",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-4.png",
+      "bytes": 15923,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-5",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-5.png",
+      "bytes": 15467,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-6",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-6.png",
+      "bytes": 14475,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-7",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-7.png",
+      "bytes": 17042,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-8",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-8.png",
+      "bytes": 18495,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-9",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-9.png",
+      "bytes": 14226,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-10",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-10.png",
+      "bytes": 14814,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-11",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-11.png",
+      "bytes": 22906,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "filterbar",
+      "variant": "filterbar-12",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/filterbar__filterbar-12.png",
+      "bytes": 18403,
+      "height": 345,
+      "consoleErrors": []
+    },
+    {
+      "category": "form-layouts",
+      "variant": "form-layout-1",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/form-layouts__form-layout-1.png",
+      "bytes": 33786,
+      "height": 678,
+      "consoleErrors": []
+    },
+    {
+      "category": "form-layouts",
+      "variant": "form-layout-2",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/form-layouts__form-layout-2.png",
+      "bytes": 78175,
+      "height": 1188,
+      "consoleErrors": []
+    },
+    {
+      "category": "form-layouts",
+      "variant": "form-layout-3",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/form-layouts__form-layout-3.png",
+      "bytes": 92162,
+      "height": 1424,
+      "consoleErrors": []
+    },
+    {
+      "category": "form-layouts",
+      "variant": "form-layout-4",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/form-layouts__form-layout-4.png",
+      "bytes": 69774,
+      "height": 962,
+      "consoleErrors": []
+    },
+    {
+      "category": "form-layouts",
+      "variant": "form-layout-5",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/form-layouts__form-layout-5.png",
+      "bytes": 73946,
+      "height": 1091,
+      "consoleErrors": []
+    },
+    {
+      "category": "form-layouts",
+      "variant": "form-layout-6",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/form-layouts__form-layout-6.png",
+      "bytes": 115550,
+      "height": 1469,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-1",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-1.png",
+      "bytes": 59132,
+      "height": 1053,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-2",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-2.png",
+      "bytes": 85773,
+      "height": 1227,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-3",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-3.png",
+      "bytes": 72877,
+      "height": 790,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-4",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-4.png",
+      "bytes": 82629,
+      "height": 1012,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-5",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-5.png",
+      "bytes": 77012,
+      "height": 983,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-6",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-6.png",
+      "bytes": 78018,
+      "height": 1035,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-7",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-7.png",
+      "bytes": 55805,
+      "height": 800,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-8",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-8.png",
+      "bytes": 96706,
+      "height": 1235,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-9",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-9.png",
+      "bytes": 66074,
+      "height": 745,
+      "consoleErrors": []
+    },
+    {
+      "category": "account-user-management",
+      "variant": "account-user-management-10",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/account-user-management__account-user-management-10.png",
+      "bytes": 93156,
+      "height": 1000,
+      "consoleErrors": []
+    },
+    {
+      "category": "file-upload",
+      "variant": "file-upload-1",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/file-upload__file-upload-1.png",
+      "bytes": 32086,
+      "height": 481,
+      "consoleErrors": []
+    },
+    {
+      "category": "file-upload",
+      "variant": "file-upload-2",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/file-upload__file-upload-2.png",
+      "bytes": 47316,
+      "height": 694,
+      "consoleErrors": []
+    },
+    {
+      "category": "file-upload",
+      "variant": "file-upload-3",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/file-upload__file-upload-3.png",
+      "bytes": 37347,
+      "height": 679,
+      "consoleErrors": []
+    },
+    {
+      "category": "file-upload",
+      "variant": "file-upload-4",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/file-upload__file-upload-4.png",
+      "bytes": 35016,
+      "height": 505,
+      "consoleErrors": []
+    },
+    {
+      "category": "file-upload",
+      "variant": "file-upload-5",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/file-upload__file-upload-5.png",
+      "bytes": 52691,
+      "height": 943,
+      "consoleErrors": []
+    },
+    {
+      "category": "file-upload",
+      "variant": "file-upload-6",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/file-upload__file-upload-6.png",
+      "bytes": 40043,
+      "height": 577,
+      "consoleErrors": []
+    },
+    {
+      "category": "file-upload",
+      "variant": "file-upload-7",
+      "status": "ok",
+      "file": "docs/verification/m3-visual-check/variants/file-upload__file-upload-7.png",
+      "bytes": 38027,
+      "height": 553,
+      "consoleErrors": []
+    }
+  ]
+}

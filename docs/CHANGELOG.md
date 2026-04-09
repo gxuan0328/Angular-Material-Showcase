@@ -3,6 +3,71 @@
 All milestone deliveries are recorded here in reverse-chronological order.
 See `docs/2026-04-08-material-block-showcase-design.md` §13 for milestone definitions.
 
+## M3 — Users, Forms, Lists & Data Collection — 2026-04-09
+
+**Delivered**
+
+- **8 new catalog pages + 93 new vendor variants** installed and baked. Cumulative coverage: **36 / 43 display categories (84%) · 374 variants**.
+
+  | Category | Free | Paid | Total |
+  | --- | ---: | ---: | ---: |
+  | `tables` | 1 | 17 | 18 |
+  | `stacked-lists` | 1 | 12 | 13 |
+  | `grid-lists` | 1 | 14 | 15 |
+  | `badges` | 1 | 11 | 12 |
+  | `filterbar` | 0 | 12 | 12 |
+  | `form-layouts` | 0 | 6 | 6 |
+  | `account-user-management` | 0 | 10 | 10 |
+  | `file-upload` | 0 | 7 | 7 |
+  | **M3 TOTAL** | **4** | **89** | **93** |
+
+- **`/app/users` list view** (`src/app/app-shell/users/`) — reactive filter form (search + status + role) wired to `MockUsersApi.setFilters()`. MatTable with `SelectionModel` for bulk actions, header stats (total / active / invited / suspended), sortable columns (displayName, role, lastLoginAt), row-level destructive confirm, empty state when filters yield no results. Clicking a row navigates to `/app/users/:id`.
+- **`/app/users/:id` detail view** — multi-column layout (1/3 summary card + 2/3 tab group). The `id` param flows through `withComponentInputBinding()` → signal `input()` → computed `user()`. Three tabs: **活動** (audit feed synthesized from role), **權限** (slide-toggle list computed from role), **裝置** (mock device list with current-device chip). Header delete action confirms via `ConfirmDestructiveDialog`, removes via `MockUsersApi.remove()`, then navigates back to the list.
+- **`/app/users/new` stepper** — 4-step `MatStepper` (基本資料 → 指派角色 → 通知偏好 → 確認). Uses ReactiveForms with explicit `m5-signal-forms-migration` TODO: spec §2 / §13 require Signal Forms but Angular 20.3 does not yet support it (requires v21+). Submit calls `MockUsersApi.create()` which returns a Result; on success navigates to `/app/users/:id`.
+- **`/app/teams`** (`src/app/app-shell/teams/`) — 6 cross-department team cards with lead callout, member `mat-list`, role chips, and navigation into user detail. Uses `MockTeamsApi` + `MockUsersApi` together via a `resolved()` computed that resolves member-id references to full user objects.
+- **`/app/notifications`** (`src/app/app-shell/notifications/`) — feed view with `mat-chip-listbox` filter (全部 / 未讀 / 系統 / 帳單), unread badge on the 未讀 chip, severity-tinted icons, mark-as-read on click, and a `全部標記為已讀` action in the header.
+- **Mock API layer** (`src/app/core/mock-api/`):
+  - `MockUsersApi` — 35-user Glacier Analytics fixture (`assets/mock-data/users.json`). Signal-based `filteredUsers` / `stats` computeds. `create` / `update` / `remove` / `bulkRemove` with Result pattern covering `InvalidCredentials` / `EmailAlreadyInUse` / `UserNotFound` codes.
+  - `MockNotificationsApi` — 12 mixed system/billing/invite entries with 4-way filter signal and mark-as-read mutations.
+  - `MockTeamsApi` — 6 teams with lead + member id references.
+- **`ConfirmDestructiveDialog`** (`src/app/core/dialogs/`) — injectable service wrapping `MatDialog` with a reusable `role="alertdialog"` confirmation. Options for title / message / confirmLabel / cancelLabel / destructive / icon. Auto-focus first tabbable, returns `Promise<boolean>`.
+- **Admin sidenav flipped** — `NAV_ITEMS` updated so `users`, `teams`, `notifications` are now live and `billing`, `reports`, `settings` remain `soon` (M4 scope). Total 7 nav items · 4 live · 3 soon.
+- **New runtime dependencies** — `@ngx-dropzone/cdk`, `@ngx-dropzone/material` (required by `file-upload/*` variants), `@octokit/core`, `@octokit/openapi-types` (required by `tables/filter-http-data-source-table`). Installed with `--legacy-peer-deps` due to `@ngxpert/avvvatars@2.0.3` pre-existing Angular 18 peer range.
+- **`provideNativeDateAdapter()`** added to `app.config.ts` — required by `filterbar/filterbar-11`'s MatDatepicker. No M2/M1 variant used datepicker so this was latent until the M3 catalog surfaced it.
+
+**i18n (Task G)**
+
+- `src/assets/i18n/zh-TW.json` grew from 97 → 150+ keys covering `users.*` (40 keys: filters, columns, status/role labels, stepper steps), `teams.*`, `notifications.*`, `confirm.*`, and `admin.nav.teams`.
+
+**Visual verification (Task H)**
+
+- `scripts/m3-bulk-variant-screenshots.mjs` — new runner walking the 8 M3 categories, auto-detecting variants from the selector, and screenshotting every preview zone.
+- **Captured 93 / 93 M3 variants** with zero failures after the 3 fixes below (manifest in `docs/verification/m3-visual-check/variants/_manifest.json`).
+- All 5 new Live Showcase routes screenshotted into `docs/verification/m3-visual-check/pages/`.
+- Full report at `docs/verification/m3-visual-check/REPORT.md`.
+
+**Fixes caught during visual check**
+
+1. **`filterbar/filterbar-11` — Missing `DateAdapter` provider** — variant uses `MatDatepicker`. Fixed by adding `provideNativeDateAdapter()` to `app.config.ts`.
+2. **`file-upload/file-upload-{2-7}` — Wrong component class exported** — vendor ships two components per file (inner `FileUpload{N}DropzoneComponent` + outer `FileUpload{N}Component`). Our catalog page was importing the inner class which requires `<input fileInput>` projection from a parent. Fixed by switching imports to the outer `FileUpload{N}Component` class for variants 2-7.
+3. **`/app/notifications` layout overlap** — using `<mat-list>` with `matListItemTitle` / `matListItemLine` slots caused title + message + meta to stack. Replaced with a native `<ul>` + `<button>` grid layout; each row is keyboard-focusable via `:focus-visible` outline and satisfies `@angular-eslint/template/click-events-have-key-events` + `interactive-supports-focus` rules.
+
+**Definition of Done**
+
+- `npm run lint` ✅
+- `npm run format:check` ✅
+- `ng build --configuration development` ✅
+- `ng test --watch=false --browsers=ChromeHeadless` ✅ — **131 / 131 tests green** (113 M2 baseline + 18 new M3 tests).
+- 93 / 93 M3 variant screenshots captured with zero failures.
+- `/app/users` list + detail + new · `/app/teams` · `/app/notifications` manually verified.
+- Admin sidenav shows 4 live + 3 soon items.
+- M3 entry appended to `docs/CHANGELOG.md`.
+- Annotated tag `m3-users-forms` on the final commit.
+
+**Deferred to M5 (not a blocker)**
+
+- Signal Forms migration for `/app/users/new` — waiting on Angular 21 upgrade.
+
 ## M2 — Live Showcase Core — 2026-04-09
 
 **Delivered**

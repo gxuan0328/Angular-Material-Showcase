@@ -5,7 +5,6 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
 
 import {
   MockNotificationsApi,
@@ -36,7 +35,6 @@ const FILTER_OPTIONS: readonly FilterChipOption[] = [
     MatButtonModule,
     MatIconModule,
     MatDividerModule,
-    MatListModule,
   ],
   template: `
     <div class="notifications">
@@ -83,36 +81,40 @@ const FILTER_OPTIONS: readonly FilterChipOption[] = [
             <p>沒有符合條件的通知</p>
           </div>
         } @else {
-          <mat-list class="notifications__list">
+          <ul class="notifications__list" role="list">
             @for (item of visible(); track item.id; let last = $last) {
-              <mat-list-item
-                class="notifications__item"
-                [class.notifications__item--unread]="!item.read"
-                [attr.data-severity]="item.severity"
-                (click)="api.markAsRead(item.id)"
-              >
-                <div
-                  matListItemAvatar
-                  class="notifications__item-icon notifications__item-icon--{{ item.severity }}"
+              <li class="notifications__item-row">
+                <button
+                  type="button"
+                  class="notifications__item"
+                  [class.notifications__item--unread]="!item.read"
+                  [attr.data-severity]="item.severity"
+                  (click)="api.markAsRead(item.id)"
                 >
-                  <mat-icon>{{ iconFor(item.type, item.severity) }}</mat-icon>
-                </div>
-                <span matListItemTitle class="notifications__item-title">
-                  {{ item.title }}
-                  @if (!item.read) {
-                    <span class="notifications__dot" aria-label="未讀"></span>
-                  }
-                </span>
-                <span matListItemLine class="notifications__item-message">{{ item.message }}</span>
-                <span matListItemLine class="notifications__item-meta">
-                  {{ typeLabel(item.type) }} · {{ item.timestamp | date: 'MM/dd HH:mm' }}
-                </span>
-              </mat-list-item>
+                  <div
+                    class="notifications__item-icon notifications__item-icon--{{ item.severity }}"
+                  >
+                    <mat-icon>{{ iconFor(item.type, item.severity) }}</mat-icon>
+                  </div>
+                  <div class="notifications__item-body">
+                    <div class="notifications__item-title">
+                      <strong>{{ item.title }}</strong>
+                      @if (!item.read) {
+                        <span class="notifications__dot" aria-label="未讀"></span>
+                      }
+                    </div>
+                    <p class="notifications__item-message">{{ item.message }}</p>
+                    <p class="notifications__item-meta">
+                      {{ typeLabel(item.type) }} · {{ item.timestamp | date: 'MM/dd HH:mm' }}
+                    </p>
+                  </div>
+                </button>
+              </li>
               @if (!last) {
                 <mat-divider />
               }
             }
-          </mat-list>
+          </ul>
         }
       </mat-card>
     </div>
