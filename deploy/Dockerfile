@@ -14,7 +14,7 @@ FROM nginx:alpine
 COPY --from=builder /app/dist/angular-material-block-showcase/browser /usr/share/nginx/html
 
 # SPA fallback: all routes → index.html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 80
 

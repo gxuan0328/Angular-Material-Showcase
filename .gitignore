@@ -42,7 +42,11 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-# M0 / M1 integration verification artifacts
+# Playwright MCP temp artifacts
 .playwright-mcp/
-/m0-*.png
-/m1-*.png
+
+# Build output (duplicate with /dist above)
+dist/
+
+# Environment secrets
+.env

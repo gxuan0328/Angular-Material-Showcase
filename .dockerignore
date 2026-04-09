@@ -2,6 +2,5 @@ node_modules
 dist
 .angular
 .git
-m4-check
+.playwright-mcp
 docs/verification
-*.md
