@@ -1,0 +1,91 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update file-upload/file-upload-2`
+-->
+
+<div class="sm:mx-auto sm:max-w-3xl p-4">
+  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-50">
+    Set up your first cloud storage
+  </h3>
+  <p class="mt-1 text-gray-600 dark:text-gray-400">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+  </p>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    class="mt-6 gap-4 md:gap-y-6 grid grid-cols-1 md:grid-cols-2"
+  >
+    <mat-form-field class="w-full col-span-1">
+      <mat-label>Bucket name</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="bucketName"
+        placeholder="Bucket name"
+        required
+      />
+      @if ( form.get('bucketName')?.invalid && (form.get('bucketName')?.dirty ||
+      form.get('bucketName')?.touched) ) {
+      <mat-error>Bucket name is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="w-full col-span-1">
+      <mat-label>Visibility</mat-label>
+      <mat-select formControlName="visibility">
+        <mat-option value="private">Private</mat-option>
+        <mat-option value="public">Public</mat-option>
+      </mat-select>
+      <mat-hint
+        >Bucket visibility can only be changed by system admin.</mat-hint
+      >
+    </mat-form-field>
+    <div class="col-span-1 md:col-span-2">
+      <ngm-dev-block-file-upload2-dropzone>
+        <input type="file" formControlName="file" multiple fileInput />
+      </ngm-dev-block-file-upload2-dropzone>
+      <p
+        class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-5 sm:flex sm:items-center sm:justify-between"
+      >
+        <span>All file types are allowed to upload.</span>
+        <span class="pl-1 sm:pl-0">Max. size per file: 50MB</span>
+      </p>
+      @if (files.length > 0) {
+      <h4 class="mt-6 font-medium">File(s) to upload</h4>
+
+      <ul role="list" class="mt-4 space-y-4">
+        @for (item of files; track $index) {
+        <li
+          class="relative rounded border border-outline-variant p-4 shadow-sm"
+        >
+          <div class="absolute right-4 top-1/2 -translate-y-1/2">
+            <button mat-icon-button (click)="remove(item)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </div>
+          <div class="flex items-center space-x-3">
+            <span
+              class="flex h-10 w-10 shrink-0 items-center justify-center rounded-sm bg-surface-container"
+            >
+              <mat-icon>draft</mat-icon>
+            </span>
+            <div>
+              <p class="font-medium">{{ item.name }}</p>
+              <p class="mt-0.5 text-sm text-gray-600 dark:text-gray-400">
+                {{ item.size }} bytes
+              </p>
+            </div>
+          </div>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+    <mat-divider class="col-span-1 md:col-span-2" />
+    <div
+      class="flex items-center justify-end space-x-3 col-span-1 md:col-span-2"
+    >
+      <button matButton (click)="onCancel()">Cancel</button>
+      <button type="submit" matButton="filled">Upload</button>
+    </div>
+  </form>
+</div>

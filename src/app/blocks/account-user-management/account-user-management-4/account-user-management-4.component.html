@@ -1,0 +1,84 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update account-user-management/account-user-management-4`
+-->
+
+<div class="max-w-4xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2">Account Settings</h2>
+    <p class="text-gray-600 dark:text-gray-400">
+      Manage your team members and their account permissions here
+    </p>
+  </div>
+
+  <!-- Tabs -->
+  <mat-tab-group
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
+    [selectedIndex]="1"
+  >
+    @for (tab of tabs; track tab.id) {
+    <mat-tab [label]="tab.label">
+      @if (tab.id === 'users') {
+      <!-- Users Tab -->
+      <div class="py-6">
+        <!-- Actions -->
+        <div class="flex justify-between items-center mb-6">
+          <div>
+            <h3 class="text-lg font-medium">Team members</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Manage your team members and their permissions.
+            </p>
+          </div>
+          <button matButton="filled">
+            <mat-icon class="mr-2">add</mat-icon>
+            Add member
+          </button>
+        </div>
+
+        <!-- User List -->
+        <div class="space-y-4">
+          @for (user of users; track user.id) {
+          <div
+            class="flex items-center justify-between p-4 border-b border-outline-variant"
+          >
+            <!-- User Info -->
+            <div class="flex items-center gap-4">
+              <avvvatars [value]="user.name" [size]="36" [borderSize]="0" />
+              <div>
+                <h4 class="text-base font-medium mb-2">{{ user.name }}</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  {{ user.email }}
+                </p>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+              <!-- Role -->
+              <div
+                class="text-sm"
+                [ngClass]="{
+                        'text-primary': user.role === 'Admin',
+                        'text-tertiary': user.role === 'Guest',
+                        'text-secondary': user.role === 'Member',
+                      }"
+              >
+                {{ user.role }}
+              </div>
+
+              <!-- Edit Button -->
+              <button matButton="outlined" (click)="editUser(user.id)">
+                Edit
+              </button>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      }
+    </mat-tab>
+    }
+  </mat-tab-group>
+</div>

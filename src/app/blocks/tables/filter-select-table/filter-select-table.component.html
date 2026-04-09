@@ -1,0 +1,66 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update tables/filter-select-table`
+-->
+
+<div class="w-full md:max-w-7xl mx-auto p-4 md:p-6">
+  <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+    <div class="flex flex-col gap-2">
+      <h6 class="text-headline-small font-headline-small">Workspaces</h6>
+      <p class="text-body-medium font-body-medium">
+        Overview of all registered workspaces within your organization.
+      </p>
+    </div>
+    <div class="flex md:justify-end gap-2 flex-wrap">
+      @for (item of filterSelectList; track $index) {
+      <mat-form-field>
+        <mat-label>{{ item.label }}</mat-label>
+        <mat-select [placeholder]="item.label" [(ngModel)]="item.ngModel">
+          @for (option of item.options; track $index) {
+          <mat-option [value]="option.value">{{ option.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      }
+    </div>
+  </div>
+  <table mat-table [dataSource]="dataSource()" class="mt-6">
+    @for (column of columns; track $index) {
+    <ng-container [matColumnDef]="column.value">
+      <th mat-header-cell *matHeaderCellDef [class]="column.thClass">
+        {{ column.label }}
+      </th>
+      <td mat-cell *matCellDef="let element" [class]="column.tdClass">
+        {{ element[column.value] }}
+      </td>
+    </ng-container>
+    }
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" [attr.colspan]="displayedColumns.length">
+        <div class="sm:mx-auto sm:max-w-lg p-4">
+          <mat-card appearance="outlined" class="border-dashed!">
+            <mat-card-content>
+              <div class="flex h-44 items-center justify-center p-4">
+                <div class="text-center">
+                  <mat-icon
+                    class="mx-auto size-[1em]! text-4xl! text-gray-600 dark:text-gray-400!"
+                    >database</mat-icon
+                  >
+                  <p class="my-2 text-body-large font-body-large">
+                    No data to show
+                  </p>
+                  <p class="text-body-medium font-body-medium mb-4">
+                    Try changing the filters.
+                  </p>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,21 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/narrow-with-small-avatars`
+-->
+
+<div class="max-w-lg mx-auto">
+  <mat-list>
+    @for (issue of issues | async; track issue.id; let last = $last) {
+    <mat-list-item>
+      <span matListItemTitle>
+        <img [src]="issue.user.avatar_url" class="rounded-full size-5 inline" />
+        {{ issue.user.login }}</span
+      >
+      <span matListItemLine>{{ issue.title }}</span>
+      <div matListItemMeta>{{ issue.created_at | date: 'MMM d, yyyy' }}</div>
+    </mat-list-item>
+    @if (!last) {
+    <mat-divider />
+    } }
+  </mat-list>
+</div>

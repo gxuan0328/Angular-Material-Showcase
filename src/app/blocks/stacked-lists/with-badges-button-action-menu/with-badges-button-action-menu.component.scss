@@ -1,0 +1,33 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/with-badges-button-action-menu`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.list-overrides(
+    (
+      list-item-supporting-text-font: var(--mat-sys-body-small-font),
+      list-item-supporting-text-color: color-mix(
+          in srgb,
+          var(--mat-sys-on-surface),
+          transparent 50%
+        ),
+    )
+  );
+  @include mat.divider-overrides(
+    (
+      color: var(--mat-sys-outline-variant),
+    )
+  );
+  @include mat.chips-overrides(
+    (
+      label-text-line-height: normal,
+      outline-color: transparent,
+      label-text-color: currentColor,
+      with-icon-icon-color: currentColor,
+      hover-state-layer-opacity: 0,
+    )
+  );
+}

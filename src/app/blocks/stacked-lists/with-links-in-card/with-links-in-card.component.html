@@ -1,0 +1,36 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/with-links-in-card`
+-->
+
+<div class="max-w-3xl mx-auto">
+  <mat-card class="overflow-hidden">
+    <mat-card-content class="p-0!">
+      <mat-nav-list class="py-0!">
+        @for (contact of contacts; track contact.id; let last = $last) {
+        <a mat-list-item class="group custom-card-list-item">
+          <img
+            [src]="contact.imageUrl"
+            matListItemAvatar
+            class="rounded-full"
+          />
+          <span matListItemTitle>{{ contact.name }}</span>
+          <span matListItemLine class="group-hover:underline"
+            >{{ contact.email }}</span
+          >
+          <span matListItemMeta class="self-center! flex! items-center gap-x-2">
+            <span class="hidden sm:inline text-sm">{{ contact.role }}</span>
+            <mat-icon
+              class="group-hover:translate-x-1 transition-transform duration-300"
+            >
+              chevron_right
+            </mat-icon>
+          </span>
+        </a>
+        @if (!last) {
+        <mat-divider />
+        } }
+      </mat-nav-list>
+    </mat-card-content>
+  </mat-card>
+</div>

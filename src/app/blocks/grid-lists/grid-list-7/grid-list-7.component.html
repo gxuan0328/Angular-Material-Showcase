@@ -1,0 +1,63 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-7`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <div class="flex items-center space-x-2">
+    <h3 class="text-base font-medium text-gray-900 dark:text-white">
+      Integrations
+    </h3>
+    <span
+      class="inline-flex size-6 items-center justify-center rounded-full bg-gray-100 text-sm leading-6 text-gray-900 dark:bg-gray-800 dark:text-white"
+    >
+      {{ integrations.length }}
+    </span>
+  </div>
+
+  <mat-divider class="my-4! border-outline-variant!" />
+
+  <dl class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (item of integrations; track item.name) {
+    <mat-card
+      appearance="outlined"
+      class="relative hover:bg-gray-100! dark:hover:bg-gray-800! flex flex-col justify-between"
+    >
+      <mat-card-content>
+        <div class="flex items-center space-x-3">
+          <span
+            class="flex size-12 shrink-0 items-center justify-center rounded-sm border border-outline-variant p-1"
+          >
+            <mat-icon [svgIcon]="item.icon" class="size-5" aria-hidden="true" />
+          </span>
+          <dt class="text-base font-medium text-gray-900 dark:text-white">
+            <a [href]="item.href" class="focus:outline-none">
+              <!-- Extend link to entire card -->
+              <span class="absolute inset-0" aria-hidden="true"></span>
+              {{ item.name }}
+            </a>
+          </dt>
+        </div>
+        <div class="mt-4 flex flex-1 flex-col">
+          <div class="flex-1">
+            <dd class="text-base leading-6 text-gray-500 dark:text-gray-400">
+              {{ item.description }}
+            </dd>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="mt-6 flex items-center space-x-2 p-3">
+          <mat-icon
+            class="size-[1em]! [font-size:1.25rem]! text-gray-400! dark:text-gray-500!"
+            >arrow_circle_down</mat-icon
+          >
+          <p class="text-sm text-gray-500 dark:text-gray-400">
+            {{ item.installations }} Installations
+          </p>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+    }
+  </dl>
+</div>

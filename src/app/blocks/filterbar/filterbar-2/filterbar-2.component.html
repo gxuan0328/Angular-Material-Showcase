@@ -1,0 +1,47 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-2`
+-->
+
+<div class="relative p-4">
+  <div
+    class="flex h-48 items-start justify-end rounded-corner-medium border border-outline-variant p-6 shadow-sm"
+  >
+    <mat-form-field appearance="outline" class="w-full sm:w-58">
+      <mat-select [(value)]="selectedUser">
+        <mat-select-trigger>
+          @if (getSelectedUserOption(); as selectedOption) {
+          <div class="flex items-center gap-x-2.5">
+            <span
+              [class]="selectedOption.color"
+              class="flex size-6 items-center justify-center rounded-md p-2 text-sm font-medium text-white"
+            >
+              {{ selectedOption.initials }}
+            </span>
+            <span>{{ selectedOption.label }}</span>
+          </div>
+          }
+        </mat-select-trigger>
+        <mat-optgroup label="Switch account">
+          @for (option of userOptions; track option.value) {
+          <mat-option [value]="option.value">
+            <div class="flex w-full items-center gap-x-2.5">
+              <span
+                [class]="option.color"
+                class="flex size-6 items-center justify-center rounded-md p-2 text-sm font-medium text-white"
+              >
+                {{ option.initials }}
+              </span>
+              <span>{{ option.label }}</span>
+            </div>
+          </mat-option>
+          }
+        </mat-optgroup>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <!-- gradient for demo purpose -->
+  <div
+    class="absolute inset-x-0 bottom-0 -mb-1 h-14 rounded-b-corner-medium bg-gradient-to-t from-surface via-surface to-transparent"
+  ></div>
+</div>

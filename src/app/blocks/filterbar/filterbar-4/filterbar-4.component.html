@@ -1,0 +1,25 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-4`
+-->
+
+<div class="relative p-4">
+  <div
+    class="flex items-start justify-end rounded-corner-medium border border-outline-variant p-6 shadow-sm"
+  >
+    <mat-button-toggle-group [(value)]="selectedOption" class="shadow-sm">
+      @for (option of dateOptions; track option.label; let i = $index) {
+      <mat-button-toggle
+        [value]="option.label.toLowerCase()"
+        [matTooltip]="option.date"
+      >
+        {{ option.label }}
+      </mat-button-toggle>
+      }
+    </mat-button-toggle-group>
+  </div>
+  <!-- gradient for demo purpose -->
+  <div
+    class="absolute inset-x-0 bottom-0 -mb-1 h-14 rounded-b-corner-medium bg-gradient-to-t from-surface via-surface to-transparent"
+  ></div>
+</div>

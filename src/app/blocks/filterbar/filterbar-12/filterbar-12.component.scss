@@ -1,0 +1,75 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-12`
+*/
+
+// Animation keyframes
+@mixin fade-keyframes($direction, $type) {
+  $start-y: if($direction == 'up', 8px, -8px);
+  $end-y: if($type == 'in', 0, if($direction == 'up', -8px, 8px));
+  $start-opacity: if($type == 'in', 0, 1);
+  $end-opacity: if($type == 'in', 1, 0);
+
+  @keyframes filter-transactions-fade-#{$type}-#{$direction} {
+    #{if($type == 'in', '0%', 'from')} {
+      opacity: $start-opacity;
+      transform: translateY(if($type == 'in', $start-y, 0));
+    }
+    #{if($type == 'in', '100%', 'to')} {
+      opacity: $end-opacity;
+      transform: translateY($end-y);
+    }
+  }
+}
+
+// Generate all keyframes
+@include fade-keyframes('up', 'in');
+@include fade-keyframes('down', 'in');
+@include fade-keyframes('up', 'out');
+@include fade-keyframes('down', 'out');
+
+// Animation classes
+$animation-timing: cubic-bezier(0, 0, 0.2, 1);
+
+%animation-base {
+  animation-duration: 120ms;
+  animation-timing-function: $animation-timing;
+}
+
+%animation-out {
+  @extend %animation-base;
+  animation-duration: 100ms;
+  animation-delay: 25ms;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.animate-filter-transactions {
+  &-fade-in-up {
+    @extend %animation-base;
+    animation-name: filter-transactions-fade-in-up;
+  }
+
+  &-fade-in-down {
+    @extend %animation-base;
+    animation-name: filter-transactions-fade-in-down;
+  }
+
+  &-fade-out-up {
+    @extend %animation-out;
+    animation-name: filter-transactions-fade-out-up;
+  }
+
+  &-fade-out-down {
+    @extend %animation-out;
+    animation-name: filter-transactions-fade-out-down;
+  }
+}
+
+.filter-transactions-animations-disabled {
+  animation: none;
+}
+
+.filter-transactions-animating {
+  pointer-events: none;
+}

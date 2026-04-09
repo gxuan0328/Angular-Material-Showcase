@@ -1,0 +1,59 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update file-upload/file-upload-5`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg p-4">
+  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-50">
+    File Upload
+  </h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4 space-y-6">
+    <ngm-dev-block-file-upload5-dropzone>
+      <input type="file" formControlName="file" multiple fileInput />
+    </ngm-dev-block-file-upload5-dropzone>
+    <h4 class="mt-6 text-gray-600 dark:text-gray-400">In Progress</h4>
+    <mat-list>
+      @for (item of inprogressFiles; track $index; let isLast = $last) {
+      <mat-list-item>
+        <mat-icon matListItemIcon>description</mat-icon>
+        <p matListItemTitle>{{ item.name }}</p>
+        <p matListItemLine>
+          <span class="text-xs">{{ item.size }}</span>
+        </p>
+        <div class="flex! items-center space-x-3" matListItemLine>
+          <mat-progress-bar mode="determinate" [value]="item.progress" />
+          <span class="text-xs text-gray-600 dark:text-gray-400"
+            >{{ item.progress }}%</span
+          >
+        </div>
+        <div matListItemMeta>
+          <button type="button" mat-icon-button aria-label="Cancel">
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+      @if (!isLast) {
+      <mat-divider class="border-outline-variant!" />
+      } }
+    </mat-list>
+    <h4 class="mt-6 text-gray-600 dark:text-gray-400">Completed Uploads</h4>
+    <mat-list>
+      @for (item of completedFiles; track $index; let isLast = $last) {
+      <mat-list-item>
+        <mat-icon matListItemIcon>description</mat-icon>
+        <p matListItemTitle>{{ item.name }}</p>
+        <p matListItemLine>
+          <span class="text-xs">{{ item.size }}</span>
+        </p>
+        <div matListItemMeta>
+          <button type="button" mat-icon-button aria-label="Delete">
+            <mat-icon class="text-error!">delete</mat-icon>
+          </button>
+        </div>
+      </mat-list-item>
+      @if (!isLast) {
+      <mat-divider class="border-outline-variant!" />
+      } }
+    </mat-list>
+  </form>
+</div>

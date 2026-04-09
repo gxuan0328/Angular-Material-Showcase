@@ -1,0 +1,64 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-6`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <dl class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (item of pipelines; track item.tag) {
+    <mat-card
+      appearance="outlined"
+      class="relative hover:bg-gray-50 dark:hover:bg-gray-800"
+    >
+      <mat-card-content>
+        <dd
+          class="flex items-center justify-between space-x-4 text-base text-gray-500 dark:text-gray-400"
+        >
+          <span>{{ item.tag }}</span>
+          <span>{{ item.lastEdited }}</span>
+        </dd>
+        <dt class="mt-3 truncate font-medium text-gray-900 dark:text-white">
+          <a [href]="item.href" class="focus:outline-none">
+            <!-- Extend link to entire card -->
+            <span class="absolute inset-0" aria-hidden="true"></span>
+            {{ item.name }}
+          </a>
+        </dt>
+        <div class="mt-4 flex flex-wrap gap-2">
+          <mat-chip-set>
+            <!-- Status chip -->
+            @if (item.status === 'live') {
+            <mat-chip [class]="getStatusClasses(item.status)">
+              <div class="flex items-center">
+                <span
+                  class="inline-block size-1.5 mr-1.5 shrink-0 rounded-full bg-emerald-500"
+                  aria-hidden="true"
+                ></span>
+                {{ item.status }}
+              </div>
+            </mat-chip>
+            } @else {
+            <mat-chip [class]="getStatusClasses(item.status)">
+              {{ item.status }}
+            </mat-chip>
+            }
+
+            <!-- Type chip -->
+            @if (item.type === 'API') {
+            <mat-chip [class]="getTypeClasses(item.type)">
+              <mat-icon matChipAvatar aria-hidden="true">wifi</mat-icon>
+              {{ item.type }}
+            </mat-chip>
+            } @else {
+            <mat-chip [class]="getTypeClasses(item.type)">
+              <mat-icon matChipAvatar aria-hidden="true">layers</mat-icon>
+              {{ item.type }}
+            </mat-chip>
+            }
+          </mat-chip-set>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    }
+  </dl>
+</div>

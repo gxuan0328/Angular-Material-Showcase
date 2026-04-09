@@ -1,0 +1,150 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update account-user-management/account-user-management-6`
+-->
+
+<div class="max-w-4xl mx-auto p-6">
+  <!-- Header -->
+  <h2 class="text-2xl font-semibold">General</h2>
+  <p class="mt-2 text-gray-600 dark:text-gray-400">
+    Manage your personal details, workspace governance and notifications.
+  </p>
+
+  <!-- Tabs -->
+  <mat-tab-group
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
+    class="mt-6"
+    selectedIndex="1"
+  >
+    <mat-tab label="Account details" />
+    <mat-tab label="Users">
+      <!-- Users Tab Content -->
+      <div class="max-w-3xl">
+        <!-- Invite Users Section -->
+        <h3 class="mt-8 text-lg font-semibold">Invite new users</h3>
+        <p class="mt-2 text-gray-600 dark:text-gray-400">
+          Workspace administrators can add, manage, and remove members.
+          <button
+            type="button"
+            class="inline-flex items-center gap-1 text-primary hover:underline"
+          >
+            Learn more about roles
+            <mat-icon class="text-base">open_in_new</mat-icon>
+          </button>
+        </p>
+
+        <!-- Invite Form -->
+        <form class="mt-6 flex flex-col sm:flex-row sm:items-center gap-2">
+          <mat-form-field
+            appearance="outline"
+            class="w-full sm:w-48"
+            [subscriptSizing]="'dynamic'"
+          >
+            <mat-select [value]="'1'">
+              @for (role of roles; track role.value) {
+              <mat-option [value]="role.value">{{ role.name }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <div class="flex-1 flex gap-2">
+            <mat-form-field
+              appearance="outline"
+              class="flex-1"
+              [subscriptSizing]="'dynamic'"
+            >
+              <mat-label>Add email...</mat-label>
+              <input matInput type="email" />
+            </mat-form-field>
+          </div>
+
+          <button matButton="filled">Invite</button>
+        </form>
+
+        <div class="border-t border-outline-variant my-10"></div>
+
+        <!-- Existing Users Section -->
+        <h3 class="text-lg font-semibold">Existing users</h3>
+
+        <!-- Search and Filter -->
+        <div class="mt-4 flex flex-col sm:flex-row sm:items-center gap-2">
+          <mat-form-field
+            appearance="outline"
+            class="flex-1"
+            [subscriptSizing]="'dynamic'"
+          >
+            <mat-label>Search users...</mat-label>
+            <mat-icon matSuffix>search</mat-icon>
+            <input matInput type="text" />
+          </mat-form-field>
+
+          <mat-form-field
+            appearance="outline"
+            class="w-full sm:w-48"
+            [subscriptSizing]="'dynamic'"
+          >
+            <mat-select [value]="'1'">
+              @for (role of roles; track role.value) {
+              <mat-option [value]="role.value">{{ role.name }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <!-- Users Table -->
+        <table mat-table [dataSource]="users" class="w-full mt-6">
+          <!-- Member Column -->
+          <ng-container matColumnDef="member">
+            <th mat-header-cell *matHeaderCellDef>Member</th>
+            <td mat-cell *matCellDef="let user">{{ user.name }}</td>
+          </ng-container>
+
+          <!-- Email Column -->
+          <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef>Email</th>
+            <td
+              mat-cell
+              *matCellDef="let user"
+              class="!text-gray-600 dark:text-gray-400"
+            >
+              {{ user.email }}
+            </td>
+          </ng-container>
+
+          <!-- Role Column -->
+          <ng-container matColumnDef="role">
+            <th mat-header-cell *matHeaderCellDef>Role</th>
+            <td
+              mat-cell
+              *matCellDef="let user"
+              class="!text-gray-600 dark:text-gray-400"
+            >
+              {{ user.role }}
+            </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>
+              <span class="sr-only">Edit member</span>
+            </th>
+            <td mat-cell *matCellDef="let user" class="!text-right">
+              <button type="button" class="text-primary hover:underline">
+                Edit<span class="sr-only">{{ user.name }}</span>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            class="hover:bg-surface-container"
+          ></tr>
+        </table>
+      </div>
+    </mat-tab>
+    <mat-tab label="Billing" />
+  </mat-tab-group>
+</div>

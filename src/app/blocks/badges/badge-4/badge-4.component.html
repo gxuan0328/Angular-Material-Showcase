@@ -1,0 +1,20 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update badges/badge-4`
+-->
+
+<div class="flex justify-center gap-4 p-4">
+  <mat-chip-set>
+    @for (badge of badges; track badge.value) {
+    <mat-chip [ngClass]="badge.valueColor" class="py-1 pr-0.5">
+      {{ badge.value }}
+      <mat-icon
+        class="h-full! w-full flex items-center justify-center border! border-solid! border-transparent! rounded-[6px] ml-2 mr-px box-border"
+        [ngClass]="[badge.iconClasses, badge.bgClasses]"
+        matChipTrailingIcon
+        >{{ getTrendIcon(badge.trend) }}</mat-icon
+      >
+    </mat-chip>
+    }
+  </mat-chip-set>
+</div>

@@ -1,0 +1,76 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-2`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <div class="flex items-center space-x-2">
+    <h3 class="text-base font-medium text-gray-900 dark:text-white">Members</h3>
+    <span
+      class="inline-flex size-6 items-center justify-center rounded-full bg-gray-100 text-sm leading-6 text-gray-900 dark:bg-gray-800 dark:text-white"
+    >
+      {{ members.length }}
+    </span>
+  </div>
+
+  <mat-divider class="my-4! border-outline-variant!" />
+
+  <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (member of members; track member.name) {
+    <mat-card appearance="outlined" class="group relative p-4">
+      <mat-card-content>
+        <div class="flex items-center space-x-4">
+          <span
+            [class]="
+                cx(
+                  member.textColor,
+                  member.bgColor,
+                  'flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-base font-medium'
+                )
+              "
+            aria-hidden="true"
+          >
+            {{ member.initial }}
+          </span>
+          <div class="truncate">
+            <p
+              class="truncate text-base font-medium text-gray-900 dark:text-white"
+            >
+              <a [href]="member.href" class="focus:outline-none">
+                <!-- Extend link to entire card -->
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                {{ member.name }}
+              </a>
+            </p>
+            <p class="truncate text-base text-gray-500 dark:text-gray-400">
+              {{ member.email }}
+            </p>
+          </div>
+        </div>
+        <div
+          class="mt-6 grid grid-cols-2 divide-x divide-gray-200 border-t border-gray-200 dark:divide-gray-700 dark:border-gray-700"
+        >
+          @for (detail of member.details; track detail.type) {
+          <div class="truncate px-3 py-2">
+            <p class="truncate text-sm text-gray-500 dark:text-gray-400">
+              {{ detail.type }}
+            </p>
+            <p
+              class="truncate text-base font-medium text-gray-900 dark:text-white"
+            >
+              {{ detail.value }}
+            </p>
+          </div>
+          }
+        </div>
+        <span
+          class="pointer-events-none absolute right-4 top-4 text-gray-400 group-hover:text-gray-600 dark:text-gray-500 dark:group-hover:text-gray-300"
+          aria-hidden="true"
+        >
+          <mat-icon class="size-[1em]! [font-size:1rem]!">north_east</mat-icon>
+        </span>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+</div>

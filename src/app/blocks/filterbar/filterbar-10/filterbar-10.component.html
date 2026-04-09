@@ -1,0 +1,44 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-10`
+-->
+
+<div class="relative p-4">
+  <div class="rounded-md border border-outline-variant pb-20 shadow-sm md:h-52">
+    <div class="flex justify-end gap-x-4 border-b border-outline-variant p-6">
+      <div role="group">
+        <button
+          matButton="outlined"
+          class="rounded-r-none! pr-1! min-w-0! border-r-0!"
+        >
+          <mat-icon>calendar_today</mat-icon>
+        </button>
+        <!-- Date range menu -->
+        <button
+          matButton="outlined"
+          [matMenuTriggerFor]="dateRangeMenu"
+          class="rounded-s-none!"
+        >
+          <span>{{ getSelectedDateRangeLabel() }}</span>
+          <mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+        </button>
+      </div>
+
+      <mat-menu #dateRangeMenu="matMenu">
+        @for (option of dateRangeOptions; track option.value) {
+        <button
+          mat-menu-item
+          [class.selected]="selectedDateRange === option.value"
+          (click)="selectDateRange(option.value)"
+        >
+          {{ option.label }}
+        </button>
+        }
+      </mat-menu>
+    </div>
+  </div>
+  <!-- gradient for demo purpose -->
+  <div
+    class="absolute inset-x-0 bottom-0 -mb-1 h-14 rounded-b-md bg-gradient-to-t from-surface via-surface to-transparent"
+  ></div>
+</div>

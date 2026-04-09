@@ -1,0 +1,49 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update file-upload/file-upload-3`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg p-4">
+  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-50">
+    File Upload
+  </h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4 space-y-6">
+    <ngm-dev-block-file-upload3-dropzone>
+      <input type="file" formControlName="file" multiple fileInput />
+    </ngm-dev-block-file-upload3-dropzone>
+    <p
+      class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-5 sm:flex sm:items-center sm:justify-between"
+    >
+      <span>Accepted file types: CSV, XLSX or XLS files.</span>
+      <span class="pl-1 sm:pl-0">Max. size per file: 10MB</span>
+    </p>
+    <div class="relative mt-8 rounded p-4 bg-surface-container-low">
+      <div class="absolute right-1 top-1">
+        <button type="button" mat-icon-button aria-label="Remove">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="flex items-center space-x-2.5">
+        <span
+          class="flex h-10 w-10 items-center justify-center rounded bg-gray-100 shadow ring-1 ring-inset ring-gray-300 dark:bg-gray-800 dark:ring-gray-700"
+        >
+          <mat-icon>description</mat-icon>
+        </span>
+        <div>
+          <p class="font-medium text-gray-900 dark:text-gray-50">
+            Revenue_Q1_2024.xlsx
+          </p>
+          <p class="mt-0.5 text-sm text-gray-600 dark:text-gray-400">3.1 MB</p>
+        </div>
+      </div>
+      <div class="mt-4 flex items-center space-x-3">
+        <mat-progress-bar mode="determinate" value="45" />
+        <span class="text-sm text-gray-600 dark:text-gray-400">45%</span>
+      </div>
+    </div>
+    <div class="mt-8 flex items-center justify-end space-x-3">
+      <button matButton (click)="onCancel()">Cancel</button>
+      <button type="submit" matButton="filled">Upload</button>
+    </div>
+  </form>
+</div>

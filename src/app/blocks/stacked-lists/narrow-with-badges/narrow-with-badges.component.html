@@ -1,0 +1,41 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/narrow-with-badges`
+-->
+
+<div class="max-w-lg mx-auto">
+  <mat-list>
+    @for (issue of issues | async; track issue.id; let last = $last) {
+    <mat-list-item>
+      <span matListItemTitle
+        >{{ issue.user.login }} @if (area(issue.title)) { / {{ area(issue.title)
+        }} }</span
+      >{{ woArea(issue.title) }}
+      <div matListItemMeta>
+        <mat-chip-set class="density-3">
+          @if (issue.labels?.length) { @if (issue.labels?.[0]?.color) {
+          <mat-chip
+            class="mt-0!"
+            [style.background-color]="
+                    'light-dark(#' +
+                    issue.labels[0].color +
+                    ', color-mix(in srgb, #' +
+                    issue.labels[0].color +
+                    ' 40%, transparent))'
+                  "
+          >
+            {{ issue.labels[0].name }}
+          </mat-chip>
+          } @else {
+          <mat-chip class="mt-0!"> {{ issue.labels[0].name }} </mat-chip>
+          } @if (issue.labels.length > 1) {
+          <mat-chip class="mt-0!"> +{{ issue.labels.length - 1 }} </mat-chip>
+          } }
+        </mat-chip-set>
+      </div>
+    </mat-list-item>
+    @if (!last) {
+    <mat-divider />
+    } }
+  </mat-list>
+</div>

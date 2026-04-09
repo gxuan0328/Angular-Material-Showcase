@@ -1,0 +1,62 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update file-upload/file-upload-1`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg p-4">
+  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-50">
+    Set up your first workspace
+  </h3>
+  <p class="mt-1 text-gray-600 dark:text-gray-400">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+  </p>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4 space-y-6">
+    <mat-form-field class="w-full">
+      <mat-label>Workspace</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="workspaceName"
+        placeholder="Workspace name"
+        required
+      />
+      @if ( form.get('workspaceName')?.invalid &&
+      (form.get('workspaceName')?.dirty || form.get('workspaceName')?.touched) )
+      {
+      <mat-error>Workspace name is required</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field class="w-full">
+      <mat-label>Upload file</mat-label>
+      <ngx-mat-dropzone>
+        <input
+          type="file"
+          fileInput
+          formControlName="file"
+          multiple
+          accept=".csv, .xls, .xlsx"
+        />
+
+        @for (file of files; track file.name) {
+        <mat-chip-row (removed)="remove(file)">
+          {{ file.name }}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip-row>
+        }
+      </ngx-mat-dropzone>
+      @if ( form.get('file')?.invalid && (form.get('file')?.dirty ||
+      form.get('file')?.touched) ) {
+      <mat-error>File is required</mat-error>
+      }
+      <mat-hint
+        >You are only allowed to upload CSV, XLSX or XLS files.</mat-hint
+      >
+    </mat-form-field>
+    <div class="mt-8 flex items-center justify-end space-x-3">
+      <button matButton (click)="onCancel()">Cancel</button>
+      <button type="submit" matButton="filled">Submit</button>
+    </div>
+  </form>
+</div>

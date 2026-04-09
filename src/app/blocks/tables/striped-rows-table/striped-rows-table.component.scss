@@ -1,0 +1,17 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update tables/striped-rows-table`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.table-overrides(
+    (
+      row-item-outline-width: 0,
+    )
+  );
+  th {
+    border-bottom-width: 1px !important;
+  }
+}

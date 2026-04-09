@@ -1,0 +1,212 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update account-user-management/account-user-management-8`
+-->
+
+<div class="sm:mx-auto sm:max-w-2xl p-4">
+  <!-- Account Details Section -->
+  <div class="pt-6">
+    <h3 class="text-xl font-semibold">Account details</h3>
+    <p class="mt-1 text-gray-600 dark:text-gray-400">
+      Update personal information used for account management and billing.
+    </p>
+  </div>
+
+  <form [formGroup]="accountForm" (ngSubmit)="onSubmit()" class="mt-8">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-6">
+      <!-- First Name -->
+      <div class="col-span-full sm:col-span-3">
+        <label for="first-name" class="text-sm font-medium">First name</label>
+        <mat-form-field appearance="outline" class="w-full mt-2">
+          <input matInput formControlName="firstName" placeholder="Emma" />
+          @if ( accountForm.get('firstName')?.touched &&
+          accountForm.get('firstName')?.hasError('required') ) {
+          <mat-error> First name is required </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Last Name -->
+      <div class="col-span-full sm:col-span-3">
+        <label for="last-name" class="text-sm font-medium">Last name</label>
+        <mat-form-field appearance="outline" class="w-full mt-2">
+          <input matInput formControlName="lastName" placeholder="Crown" />
+          @if ( accountForm.get('lastName')?.touched &&
+          accountForm.get('lastName')?.hasError('required') ) {
+          <mat-error> Last name is required </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Email -->
+      <div class="col-span-full">
+        <label for="email" class="text-sm font-medium">Email</label>
+        <mat-form-field appearance="outline" class="w-full mt-2">
+          <input
+            matInput
+            type="email"
+            formControlName="email"
+            placeholder="emma@company.com"
+          />
+          @if ( accountForm.get('email')?.touched &&
+          accountForm.get('email')?.hasError('required') ) {
+          <mat-error> Email is required </mat-error>
+          } @else if ( accountForm.get('email')?.touched &&
+          accountForm.get('email')?.hasError('email') ) {
+          <mat-error> Please enter a valid email address </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Address -->
+      <div class="col-span-full">
+        <label for="address" class="text-sm font-medium">Address</label>
+        <mat-form-field appearance="outline" class="w-full mt-2">
+          <input
+            matInput
+            formControlName="address"
+            placeholder="29 Park Street"
+          />
+          @if ( accountForm.get('address')?.touched &&
+          accountForm.get('address')?.hasError('required') ) {
+          <mat-error> Address is required </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Country -->
+      <div class="col-span-full sm:col-span-2">
+        <label for="country" class="text-sm font-medium">Country</label>
+        <mat-form-field appearance="outline" class="w-full mt-2">
+          <input matInput formControlName="country" placeholder="Switzerland" />
+          @if ( accountForm.get('country')?.touched &&
+          accountForm.get('country')?.hasError('required') ) {
+          <mat-error> Country is required </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- City -->
+      <div class="col-span-full sm:col-span-2">
+        <label for="city" class="text-sm font-medium">City</label>
+        <mat-form-field appearance="outline" class="w-full mt-2">
+          <input matInput formControlName="city" placeholder="Zurich" />
+          @if ( accountForm.get('city')?.touched &&
+          accountForm.get('city')?.hasError('required') ) {
+          <mat-error> City is required </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Postal Code -->
+      <div class="col-span-full sm:col-span-2">
+        <label for="postal-code" class="text-sm font-medium"
+          >ZIP / Postal code</label
+        >
+        <mat-form-field appearance="outline" class="w-full mt-2">
+          <input
+            matInput
+            type="number"
+            formControlName="postalCode"
+            placeholder="8000"
+          />
+          @if ( accountForm.get('postalCode')?.touched &&
+          accountForm.get('postalCode')?.hasError('required') ) {
+          <mat-error> Postal code is required </mat-error>
+          }
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider class="my-12" />
+
+    <!-- Notifications Section -->
+    <div class="pt-6">
+      <h3 class="text-xl font-semibold">Notifications</h3>
+      <p class="mt-1 text-gray-600 dark:text-gray-400">
+        Manage your personal notification settings for this workspace. Read the
+        <a
+          href="#"
+          class="text-primary hover:underline hover:underline-offset-4"
+          >governance documentation</a
+        >
+        to learn more.
+      </p>
+
+      <div class="mt-8 space-y-6">
+        <!-- Select All Notifications -->
+        <div class="flex">
+          <mat-checkbox
+            formControlName="selectAllNotifications"
+            class="flex-1"
+            (change)="toggleAllNotifications($event.checked)"
+            [indeterminate]="isIndeterminate()"
+          >
+            <div class="ml-3">
+              <span class="text-sm font-medium">Select all notifications</span>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Enable or disable all notification preferences at once.
+              </p>
+            </div>
+          </mat-checkbox>
+        </div>
+
+        <!-- Newsletter -->
+        <div class="flex">
+          <mat-checkbox formControlName="newsletter" class="flex-1">
+            <div class="ml-3">
+              <span class="text-sm font-medium">Receive newsletter</span>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                I want to receive updates from Company about relevant products
+                or services.
+              </p>
+            </div>
+          </mat-checkbox>
+        </div>
+
+        <!-- Member Activities -->
+        <div class="flex">
+          <mat-checkbox formControlName="memberActivities" class="flex-1">
+            <div class="ml-3">
+              <span class="text-sm font-medium">Member activities</span>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Stay informed and receive notifications when new team members
+                join or leave this workspace.
+              </p>
+            </div>
+          </mat-checkbox>
+        </div>
+
+        <!-- Deployment Activities -->
+        <div class="flex">
+          <mat-checkbox formControlName="deploymentActivities" class="flex-1">
+            <div class="ml-3">
+              <span class="text-sm font-medium">Deployment activities</span>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Receive notifications of successful or failed deployment of this
+                workspace. Read the
+                <a
+                  href="#"
+                  class="text-primary hover:underline hover:underline-offset-4"
+                  >Workspace documentation</a
+                >
+                to learn more.
+              </p>
+            </div>
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-8"></div>
+    <mat-divider class="my-12" />
+
+    <!-- Form Actions -->
+    <div class="flex items-center justify-end space-x-4 pt-6">
+      <button type="button" matButton>Cancel</button>
+      <button type="submit" matButton="filled" [disabled]="!accountForm.valid">
+        Save settings
+      </button>
+    </div>
+  </form>
+</div>

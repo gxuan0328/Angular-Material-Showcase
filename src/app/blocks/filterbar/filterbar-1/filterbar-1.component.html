@@ -1,0 +1,43 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-1`
+-->
+
+<div class="relative p-4">
+  <div
+    class="flex h-48 items-start justify-end rounded-corner-medium border border-outline-variant p-6 shadow-sm"
+  >
+    <mat-form-field appearance="outline" class="w-full sm:w-64">
+      <mat-select [(value)]="selectedWorkspace">
+        <mat-select-trigger>
+          <div class="relative pl-10">
+            <mat-icon
+              class="icon-filled absolute top-0 left-0"
+              data-testid="selected-icon"
+              >{{ selectedWorkspaceIcon() }}</mat-icon
+            >
+            <span data-testid="selected-label"
+              >{{ selectedWorkspaceLabel() }}</span
+            >
+          </div>
+        </mat-select-trigger>
+        @for (option of workspaceOptions; track option.value) {
+        <mat-option
+          [value]="option.value"
+          [disabled]="option.disabled"
+          [matTooltip]="option.description"
+          [matTooltipPosition]="'left'"
+          [matTooltipDisabled]="!option.description"
+        >
+          <mat-icon class="icon-filled"> {{ option.icon }} </mat-icon>
+          {{ option.label }}
+        </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <!-- gradient for demo purpose -->
+  <div
+    class="absolute inset-x-0 bottom-0 -mb-1 h-14 rounded-b-[var(--radius-corner-medium)] bg-gradient-to-t from-[var(--color-surface)] via-[var(--color-surface)] to-transparent"
+  ></div>
+</div>

@@ -1,0 +1,87 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-10`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <div class="flex items-center space-x-2">
+    <h3 class="text-base font-medium text-gray-900 dark:text-white">
+      Most recent reports
+    </h3>
+    <span
+      class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+    >
+      {{ reports.length }}
+    </span>
+  </div>
+  <mat-divider class="my-4! border-outline-variant!" />
+  <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (item of reports; track item.name) {
+    <mat-card
+      appearance="outlined"
+      class="relative flex flex-col justify-between overflow-hidden"
+    >
+      <div class="h-28" mat-card-image>
+        <div
+          class="relative h-full overflow-hidden rounded bg-gray-50 dark:bg-gray-800"
+        >
+          <svg
+            class="absolute inset-0 h-full w-full stroke-gray-200 dark:stroke-gray-700"
+            fill="none"
+          >
+            <defs>
+              <pattern
+                id="pattern-1"
+                x="0"
+                y="0"
+                width="10"
+                height="10"
+                patternUnits="userSpaceOnUse"
+              >
+                <path d="M-3 13 15-5M-5 5l18-18M-1 21 17 3"></path>
+              </pattern>
+            </defs>
+            <rect
+              stroke="none"
+              fill="url(#pattern-1)"
+              width="100%"
+              height="100%"
+            ></rect>
+          </svg>
+        </div>
+      </div>
+      <mat-card-content>
+        <div class="flex flex-1 flex-col mt-3">
+          <div class="flex-1">
+            <dt
+              class="truncate text-sm font-medium text-gray-900 dark:text-white"
+            >
+              <a [href]="item.href" class="focus:outline-none">
+                <!-- Extend link to entire card -->
+                <span class="absolute inset-0" aria-hidden="true"></span>
+                {{ item.name }}
+              </a>
+            </dt>
+            <dd class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              {{ item.description }}
+            </dd>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="px-4 py-3 flex items-center justify-between">
+          <span class="text-sm text-gray-500 dark:text-gray-400">
+            {{ item.lastEdited }}
+          </span>
+          <span
+            class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 text-xs font-medium text-gray-700 dark:bg-gray-700 dark:text-gray-200"
+            aria-hidden="true"
+          >
+            {{ item.authorInitials }}
+          </span>
+        </div>
+      </mat-card-footer>
+    </mat-card>
+    }
+  </div>
+</div>

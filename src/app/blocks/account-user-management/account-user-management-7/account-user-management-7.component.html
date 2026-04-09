@@ -1,0 +1,95 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update account-user-management/account-user-management-7`
+-->
+
+<div class="sm:mx-auto sm:max-w-2xl p-4">
+  <h3 class="text-xl font-semibold">Create workspace</h3>
+  <p class="mt-2 text-gray-600 dark:text-gray-400">
+    Workspaces are shared environments where teams can connect to data sources,
+    run queries and create reports.
+  </p>
+
+  <form [formGroup]="workspaceForm" (ngSubmit)="onSubmit()" class="mt-8">
+    <div class="space-y-6">
+      <!-- Workspace Name -->
+      <div>
+        <label for="workspace-name" class="text-sm font-medium">
+          Name<span class="text-error">*</span>
+        </label>
+        <mat-form-field appearance="outline" class="w-full mt-2">
+          <input
+            matInput
+            formControlName="name"
+            placeholder="My workspace"
+            required
+          />
+        </mat-form-field>
+      </div>
+
+      <!-- Members Input -->
+      <div>
+        <label for="members" class="text-sm font-medium">Members</label>
+        <div class="mt-2 flex items-center gap-2">
+          <mat-form-field
+            appearance="outline"
+            class="flex-1"
+            subscriptSizing="dynamic"
+          >
+            <input
+              matInput
+              type="email"
+              formControlName="memberEmail"
+              placeholder="Add member emails"
+            />
+          </mat-form-field>
+          <button
+            type="button"
+            matButton="filled"
+            class="whitespace-nowrap"
+            (click)="addMember()"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Members List -->
+    <div class="mt-10">
+      <h4 class="text-sm font-medium">People added to workspace</h4>
+      <div class="mt-2 divide-y divide-outline-variant">
+        @for (member of members; track member.id) {
+        <div class="flex items-center justify-between py-2.5">
+          <div class="flex items-center gap-4">
+            <avvvatars [value]="member.email" [size]="36" />
+            <span>{{ member.email }}</span>
+          </div>
+          <button
+            type="button"
+            class="flex h-9 items-center justify-center px-2 text-gray-600 dark:text-gray-400"
+            (click)="removeMember(member.id)"
+          >
+            <mat-icon class="size-5">delete</mat-icon>
+            <span class="sr-only">Remove {{ member.email }}</span>
+          </button>
+        </div>
+        }
+      </div>
+    </div>
+
+    <div class="border-t border-outline-variant my-6"></div>
+
+    <!-- Form Actions -->
+    <div class="flex items-center justify-end gap-4">
+      <button type="button" matButton>Cancel</button>
+      <button
+        type="submit"
+        matButton="filled"
+        [disabled]="!workspaceForm.valid"
+      >
+        Create workspace
+      </button>
+    </div>
+  </form>
+</div>

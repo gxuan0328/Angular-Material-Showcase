@@ -1,0 +1,155 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update form-layouts/form-layout-6`
+-->
+
+<form
+  [formGroup]="form"
+  (ngSubmit)="onSubmit()"
+  class="sm:mx-auto sm:max-w-7xl p-4"
+>
+  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-50">
+    Create new workspace
+  </h3>
+  <div class="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+    <div class="mt-6 lg:col-span-7">
+      <div class="space-y-4 md:space-y-6">
+        <div class="md:flex md:items-center md:space-x-4">
+          <div>
+            <mat-form-field class="w-full mt-2">
+              <mat-label>Organization</mat-label>
+              <mat-select formControlName="organization">
+                <mat-option value="1">Acme, Inc.</mat-option>
+                <mat-option value="2">Hero Labs</mat-option>
+                <mat-option value="3">Rose Holding</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="mt-4 md:mt-0 md:w-full">
+            <mat-form-field class="w-full mt-2">
+              <mat-label>Workspace name</mat-label>
+              <input matInput formControlName="workspace" required />
+              @if ( form.get('workspace')?.invalid &&
+              (form.get('workspace')?.dirty || form.get('workspace')?.touched) )
+              {
+              <mat-error>Workspace name is required</mat-error>
+              }
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-form-field class="w-full mt-2">
+          <mat-label>Region</mat-label>
+          <mat-select formControlName="region">
+            <mat-option value="1">EU-West (Frankfurt)</mat-option>
+            <mat-option value="2">US-East (Boston)</mat-option>
+            <mat-option value="3">US-West (San Francisco)</mat-option>
+          </mat-select>
+          <mat-hint>
+            For best performance, choose a region closest to your operations
+          </mat-hint>
+        </mat-form-field>
+      </div>
+      <h4 class="mt-14 font-medium">
+        Plan type<span class="text-error">*</span>
+      </h4>
+      <div class="mt-4 space-y-4">
+        @for (plan of plans; track plan.name) {
+        <mat-card
+          appearance="outlined"
+          (click)="setSelectedPlan(plan)"
+          [class]="
+              'cursor-pointer overflow-hidden transition ' +
+              (selectedPlan().name === plan.name
+                ? 'border-primary! ring-2! ring-primary-container'
+                : '')
+            "
+        >
+          <mat-card-header>
+            <div mat-card-avatar class="flex items-center justify-center">
+              <mat-icon
+                [class]="
+                    selectedPlan().name === plan.name
+                      ? 'text-primary!'
+                      : 'text-gray-300 dark:text-gray-700'
+                  "
+              >
+                {{ selectedPlan().name === plan.name ? 'radio_button_checked' :
+                'radio_button_unchecked' }}
+              </mat-icon>
+            </div>
+            <mat-card-subtitle class="mt-2! -ml-3!">
+              {{ plan.name }}
+            </mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <mat-list class="custom-plan-list">
+              @for ( feature of plan.features; track feature.feature; let isLast
+              = $last ) {
+              <mat-list-item>
+                <mat-icon matListItemIcon>check</mat-icon>
+                <span matListItemTitle>{{ feature.feature }}</span>
+              </mat-list-item>
+              @if (!isLast) {
+              <mat-divider class="border-outline-variant!" />
+              } }
+            </mat-list>
+          </mat-card-content>
+          <mat-card-footer
+            class="flex items-center justify-between border-t border-outline-variant bg-surface-container-low px-6 py-3"
+          >
+            <a [href]="plan.href" matButton class="density-3">
+              Learn more
+              <mat-icon>open_in_new</mat-icon>
+            </a>
+            <div>
+              <span
+                class="text-lg font-semibold text-gray-900 dark:text-gray-50"
+              >
+                {{ plan.price }}
+              </span>
+              <span class="text-sm text-gray-600 dark:text-gray-400">
+                /mo
+              </span>
+            </div>
+          </mat-card-footer>
+        </mat-card>
+        }
+      </div>
+    </div>
+    <div class="lg:col-span-5">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-subtitle>
+            Which plan best fits your needs?
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
+            impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis
+            ratione.
+          </p>
+          <mat-list class="custom-plan-list">
+            @for (item of highlights; track item.id) {
+            <mat-list-item>
+              <mat-icon matListItemIcon class="text-primary! icon-filled"
+                >check_circle</mat-icon
+              >
+              <span matListItemTitle>{{ item.feature }}</span>
+            </mat-list-item>
+            }
+          </mat-list>
+          <a matButton class="density-3">
+            Learn more about plans
+            <mat-icon>open_in_new</mat-icon>
+          </a>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <mat-divider class="my-10! border-outline-variant!" />
+  <div class="flex items-center justify-end space-x-4">
+    <button type="button" matButton (click)="onCancel()">Cancel</button>
+    <button type="submit" matButton="filled">Update</button>
+  </div>
+</form>

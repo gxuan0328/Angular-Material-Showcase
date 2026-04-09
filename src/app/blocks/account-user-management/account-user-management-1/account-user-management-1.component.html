@@ -1,0 +1,347 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update account-user-management/account-user-management-1`
+-->
+
+<div class="max-w-4xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2">Account Settings</h2>
+    <p class="text-gray-600 dark:text-gray-400">
+      Manage your account settings and preferences
+    </p>
+  </div>
+
+  <!-- Tabs -->
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    @for (tab of tabs; track tab.id) {
+    <mat-tab [label]="tab.label">
+      @if (tab.id === 'account') {
+      <!-- Account Details Tab -->
+      <div class="py-6 space-y-8">
+        <!-- Email Section -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-medium">Email address</h3>
+          <form
+            [formGroup]="emailForm"
+            (ngSubmit)="updateEmail()"
+            class="max-w-md space-y-4"
+          >
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Email address</mat-label>
+              <input
+                matInput
+                type="email"
+                formControlName="email"
+                placeholder="Enter your email"
+              />
+              @if ( emailForm.get('email')?.touched &&
+              emailForm.get('email')?.hasError('required') ) {
+              <mat-error>
+                <mat-icon class="form-field-error-icon">error</mat-icon>
+                Email is required
+              </mat-error>
+              } @else if ( emailForm.get('email')?.touched &&
+              emailForm.get('email')?.hasError('email') ) {
+              <mat-error>
+                <mat-icon class="form-field-error-icon">error</mat-icon>
+                Please enter a valid email
+              </mat-error>
+              }
+            </mat-form-field>
+            <button
+              matButton="filled"
+              type="submit"
+              [disabled]="!emailForm.valid"
+            >
+              Update email
+            </button>
+          </form>
+        </div>
+
+        <!-- Password Section -->
+        <div class="space-y-4 border-t border-outline-variant pt-6">
+          <h3 class="text-lg font-medium">Change password</h3>
+          <form
+            [formGroup]="passwordForm"
+            (ngSubmit)="updatePassword()"
+            class="max-w-md space-y-4"
+          >
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Current password</mat-label>
+              <input
+                matInput
+                [type]="showCurrentPassword ? 'text' : 'password'"
+                formControlName="currentPassword"
+                placeholder="Enter current password"
+              />
+              <button
+                mat-icon-button
+                type="button"
+                matSuffix
+                (click)="togglePasswordVisibility('current')"
+              >
+                <mat-icon
+                  >{{ showCurrentPassword ? 'visibility_off' : 'visibility'
+                  }}</mat-icon
+                >
+              </button>
+              @if ( passwordForm.get('currentPassword')?.touched &&
+              passwordForm.get('currentPassword')?.hasError('required') ) {
+              <mat-error>
+                <mat-icon class="form-field-error-icon">error</mat-icon>
+                Current password is required
+              </mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>New password</mat-label>
+              <input
+                matInput
+                [type]="showNewPassword ? 'text' : 'password'"
+                formControlName="newPassword"
+                placeholder="Enter new password"
+              />
+              <button
+                mat-icon-button
+                type="button"
+                matSuffix
+                (click)="togglePasswordVisibility('new')"
+              >
+                <mat-icon
+                  >{{ showNewPassword ? 'visibility_off' : 'visibility'
+                  }}</mat-icon
+                >
+              </button>
+              @if ( passwordForm.get('newPassword')?.touched &&
+              passwordForm.get('newPassword')?.hasError('required') ) {
+              <mat-error>
+                <mat-icon class="form-field-error-icon">error</mat-icon>
+                New password is required
+              </mat-error>
+              } @else if ( passwordForm.get('newPassword')?.touched &&
+              passwordForm.get('newPassword')?.hasError('minlength') ) {
+              <mat-error>
+                <mat-icon class="form-field-error-icon">error</mat-icon>
+                Password must be at least 8 characters
+              </mat-error>
+              }
+            </mat-form-field>
+
+            <button
+              matButton="filled"
+              type="submit"
+              [disabled]="!passwordForm.valid"
+            >
+              Update password
+            </button>
+          </form>
+        </div>
+
+        <!-- Delete Account Section -->
+        <div
+          class="space-y-4 border border-error rounded-xl p-6 bg-error-container text-on-error-container"
+        >
+          <h3 class="text-lg font-medium">Delete account</h3>
+          <p>
+            Once you delete your account, there is no going back. Please be
+            certain.
+          </p>
+          <button matButton="filled" color="warn">Delete account</button>
+        </div>
+      </div>
+      } @if (tab.id === 'workspaces') {
+      <!-- Workspaces Tab -->
+      <div class="py-6 space-y-8">
+        <div class="space-y-4">
+          <h3 class="text-lg font-medium">Workspace settings</h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Optimize your workspace with customizable settings and advanced
+            features
+          </p>
+        </div>
+
+        <form [formGroup]="workspaceForm" class="space-y-6">
+          <!-- Beta Features Toggle -->
+          <div class="flex flex-col gap-2 pt-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="text-base font-medium">
+                  Enable beta analytics features
+                </h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Get early access to new analytics features and improvements.
+                  <a href="#" class="text-primary hover:underline"
+                    >Learn more</a
+                  >
+                </p>
+              </div>
+              <mat-slide-toggle formControlName="betaFeatures" />
+            </div>
+          </div>
+
+          <!-- Test Mode Toggle -->
+          <div class="flex flex-col gap-2 border-t border-outline-variant pt-6">
+            <div class="flex items-center justify-between">
+              <div>
+                <h4 class="text-base font-medium">Enable test mode</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  Test new features in a safe environment without affecting
+                  production data.
+                  <a href="#" class="text-primary hover:underline"
+                    >Learn more</a
+                  >
+                </p>
+              </div>
+              <mat-slide-toggle formControlName="testMode" />
+            </div>
+          </div>
+
+          <!-- Form Actions -->
+          <div
+            class="flex items-center gap-3 border-t border-outline-variant pt-6"
+          >
+            <button
+              matButton="outlined"
+              type="button"
+              (click)="resetWorkspaceSettings()"
+            >
+              Cancel
+            </button>
+            <button
+              matButton="filled"
+              type="button"
+              (click)="saveWorkspaceSettings()"
+            >
+              Save settings
+            </button>
+          </div>
+        </form>
+      </div>
+      } @if (tab.id === 'billing') {
+      <!-- Billing Tab -->
+      <div class="py-6 space-y-8">
+        <!-- Current Plan Section -->
+        <div class="space-y-4">
+          <h3 class="text-lg font-medium">Current plan</h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Manage your subscription and billing details
+          </p>
+        </div>
+
+        <!-- Pricing Plans -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          @for (plan of billingPlans; track plan.id) {
+          <div
+            class="rounded-lg border border-outline-variant p-6 space-y-4"
+            [ngClass]="{
+                    'bg-primary-container': plan.current,
+                    'border  border-outline-variant': !plan.current,
+                  }"
+          >
+            <div class="space-y-1">
+              <h4 class="text-lg font-medium">{{ plan.name }}</h4>
+              <p class="text-2xl font-bold">{{ plan.price }}</p>
+            </div>
+
+            <ul class="space-y-3 pl-0">
+              @for (feature of plan.features; track feature) {
+              <li
+                class="flex items-center gap-2 text-gray-600 dark:text-gray-400"
+              >
+                <mat-icon class="text-primary text-base">check_circle</mat-icon>
+                <span>{{ feature }}</span>
+              </li>
+              }
+            </ul>
+
+            <button
+              matButton="filled"
+              [color]="plan.current ? '' : 'primary'"
+              [disabled]="plan.current"
+              (click)="changePlan(plan.id)"
+              class="w-full"
+            >
+              {{ plan.current ? 'Current plan' : 'Select' }}
+            </button>
+          </div>
+          }
+        </div>
+
+        <!-- Payment Information -->
+        <div class="space-y-6 pt-8">
+          <div class="space-y-4">
+            <h3 class="text-lg font-medium">Payment information</h3>
+            <p class="text-gray-600 dark:text-gray-400">
+              Update your billing details and payment method
+            </p>
+          </div>
+
+          <form
+            [formGroup]="billingForm"
+            class="space-y-4"
+            (ngSubmit)="updateBillingInfo()"
+          >
+            <mat-form-field appearance="outline" class="w-full">
+              <mat-label>Card number</mat-label>
+              <input
+                matInput
+                formControlName="cardNumber"
+                placeholder="1234 1234 1234 1234"
+              />
+              <mat-icon matSuffix>credit_card</mat-icon>
+              @if ( billingForm.get('cardNumber')?.touched &&
+              billingForm.get('cardNumber')?.hasError('required') ) {
+              <mat-error>
+                <mat-icon class="form-field-error-icon">error</mat-icon>
+                Card number is required
+              </mat-error>
+              }
+            </mat-form-field>
+
+            <div class="grid grid-cols-2 gap-4">
+              <mat-form-field appearance="outline">
+                <mat-label>Expiry date</mat-label>
+                <input
+                  matInput
+                  formControlName="expiryDate"
+                  placeholder="MM/YY"
+                />
+                @if ( billingForm.get('expiryDate')?.touched &&
+                billingForm.get('expiryDate')?.hasError('required') ) {
+                <mat-error>
+                  <mat-icon class="form-field-error-icon">error</mat-icon>
+                  Expiry date is required
+                </mat-error>
+                }
+              </mat-form-field>
+
+              <mat-form-field appearance="outline">
+                <mat-label>CVC</mat-label>
+                <input matInput formControlName="cvc" placeholder="123" />
+                @if ( billingForm.get('cvc')?.touched &&
+                billingForm.get('cvc')?.hasError('required') ) {
+                <mat-error>
+                  <mat-icon class="form-field-error-icon">error</mat-icon>
+                  CVC is required
+                </mat-error>
+                }
+              </mat-form-field>
+            </div>
+
+            <button
+              matButton="filled"
+              type="submit"
+              [disabled]="!billingForm.valid"
+            >
+              Update payment method
+            </button>
+          </form>
+        </div>
+      </div>
+      }
+    </mat-tab>
+    }
+  </mat-tab-group>
+</div>

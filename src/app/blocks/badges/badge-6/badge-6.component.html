@@ -1,0 +1,21 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update badges/badge-6`
+-->
+
+<div class="flex justify-center p-4">
+  <mat-chip-set>
+    @for (badge of badges; track badge.label) {
+    <mat-chip>
+      <span class="flex items-center gap-3">
+        <span class="text-gray-500 font-normal">{{ badge.label }}</span>
+        <span class="h-4 w-px bg-gray-500 inline-block"></span>
+        <span class="font-medium">{{ badge.value }}</span>
+      </span>
+      <button matChipRemove [attr.aria-label]="'Remove ' + badge.label">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-chip>
+    }
+  </mat-chip-set>
+</div>

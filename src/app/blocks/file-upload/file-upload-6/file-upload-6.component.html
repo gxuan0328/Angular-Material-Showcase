@@ -1,0 +1,57 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update file-upload/file-upload-6`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg p-4">
+  <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-50">
+    File Upload
+  </h3>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-4 space-y-6">
+    <ngm-dev-block-file-upload6-dropzone>
+      <input type="file" fileInput formControlName="file" multiple />
+    </ngm-dev-block-file-upload6-dropzone>
+    <p
+      class="mt-2 text-sm text-gray-600 dark:text-gray-400 leading-5 sm:flex sm:items-center sm:justify-between"
+    >
+      Recommended max. size: 10 MB, Accepted file types: XLSX, XLS, CSV.
+    </p>
+    <div
+      class="mt-6 flex items-center space-x-2.5 rounded bg-error-container text-on-error-container p-4"
+    >
+      <mat-icon class="icon-filled">warning</mat-icon>
+      <p data-testid="error-message">
+        Uploaded file exceeds maximum size of 10 MB
+      </p>
+    </div>
+    <div class="relative mt-4 rounded p-4 bg-surface-container-low">
+      <div class="absolute right-1 top-1 density-3">
+        <button type="button" mat-icon-button aria-label="Remove">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <div class="flex items-center space-x-2.5">
+        <span
+          class="flex h-10 w-10 items-center justify-center rounded bg-gray-100 shadow ring-1 ring-inset ring-gray-300 dark:bg-gray-800 dark:ring-gray-700"
+        >
+          <mat-icon data-testid="error-icon">file_upload_off</mat-icon>
+        </span>
+        <div class="w-full">
+          <p class="font-medium text-gray-900 dark:text-gray-50">
+            Revenue_Q1_2024.xlsx
+          </p>
+          <p
+            class="mt-0.5 flex justify-between text-sm text-gray-600 dark:text-gray-400"
+          >
+            <span>3.1 MB</span>
+            <span class="text-error" data-testid="upload-status">Failed</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8 flex items-center justify-end space-x-3">
+      <button type="button" matButton>Cancel</button>
+      <button type="submit" matButton="filled">Upload</button>
+    </div>
+  </form>
+</div>

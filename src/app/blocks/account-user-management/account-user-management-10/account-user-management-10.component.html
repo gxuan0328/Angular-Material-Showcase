@@ -1,0 +1,133 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update account-user-management/account-user-management-10`
+-->
+
+<div class="p-6">
+  <h3 class="text-xl font-bold">General</h3>
+  <p class="mt-2 text-gray-600 dark:text-gray-400">
+    Manage your personal details, workspace governance and notifications.
+  </p>
+
+  <mat-tab-group
+    class="mt-6"
+    [selectedIndex]="1"
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
+  >
+    <mat-tab label="Account details" />
+    <mat-tab label="Members">
+      <div class="mt-8">
+        <div class="grid grid-cols-1 gap-x-10 gap-y-8 lg:grid-cols-3">
+          <div>
+            <h3 class="font-medium">Members</h3>
+            <p class="mt-1 text-gray-600 dark:text-gray-400">
+              Manage roles of existing members. As an admin, you can add, edit
+              or delete users.
+            </p>
+            <button matButton="filled" class="mt-4 whitespace-nowrap">
+              <mat-icon>person_add</mat-icon>
+              Invite member
+            </button>
+          </div>
+
+          <div class="lg:col-span-2">
+            <div class="divide-y divide-outline-variant">
+              @for (user of existingUsers; track user.email) {
+              <div class="py-3 flex items-center justify-between flex-wrap">
+                <div class="flex items-center gap-4">
+                  <avvvatars
+                    [value]="user.initials"
+                    [size]="36"
+                    [borderSize]="0"
+                  />
+                  <div>
+                    <label [for]="user.name" class="text-sm font-medium">
+                      {{ user.name }}
+                    </label>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">
+                      {{ user.email }}
+                    </p>
+                  </div>
+                </div>
+                <div class="mt-3 flex items-center gap-2 md:ml-auto">
+                  <mat-form-field
+                    appearance="outline"
+                    subscriptSizing="dynamic"
+                    class="max-w-[10rem]"
+                  >
+                    <mat-select
+                      [value]="user.currentRole"
+                      (selectionChange)="onRoleChange(user, $event.value)"
+                    >
+                      <mat-option value="Admin">Admin</mat-option>
+                      <mat-option value="Guest">Guest</mat-option>
+                      <mat-option value="Member">Member</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <button
+                    mat-icon-button
+                    (click)="deleteUser(existingUsers, user)"
+                    class="hover:text-error shrink-0 mr-1"
+                  >
+                    <mat-icon>delete</mat-icon>
+                    <span class="sr-only">Remove {{ user.name }}</span>
+                  </button>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+
+        <mat-divider class="my-8!" />
+
+        <div class="grid grid-cols-1 gap-x-10 gap-y-8 lg:grid-cols-3">
+          <div>
+            <h3 class="font-medium">Pending Invites</h3>
+            <p class="mt-1 text-gray-600 dark:text-gray-400">
+              Invited users who haven't accepted their invitation yet.
+            </p>
+          </div>
+
+          <div class="lg:col-span-2">
+            <div class="divide-y divide-outline-variant">
+              @for (user of pendingUsers; track user.email) {
+              <div class="py-3 flex items-center justify-between flex-wrap">
+                <div class="flex items-center gap-4">
+                  <avvvatars
+                    [value]="user.initials"
+                    [size]="36"
+                    [borderSize]="0"
+                  />
+                  <div>
+                    <p class="text-sm font-medium">{{ user.name }}</p>
+                    <p class="text-xs text-gray-600 dark:text-gray-400">
+                      {{ user.email }}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="mt-3 flex items-center gap-2 md:ml-auto">
+                  <button matButton="outlined" (click)="resendInvite(user)">
+                    Resend invite
+                  </button>
+                  <button
+                    mat-icon-button
+                    (click)="deleteUser(pendingUsers, user)"
+                    class="hover:text-error shrink-0 mr-1"
+                  >
+                    <mat-icon>delete</mat-icon>
+                    <span class="sr-only">Remove {{ user.name }}</span>
+                  </button>
+                </div>
+              </div>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Billing" />
+  </mat-tab-group>
+</div>

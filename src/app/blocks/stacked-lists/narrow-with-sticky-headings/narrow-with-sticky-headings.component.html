@@ -1,0 +1,25 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/narrow-with-sticky-headings`
+-->
+
+<div class="max-w-lg mx-auto">
+  <mat-list class="max-h-[39rem] overflow-y-auto py-0!">
+    @for (group of contacts; track group.id) {
+    <h3
+      matSubheader
+      class="sticky top-0 bg-surface-container-high m-0! p-2 z-10"
+    >
+      {{ group.label }}
+    </h3>
+    @for (contact of group.items; track contact.id; let last = $last) {
+    <mat-list-item>
+      <img [src]="contact.imageUrl" matListItemAvatar class="rounded-full" />
+      <span matListItemTitle> {{ contact.name }} </span>
+      <span matListItemLine> {{ contact.email }} </span>
+    </mat-list-item>
+    @if (!last) {
+    <mat-divider />
+    } } }
+  </mat-list>
+</div>

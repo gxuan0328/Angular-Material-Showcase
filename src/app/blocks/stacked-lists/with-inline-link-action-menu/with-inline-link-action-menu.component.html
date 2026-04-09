@@ -1,0 +1,38 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/with-inline-link-action-menu`
+-->
+
+<div class="max-w-3xl mx-auto">
+  <div class="px-4 py-5 sm:p-6">
+    <div>
+      <mat-nav-list>
+        @for (contact of contacts; track contact.id; let last = $last) {
+        <a mat-list-item class="group">
+          <img
+            [src]="contact.imageUrl"
+            matListItemAvatar
+            class="rounded-full"
+          />
+          <span matListItemTitle>{{ contact.name }}</span>
+          <span matListItemLine class="group-hover:underline"
+            >{{ contact.email }}</span
+          >
+          <span matListItemMeta class="self-center! flex! items-center gap-x-2">
+            <span class="hidden sm:inline text-sm">{{ contact.role }}</span>
+            <button mat-icon-button [matMenuTriggerFor]="actionMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #actionMenu="matMenu">
+              <button mat-menu-item>View Profile</button>
+              <button mat-menu-item>Message</button>
+            </mat-menu>
+          </span>
+        </a>
+        @if (!last) {
+        <mat-divider />
+        } }
+      </mat-nav-list>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,132 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-14`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <mat-card appearance="outlined">
+    <mat-card-content class="p-0!">
+      <div class="p-6 bg-gray-50 dark:bg-gray-900 rounded-t-mat-card">
+        <h3 class="text-base font-semibold text-gray-900 dark:text-white">
+          Orders
+        </h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Check status of recent orders
+        </p>
+      </div>
+      <mat-tab-group
+        dynamicHeight
+        mat-align-tabs="start"
+        mat-stretch-tabs="false"
+        fitInkBarToContent
+        [class]="
+          '[&_mat-tab-header>.mat-mdc-tab-label-container>.mat-mdc-tab-list]:px-6 [&_mat-tab-header]:bg-gray-50 [&_mat-tab-header]:dark:bg-gray-900'
+        "
+        (selectedIndexChange)="onSelectedIndexChange($event)"
+      >
+        @for (category of orderCategories; track category.status) {
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon [class]="'mr-2 ' + category.iconColor"
+              >{{ category.icon }}</mat-icon
+            >
+            <span class="font-medium">{{ category.status }}</span>
+            <span
+              class="ml-2 hidden rounded-sm bg-gray-100 px-2 py-1 text-xs font-semibold tabular-nums ring-1 ring-inset ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 sm:inline-flex"
+            >
+              {{ category.orders.length }}
+            </span>
+          </ng-template>
+
+          <div class="space-y-4 p-4">
+            @for (order of category.orders; track order.item) {
+            <mat-card appearance="outlined">
+              <mat-card-content>
+                <div
+                  class="flex items-center justify-between space-x-4 space-y-2 sm:justify-start sm:space-x-2 sm:space-y-0 flex-wrap"
+                >
+                  <h4
+                    class="truncate text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    {{ order.item }}
+                  </h4>
+                  <mat-chip
+                    [class]="
+                          'ring-1 ring-inset ' + getStatusColor(category.status)
+                        "
+                  >
+                    {{ category.status }}
+                  </mat-chip>
+                </div>
+                <div class="mt-4 flex flex-wrap items-center gap-x-6 gap-y-4">
+                  <div class="flex items-center space-x-1.5">
+                    <mat-icon
+                      class="h-5 w-5 text-gray-400 dark:text-gray-500 icon-filled"
+                      aria-hidden="true"
+                      >domain</mat-icon
+                    >
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      {{ order.company }}
+                    </p>
+                  </div>
+                  <div class="flex items-center space-x-1.5">
+                    <mat-icon
+                      class="h-5 w-5 text-gray-400 dark:text-gray-500 icon-filled"
+                      aria-hidden="true"
+                      >location_on</mat-icon
+                    >
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      {{ order.location }}
+                    </p>
+                  </div>
+                  <div class="flex items-center space-x-1.5">
+                    <mat-icon
+                      class="h-5 w-5 text-gray-400 dark:text-gray-500 icon-filled"
+                      aria-hidden="true"
+                      >person</mat-icon
+                    >
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                      {{ order.contact }}
+                    </p>
+                  </div>
+                </div>
+              </mat-card-content>
+              <mat-card-footer>
+                <div class="px-4 mt-6 py-6 border-t border-t-outline-variant">
+                  <div class="block sm:flex sm:items-end sm:justify-between">
+                    <div class="flex items-center space-x-2">
+                      <mat-progress-spinner
+                        [value]="
+                              getProgressValue(
+                                order.fulfillmentActual,
+                                order.fulfillmentTotal
+                              )
+                            "
+                        diameter="18"
+                        strokeWidth="3.5"
+                        mode="determinate"
+                      />
+                      <p
+                        class="text-sm font-medium text-gray-900 dark:text-white"
+                      >
+                        Fulfillment controls ({{ order.fulfillmentActual }}/{{
+                        order.fulfillmentTotal }})
+                      </p>
+                    </div>
+                    <p
+                      class="mt-2 text-sm text-gray-500 dark:text-gray-400 sm:mt-0"
+                    >
+                      Updated {{ order.lastUpdated }}
+                    </p>
+                  </div>
+                </div>
+              </mat-card-footer>
+            </mat-card>
+            }
+          </div>
+        </mat-tab>
+        }
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

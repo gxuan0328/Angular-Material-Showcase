@@ -1,0 +1,207 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update account-user-management/account-user-management-2`
+-->
+
+<div class="max-w-4xl mx-auto p-6">
+  <!-- Header -->
+  <div class="mb-8">
+    <h2 class="text-2xl font-semibold mb-2">Workspace Settings</h2>
+    <p class="text-gray-600 dark:text-gray-400">
+      Manage your workspace preferences and configurations
+    </p>
+  </div>
+
+  <!-- Free Plan Banner -->
+  @if (showFreePlanBanner) {
+  <div
+    class="mb-8 rounded-lg bg-primary-container p-4 flex gap-2 relative pr-10"
+  >
+    <mat-icon class="text-on-primary-container shrink-0">info</mat-icon>
+    <p class="text-on-primary-container">
+      You are currently on the <span class="font-medium">Free plan</span>.
+      Upgrade to unlock advanced features.
+    </p>
+    <button
+      mat-icon-button
+      (click)="dismissFreePlanBanner()"
+      class="absolute! top-2 right-2"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  }
+
+  <!-- Tabs -->
+  <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start">
+    @for (tab of tabs; track tab.id) {
+    <mat-tab [label]="tab.label">
+      @if (tab.id === 'settings') {
+      <!-- Settings Tab -->
+      <div class="py-6">
+        <form [formGroup]="workspaceForm" class="space-y-8">
+          <!-- Workspace Name -->
+          <div class="space-y-4">
+            <h3 class="text-lg font-medium">Workspace Name</h3>
+            <mat-form-field appearance="outline" class="w-full max-w-md">
+              <mat-label>Workspace name</mat-label>
+              <input
+                matInput
+                formControlName="name"
+                placeholder="Enter workspace name"
+              />
+              @if ( workspaceForm.get('name')?.touched &&
+              workspaceForm.get('name')?.hasError('required') ) {
+              <mat-error>
+                <mat-icon class="form-field-error-icon">error</mat-icon>
+                Workspace name is required
+              </mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <!-- Model Settings -->
+          <div class="space-y-4 border-t border-outline-variant pt-6">
+            <h3 class="text-lg font-medium">Model Settings</h3>
+            <div class="space-y-6">
+              <!-- Default Model -->
+              <div class="max-w-md">
+                <mat-form-field appearance="outline" class="w-full">
+                  <mat-label>Default model</mat-label>
+                  <mat-select formControlName="defaultModel">
+                    @for (model of models; track model.id) {
+                    <mat-option [value]="model.id">{{ model.name }}</mat-option>
+                    }
+                  </mat-select>
+                </mat-form-field>
+              </div>
+
+              <!-- Training Cycle -->
+              <div class="max-w-md">
+                <mat-form-field appearance="outline" class="w-full">
+                  <mat-label>Training cycle</mat-label>
+                  <mat-select formControlName="trainingCycle">
+                    <mat-option value="daily">Daily</mat-option>
+                    <mat-option value="weekly">Weekly</mat-option>
+                    <mat-option value="monthly">Monthly</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <!-- Advanced Settings -->
+          <div class="space-y-6 border-t border-outline-variant pt-6">
+            <h3 class="text-lg font-medium">Advanced Settings</h3>
+            <div>
+              <!-- Require Approval -->
+              <div class="flex items-center justify-between mb-4">
+                <div>
+                  <h4 class="text-base font-medium">Require approval</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Require approval before deploying changes to production.
+                    <a href="#" class="text-primary hover:underline"
+                      >Learn more</a
+                    >
+                  </p>
+                </div>
+                <mat-slide-toggle formControlName="requireApproval" />
+              </div>
+
+              <!-- Audit Logs -->
+              <div
+                class="flex items-center justify-between border-t border-outline-variant py-4"
+              >
+                <div>
+                  <h4 class="text-base font-medium">Enable audit logs</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Track all changes and actions in your workspace.
+                    <a href="#" class="text-primary hover:underline"
+                      >Learn more</a
+                    >
+                  </p>
+                </div>
+                <mat-slide-toggle formControlName="enableAuditLogs" />
+              </div>
+
+              <!-- Email Notifications -->
+              <div
+                class="flex items-center justify-between border-y border-outline-variant py-4"
+              >
+                <div>
+                  <h4 class="text-base font-medium">Email notifications</h4>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Receive email notifications for important updates.
+                    <a href="#" class="text-primary hover:underline"
+                      >Learn more</a
+                    >
+                  </p>
+                </div>
+                <mat-slide-toggle formControlName="enableEmailNotifications" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Form Actions -->
+          <div class="flex items-center gap-3">
+            <button
+              matButton="outlined"
+              type="button"
+              (click)="resetSettings()"
+            >
+              Reset
+            </button>
+            <button matButton="filled" type="button" (click)="saveSettings()">
+              Save changes
+            </button>
+          </div>
+        </form>
+      </div>
+      } @if (tab.id === 'add-ons') {
+      <!-- Add-Ons Tab -->
+      <div class="py-6">
+        <div class="space-y-4 mb-8">
+          <h3 class="text-lg font-medium">Upgrade options</h3>
+          <p class="text-gray-600 dark:text-gray-400">
+            Do more with your data and unlock new insights with our advanced
+            features and add-ons.
+          </p>
+        </div>
+
+        <!-- Add-Ons Stack -->
+        <div class="space-y-4">
+          @for (addon of addOns; track addon.id) {
+          <mat-card appearance="outlined">
+            <mat-card-header>
+              <mat-card-subtitle class="!text-gray-600 dark:text-gray-400 mb-4!"
+                >{{ addon.price }}</mat-card-subtitle
+              >
+              <mat-card-title>{{ addon.name }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <div class="mb-6!">
+                <p>{{ addon.description }}</p>
+              </div>
+            </mat-card-content>
+            <mat-card-actions
+              class="flex justify-between density-3 border-t border-outline-variant"
+            >
+              <mat-slide-toggle
+                [checked]="addon.isActive"
+                (change)="toggleAddOn(addon.id)"
+              >
+                Activate
+              </mat-slide-toggle>
+              <button matButton>
+                Learn more <mat-icon>open_in_new</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+          }
+        </div>
+      </div>
+      }
+    </mat-tab>
+    }
+  </mat-tab-group>
+</div>

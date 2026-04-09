@@ -1,0 +1,98 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-12`
+-->
+
+<form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+  <h2 mat-dialog-title class="relative" [class.pl-12!]="isHandset$ | async">
+    Filter
+    <button
+      type="button"
+      mat-icon-button
+      class="absolute! top-5"
+      [class.left-4]="isHandset$ | async"
+      [class.right-4]="(isHandset$ | async) === false"
+      mat-dialog-close
+      aria-label="Close"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+
+    @if (isHandset$ | async) {
+    <button type="submit" matButton class="absolute! top-5 right-4">
+      Apply
+    </button>
+    }
+  </h2>
+  <mat-dialog-content>
+    <div class="flex flex-col sm:flex-row items-end gap-2 mb-4">
+      <!-- Category -->
+      <div class="flex flex-col gap-2 w-full">
+        <label
+          for="category"
+          class="text-sm font-medium text-gray-600 dark:text-gray-400"
+        >
+          Where
+        </label>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-select formControlName="category" id="category">
+            <mat-select-trigger>
+              <div class="relative pl-8">
+                <mat-icon class="absolute left-0 top-0" aria-hidden="true">
+                  {{ getSelectedCategory().icon }}
+                </mat-icon>
+                {{ getSelectedCategory().label }}
+              </div>
+            </mat-select-trigger>
+            @for (category of data.categories; track category.value) {
+            <mat-option [value]="category.value">
+              <mat-icon>{{ category.icon }}</mat-icon>
+              {{ category.label }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Condition -->
+      <div class="flex flex-col gap-2 w-full">
+        <label
+          for="condition"
+          class="text-sm font-medium text-gray-600 dark:text-gray-400"
+        >
+          Condition
+        </label>
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-select formControlName="condition" id="condition">
+            @for (condition of data.conditions; track condition.value) {
+            <mat-option [value]="condition.value">
+              {{ condition.label }}
+            </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <!-- Value -->
+      <div class="flex flex-col gap-2 w-full">
+        <label for="value" class="sr-only"> Value </label>
+        <mat-form-field appearance="outline" class="w-full">
+          <input
+            matInput
+            formControlName="value"
+            id="value"
+            placeholder="Enter value..."
+          />
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button type="button" matButton="outlined" (click)="clearFilter()">
+      Clear
+    </button>
+    @if ((isHandset$ | async) === false) {
+    <button type="submit" matButton="filled" color="submit">Apply</button>
+    }
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,31 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update badges/badge-9`
+-->
+
+<div class="flex justify-center p-4">
+  <mat-chip-set>
+    @for (badge of badges; track badge.label) {
+    <mat-chip [class]="badge.classes">
+      @if (badge.label.icon) {
+      <mat-icon matChipAvatar [class.icon-filled]="badge.label.isIconFilled">
+        {{ badge.label.icon }}
+      </mat-icon>
+      }
+      <span class="flex items-center gap-3">
+        {{ badge.label.text }}
+        <span class="h-4 w-px bg-white inline-block" role="separator"></span>
+        <button class="flex items-center gap-3">
+          {{ badge.action.text }} @if (badge.action.icon) {
+          <mat-icon
+            class="!h-[18px] !w-[18px] !text-[18px]"
+            [class.icon-filled]="badge.action.isIconFilled"
+            >{{ badge.action.icon }}</mat-icon
+          >
+          }
+        </button>
+      </span>
+    </mat-chip>
+    }
+  </mat-chip-set>
+</div>

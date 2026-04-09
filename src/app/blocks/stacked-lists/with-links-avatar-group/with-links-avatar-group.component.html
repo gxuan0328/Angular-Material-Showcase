@@ -1,0 +1,35 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/with-links-avatar-group`
+-->
+
+<div class="max-w-3xl mx-auto">
+  <mat-nav-list>
+    @for (contact of contacts; track contact.id; let last = $last) {
+    <a mat-list-item class="group">
+      <span matListItemTitle class="group-hover:underline"
+        >{{ contact.title }}</span
+      >
+      <span matListItemLine>{{ contact.name }}</span>
+      <div matListItemMeta class="flex! items-center gap-x-4 self-center!">
+        <div class="flex -space-x-1 overflow-hidden">
+          @for (image of contact.avatarImageList; track image) {
+          <img
+            [src]="image"
+            class="size-6 rounded-full ring-2 ring-surface-container"
+          />
+          }
+        </div>
+        <div class="flex items-center gap-x-2">
+          <mat-icon>
+            {{ contact.resolved ? 'check_circle' : 'chat_bubble' }}
+          </mat-icon>
+          <span class="text-sm w-6 text-left">{{ contact.count }}</span>
+        </div>
+      </div>
+    </a>
+    @if (!last) {
+    <mat-divider />
+    } }
+  </mat-nav-list>
+</div>

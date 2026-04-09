@@ -1,0 +1,42 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-14`
+*/
+
+@use '@angular/material' as mat;
+
+.grid-list-14 {
+  @include mat.chips-overrides(
+    (
+      label-text-line-height: normal,
+      label-text-color: currentColor,
+      with-icon-icon-color: currentColor,
+      hover-state-layer-opacity: 0,
+      label-text-size: 12px,
+      outline-color: var(--mat-sys-outline-variant),
+      with-avatar-avatar-size: 16px,
+      container-height: 24px,
+    )
+  );
+
+  @include mat.tabs-overrides(
+    (
+      active-indicator-color: var(
+          --active-indicator-color,
+          var(--mat-sys-primary)
+        ),
+      active-focus-indicator-color: var(
+          --active-indicator-color,
+          var(--mat-sys-primary)
+        ),
+      active-hover-indicator-color: var(
+          --active-indicator-color,
+          var(--mat-sys-primary)
+        ),
+      active-ripple-color: var(
+          --active-indicator-color,
+          var(--mat-sys-on-surface)
+        ),
+    )
+  );
+}

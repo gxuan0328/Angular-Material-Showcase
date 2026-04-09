@@ -1,0 +1,16 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update badges/badge-7`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.chips-overrides(
+    (
+      label-text-line-height: normal,
+      hover-state-layer-opacity: 0,
+      container-shape-radius: var(--mat-sys-corner-full),
+    )
+  );
+}

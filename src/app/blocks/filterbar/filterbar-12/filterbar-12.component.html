@@ -1,0 +1,216 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-12`
+-->
+
+<div class="relative p-4" [formGroup]="formGroup">
+  <div
+    class="rounded-md border border-outline-variant bg-surface pb-20 shadow-sm md:h-52"
+  >
+    <div
+      class="flex flex-col md:flex-row gap-4 border-b border-outline-variant p-4 md:p-6"
+    >
+      <!-- Date Range -->
+      <div>
+        <label
+          for="date_range"
+          class="text-sm font-medium text-gray-600 dark:text-gray-400"
+        >
+          Date
+        </label>
+        <div class="mt-2 relative">
+          <mat-date-range-input [rangePicker]="picker" class="sr-only mt-9">
+            <input
+              matStartDate
+              formControlName="startDate"
+              placeholder="Start date"
+            />
+            <input
+              matEndDate
+              formControlName="endDate"
+              placeholder="End date"
+            />
+          </mat-date-range-input>
+          <mat-chip-set aria-label="Date range">
+            <mat-chip (click)="picker.open()">
+              <mat-icon matChipAvatar> calendar_month </mat-icon>
+              {{ formGroup.get('startDate')?.value | date: 'MM/dd/yyyy' }} - {{
+              formGroup.get('endDate')?.value | date: 'MM/dd/yyyy' }}
+            </mat-chip>
+          </mat-chip-set>
+          <mat-date-range-picker #picker />
+        </div>
+      </div>
+
+      <!-- Filter Button -->
+      <div>
+        <label
+          for="filter"
+          class="text-sm font-medium text-gray-600 dark:text-gray-400"
+        >
+          Filter(s)
+        </label>
+        <div class="mt-2 flex flex-wrap gap-2">
+          <mat-chip-set aria-label="Filter selection" class="flex">
+            @for (filter of formGroup.get('filters')?.value; track $index) {
+            <mat-chip>
+              <mat-icon matChipAvatar
+                >{{ getSelectedCategory(filter.category).icon }}</mat-icon
+              >
+              <div class="flex divide-x divide-outline-variant">
+                <span class="px-2 capitalize">{{ filter.category }}</span>
+                <span class="px-2 uppercase italic"
+                  >{{ filter.condition }}</span
+                >
+                <span class="px-2 font-bold">{{ filter.value }}</span>
+              </div>
+              <button
+                matChipRemove
+                (click)="removeFilter(filter)"
+                [attr.aria-label]="'remove ' + filter.category"
+              >
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            }
+            <mat-chip
+              cdkOverlayOrigin
+              #trigger="cdkOverlayOrigin"
+              (click)="toggleOverlay()"
+              class="bg-primary-container!"
+            >
+              <mat-icon matChipAvatar class="text-on-primary-container!"
+                >add</mat-icon
+              >
+              <span class="text-on-primary-container!">Add Filter</span>
+            </mat-chip>
+            @if ((formGroup.get('filters')?.value ?? []).length > 0) {
+            <mat-chip
+              cdkOverlayOrigin
+              #trigger="cdkOverlayOrigin"
+              (click)="clearFilter()"
+              class="bg-error-container!"
+            >
+              <mat-icon matChipAvatar class="text-on-error-container!"
+                >clear</mat-icon
+              >
+              <span class="text-on-error-container!">Clear Filters</span>
+            </mat-chip>
+            }
+          </mat-chip-set>
+
+          <!-- Filter Menu -->
+          <ng-template
+            cdkConnectedOverlay
+            [cdkConnectedOverlayOrigin]="trigger"
+            [cdkConnectedOverlayOpen]="isOpen"
+            [cdkConnectedOverlayWidth]="684"
+            [cdkConnectedOverlayPositions]="STANDARD_DROPDOWN_BELOW_POSITIONS"
+            [cdkConnectedOverlayHasBackdrop]="true"
+            [cdkConnectedOverlayBackdropClass]="
+              'cdk-overlay-transparent-backdrop'
+            "
+            (backdropClick)="closeOverlay()"
+            (positionChange)="onPositionChange($event)"
+          >
+            <mat-card
+              [class.display-properties-animations-disabled]="
+                _animationsDisabled
+              "
+              [class]="animationClass()"
+              [class.display-properties-animating]="isAnimating()"
+              (animationend)="onAnimationDone($event.animationName)"
+              (animationcancel)="onAnimationDone($event.animationName)"
+              (animationstart)="onAnimationStart($event.animationName)"
+              [formGroup]="addFilterForm"
+            >
+              <mat-card-content>
+                <div class="flex flex-col sm:flex-row items-end gap-2 mb-4">
+                  <!-- Category -->
+                  <div class="flex flex-col gap-2 w-full">
+                    <mat-form-field appearance="outline" class="w-full">
+                      <mat-label> Category </mat-label>
+                      <mat-select formControlName="category">
+                        <mat-select-trigger>
+                          <div class="relative pl-8">
+                            <mat-icon
+                              class="absolute left-0 top-0"
+                              aria-hidden="true"
+                            >
+                              {{ getSelectedCategory().icon }}
+                            </mat-icon>
+                            {{ getSelectedCategory().label }}
+                          </div>
+                        </mat-select-trigger>
+                        @for (category of categories; track category.value) {
+                        <mat-option [value]="category.value">
+                          <mat-icon>{{ category.icon }}</mat-icon>
+                          {{ category.label }}
+                        </mat-option>
+                        }
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Condition -->
+                  <div class="flex flex-col gap-2 w-full">
+                    <mat-form-field appearance="outline" class="w-full">
+                      <mat-label> Condition </mat-label>
+                      <mat-select formControlName="condition">
+                        @for (condition of conditions; track condition.value) {
+                        <mat-option [value]="condition.value">
+                          {{ condition.label }}
+                        </mat-option>
+                        }
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <!-- Value -->
+                  <div class="flex flex-col gap-2 w-full">
+                    <mat-form-field appearance="outline" class="w-full">
+                      <mat-label> Value </mat-label>
+                      <input
+                        matInput
+                        formControlName="value"
+                        placeholder="Enter value..."
+                        required
+                      />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-card-content>
+
+              <!-- Actions -->
+              <mat-card-actions
+                class="mt-2 border-t border-outline-variant"
+                align="end"
+              >
+                <button
+                  type="button"
+                  matButton="outlined"
+                  (click)="clearNewFilter()"
+                  class="w-full md:w-auto"
+                >
+                  Clear
+                </button>
+                <button
+                  matButton="filled"
+                  class="w-full md:w-auto"
+                  (click)="applyFilter()"
+                  [disabled]="addFilterForm.invalid"
+                >
+                  Apply
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- gradient for demo purpose -->
+  <div
+    class="absolute inset-x-0 bottom-0 -mb-1 h-14 rounded-b-md bg-gradient-to-t from-surface via-surface to-transparent"
+  ></div>
+</div>

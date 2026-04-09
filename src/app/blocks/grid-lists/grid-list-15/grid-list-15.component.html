@@ -1,0 +1,164 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-15`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <mat-card appearance="outlined">
+    <mat-card-content class="p-0!">
+      <div class="p-6">
+        <h3 class="text-base font-semibold text-gray-900 dark:text-white">
+          Workspaces
+        </h3>
+        <p class="text-sm text-gray-500 dark:text-gray-400">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+        </p>
+      </div>
+      <mat-tab-group
+        dynamicHeight
+        mat-align-tabs="start"
+        mat-stretch-tabs="false"
+        class="[&_mat-tab-header>.mat-mdc-tab-label-container>.mat-mdc-tab-list]:px-6"
+      >
+        @for (category of data; track category.region) {
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="font-medium">{{ category.region }}</span>
+            <span
+              class="ml-2 hidden rounded-sm bg-gray-100 px-2 py-1 text-xs font-semibold tabular-nums ring-1 ring-inset ring-gray-200 dark:bg-gray-800 dark:ring-gray-700 sm:inline-flex"
+            >
+              {{ category.workspaces.length }}
+            </span>
+          </ng-template>
+
+          <div class="px-6 pb-6 pt-4">
+            <div class="block md:flex md:items-center md:justify-between mb-4">
+              <mat-form-field
+                appearance="outline"
+                class="w-full md:max-w-xs"
+                subscriptSizing="dynamic"
+              >
+                <mat-icon matPrefix class="text-gray-400 ml-1 mr-2"
+                  >search</mat-icon
+                >
+                <input
+                  matInput
+                  placeholder="Search workspace..."
+                  [(ngModel)]="searchTerm"
+                  class="h-9 text-sm"
+                />
+              </mat-form-field>
+
+              <div class="lg:flex lg:items-center lg:space-x-3 mt-4 md:mt-0">
+                <div class="hidden items-center space-x-2 lg:flex">
+                  <label
+                    for="show-active-spaces"
+                    class="whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                  >
+                    Show active spaces
+                  </label>
+                  <mat-slide-toggle
+                    id="show-active-spaces"
+                    [(ngModel)]="showActiveSpaces"
+                  />
+                </div>
+                <span
+                  class="hidden h-8 w-px bg-gray-200 dark:bg-gray-700 lg:block"
+                ></span>
+                <button
+                  matButton="filled"
+                  class="mt-2 h-9 w-full md:mt-0 md:w-fit whitespace-nowrap text-sm"
+                >
+                  Add workspace
+                </button>
+              </div>
+            </div>
+
+            <mat-divider class="mb-4! border-outline-variant!" />
+
+            <div
+              class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3"
+            >
+              @for (workspace of category.workspaces; track workspace.name) {
+              <mat-card appearance="outlined" class="h-full">
+                <mat-card-header>
+                  <mat-card-subtitle>
+                    <div
+                      class="flex items-center justify-between space-y-2 sm:justify-start space-x-2 sm:space-y-0 flex-wrap"
+                    >
+                      <h4 class="truncate text-gray-900 dark:text-white">
+                        <a
+                          [href]="workspace.href"
+                          class="focus:outline-none hover:underline"
+                        >
+                          {{ workspace.name }}
+                        </a>
+                      </h4>
+                      @if (workspace.status === 'active') {
+                      <mat-chip
+                        class="bg-emerald-100! text-emerald-800 dark:bg-emerald-400/10! dark:text-emerald-400"
+                      >
+                        active
+                      </mat-chip>
+                      }
+                    </div>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                  <mat-list class="mt-3 p-0 list-none">
+                    <div class="py-1 flex items-center gap-2">
+                      <span class="text-sm text-gray-500 dark:text-gray-400"
+                        >Type:</span
+                      >
+                      <span
+                        class="text-sm font-medium text-gray-900 dark:text-white"
+                        >{{ workspace.type }}</span
+                      >
+                    </div>
+                    <div class="py-1 flex items-center gap-2">
+                      <span class="text-sm text-gray-500 dark:text-gray-400"
+                        >Database:</span
+                      >
+                      <mat-chip
+                        class="bg-gray-100! text-gray-800 dark:bg-gray-400/10! dark:text-gray-400 ring-1 ring-inset ring-outline-variant"
+                      >
+                        @if (workspace.database === 'test_data') {
+                        <span
+                          matChipAvatar
+                          class="size-2! rounded bg-gray-400 dark:bg-gray-500"
+                        ></span>
+                        } @else {
+                        <span
+                          matChipAvatar
+                          class="size-2! rounded bg-primary"
+                        ></span>
+                        } {{ workspace.database }}
+                      </mat-chip>
+                    </div>
+                  </mat-list>
+
+                  <div class="mt-5 flex flex-wrap gap-4">
+                    @for (item of workspace.capacity; track item.label) {
+                    <div class="flex items-center gap-1.5">
+                      <mat-icon
+                        class="text-gray-400 dark:text-gray-500 text-base w-4 h-4"
+                        >{{ getIconForCapacity(item.label) }}</mat-icon
+                      >
+                      <span
+                        class="text-xs font-medium text-gray-500 dark:text-gray-400"
+                        >{{ item.value }}</span
+                      >
+                    </div>
+                    }
+                  </div>
+                </mat-card-content>
+              </mat-card>
+              }
+            </div>
+          </div>
+        </mat-tab>
+        }
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

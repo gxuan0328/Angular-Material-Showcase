@@ -1,0 +1,15 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update tables/summary-rows-table`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.table-overrides(
+    (
+      row-item-container-height: 85px,
+      footer-container-height: 45px,
+    )
+  );
+}

@@ -1,0 +1,17 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update badges/badge-5`
+-->
+
+<div class="flex justify-center gap-4 p-4">
+  <mat-chip-set>
+    @for (badge of badges; track badge.label) {
+    <mat-chip>
+      <span class="flex gap-2 text-gray-500">
+        {{ badge.label }}
+        <span [ngClass]="badge.classes">{{ badge.value }}</span>
+      </span>
+    </mat-chip>
+    }
+  </mat-chip-set>
+</div>

@@ -1,0 +1,49 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-5`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <div class="flex items-center space-x-2">
+    <h3 class="text-base font-medium text-gray-900 dark:text-white">
+      Integrations
+    </h3>
+    <span
+      class="inline-flex size-6 items-center justify-center rounded-full bg-gray-100 text-sm leading-6 text-gray-900 dark:bg-gray-800 dark:text-white"
+    >
+      {{ integrations.length }}
+    </span>
+  </div>
+
+  <mat-divider class="my-4! border-outline-variant!" />
+
+  <dl class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (item of integrations; track item.name) {
+    <mat-card
+      appearance="outlined"
+      class="relative flex flex-col justify-between p-4"
+    >
+      <span
+        class="flex size-12 shrink-0 items-center justify-center rounded-sm border border-outline-variant p-1"
+      >
+        <mat-icon [svgIcon]="item.icon" aria-hidden="true" />
+      </span>
+      <div class="mt-6 flex-1">
+        <dt class="text-base font-medium text-gray-900 dark:text-white">
+          {{ item.name }}
+        </dt>
+        <dd class="mt-1 text-base leading-6 text-gray-500 dark:text-gray-400">
+          {{ item.description }}
+        </dd>
+      </div>
+      <button
+        matButton="filled"
+        class="mt-8 w-full"
+        [disabled]="item.status === 'Connected'"
+      >
+        {{ item.status }}
+      </button>
+    </mat-card>
+    }
+  </dl>
+</div>

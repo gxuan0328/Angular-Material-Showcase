@@ -1,0 +1,156 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update tables/summary-rows-table`
+-->
+
+<div class="w-full md:max-w-7xl mx-auto p-4 md:p-6">
+  <div class="grid gap-4 grid-cols-1 md:grid-cols-2">
+    <div class="flex flex-col gap-2">
+      <h6 class="text-headline-small font-headline-small">Invoice</h6>
+      <p class="text-body-medium font-body-medium">
+        Invoice for the month of August 2025
+      </p>
+    </div>
+    <div class="flex md:justify-end">
+      <button matButton="filled">
+        <mat-icon>print</mat-icon>
+        Print
+      </button>
+    </div>
+  </div>
+</div>
+<div class="w-full md:max-w-7xl mx-auto mt-6 border-t border-t-outline-variant">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="[&_th:first-child]:md:pl-6! [&_td:first-child]:md:pl-6! [&_th:last-child]:md:pr-6! [&_td:last-child]:md:pr-6!"
+  >
+    <ng-container matColumnDef="project">
+      <th mat-header-cell *matHeaderCellDef>Project</th>
+      <td mat-cell *matCellDef="let element">
+        <div class="flex flex-col">
+          <p class="font-medium">{{ element.project }}</p>
+          <p class="text-gray-500 dark:text-gray-400">
+            {{ element.description }}
+          </p>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="hours">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="text-right! hidden md:table-cell"
+      >
+        Hours
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="text-gray-500 dark:text-gray-400 text-right! hidden md:table-cell"
+      >
+        {{ element.hours | number: '1.2' }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="rate">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="text-right! hidden md:table-cell"
+      >
+        Rate
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="text-gray-500 dark:text-gray-400 text-right! hidden md:table-cell"
+      >
+        {{ element.rate | currency }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="price">
+      <th mat-header-cell *matHeaderCellDef class="text-right!">Price</th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="text-gray-500 dark:text-gray-400 text-right!"
+      >
+        {{ element.price | currency }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="subTotal">
+      <th
+        mat-footer-cell
+        scope="row"
+        class="text-left! md:text-right! pl-4 md:pl-0 text-gray-500 dark:text-gray-400 font-normal"
+        [attr.colspan]="isLessThanMD() ? 1 : displayedColumns.length - 1"
+        *matFooterCellDef="let element"
+      >
+        Subtotal
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="subTotalValue">
+      <td
+        mat-footer-cell
+        *matFooterCellDef="let element"
+        class="text-right! text-gray-500 dark:text-gray-400"
+      >
+        {{ subTotal | currency }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="tax">
+      <th
+        mat-footer-cell
+        scope="row"
+        class="text-left! md:text-right! pl-4 md:pl-0 text-gray-500 dark:text-gray-400 font-normal"
+        [attr.colspan]="isLessThanMD() ? 1 : displayedColumns.length - 1"
+        *matFooterCellDef="let element"
+      >
+        Tax
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="taxValue">
+      <td
+        mat-footer-cell
+        *matFooterCellDef="let element"
+        class="text-right! text-gray-500 dark:text-gray-400"
+      >
+        {{ tax | currency }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="total">
+      <th
+        mat-footer-cell
+        scope="row"
+        class="text-left! md:text-right! pl-4 md:pl-0"
+        [attr.colspan]="isLessThanMD() ? 1 : displayedColumns.length - 1"
+        *matFooterCellDef="let element"
+      >
+        Total
+      </th>
+    </ng-container>
+
+    <ng-container matColumnDef="totalValue">
+      <td
+        mat-footer-cell
+        *matFooterCellDef="let element"
+        class="text-right! font-medium"
+      >
+        {{ total | currency }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr
+      mat-footer-row
+      *matFooterRowDef="subTotalColumns"
+      class="border-t border-t-outline"
+    ></tr>
+    <tr mat-footer-row *matFooterRowDef="taxColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="totalColumns"></tr>
+  </table>
+</div>

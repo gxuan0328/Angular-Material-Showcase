@@ -1,0 +1,207 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update form-layouts/form-layout-3`
+-->
+
+<div class="max-w-7xl mx-auto p-4">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+      <div>
+        <h2 class="font-semibold text-gray-900 dark:text-gray-50">
+          Personal information
+        </h2>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+        </p>
+      </div>
+      <div class="sm:max-w-3xl md:col-span-2">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-6">
+          <div class="col-span-full sm:col-span-3">
+            <mat-form-field class="w-full">
+              <mat-label>First name</mat-label>
+              <input
+                matInput
+                formControlName="firstName"
+                placeholder="First name"
+                required
+              />
+              @if ( form.get('firstName')?.invalid &&
+              (form.get('firstName')?.dirty || form.get('firstName')?.touched) )
+              {
+              <mat-error>First name is required</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-span-full sm:col-span-3">
+            <mat-form-field class="w-full">
+              <mat-label>Last name</mat-label>
+              <input
+                matInput
+                formControlName="lastName"
+                placeholder="Last name"
+                required
+              />
+              @if ( form.get('lastName')?.invalid &&
+              (form.get('lastName')?.dirty || form.get('lastName')?.touched) ) {
+              <mat-error>Last name is required</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-span-full">
+            <mat-form-field class="w-full">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                placeholder="Email"
+                required
+              />
+              @if ( form.get('email')?.invalid && (form.get('email')?.dirty ||
+              form.get('email')?.touched) ) {
+              <mat-error>Valid email is required</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-span-full sm:col-span-3">
+            <mat-form-field class="w-full">
+              <mat-label>Birth year</mat-label>
+              <input
+                matInput
+                formControlName="birthYear"
+                placeholder="1990"
+                required
+              />
+              @if ( form.get('birthYear')?.invalid &&
+              (form.get('birthYear')?.dirty || form.get('birthYear')?.touched) )
+              {
+              <mat-error>Birth year is required</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-span-full sm:col-span-3">
+            <mat-form-field class="w-full">
+              <mat-label>Role</mat-label>
+              <input
+                matInput
+                formControlName="role"
+                placeholder="Senior Manager"
+              />
+              <mat-hint> Roles can only be changed by system admin. </mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-divider class="my-12! border-outline-variant!" />
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+      <div>
+        <h2 class="font-semibold text-gray-900 dark:text-gray-50">
+          Workspace settings
+        </h2>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+        </p>
+      </div>
+      <div class="sm:max-w-3xl md:col-span-2">
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-6">
+          <div class="col-span-full sm:col-span-3">
+            <mat-form-field class="w-full">
+              <mat-label>Workspace name</mat-label>
+              <input
+                matInput
+                formControlName="workspaceName"
+                placeholder="Test workspace"
+                required
+              />
+              @if ( form.get('workspaceName')?.invalid &&
+              (form.get('workspaceName')?.dirty ||
+              form.get('workspaceName')?.touched) ) {
+              <mat-error>Workspace name is required</mat-error>
+              }
+            </mat-form-field>
+          </div>
+          <div class="col-span-full sm:col-span-3">
+            <mat-form-field class="w-full">
+              <mat-label>Visibility</mat-label>
+              <mat-select formControlName="visibility">
+                <mat-option value="public">Public</mat-option>
+                <mat-option value="private">Private</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-span-full">
+            <mat-form-field class="w-full">
+              <mat-label>Workspace description</mat-label>
+              <textarea
+                matInput
+                formControlName="workspaceDescription"
+                rows="4"
+              ></textarea>
+            </mat-form-field>
+            <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+              Note: description provided will not be displayed externally.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-divider class="my-12! border-outline-variant!" />
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-3">
+      <div>
+        <h2 class="font-semibold text-gray-900 dark:text-gray-50">
+          Notification settings
+        </h2>
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+          Lorem ipsum dolor sit amet, consetetur sadipscing elitr.
+        </p>
+      </div>
+      <div class="sm:max-w-3xl md:col-span-2">
+        <fieldset>
+          <legend class="text-sm font-medium text-gray-900 dark:text-gray-50">
+            Team
+          </legend>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Configure the types of team alerts you want to receive.
+          </p>
+          <div
+            class="mt-4 flex flex-col space-y-2 divide-y divide-outline-variant"
+          >
+            <mat-checkbox formControlName="teamRequests"
+              >Team join requests</mat-checkbox
+            >
+            <mat-checkbox formControlName="teamActivityDigest"
+              >Weekly team activity digest</mat-checkbox
+            >
+          </div>
+        </fieldset>
+        <fieldset class="mt-6">
+          <legend class="text-sm font-medium text-gray-900 dark:text-gray-50">
+            Usage
+          </legend>
+          <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">
+            Configure the types of usage alerts you want to receive.
+          </p>
+          <div
+            class="mt-4 flex flex-col space-y-2 divide-y divide-outline-variant"
+          >
+            <mat-checkbox formControlName="apiRequests"
+              >API requests</mat-checkbox
+            >
+            <mat-checkbox formControlName="workspaceExecution"
+              >Workspace loading times</mat-checkbox
+            >
+            <mat-checkbox formControlName="queryCaching"
+              >Query caching</mat-checkbox
+            >
+            <mat-checkbox formControlName="storage">Storage</mat-checkbox>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+    <mat-divider class="my-12! border-outline-variant!" />
+    <div class="flex items-center justify-end space-x-4">
+      <button type="button" matButton (click)="onCancel()">Go back</button>
+      <button type="submit" matButton="filled">Save settings</button>
+    </div>
+  </form>
+</div>

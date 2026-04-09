@@ -1,0 +1,23 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/narrow-with-small-avatars`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.list-overrides(
+    (
+      list-item-supporting-text-color: color-mix(
+          in srgb,
+          var(--mat-sys-on-surface),
+          transparent 50%
+        ),
+    )
+  );
+  @include mat.divider-overrides(
+    (
+      color: var(--mat-sys-outline-variant),
+    )
+  );
+}

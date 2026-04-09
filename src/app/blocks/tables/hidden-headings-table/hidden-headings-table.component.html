@@ -1,0 +1,148 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update tables/hidden-headings-table`
+-->
+
+<div class="w-full md:max-w-7xl mx-auto">
+  <div class="p-4 md:p-6">
+    <div class="flex flex-col gap-2">
+      <h6 class="text-headline-small font-headline-small">Recent activity</h6>
+      <p class="text-body-medium font-body-medium">
+        A list of all the recent activity in your account.
+      </p>
+    </div>
+  </div>
+</div>
+<div class="overflow-hidden border-t border-t-outline-variant mt-6">
+  <div class="w-full md:max-w-7xl mx-auto px-2">
+    <div class="max-w-2xl md:max-w-none mx-auto md:mx-0">
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        class="[&_td]:overflow-visible!"
+        multiTemplateDataRows
+      >
+        <ng-container matColumnDef="amount">
+          <th mat-header-cell *matHeaderCellDef>Amount</th>
+          <td mat-cell *matCellDef="let element" class="relative isolate">
+            <ng-container *ngTemplateOutlet="fakeCellBackground" />
+            <div class="flex flex-col">
+              <div class="flex items-center gap-2">
+                <mat-icon
+                  [class]="
+                    'icon-filled ' +
+                    (element.status === 'paid'
+                      ? 'text-emerald-500!'
+                      : element.status === 'overdue'
+                        ? 'text-red-500!'
+                        : 'text-amber-500!')
+                  "
+                >
+                  {{ element.status === 'paid' ? 'arrow_circle_up' :
+                  element.status === 'overdue' ? 'warning' : 'arrow_circle_down'
+                  }}
+                </mat-icon>
+                <span class="font-medium">
+                  {{ element.amount | currency }}
+                </span>
+                <mat-chip-set class="density-3">
+                  <mat-chip [attr.data-status]="element.status">
+                    <span class="capitalize"> {{ element.status }} </span>
+                  </mat-chip>
+                </mat-chip-set>
+              </div>
+              @if (element.tax) {
+              <span
+                class="text-body-small font-body-small text-gray-500 dark:text-gray-400 inline-block pl-8"
+              >
+                Tax: {{ element.tax | currency }}
+              </span>
+              }
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef class="hidden md:table-cell">
+            Title
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let element"
+            class="relative isolate hidden md:table-cell"
+          >
+            <ng-container *ngTemplateOutlet="fakeCellBackground" />
+            <div class="flex flex-col gap-1">
+              <span> {{ element.title }} </span>
+              <span
+                class="text-body-small font-body-small text-gray-500 dark:text-gray-400"
+              >
+                {{ element.subtitle }}
+              </span>
+            </div>
+          </td>
+        </ng-container>
+        <ng-container matColumnDef="invoiceNumber">
+          <th mat-header-cell *matHeaderCellDef>Invoice number</th>
+          <td mat-cell *matCellDef="let element" class="relative isolate">
+            <ng-container *ngTemplateOutlet="fakeCellBackground" />
+            <div class="flex justify-end">
+              <div class="flex flex-col gap-2">
+                <span>
+                  <button matButton class="density-3">View transaction</button>
+                </span>
+                <span class="text-body-small font-body-small">
+                  <span class="text-gray-500 dark:text-gray-400"
+                    >Invoice:
+                  </span>
+                  #{{ element.invoiceNumber }}
+                </span>
+              </div>
+            </div>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th
+            mat-cell
+            *matCellDef="let element"
+            scope="colgroup"
+            [attr.colspan]="displayedColumns.length"
+            class="text-left capitalize px-4 isolate relative"
+          >
+            {{ element.date }}
+            <ng-container *ngTemplateOutlet="fakeDateBackground" />
+          </th>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+          class="sr-only"
+        ></tr>
+        <tr
+          mat-row
+          *matRowDef="let row; columns: ['date']; when: isDateVisible"
+          class="h-[40px]!"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<ng-template #fakeDateBackground>
+  <div
+    class="absolute right-full bg-surface-container-high w-screen inset-y-0 -z-10 border-b border-b-outline-variant"
+  ></div>
+  <div
+    class="absolute left-0 bg-surface-container-high w-screen inset-y-0 -z-10 border-b border-b-outline-variant"
+  ></div>
+</ng-template>
+<ng-template #fakeCellBackground>
+  <div
+    class="absolute right-full w-screen bottom-0 h-px -z-10 border-b border-b-outline-variant"
+  ></div>
+  <div
+    class="absolute left-0 w-screen bottom-0 h-px -z-10 border-b border-b-outline-variant"
+  ></div>
+</ng-template>

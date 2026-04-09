@@ -1,0 +1,23 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update tables/filter-http-data-source-table`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.table-overrides(
+    (
+      row-item-container-height: 65px,
+    )
+  );
+  @include mat.chips-overrides(
+    (
+      label-text-font: var(--mat-sys-body-small-font),
+      label-text-line-height: var(--mat-sys-body-small-line-height),
+      label-text-size: var(--mat-sys-body-small-size),
+      label-text-weight: 500,
+      label-text-tracking: var(--mat-sys-body-small-tracking),
+    )
+  );
+}

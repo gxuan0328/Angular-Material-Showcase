@@ -1,0 +1,21 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update badges/badge-12`
+-->
+
+<div class="flex justify-center p-4">
+  <mat-chip-set>
+    @for (badge of badges; track badge.label) {
+    <mat-chip class="ring-1 ring-inset ring-slate-400 dark:ring-slate-500">
+      <mat-icon
+        matChipAvatar
+        [class.icon-filled]="badge.label.isIconFilled"
+        class="text-slate-400! dark:text-slate-500!"
+      >
+        {{ badge.label.icon }}
+      </mat-icon>
+      {{ badge.label.text }}
+    </mat-chip>
+    }
+  </mat-chip-set>
+</div>

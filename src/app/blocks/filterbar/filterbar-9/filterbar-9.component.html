@@ -1,0 +1,68 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-9`
+-->
+
+<div class="relative p-4">
+  <div
+    class="flex h-48 items-start justify-start gap-x-2 rounded-md border border-outline-variant p-6 shadow-sm sm:justify-end"
+  >
+    <!-- Trigger button with cdkOverlayOrigin -->
+    <button
+      matButton="outlined"
+      cdkOverlayOrigin
+      #trigger="cdkOverlayOrigin"
+      (click)="toggleOverlay()"
+    >
+      <mat-icon>tune</mat-icon>
+      Display
+    </button>
+
+    <!-- Connected overlay with mat-card -->
+    <ng-template
+      cdkConnectedOverlay
+      [cdkConnectedOverlayOrigin]="trigger"
+      [cdkConnectedOverlayOpen]="isOpen"
+      [cdkConnectedOverlayWidth]="280"
+      [cdkConnectedOverlayPositions]="STANDARD_DROPDOWN_BELOW_POSITIONS"
+      [cdkConnectedOverlayHasBackdrop]="true"
+      [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+      (backdropClick)="closeOverlay()"
+      (positionChange)="onPositionChange($event)"
+    >
+      <mat-card
+        [class.display-properties-animations-disabled]="_animationsDisabled"
+        [class]="animationClass()"
+        [class.display-properties-animating]="isAnimating()"
+        (animationend)="onAnimationDone($event.animationName)"
+        (animationcancel)="onAnimationDone($event.animationName)"
+        (animationstart)="onAnimationStart($event.animationName)"
+      >
+        <mat-card-header>
+          <mat-card-subtitle>Display properties</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-chip-listbox
+            multiple
+            aria-label="Display properties"
+            class="flex flex-wrap gap-2 mt-2"
+          >
+            @for (prop of propertyKeys; track prop) {
+            <mat-chip-option
+              [selected]="displayProperties[prop]"
+              (selectionChange)="toggleProperty(prop, $event)"
+              class="text-xs"
+            >
+              {{ prop }}
+            </mat-chip-option>
+            }
+          </mat-chip-listbox>
+        </mat-card-content>
+      </mat-card>
+    </ng-template>
+  </div>
+  <!-- gradient for demo purpose -->
+  <div
+    class="absolute inset-x-0 bottom-0 -mb-1 h-14 rounded-b-md bg-gradient-to-t from-surface via-surface to-transparent"
+  ></div>
+</div>

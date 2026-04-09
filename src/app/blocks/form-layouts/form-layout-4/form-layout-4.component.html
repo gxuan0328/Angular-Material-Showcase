@@ -1,0 +1,151 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update form-layouts/form-layout-4`
+-->
+
+<div class="sm:mx-auto sm:max-w-2xl p-4">
+  <h3 class="mt-6 text-xl font-semibold">Apply for early access</h3>
+  <p class="mt-1 text-gray-600 dark:text-gray-400">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+    eirmod tempor invidunt ut labore et dolore magna aliquyam erat.
+  </p>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mt-8">
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-6">
+      <!-- First name -->
+      <div class="col-span-full sm:col-span-3">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>First name</mat-label>
+          <input
+            matInput
+            formControlName="firstName"
+            placeholder="Emma"
+            required
+          />
+          @if ( form.controls.firstName.hasError('required') &&
+          (form.controls.firstName.touched || form.controls.firstName.dirty) ) {
+          <mat-error> First name is required </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Last name -->
+      <div class="col-span-full sm:col-span-3">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Last name</mat-label>
+          <input matInput formControlName="lastName" placeholder="Crown" />
+        </mat-form-field>
+      </div>
+
+      <!-- Email -->
+      <div class="col-span-full">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Work email</mat-label>
+          <input
+            matInput
+            formControlName="email"
+            type="email"
+            placeholder="emma@company.com"
+            required
+          />
+          @if ( form.controls.email.hasError('required') &&
+          (form.controls.email.touched || form.controls.email.dirty) ) {
+          <mat-error> Email is required </mat-error>
+          } @if ( form.controls.email.hasError('email') &&
+          !form.controls.email.hasError('required') &&
+          (form.controls.email.touched || form.controls.email.dirty) ) {
+          <mat-error> Please enter a valid email address </mat-error>
+          }
+        </mat-form-field>
+      </div>
+
+      <!-- Company -->
+      <div class="col-span-full sm:col-span-3">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Company</mat-label>
+          <input
+            matInput
+            formControlName="company"
+            placeholder="Company, Inc."
+          />
+        </mat-form-field>
+      </div>
+
+      <!-- Company size -->
+      <div class="col-span-full sm:col-span-3">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Company size (employees)</mat-label>
+          <mat-select formControlName="companySize">
+            @for (size of companySizes; track size.value) {
+            <mat-option [value]="size.value"> {{ size.viewValue }} </mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+      <mat-divider class="col-span-full my-4! border-outline-variant!" />
+
+      <!-- Workspace selection -->
+      <div class="col-span-full">
+        <label class="text-base font-semibold block mb-4"
+          >Select a workspace package</label
+        >
+
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          @for (workspace of workspaces; track workspace.id) {
+          <div>
+            <input
+              type="radio"
+              formControlName="workspace"
+              [value]="workspace.id"
+              class="hidden peer"
+              [id]="'fl4-workspace-' + workspace.id"
+            />
+            <label
+              [for]="'fl4-workspace-' + workspace.id"
+              class="block border border-outline-variant rounded-mat-card peer-checked:border-primary cursor-pointer peer-checked:ring-2 peer-checked:ring-primary-container transition"
+            >
+              <mat-card appearance="outlined" class="border-0! relative">
+                <mat-icon class="text-primary! absolute! top-4 right-4"
+                  >{{ form.controls.workspace.value === workspace.id ?
+                  'radio_button_checked' : 'radio_button_unchecked' }}</mat-icon
+                >
+                <mat-card-header>
+                  <mat-card-title>
+                    <span class="text-base font-medium"
+                      >{{ workspace.title }}</span
+                    >
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                  <div class="space-y-8 mt-2">
+                    <p class="text-gray-600 dark:text-gray-400">
+                      {{ workspace.description }}
+                    </p>
+                    <p class="font-medium">{{ workspace.price }}</p>
+                  </div>
+                </mat-card-content>
+              </mat-card>
+            </label>
+          </div>
+          }
+        </div>
+
+        <p class="mt-6 text-xs text-gray-600 dark:text-gray-400">
+          <sup>1</sup> $0.5/10K requests after limit reach.
+        </p>
+        <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">
+          <sup>2</sup> No credit card required for registration.
+        </p>
+      </div>
+    </div>
+
+    <mat-divider class="my-6! border-outline-variant!" />
+
+    <!-- Form actions -->
+    <div class="flex items-center justify-end space-x-4">
+      <button matButton>Go back</button>
+      <button type="submit" matButton="filled">Apply</button>
+    </div>
+  </form>
+</div>

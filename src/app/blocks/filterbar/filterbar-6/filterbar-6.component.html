@@ -1,0 +1,58 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update filterbar/filterbar-6`
+-->
+
+<div class="relative p-4">
+  <div
+    class="flex h-48 items-start justify-start rounded-corner-medium border border-outline-variant p-6 shadow-sm sm:justify-end"
+  >
+    <div class="inline-flex items-center">
+      <!-- Main button -->
+      <button
+        matButton="filled"
+        class="rounded-r-none! border-r! border-r-outline-variant!"
+        (click)="createDashboard()"
+      >
+        Create Dashboard
+      </button>
+
+      <!-- Dropdown trigger -->
+      <button
+        matButton="filled"
+        class="rounded-l-none! pr-1! pl-4! min-w-0!"
+        [matMenuTriggerFor]="workspaceMenu"
+      >
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </button>
+
+      <!-- Dropdown menu -->
+      <mat-menu #workspaceMenu="matMenu">
+        @for (group of workspaceGroups; track group.label) {
+        <div
+          class="px-4 py-2 text-xs text-gray-600 dark:text-gray-400 font-medium"
+        >
+          {{ group.label }}
+        </div>
+
+        @for (item of group.items; track item.value) {
+        <button
+          class="density-3 min-h-[36px]!"
+          mat-menu-item
+          [disabled]="item.disabled"
+          (click)="selectWorkspace(item)"
+        >
+          <mat-icon> layers </mat-icon>
+          <span>{{ item.label }}</span>
+        </button>
+        } @if (group !== workspaceGroups[workspaceGroups.length - 1]) {
+        <mat-divider class="border-outline-variant!" />
+        } }
+      </mat-menu>
+    </div>
+  </div>
+  <!-- gradient for demo purpose -->
+  <div
+    class="absolute inset-x-0 bottom-0 -mb-1 h-14 rounded-b-corner-medium bg-gradient-to-t from-surface via-surface to-transparent"
+  ></div>
+</div>

@@ -1,0 +1,79 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update grid-lists/grid-list-12`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <div class="flex items-center space-x-2">
+    <h3 class="text-base font-medium text-gray-900 dark:text-white">
+      Most recent reports
+    </h3>
+    <span
+      class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 text-xs font-medium text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+    >
+      {{ reports.length }}
+    </span>
+  </div>
+  <mat-divider class="my-4! border-outline-variant!" />
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    @for (item of reports; track item.name) {
+    <mat-card appearance="outlined" class="flex flex-col justify-between">
+      <div class="h-28" mat-card-image>
+        <div
+          class="relative h-full overflow-hidden rounded bg-gray-50 dark:bg-gray-800 rounded-t-mat-card"
+        >
+          <svg
+            class="absolute inset-0 h-full w-full stroke-gray-200 dark:stroke-gray-700"
+            fill="none"
+          >
+            <defs>
+              <pattern
+                id="pattern-1"
+                x="0"
+                y="0"
+                width="10"
+                height="10"
+                patternUnits="userSpaceOnUse"
+              >
+                <path d="M-3 13 15-5M-5 5l18-18M-1 21 17 3"></path>
+              </pattern>
+            </defs>
+            <rect
+              stroke="none"
+              fill="url(#pattern-1)"
+              width="100%"
+              height="100%"
+            ></rect>
+          </svg>
+        </div>
+      </div>
+      <mat-card-content>
+        <div class="mt-4">
+          <dt
+            class="truncate text-sm font-medium text-gray-900 dark:text-white"
+          >
+            {{ item.name }}
+          </dt>
+          <dd class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            {{ item.description }}
+          </dd>
+        </div>
+      </mat-card-content>
+      <mat-card-actions
+        class="flex justify-between border-t border-outline-variant! px-4! mt-4!"
+      >
+        <div class="flex -space-x-1 overflow-hidden">
+          @for (editor of item.editors; track editor.name) {
+          <img
+            class="inline-block h-5 w-5 rounded-full ring-2 ring-primary-container dark:ring-gray-900"
+            [src]="editor.imageUrl"
+            [alt]="editor.name"
+          />
+          }
+        </div>
+        <a [href]="item.href" matButton class="density-3"> View more → </a>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+</div>

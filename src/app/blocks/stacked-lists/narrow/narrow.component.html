@@ -1,0 +1,18 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/narrow`
+-->
+
+<div class="max-w-lg mx-auto">
+  <mat-list>
+    @for (contact of contacts; track contact.id; let last = $last) {
+    <mat-list-item>
+      <img [src]="contact.imageUrl" matListItemAvatar class="rounded-full" />
+      <span matListItemTitle> {{ contact.name }} </span>
+      <span matListItemLine> {{ contact.email }} </span>
+    </mat-list-item>
+    @if (!last) {
+    <mat-divider />
+    } }
+  </mat-list>
+</div>

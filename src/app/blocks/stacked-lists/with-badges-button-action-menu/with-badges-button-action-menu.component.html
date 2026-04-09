@@ -1,0 +1,55 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update stacked-lists/with-badges-button-action-menu`
+-->
+
+<div class="max-w-3xl mx-auto">
+  <div class="px-4 py-5 sm:p-6">
+    <div>
+      <mat-list>
+        @for (item of items; track item.id; let last = $last) {
+        <mat-list-item>
+          <span matListItemTitle
+            >{{ item.name }}
+            <mat-chip
+              class="density-3"
+              [class]="
+                  cx(
+                    item.status === 'completed'
+                      ? '!bg-emerald-100 text-emerald-800 ring-1 ring-inset ring-emerald-600/10 dark:!bg-emerald-400/20 dark:text-emerald-500 dark:ring-emerald-400/20'
+                      : '',
+                    item.status === 'in-progress'
+                      ? '!bg-amber-100 text-amber-800 ring-1 ring-inset ring-amber-600/10 dark:!bg-amber-400/20 dark:text-amber-500 dark:ring-amber-400/20'
+                      : '',
+                    item.status === 'archived'
+                      ? '!bg-gray-100 text-gray-700 ring-1 ring-inset ring-gray-600/10 dark:!bg-gray-500/30 dark:text-gray-300 dark:ring-gray-400/20'
+                      : ''
+                  )
+                "
+              >{{ item.status }}</mat-chip
+            >
+          </span>
+          <span matListItemLine class="mt-1.5!">
+            <span>Due on {{ item.dueDate | date: 'MMM d, yyyy' }}</span>
+            <span class="mx-1">|</span>
+            <span>Created by {{ item.createdBy }}</span>
+          </span>
+          <span matListItemMeta class="self-center! flex! items-center gap-x-2">
+            <button matButton="outlined">View Project</button>
+            <button mat-icon-button [matMenuTriggerFor]="actionMenu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #actionMenu="matMenu">
+              <button mat-menu-item>Edit</button>
+              <button mat-menu-item>Move</button>
+              <button mat-menu-item>Delete</button>
+            </mat-menu>
+          </span>
+        </mat-list-item>
+        @if (!last) {
+        <mat-divider />
+        } }
+      </mat-list>
+    </div>
+  </div>
+</div>

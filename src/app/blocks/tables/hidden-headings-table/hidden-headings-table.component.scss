@@ -1,0 +1,78 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update tables/hidden-headings-table`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.table-overrides(
+    (
+      row-item-container-height: 88px,
+      row-item-outline-width: 0,
+    )
+  );
+  @include mat.chips-overrides(
+    (
+      label-text-font: var(--mat-sys-body-small-font),
+      label-text-line-height: var(--mat-sys-body-small-line-height),
+      label-text-size: var(--mat-sys-body-small-size),
+      label-text-weight: 500,
+      label-text-tracking: var(--mat-sys-body-small-tracking),
+    )
+  );
+  [data-status='paid'] {
+    @include mat.chips-overrides(
+      (
+        elevated-container-color: var(--color-emerald-100),
+        outline-color: var(--color-emerald-400),
+        label-text-color: var(--color-emerald-800),
+      )
+    );
+    .dark-theme & {
+      @include mat.chips-overrides(
+        (
+          elevated-container-color: var(--color-emerald-800),
+          outline-color: var(--color-emerald-600),
+          label-text-color: var(--color-emerald-100),
+        )
+      );
+    }
+  }
+  [data-status='overdue'] {
+    @include mat.chips-overrides(
+      (
+        elevated-container-color: var(--color-red-100),
+        outline-color: var(--color-red-300),
+        label-text-color: var(--color-red-800),
+      )
+    );
+    .dark-theme & {
+      @include mat.chips-overrides(
+        (
+          elevated-container-color: var(--color-red-900),
+          outline-color: var(--color-red-700),
+          label-text-color: var(--color-red-100),
+        )
+      );
+    }
+  }
+  [data-status='withdrawn'] {
+    @include mat.chips-overrides(
+      (
+        elevated-container-color: var(--color-amber-100),
+        outline-color: var(--color-amber-400),
+        label-text-color: var(--color-amber-800),
+      )
+    );
+    .dark-theme & {
+      @include mat.chips-overrides(
+        (
+          elevated-container-color: var(--color-amber-800),
+          outline-color: var(--color-amber-600),
+          label-text-color: var(--color-amber-100),
+        )
+      );
+    }
+  }
+}

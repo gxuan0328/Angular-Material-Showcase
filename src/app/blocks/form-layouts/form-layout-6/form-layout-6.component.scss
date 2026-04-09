@@ -1,0 +1,20 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update form-layouts/form-layout-6`
+*/
+
+@use '@angular/material' as mat;
+
+.custom-plan-list {
+  @include mat.list-overrides(
+    (
+      list-item-leading-icon-size: 20px,
+      list-item-label-text-font: var(--mat-sys-body-medium-font),
+      list-item-label-text-line-height: var(--mat-sys-body-medium-line-height),
+      list-item-label-text-tracking: var(--mat-sys-body-medium-tracking),
+      list-item-label-text-size: var(--mat-sys-body-medium-size),
+      list-item-label-text-weight: var(--mat-sys-body-medium-weight),
+      list-item-one-line-container-height: 28px,
+    )
+  );
+}
