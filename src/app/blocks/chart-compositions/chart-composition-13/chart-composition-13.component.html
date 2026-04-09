@@ -1,0 +1,152 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-13`
+-->
+
+<div class="p-6">
+  <!-- Header -->
+  <h1 class="text-xl font-semibold">Reporting</h1>
+  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
+    Get insights with our advanced AI-powered analytics.
+  </p>
+
+  <!-- Tab-based Stats and Chart Card -->
+  <mat-card appearance="outlined" class="mt-6 p-0 overflow-hidden">
+    <mat-tab-group
+      [selectedIndex]="selectedTab"
+      (selectedIndexChange)="selectedTab = $event"
+      class="[&_.mdc-tab]:justify-start! [&_.mat-mdc-tab]:border-r! [&_.mat-mdc-tab]:border-surface-variant! [&_.mat-mdc-tab]:last:border-r-0! [&_.mat-mdc-tab-header-pagination]:border-b! [&_.mat-mdc-tab-header-pagination]:border-surface-variant!"
+    >
+      <!-- Custom Tab Headers with Stats -->
+      <div
+        class="grid grid-cols-1 gap-px bg-outline sm:grid-cols-2 lg:grid-cols-4"
+      >
+        @for (item of stats; track item.name; let i = $index) {
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div
+              class="group flex !w-full !items-center justify-start gap-4 bg-surface py-3 text-left sm:py-6"
+            >
+              <span
+                class="h-0 w-[3px] rounded-full bg-primary transition-all"
+                [class.h-14]="selectedTab === i"
+                aria-hidden="true"
+              >
+              </span>
+
+              <div>
+                <dd
+                  class="text-2xl font-semibold tracking-tight transition-all"
+                  [class]="
+                      selectedTab === i
+                        ? 'text-on-surface'
+                        : 'text-gray-600 dark:text-gray-400 group-hover:text-on-surface'
+                    "
+                >
+                  {{ item.value }}
+                </dd>
+                <dt class="mt-1 flex items-center gap-2">
+                  <span
+                    class="text-sm leading-6 font-normal transition-all"
+                    [class]="
+                        selectedTab === i
+                          ? 'text-gray-600 dark:text-gray-400'
+                          : 'text-gray-600 dark:text-gray-400/60 group-hover:text-gray-600 dark:text-gray-400'
+                      "
+                  >
+                    {{ item.name }}
+                  </span>
+                </dt>
+              </div>
+            </div>
+          </ng-template>
+
+          <!-- Tab Content -->
+          <div class="p-6">
+            <!-- Desktop Chart -->
+            <div class="hidden sm:block">
+              <div class="h-80 relative" #chartImage>
+                <ng-container
+                  *ngTemplateOutlet="
+                      tooltipTemplate;
+                      context: { chartImage }
+                    "
+                ></ng-container>
+                <canvas
+                  baseChart
+                  [data]="item.chartData"
+                  [options]="chartOptions"
+                  [type]="chartType"
+                  [plugins]="chartplugins"
+                >
+                </canvas>
+              </div>
+            </div>
+
+            <!-- Mobile Chart -->
+            <div class="sm:hidden">
+              <div class="h-80 relative" #chartMobileImage>
+                <ng-container
+                  *ngTemplateOutlet="
+                      tooltipTemplate;
+                      context: { chartImage: chartMobileImage }
+                    "
+                ></ng-container>
+                <canvas
+                  baseChart
+                  [data]="item.chartData"
+                  [options]="mobileChartOptions"
+                  [type]="chartType"
+                  [plugins]="chartplugins"
+                >
+                </canvas>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+        }
+      </div>
+    </mat-tab-group>
+  </mat-card>
+</div>
+
+<ng-template #tooltipTemplate let-chartImage="chartImage">
+  <div
+    #tooltipElement
+    [class]="
+      'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-52 absolute left-0 top-1 transition-opacity z-3 ' +
+      (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+    "
+    [style.transform]="
+      getTooltipTransform(
+        tooltip?.caretX ?? 0,
+        tooltipElement.offsetWidth,
+        chartImage.offsetWidth
+      )
+    "
+  >
+    <h3 class="text-body-large font-medium my-2 px-3">
+      {{ tooltip?.title?.[0] }}
+    </h3>
+    <mat-divider class="border-outline-variant!" />
+    <div class="p-3">
+      @for (item of tooltip?.dataPoints; track item; let j = $index) {
+      <div class="flex items-center w-full justify-between gap-x-2">
+        <div class="flex items-center space-x-2">
+          <span
+            class="h-1 w-3 shrink-0 rounded-sm"
+            [style.background]="
+                tooltip?.labelColors?.[j]?.borderColor?.toString()
+              "
+            aria-hidden="true"
+          ></span>
+          <span class="text-body-medium">{{ item?.dataset?.label }}</span>
+        </div>
+        <span class="text-body-medium font-medium text-right"
+          >{{ valueFormatter(item?.raw) }}</span
+        >
+      </div>
+      }
+    </div>
+  </div>
+</ng-template>

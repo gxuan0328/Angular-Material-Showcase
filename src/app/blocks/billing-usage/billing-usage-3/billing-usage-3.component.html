@@ -1,0 +1,86 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update billing-usage/billing-usage-3`
+-->
+
+<div class="max-w-7xl mx-auto p-6">
+  <h2 class="text-xl font-semibold">Billing</h2>
+  <p class="mt-1 text-base text-gray-600 dark:text-gray-400">
+    Update your payment information or switch plans according to your needs
+  </p>
+
+  <mat-tab-group
+    class="mt-6"
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
+    selectedIndex="2"
+    dynamicHeight
+  >
+    <mat-tab label="Account detail" />
+    <mat-tab label="Workspaces" />
+    <mat-tab label="Billing">
+      <div class="mt-6">
+        <!-- Plan Section -->
+        <h3 class="font-semibold text-xl">Plan</h3>
+        <div class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <!-- Current Plan -->
+          <div>
+            <p class="flex items-center gap-2">
+              <span class="text-base font-medium leading-8">
+                {{ plan.name }}
+              </span>
+              <span
+                class="inline-flex items-center rounded px-2 py-0.5 text-sm font-medium bg-surface-container-high"
+              >
+                {{ plan.type }}
+              </span>
+            </p>
+            <p class="mt-2 text-base font-semibold">
+              {{ plan.price }} <span class="font-normal">(incl. VAT)</span>
+            </p>
+            <button matButton="outlined" class="mt-6">Manage plans</button>
+          </div>
+
+          <!-- Billing Period -->
+          <div>
+            <p class="text-base font-medium leading-8">Billing period</p>
+            <p class="mt-2 text-base font-semibold">
+              {{ plan.billingPeriod.type }}
+              <span class="font-normal"
+                >(renews {{ plan.billingPeriod.renewalDate }})</span
+              >
+            </p>
+            <button matButton="outlined" class="mt-6">
+              Change billing period
+            </button>
+          </div>
+        </div>
+
+        <mat-divider class="my-6!" />
+
+        <!-- Seats Section -->
+        <h3 class="font-semibold text-xl">Seats</h3>
+        <p class="mt-6 text-base font-medium">Remaining seats</p>
+        <mat-progress-bar
+          mode="determinate"
+          [value]="seats.percentage"
+          class="mt-2 rounded-full"
+        />
+
+        <div class="mt-3 flex items-center justify-between">
+          <p class="flex items-center gap-2">
+            <span
+              class="rounded px-2 py-1 text-sm font-medium bg-surface-container-high leading-none"
+            >
+              {{ seats.used }}
+            </span>
+            <span class="text-base text-gray-600 dark:text-gray-400">
+              of {{ seats.total }} seats used
+            </span>
+          </p>
+          <button matButton="outlined">Manage seats</button>
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

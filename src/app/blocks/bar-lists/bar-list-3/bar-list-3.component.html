@@ -1,0 +1,37 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-lists/bar-list-3`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-subtitle>{{ metricLabel }}</mat-card-subtitle>
+      <mat-card-title class="text-display-small! font-display-small!"
+        >{{ metricValue }}</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <div class="my-6 flex items-center justify-between px-1">
+        <p class="text-sm font-medium">Top 5 pages</p>
+        <p
+          class="text-xs font-medium uppercase text-gray-600 dark:text-gray-400"
+        >
+          Visitors
+        </p>
+      </div>
+
+      <ngm-dev-block-ui-bar-list
+        class="mt-4"
+        [data]="pages().slice(0, 5)"
+        [valueFormatter]="valueFormatter"
+      />
+
+      <div
+        class="absolute inset-x-0 bottom-0 flex justify-center rounded-b-lg bg-gradient-to-t from-surface to-transparent py-7 rounded-b-mat-card"
+      >
+        <button matButton="tonal" (click)="openDialog()">Show more</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

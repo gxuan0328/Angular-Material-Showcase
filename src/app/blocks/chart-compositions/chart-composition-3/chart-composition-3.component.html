@@ -1,0 +1,341 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-3`
+-->
+
+<div class="p-6">
+  <!-- Header -->
+  <h1 class="text-2xl font-bold">Capital</h1>
+  <p class="mt-2 text-sm leading-6 text-gray-600 dark:text-gray-400">
+    Analyze and manage your venture debt and balance.
+  </p>
+
+  <!-- Tabs -->
+  <mat-tab-group class="mt-6" mat-stretch-tabs="false" mat-align-tabs="start">
+    <mat-tab label="Venture Debt">
+      <!-- Main Content Grid -->
+      <div class="mt-10 grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3">
+        <!-- Outstanding Balance Card -->
+        <mat-card appearance="outlined" class="md:col-span-2">
+          <mat-card-header>
+            <mat-card-subtitle>Outstanding balance</mat-card-subtitle>
+            <mat-card-title class="text-display-small! font-display-small!"
+              >$5,950,000</mat-card-title
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <!-- Category Bar -->
+            <div class="mt-6">
+              <ngm-dev-block-ui-category-bar
+                [values]="balanceValues"
+                [colors]="balanceColors"
+                [showLabels]="false"
+              />
+            </div>
+
+            <!-- Legend -->
+            <ul
+              role="list"
+              class="my-4 flex flex-wrap items-center gap-x-4 gap-y-2"
+            >
+              <li class="flex items-center space-x-2">
+                <span
+                  class="size-3 shrink-0 rounded-sm bg-blue-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span class="text-sm text-gray-600 dark:text-gray-400">
+                  <span class="font-medium"> $4.2M </span>
+                  outstanding
+                </span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span
+                  class="size-3 shrink-0 rounded-sm bg-cyan-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span class="text-sm text-gray-600 dark:text-gray-400">
+                  <span class="font-medium"> $1.4M </span>
+                  available today
+                </span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span
+                  class="size-3 shrink-0 rounded-sm bg-fuchsia-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span class="text-sm text-gray-600 dark:text-gray-400">
+                  <span class="font-medium"> $0.35M </span>
+                  unavailable
+                </span>
+              </li>
+            </ul>
+
+            <mat-divider class="my-6!" />
+
+            <!-- Payment Info -->
+            <p class="text-sm font-medium">Interest only ends Feb 8, 2024</p>
+            <div class="mt-4 rounded-lg bg-gray-100 dark:bg-gray-900 p-4">
+              <p class="flex flex-wrap justify-between gap-4 text-sm leading-6">
+                Next payment of $3,800 due Feb 3, 2024.
+                <a matButton class="density-3">
+                  Learn more
+                  <mat-icon>open_in_new</mat-icon>
+                </a>
+              </p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Questions Card -->
+        <div class="md:col-span-1 md:p-6">
+          <h4 class="font-medium">Questions?</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Contact your financial advisor
+          </p>
+          <div class="mt-6 flex items-center space-x-4">
+            <span
+              class="flex size-12 shrink-0 items-center justify-center rounded-full bg-surface-variant text-sm font-medium text-primary"
+              aria-hidden="true"
+            >
+              EL
+            </span>
+            <div>
+              <p class="text-sm font-medium">Emily Liftburg</p>
+              <a href="mailto:#" class="mt-0.5 block text-sm text-primary">
+                emily.liftburg&#64;company.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Transactions Section -->
+      <p class="mt-14 font-medium">Transactions</p>
+
+      <div class="mt-8 overflow-x-auto">
+        <table mat-table [dataSource]="transactions" class="w-full">
+          <!-- Date Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef class="font-medium">Date</th>
+            <td mat-cell *matCellDef="let item" class="font-medium">
+              {{ item.date }}
+            </td>
+          </ng-container>
+
+          <!-- Description Column -->
+          <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef class="font-medium">
+              Description
+            </th>
+            <td mat-cell *matCellDef="let item">{{ item.description }}</td>
+          </ng-container>
+
+          <!-- Account Column -->
+          <ng-container matColumnDef="account">
+            <th mat-header-cell *matHeaderCellDef class="font-medium">
+              Account
+            </th>
+            <td mat-cell *matCellDef="let item">{{ item.account }}</td>
+          </ng-container>
+
+          <!-- Amount Column -->
+          <ng-container matColumnDef="amount">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              class="text-right font-medium"
+            >
+              Amount
+            </th>
+            <td mat-cell *matCellDef="let item" class="text-right">
+              <span
+                [class]="
+                  item.changeType === 'positive'
+                    ? 'text-emerald-700 dark:text-emerald-500 font-medium'
+                    : 'text-on-surface font-medium'
+                "
+              >
+                {{ item.amount }}
+              </span>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </mat-tab>
+
+    <mat-tab label="Capital Guide">
+      <!-- Main Content Grid -->
+      <div class="mt-10 grid max-w-7xl grid-cols-1 gap-8 md:grid-cols-3">
+        <!-- Capital Allocation Card -->
+        <mat-card appearance="outlined" class="md:col-span-2">
+          <mat-card-header>
+            <mat-card-subtitle>Capital allocation</mat-card-subtitle>
+            <mat-card-title class="text-display-small! font-display-small!"
+              >$12,500,000</mat-card-title
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <!-- Category Bar -->
+            <div class="mt-6">
+              <ngm-dev-block-ui-category-bar
+                [values]="capitalAllocationValues"
+                [colors]="capitalAllocationColors"
+                [showLabels]="false"
+              />
+            </div>
+
+            <!-- Legend -->
+            <ul
+              role="list"
+              class="my-4 flex flex-wrap items-center gap-x-4 gap-y-2"
+            >
+              <li class="flex items-center space-x-2">
+                <span
+                  class="size-3 shrink-0 rounded-sm bg-emerald-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span class="text-sm text-gray-600 dark:text-gray-400">
+                  <span class="font-medium"> $7.5M </span>
+                  operating capital
+                </span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span
+                  class="size-3 shrink-0 rounded-sm bg-blue-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span class="text-sm text-gray-600 dark:text-gray-400">
+                  <span class="font-medium"> $3.2M </span>
+                  growth investments
+                </span>
+              </li>
+              <li class="flex items-center space-x-2">
+                <span
+                  class="size-3 shrink-0 rounded-sm bg-amber-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span class="text-sm text-gray-600 dark:text-gray-400">
+                  <span class="font-medium"> $1.8M </span>
+                  emergency reserve
+                </span>
+              </li>
+            </ul>
+
+            <mat-divider class="my-6!" />
+
+            <!-- Capital Strategy Info -->
+            <p class="text-sm font-medium">
+              Next funding round planned Q3 2024
+            </p>
+            <div class="mt-4 rounded-lg bg-gray-100 dark:bg-gray-900 p-4">
+              <p class="flex flex-wrap justify-between gap-4 text-sm leading-6">
+                Series B target: $25M to accelerate market expansion.
+                <a matButton class="density-3">
+                  View strategy
+                  <mat-icon>open_in_new</mat-icon>
+                </a>
+              </p>
+            </div>
+          </mat-card-content>
+        </mat-card>
+
+        <!-- Capital Advisor Card -->
+        <div class="md:col-span-1 md:p-6">
+          <h4 class="font-medium">Capital Strategy?</h4>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Contact your capital advisor
+          </p>
+          <div class="mt-6 flex items-center space-x-4">
+            <span
+              class="flex size-12 shrink-0 items-center justify-center rounded-full bg-surface-variant text-sm font-medium text-primary"
+              aria-hidden="true"
+            >
+              MS
+            </span>
+            <div>
+              <p class="text-sm font-medium">Michael Sterling</p>
+              <a href="mailto:#" class="mt-0.5 block text-sm text-primary">
+                michael.sterling&#64;company.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Capital Milestones Section -->
+      <p class="mt-14 font-medium">Capital Milestones</p>
+
+      <div class="mt-8 overflow-x-auto">
+        <table mat-table [dataSource]="capitalMilestones" class="w-full">
+          <!-- Milestone Column -->
+          <ng-container matColumnDef="milestone">
+            <th mat-header-cell *matHeaderCellDef class="font-medium">
+              Milestone
+            </th>
+            <td mat-cell *matCellDef="let item" class="font-medium">
+              {{ item.milestone }}
+            </td>
+          </ng-container>
+
+          <!-- Target Date Column -->
+          <ng-container matColumnDef="targetDate">
+            <th mat-header-cell *matHeaderCellDef class="font-medium">
+              Target Date
+            </th>
+            <td mat-cell *matCellDef="let item">{{ item.targetDate }}</td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef class="font-medium">
+              Status
+            </th>
+            <td mat-cell *matCellDef="let item">
+              <span
+                class="inline-flex items-center rounded-full px-2 py-1 text-xs font-medium"
+                [class]="
+                  item.status === 'completed'
+                    ? 'bg-emerald-100 text-emerald-800 dark:bg-emerald-900 dark:text-emerald-200'
+                    : item.status === 'in-progress'
+                      ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200'
+                      : 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200'
+                "
+              >
+                {{ item.statusText }}
+              </span>
+            </td>
+          </ng-container>
+
+          <!-- Capital Required Column -->
+          <ng-container matColumnDef="capitalRequired">
+            <th
+              mat-header-cell
+              *matHeaderCellDef
+              class="text-right font-medium"
+            >
+              Capital Required
+            </th>
+            <td mat-cell *matCellDef="let item" class="text-right font-medium">
+              {{ item.capitalRequired }}
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="capitalMilestoneColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: capitalMilestoneColumns"
+          ></tr>
+        </table>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

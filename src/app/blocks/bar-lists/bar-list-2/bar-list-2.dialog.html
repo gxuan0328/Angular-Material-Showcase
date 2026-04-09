@@ -1,0 +1,21 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-lists/bar-list-2`
+-->
+
+<h3 mat-dialog-title>Pages</h3>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" class="w-full">
+    <input matInput placeholder="Search page..." [(ngModel)]="search" />
+  </mat-form-field>
+  <div class="h-96 overflow-y-auto">
+    @if (filteredItems().length) {
+    <ngm-dev-block-ui-bar-list
+      [data]="filteredItems()"
+      [valueFormatter]="valueFormatter()"
+    />
+    } @else {
+    <p class="flex h-full items-center justify-center text-sm">No results.</p>
+    }
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,109 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-tooltips/chart-tooltip-17`
+-->
+
+<div class="mx-auto max-w-7xl">
+  <div class="flex justify-center mb-12">
+    <div
+      class="bg-surface rounded-md border border-outline-variant shadow-sm min-w-56 text-body-medium"
+    >
+      <div
+        class="flex items-center justify-between border-b border-outline-variant px-3 py-2"
+      >
+        <span class="text-gray-600 dark:text-gray-400">May 24</span>
+        <div class="flex items-center gap-1">
+          <span class="font-medium">75.2%</span>
+          <ngm-dev-block-ui-progress-circle
+            [radius]="9"
+            [strokeWidth]="3"
+            [value]="75.2"
+            [max]="100"
+            [variant]="'default'"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-2.5 px-3 py-2">
+        <span
+          class="size-2.5 rounded-xs bg-violet-500"
+          aria-hidden="true"
+        ></span>
+        <div class="flex w-full items-center justify-between">
+          <span class="font-medium">$67,830</span>
+          <span class="text-gray-600 dark:text-gray-400">Revenue</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center mb-12 gap-x-2">
+    <div class="border-t border-outline-variant grow"></div>
+    <button matButton="tonal" (click)="toggleDemo()">
+      {{ showDemo() ? 'Hide Demo' : 'Show Demo' }}
+    </button>
+    <div class="border-t border-outline-variant grow"></div>
+  </div>
+
+  @if (showDemo()) {
+  <div class="h-78 relative" #chartImage>
+    <div
+      #tooltipElement
+      [class]="
+          'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-56 absolute left-0 top-1 transition-all z-3 text-body-medium ' +
+          (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+        "
+      [style.transform]="
+          getTooltipTransform(
+            tooltip?.caretX ?? 0,
+            tooltipElement.offsetWidth,
+            chartImage.offsetWidth
+          )
+        "
+    >
+      <div
+        class="flex items-center justify-between border-b border-outline-variant px-3 py-2"
+      >
+        <span class="text-gray-600 dark:text-gray-400"
+          >{{ tooltip?.title?.[0] }}</span
+        >
+        <div class="flex items-center gap-1">
+          <span class="font-medium"
+            >{{ (Number(tooltip?.dataPoints?.[0]?.raw) / 90000) * 100 | number:
+            '1.0-1' }}%</span
+          >
+          <ngm-dev-block-ui-progress-circle
+            [radius]="9"
+            [strokeWidth]="3"
+            [value]="(Number(tooltip?.dataPoints?.[0]?.raw) / 90000) * 100"
+            [max]="100"
+            [variant]="'default'"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-2.5 px-3 py-2">
+        <span
+          class="size-2.5 rounded-xs"
+          [style.background]="
+              tooltip?.labelColors?.[0]?.borderColor?.toString()
+            "
+        ></span>
+        <div class="flex w-full items-center justify-between">
+          <span class="font-medium"
+            >{{ getFormattedValue(tooltip?.dataPoints?.[0]?.raw) }}</span
+          >
+          <span class="text-gray-600 dark:text-gray-400"
+            >{{ tooltip?.dataPoints?.[0]?.dataset?.label }}</span
+          >
+        </div>
+      </div>
+    </div>
+    <canvas
+      class="z-2 relative"
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType"
+    ></canvas>
+  </div>
+  }
+</div>

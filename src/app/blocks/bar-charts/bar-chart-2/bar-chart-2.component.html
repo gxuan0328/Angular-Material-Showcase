@@ -1,0 +1,88 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-charts/bar-chart-2`
+-->
+
+<div class="mx-auto max-w-2xl">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Sales breakdown by regions</mat-card-title>
+      <mat-card-subtitle>Track top regions over the year</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Statistics Cards Section -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6 mb-6">
+        @for (item of summary; track item.name) {
+        <mat-card appearance="outlined">
+          <mat-card-content>
+            <div class="flex items-center space-x-2 mb-2">
+              <span
+                class="w-3 h-3 rounded-full"
+                [style.background-color]="item.color"
+              >
+              </span>
+              <span class="text-body-medium text-gray-600 dark:text-gray-400"
+                >{{ item.name }}</span
+              >
+            </div>
+            <div class="text-headline-medium font-semibold">
+              {{ getFormattedValue(item.value) }}
+            </div>
+          </mat-card-content>
+        </mat-card>
+        }
+      </div>
+
+      <div class="mt-6 h-56 relative" #chartImage>
+        <div
+          #tooltipElement
+          [class]="
+            'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 ' +
+            (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+          "
+          [style.transform]="
+            getTooltipTransform(
+              tooltip?.caretX ?? 0,
+              tooltipElement.offsetWidth,
+              chartImage.offsetWidth
+            )
+          "
+        >
+          <h3 class="text-body-large font-medium my-2 px-3">
+            {{ tooltip?.title?.[0] }}
+          </h3>
+          <mat-divider class="border-outline-variant!" />
+          <div class="p-3">
+            @for (item of tooltip?.dataPoints; track item; let i = $index) {
+            <div class="flex items-center w-full justify-between gap-x-2">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="h-1 w-3 shrink-0 rounded-sm"
+                  [style.background]="
+                      tooltip?.labelColors?.[i]?.borderColor?.toString()
+                    "
+                  aria-hidden="true"
+                ></span>
+                <span class="text-body-medium font-body-small"
+                  >{{ item?.dataset?.label }}</span
+                >
+              </div>
+              <span class="text-body-medium font-medium text-right"
+                >{{ getFormattedValue(item?.raw) }}</span
+              >
+            </div>
+            }
+          </div>
+        </div>
+
+        <canvas
+          class="z-2 relative"
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [type]="chartType"
+        ></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

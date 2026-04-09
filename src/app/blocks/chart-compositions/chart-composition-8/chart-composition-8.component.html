@@ -1,0 +1,185 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-8`
+-->
+
+<div class="p-6">
+  <!-- Header Section -->
+  <div
+    class="flex flex-col gap-x-6 gap-y-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between"
+  >
+    <div>
+      <h3 class="text-base font-semibold">Enterprise</h3>
+      <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+        User ID:
+        <span class="font-medium"> admin_dfQ7s </span>
+      </p>
+    </div>
+    <div class="mt-4 flex items-center gap-4 gap-y-2 sm:mt-0 sm:gap-x-8">
+      @for (item of summary; track item.name; let last = $last) {
+      <div class="flex items-center">
+        <div>
+          <p class="whitespace-nowrap text-sm text-gray-600 dark:text-gray-400">
+            {{ item.name }}
+          </p>
+          @if (item.name === 'Last invoice') {
+          <a
+            class="mt-1 inline-flex items-center gap-1 whitespace-nowrap text-sm font-semibold text-primary hover:underline hover:underline-offset-4"
+            href="#"
+          >
+            {{ item.value }}
+          </a>
+          } @else {
+          <p class="mt-1 text-sm font-semibold">{{ item.value }}</p>
+          }
+        </div>
+        @if (!last) {
+        <span
+          class="ml-4 h-10 w-px bg-outline-variant"
+          aria-hidden="true"
+        ></span>
+        }
+      </div>
+      }
+    </div>
+  </div>
+
+  <mat-divider class="my-5!" />
+
+  <!-- Status Section -->
+  <div class="flex items-center gap-3">
+    <mat-chip
+      class="density-3 rounded-full bg-emerald-100! text-emerald-800! dark:bg-emerald-900! dark:text-emerald-200!"
+    >
+      Active
+    </mat-chip>
+    <span class="h-6 w-px bg-outline-variant" aria-hidden="true"></span>
+    <span class="text-sm text-gray-600 dark:text-gray-400">
+      Oct 24 period
+    </span>
+    <span
+      class="hidden h-6 w-px bg-outline-variant sm:block"
+      aria-hidden="true"
+    ></span>
+    <span class="hidden text-sm text-gray-600 dark:text-gray-400 sm:block">
+      Started Oct 1, 2024 (billed on the 28th)
+    </span>
+  </div>
+
+  <!-- Desktop Chart -->
+  <div class="mt-10 hidden sm:block">
+    <div class="h-80 relative" #chartImage>
+      <!-- Custom Tooltip -->
+      <div
+        #tooltipElement
+        [class]="
+          'rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-48 absolute left-0 top-1 transition-all z-3 px-3 bg-white/50 dark:bg-gray-950/50 backdrop-blur-lg ' +
+          (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+        "
+        [style.transform]="
+          getTooltipTransform(
+            tooltip?.caretX ?? 0,
+            tooltipElement.offsetWidth,
+            chartImage.offsetWidth
+          )
+        "
+      >
+        <div class="flex items-center justify-between py-2 text-body-medium">
+          <span class="font-medium text-gray-900 dark:text-gray-50">Usage</span>
+          <span class="text-gray-500 dark:text-gray-500"
+            >{{ tooltip?.title?.[0] }}</span
+          >
+        </div>
+        <mat-divider class="border-outline-variant! mb-2!" />
+        <div class="pb-2 space-y-2">
+          @for ( point of tooltip?.dataPoints; track point.datasetIndex; let i =
+          $index ) {
+          <div class="flex items-center gap-x-2 text-body-small">
+            <span
+              class="size-2.5 rounded-xs"
+              [style.background-color]="
+                  tooltip?.labelColors?.[i]?.borderColor?.toString()
+                "
+            ></span>
+            <div class="flex w-full items-center justify-between">
+              <span class="text-gray-700 dark:text-gray-300"
+                >{{ point?.dataset?.label }}</span
+              >
+              <span class="font-medium text-gray-900 dark:text-gray-50"
+                >{{ getFormattedValue(point?.raw) }}</span
+              >
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      <canvas
+        class="z-2 relative"
+        baseChart
+        [data]="chartData"
+        [options]="chartOptions"
+        [plugins]="chartPlugins"
+        [type]="chartType"
+      >
+      </canvas>
+    </div>
+  </div>
+
+  <!-- Mobile Chart -->
+  <div class="mt-10 sm:hidden">
+    <div class="h-80 relative" #mobileChartImage>
+      <!-- Custom Tooltip for Mobile -->
+      <div
+        #mobileTooltipElement
+        [class]="
+          'rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-56 absolute left-0 top-1 transition-all z-3 px-3 bg-white/50 dark:bg-gray-950/50 backdrop-blur-lg ' +
+          (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+        "
+        [style.transform]="
+          getTooltipTransform(
+            tooltip?.caretX ?? 0,
+            mobileTooltipElement.offsetWidth,
+            mobileChartImage.offsetWidth
+          )
+        "
+      >
+        <div class="flex items-center justify-between py-2 text-body-medium">
+          <span class="font-medium text-gray-900 dark:text-gray-50">Usage</span>
+          <span class="text-gray-500 dark:text-gray-500"
+            >{{ tooltip?.title?.[0] }}</span
+          >
+        </div>
+        <mat-divider class="border-outline-variant! mb-2!" />
+        <div class="pb-2 space-y-2">
+          @for ( point of tooltip?.dataPoints; track point.datasetIndex; let i =
+          $index ) {
+          <div class="flex items-center gap-x-2 text-body-small">
+            <span
+              class="size-2.5 rounded-xs"
+              [style.background-color]="
+                  tooltip?.labelColors?.[i]?.borderColor?.toString()
+                "
+            ></span>
+            <div class="flex w-full items-center justify-between">
+              <span class="text-gray-700 dark:text-gray-300"
+                >{{ point?.dataset?.label }}</span
+              >
+              <span class="font-medium text-gray-900 dark:text-gray-50"
+                >{{ getFormattedValue(point?.raw) }}</span
+              >
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      <canvas
+        class="z-2 relative"
+        baseChart
+        [data]="chartData"
+        [options]="mobileChartOptions"
+        [type]="chartType"
+      >
+      </canvas>
+    </div>
+  </div>
+</div>

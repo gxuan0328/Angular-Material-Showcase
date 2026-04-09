@@ -1,0 +1,161 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-2`
+-->
+
+<div class="mx-auto max-w-7xl">
+  <div class="p-6">
+    <!-- Header Section -->
+    <div class="sm:flex sm:items-center sm:justify-between mb-6">
+      <h3 class="text-sm font-medium">January 15, 2024 - January 22, 2024</h3>
+      <div class="mt-4 sm:mt-0">
+        <mat-form-field appearance="outline" class="w-40">
+          <mat-select value="week" aria-label="Select period">
+            <mat-option value="week">Last week</mat-option>
+            <mat-option value="month">Last month</mat-option>
+            <mat-option value="year">Last year</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <mat-divider />
+
+    <!-- Overview Card -->
+    <mat-card appearance="outlined" class="mt-6 overflow-hidden">
+      <mat-card-header
+        class="border-b border-outline-variant pb-3! bg-gray-100 dark:bg-gray-800"
+      >
+        <mat-card-subtitle>Overview</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="px-0! pb-0!">
+        <div class="grid grid-cols-1 gap-6 p-6 sm:grid-cols-2">
+          <!-- Pull Requests Section -->
+          <div>
+            <ngm-dev-block-ui-category-bar
+              [values]="prValues"
+              [colors]="prColors"
+              [showLabels]="false"
+            />
+            <p class="mt-2 text-sm">
+              <span class="font-semibold">6</span> Active Pull Requests
+            </p>
+          </div>
+
+          <!-- Issues Section -->
+          <div>
+            <ngm-dev-block-ui-category-bar
+              [values]="issueValues"
+              [colors]="issueColors"
+              [showLabels]="false"
+            />
+            <p class="mt-2 text-sm">
+              <span class="font-semibold">10</span> Active Issues
+            </p>
+          </div>
+        </div>
+
+        <!-- Stats Grid -->
+        <ul
+          class="grid grid-cols-2 gap-px border-t border-outline-variant bg-outline-variant md:grid-cols-4"
+        >
+          @for (item of overviewData; track item.name) {
+          <li class="flex flex-col items-center justify-center bg-surface p-3">
+            <div class="flex items-center space-x-1">
+              <mat-icon
+                [class]="'size-5! ' + item.iconColor"
+                aria-hidden="true"
+                [svgIcon]="item.icon"
+              >
+              </mat-icon>
+              <span class="font-semibold"> {{ item.value }} </span>
+            </div>
+            <span class="text-sm"> {{ item.name }} </span>
+          </li>
+          }
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- More Info Section -->
+    <div class="my-10 flex items-center">
+      <mat-divider class="grow" />
+      <span class="text-sm text-gray-600 dark:text-gray-400 px-4"
+        >More info</span
+      >
+      <mat-divider class="grow" />
+    </div>
+
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-2">
+      <!-- Repository Summary -->
+      <div>
+        <h4 class="font-semibold">Repository Summary</h4>
+        <p class="mt-4 text-sm leading-6">
+          Excluding merges,
+          <span class="font-medium"> 3 authors </span>
+          have pushed
+          <span class="font-medium"> 4 commits </span>
+          to main and
+          <span class="font-medium"> 26 commits </span>
+          to all branches. On main,
+          <span class="font-medium"> 15 files </span>
+          have changed and there have been
+          <span class="font-medium"> 43 additions </span>
+          and
+          <span class="font-medium"> 12 deletions </span>.
+        </p>
+      </div>
+
+      <!-- Top Contributors Chart -->
+      <div>
+        <h4 class="font-semibold">Top contributors</h4>
+        <div class="mt-4 h-48 relative" #chartImage>
+          <div
+            #tooltipElement
+            [class]="
+              'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 overflow-hidden ' +
+              (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+            "
+            [style.transform]="
+              getTooltipTransform(
+                tooltip?.caretY ?? 0,
+                tooltipElement.offsetHeight,
+                chartImage.offsetHeight
+              )
+            "
+          >
+            <div class="border-b border-outline-variant px-3 py-1">
+              <span class="text-body-medium">{{ tooltip?.title?.[0] }}</span>
+            </div>
+            <div class="flex items-center justify-between space-x-4 px-3 py-2">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="size-2 rounded-xs"
+                  [style.background]="
+                    tooltip?.labelColors?.[0]?.borderColor?.toString()
+                  "
+                  aria-hidden="true"
+                ></span>
+                <span class="text-body-medium text-gray-600 dark:text-gray-400"
+                  >{{ tooltip?.dataPoints?.[0]?.dataset?.label }}</span
+                >
+              </div>
+              <span class="text-body-medium font-medium">
+                {{ tooltip?.dataPoints?.[0]?.formattedValue }}
+              </span>
+            </div>
+          </div>
+
+          <canvas
+            baseChart
+            [data]="chartData"
+            [options]="chartOptions"
+            [type]="chartType"
+            [plugins]="chartPlugins"
+          >
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

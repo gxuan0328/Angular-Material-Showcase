@@ -1,0 +1,89 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-tooltips/chart-tooltip-7`
+-->
+
+<div class="mx-auto max-w-7xl">
+  <div class="flex justify-center mb-12">
+    <div
+      class="bg-surface rounded-md border border-outline-variant shadow-sm min-w-44"
+    >
+      <div class="text-center px-4 py-3">
+        <div class="text-body-small text-gray-600 dark:text-gray-400">
+          May 24
+        </div>
+        <div class="text-title-medium font-title-medium">$67,830</div>
+        <div class="text-body-small text-gray-600 dark:text-gray-400 mt-2">
+          <span class="font-medium text-emerald-700 dark:text-emerald-500">
+            +12.50%
+          </span>
+          from previous month
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center mb-12 gap-x-2">
+    <div class="border-t border-outline-variant grow"></div>
+    <button matButton="tonal" (click)="toggleDemo()">
+      {{ showDemo() ? 'Hide Demo' : 'Show Demo' }}
+    </button>
+    <div class="border-t border-outline-variant grow"></div>
+  </div>
+
+  @if (showDemo()) {
+  <div class="mt-6 h-72 relative" #chartImage>
+    <div
+      #tooltipElement
+      [class]="
+          'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-44 absolute left-0 top-1 transition-all z-3 ' +
+          (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+        "
+      [style.transform]="
+          getTooltipTransform(
+            tooltip?.caretX ?? 0,
+            tooltipElement.offsetWidth,
+            chartImage.offsetWidth
+          )
+        "
+    >
+      <div class="text-center px-4 py-3">
+        <div class="text-body-small text-gray-600 dark:text-gray-400">
+          {{ tooltip?.title?.[0] }}
+        </div>
+        <div class="text-title-medium font-title-medium">
+          {{ getCurrency(tooltip?.dataPoints?.[0]?.raw) }}
+        </div>
+        <div class="text-body-small text-gray-600 dark:text-gray-400 mt-2">
+          @if ( getPercentage(tooltip?.dataPoints?.[0]?.label ?? ''); as
+          percentage ) {
+          <span
+            class="font-medium"
+            [class]="
+                  percentage > 0
+                    ? 'text-emerald-700 dark:text-emerald-500'
+                    : 'text-red-700 dark:text-red-500'
+                "
+          >
+            {{ percentage > 0 ? '+' : '' }}{{ percentage.toFixed(2) }}%
+          </span>
+          } @else {
+          <span
+            class="rounded bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-700 dark:bg-gray-900 dark:text-gray-300"
+          >
+            --</span
+          >
+          } from previous month
+        </div>
+      </div>
+    </div>
+    <canvas
+      class="z-2 relative"
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType"
+    ></canvas>
+  </div>
+  }
+</div>

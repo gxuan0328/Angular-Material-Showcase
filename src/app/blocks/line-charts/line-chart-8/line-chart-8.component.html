@@ -1,0 +1,115 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update line-charts/line-chart-8`
+-->
+
+<div>
+  <h3 class="font-title-large text-title-large">Business Growth</h3>
+  <p
+    class="mt-1 text-body-medium leading-6 text-gray-600 dark:text-gray-400 font-body-medium"
+  >
+    Monitor key business metrics and performance indicators to track your
+    company's growth trajectory over time.
+  </p>
+
+  <mat-divider class="my-6!" />
+
+  <div class="md:flex md:items-center md:justify-between">
+    <div class="flex items-center space-x-2">
+      <mat-form-field appearance="outline" class="w-full md:w-fit">
+        <mat-label>Select region</mat-label>
+        <mat-select value="1">
+          <mat-option value="1">All regions</mat-option>
+          <mat-option value="2">North America</mat-option>
+          <mat-option value="3">Europe</mat-option>
+          <mat-option value="4">Asia Pacific</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="w-full md:w-fit">
+        <mat-label>Select plan</mat-label>
+        <mat-select value="1">
+          <mat-option value="1">All plans</mat-option>
+          <mat-option value="2">Basic plan</mat-option>
+          <mat-option value="3">Pro plan</mat-option>
+          <mat-option value="4">Enterprise plan</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <button matButton="elevated">
+      <mat-icon matIcon>download</mat-icon>
+      Export report
+    </button>
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
+    @for (metric of metrics; track metric.name) {
+    <mat-card appearance="outlined">
+      <mat-card-header>
+        <mat-card-subtitle> {{ metric.name }} </mat-card-subtitle>
+        <mat-card-title>
+          {{ formatCurrencyInThousands(metric.value) }}
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="mt-4 h-36 relative" #chartContainer>
+          <!-- Custom Tooltip for this specific metric -->
+          <div
+            #tooltipElement
+            [class]="
+                'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-opacity z-3 ' +
+                (tooltips[metric.name]?.opacity === 1
+                  ? 'opacity-100'
+                  : 'opacity-0')
+              "
+            [style.transform]="
+                getTooltipTransform(
+                  tooltips[metric.name]?.caretX ?? 0,
+                  tooltipElement.offsetWidth,
+                  chartContainer.offsetWidth
+                )
+              "
+          >
+            <h3 class="text-body-large font-medium my-2 px-3">
+              {{ tooltips[metric.name]?.title?.[0] }}
+            </h3>
+            <mat-divider class="border-outline-variant!" />
+            <div class="p-3">
+              @for ( item of tooltips[metric.name]?.dataPoints; track item; let
+              j = $index ) {
+              <div class="flex items-center w-full justify-between gap-x-2">
+                <div class="flex items-center space-x-2">
+                  <span
+                    class="h-1 w-3 shrink-0 rounded-sm"
+                    [style.background]="
+                          tooltips[metric.name]?.labelColors?.[
+                            j
+                          ]?.borderColor?.toString()
+                        "
+                    aria-hidden="true"
+                  ></span>
+                  <span class="text-body-medium"
+                    >{{ item?.dataset?.label }}</span
+                  >
+                </div>
+                <span class="text-body-medium font-medium text-right"
+                  >{{ formatMetricValue(metric.name, item?.raw) }}</span
+                >
+              </div>
+              }
+            </div>
+          </div>
+
+          <canvas
+            class="z-2 relative"
+            baseChart
+            [data]="metric.chartData"
+            [options]="getChartOptions(metric.name)"
+            [plugins]="chartPlugins"
+            [type]="chartType"
+          ></canvas>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    }
+  </div>
+</div>

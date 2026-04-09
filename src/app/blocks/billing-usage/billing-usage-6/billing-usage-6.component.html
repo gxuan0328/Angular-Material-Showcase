@@ -1,0 +1,215 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update billing-usage/billing-usage-6`
+-->
+
+<div class="max-w-7xl mx-auto p-6">
+  <h3 class="text-xl font-bold">General</h3>
+  <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+    Manage your personal details, workspace governance and notifications.
+  </p>
+
+  <mat-tab-group
+    class="mt-6"
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
+    [selectedIndex]="2"
+  >
+    @for (tab of tabs; track tab.id) {
+    <mat-tab [label]="tab.label">
+      @if (tab.id === 'billing') {
+      <div
+        class="mt-6 divide-y divide-outline-variant space-y-12 md:space-y-24"
+      >
+        <!-- Free Plan Banner -->
+        @if (showFreePlanBanner) {
+        <div
+          class="mb-8 rounded-lg bg-primary-container p-4 flex gap-2 relative pr-10 text-sm"
+          role="banner"
+        >
+          <div class="text-on-primary-container">
+            <p class="font-semibold mb-3">
+              This workspace is currently on free plan
+            </p>
+            <p>
+              Boost your analytics and unlock advanced features with our premium
+              plans.
+            </p>
+          </div>
+          <button
+            mat-icon-button
+            (click)="dismissFreePlanBanner()"
+            class="absolute! top-2 right-2"
+          >
+            <mat-icon>close</mat-icon>
+          </button>
+        </div>
+        }
+
+        <!-- Billing Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="col-span-1 mb-12 md:mb-24">
+            <h4 class="font-semibold">Billing</h4>
+            <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+              Overview of current billing cycle based on fixed and on-demand
+              charges.
+            </p>
+          </div>
+
+          <div class="space-y-6 col-span-1 md:col-span-2 mb-12 md:mb-24">
+            @for (item of billingItems; track item.name) {
+            <div>
+              <div class="flex items-center justify-between">
+                <div>
+                  <p class="text-base font-medium">{{ item.name }}</p>
+                  @if (item.description) {
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    {{ item.description }}
+                  </p>
+                  }
+                </div>
+                <p class="text-base font-medium">${{ item.price }}</p>
+              </div>
+              @if (item.percentage) {
+              <div>
+                <mat-progress-bar
+                  mode="determinate"
+                  [value]="item.percentage"
+                  class="rounded-full"
+                />
+                <div
+                  class="mt-1 flex justify-between text-xs text-gray-600 dark:text-gray-400"
+                >
+                  <span>Used {{ item.used }}</span>
+                  <span>{{ item.included }}</span>
+                </div>
+              </div>
+              }
+            </div>
+            }
+
+            <div
+              class="flex items-center justify-between pt-6 border-t border-outline-variant"
+            >
+              <p class="text-base font-medium">Total for May 24</p>
+              <p class="text-base font-medium">${{ getTotalPrice() }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cost Spend Control -->
+        <form
+          [formGroup]="spendingForm"
+          (ngSubmit)="onSubmit()"
+          class="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          <div class="col-span-1 mb-12 md:mb-24">
+            <h4 class="font-semibold">Cost spend control</h4>
+            <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+              Set hard caps for on-demand charges.
+            </p>
+          </div>
+
+          <div class="col-span-1 md:col-span-2 mb-12 md:mb-24">
+            <div class="flex items-center justify-between mb-6">
+              <div class="flex items-center gap-4">
+                <div class="relative size-10">
+                  <span
+                    class="absolute inset-0 custom-background-spinner"
+                    aria-hidden="true"
+                    role="presentation"
+                  >
+                    <mat-progress-spinner
+                      mode="determinate"
+                      value="100"
+                      diameter="40"
+                    />
+                  </span>
+                  <mat-progress-spinner
+                    mode="determinate"
+                    value="62.2"
+                    diameter="40"
+                    class="custom-foreground-spinner"
+                  />
+                </div>
+                <div>
+                  <p class="text-base font-medium">$280 / 350 (62.2%)</p>
+                  <p class="text-sm text-gray-600 dark:text-gray-400">
+                    Spend management enabled
+                  </p>
+                </div>
+              </div>
+              <mat-slide-toggle formControlName="enabled" />
+            </div>
+
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
+              <mat-form-field appearance="outline" subscriptSizing="dynamic">
+                <mat-label>Set amount ($)</mat-label>
+                <input matInput type="number" formControlName="amount" />
+              </mat-form-field>
+
+              <div class="md:col-span-2">
+                <mat-form-field
+                  appearance="outline"
+                  class="w-full"
+                  subscriptSizing="dynamic"
+                >
+                  <mat-label>Provide email for notifications</mat-label>
+                  <input matInput type="email" formControlName="email" />
+                </mat-form-field>
+              </div>
+
+              <div class="md:col-span-3 flex justify-end">
+                <button matButton="filled" type="submit">Update</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <!-- Add-Ons -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="col-span-1 mb-12 md:mb-24">
+            <h4 class="font-semibold">Add-Ons</h4>
+            <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+              Additional services to boost your services.
+            </p>
+          </div>
+
+          <div class="space-y-4 col-span-1 md:col-span-2 mb-12 md:mb-24">
+            @for (addon of addOns; track addon.id) {
+            <mat-card appearance="outlined">
+              <mat-card-header>
+                <mat-card-subtitle
+                  class="!text-gray-600 dark:text-gray-400 mb-4!"
+                  >{{ addon.price }}</mat-card-subtitle
+                >
+                <mat-card-title>{{ addon.name }}</mat-card-title>
+              </mat-card-header>
+              <mat-card-content>
+                <div class="mb-6!">
+                  <p>{{ addon.description }}</p>
+                </div>
+              </mat-card-content>
+              <mat-card-actions
+                class="flex justify-between density-3 border-t border-outline-variant"
+              >
+                <mat-slide-toggle
+                  [checked]="addon.isActive"
+                  (change)="toggleAddOn(addon.id)"
+                >
+                  Activate
+                </mat-slide-toggle>
+                <button matButton>
+                  Learn more <mat-icon>open_in_new</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+            }
+          </div>
+        </div>
+      </div>
+      }
+    </mat-tab>
+    }
+  </mat-tab-group>
+</div>

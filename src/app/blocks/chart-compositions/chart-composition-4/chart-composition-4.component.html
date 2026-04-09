@@ -1,0 +1,151 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-4`
+-->
+
+<div class="p-6">
+  <!-- Header -->
+  <h1 class="text-lg font-semibold">Web analytics</h1>
+  <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+    Analyze and understand your web traffic.
+  </p>
+
+  <!-- Main Chart Card with Tabs -->
+  <mat-card appearance="outlined" class="mt-8 overflow-hidden">
+    <mat-tab-group
+      mat-stretch-tabs="false"
+      mat-align-tabs="start"
+      class="[&_.mat-mdc-tab-labels]:bg-gray-100 [&_.mat-mdc-tab-labels]:dark:bg-gray-800 [&_.mat-mdc-tab.mdc-tab--active]:bg-surface! [&_.mat-mdc-tab]:border-r! [&_.mat-mdc-tab]:border-outline-variant!"
+    >
+      @for (tab of summary; track tab.name; let i = $index) {
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <div class="py-4">
+            <span class="block font-normal text-gray-600 dark:text-gray-400">
+              {{ tab.name }}
+            </span>
+            <span class="mt-1 block text-3xl font-semibold">
+              {{ tab.value }}
+            </span>
+          </div>
+        </ng-template>
+
+        <!-- Tab Content -->
+        <div class="p-6">
+          <!-- Desktop Chart -->
+          <div class="hidden h-96 sm:block relative" #chartImage>
+            <!-- Custom Tooltip -->
+            <div
+              #tooltipElement
+              [class]="
+                  'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-opacity z-3 ' +
+                  (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+                "
+              [style.transform]="
+                  getTooltipTransform(
+                    tooltip?.caretX ?? 0,
+                    tooltipElement.offsetWidth,
+                    chartImage.offsetWidth
+                  )
+                "
+            >
+              <h3 class="text-body-large font-medium my-2 px-3">
+                {{ tooltip?.title?.[0] }}
+              </h3>
+              <mat-divider class="border-outline-variant!" />
+              <div class="p-3">
+                @for ( item of tooltip?.dataPoints; track item.dataset?.label;
+                let i = $index ) {
+                <div class="flex items-center w-full justify-between gap-x-2">
+                  <div class="flex items-center space-x-2">
+                    <span
+                      class="h-1 w-3 shrink-0 rounded-sm"
+                      [style.background]="
+                            tooltip?.labelColors?.[i]?.borderColor?.toString()
+                          "
+                      aria-hidden="true"
+                    ></span>
+                    <span class="text-body-medium"
+                      >{{ item.dataset.label }}</span
+                    >
+                  </div>
+                  <span class="text-body-medium font-medium text-right">
+                    {{ getFormattedValue(item?.raw) }}
+                  </span>
+                </div>
+                }
+              </div>
+            </div>
+
+            <canvas
+              class="z-2 relative"
+              baseChart
+              [data]="tab.chartData"
+              [options]="chartOptions"
+              [plugins]="chartPlugins"
+              [type]="chartType"
+            >
+            </canvas>
+          </div>
+
+          <!-- Mobile Chart -->
+          <div class="h-72 sm:hidden relative" #mobileChartImage>
+            <!-- Custom Tooltip for Mobile -->
+            <div
+              #mobileTooltipElement
+              [class]="
+                  'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-opacity z-3 ' +
+                  (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+                "
+              [style.transform]="
+                  getTooltipTransform(
+                    tooltip?.caretX ?? 0,
+                    mobileTooltipElement.offsetWidth,
+                    mobileChartImage.offsetWidth
+                  )
+                "
+            >
+              <h3 class="text-body-large font-medium my-2 px-3">
+                {{ tooltip?.title?.[0] }}
+              </h3>
+              <mat-divider class="border-outline-variant!" />
+              <div class="p-3">
+                @for ( item of tooltip?.dataPoints; track item.dataset?.label;
+                let i = $index ) {
+                <div class="flex items-center w-full justify-between">
+                  <div class="flex items-center space-x-2">
+                    <span
+                      class="h-1 w-3 shrink-0 rounded-sm"
+                      [style.background]="
+                            tooltip?.labelColors?.[i]?.borderColor?.toString()
+                          "
+                      aria-hidden="true"
+                    ></span>
+                    <span class="text-body-medium"
+                      >{{ item.dataset.label }}</span
+                    >
+                  </div>
+                  <span class="text-body-medium font-medium text-right">
+                    {{ getFormattedValue(item?.raw) }}
+                  </span>
+                </div>
+                }
+              </div>
+            </div>
+
+            <canvas
+              class="z-2 relative"
+              baseChart
+              [data]="tab.chartData"
+              [options]="mobileChartOptions"
+              [plugins]="chartPlugins"
+              [type]="chartType"
+            >
+            </canvas>
+          </div>
+        </div>
+      </mat-tab>
+      }
+    </mat-tab-group>
+  </mat-card>
+</div>

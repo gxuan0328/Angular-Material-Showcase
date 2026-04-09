@@ -1,0 +1,139 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-12`
+-->
+
+<div class="p-6">
+  <!-- Header -->
+  <h1 class="text-xl font-semibold">Overview</h1>
+  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
+    Get insights into your incidents
+  </p>
+
+  <!-- Filter Controls -->
+  <div class="mt-6 flex flex-wrap items-center gap-4">
+    @for (selectOption of selectOptions; track selectOption.id) {
+    <span class="inline-flex items-center">
+      <mat-form-field appearance="outline">
+        <mat-label>{{ selectOption.label }}</mat-label>
+        <mat-select [value]="selectOption.defaultValue" [id]="selectOption.id">
+          @for (option of selectOption.options; track option.value) {
+          <mat-option [value]="option.value"> {{ option.label }} </mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+    </span>
+    }
+  </div>
+
+  <!-- Main Chart and Stats Card -->
+  <mat-card appearance="outlined" class="mt-6">
+    <mat-card-content class="px-0! pb-0!">
+      <!-- Desktop Chart -->
+      <div class="hidden sm:block px-6">
+        <div class="h-80 relative" #chartImage>
+          <ng-container
+            *ngTemplateOutlet="
+              tooltipTemplate;
+              context: { chartImage }
+            "
+          ></ng-container>
+          <canvas
+            baseChart
+            [data]="chartData"
+            [options]="chartOptions"
+            [plugins]="chartPlugins"
+            [type]="chartType"
+          >
+          </canvas>
+        </div>
+      </div>
+
+      <!-- Mobile Chart -->
+      <div class="sm:hidden px-3">
+        <div class="h-80 relative" #chartMobileImage>
+          <ng-container
+            *ngTemplateOutlet="
+              tooltipTemplate;
+              context: { chartImage: chartMobileImage }
+            "
+          ></ng-container>
+          <canvas
+            baseChart
+            [data]="chartData"
+            [options]="mobileChartOptions"
+            [plugins]="chartPlugins"
+            [type]="chartType"
+          >
+          </canvas>
+        </div>
+      </div>
+
+      <!-- Stats Grid -->
+      <dl
+        class="mx-auto mt-6 grid grid-cols-1 gap-px border-t border-outline-variant bg-outline-variant sm:grid-cols-2 lg:grid-cols-4 rounded-b-mat-card overflow-hidden"
+      >
+        @for (item of stats; track item.name) {
+        <div class="bg-surface px-4 py-6 sm:px-6 xl:px-8">
+          <dd class="text-2xl font-semibold tracking-tight">
+            {{ item.value }}
+          </dd>
+          <dt class="mt-1 flex items-center gap-2">
+            <span class="text-sm leading-6 text-gray-600 dark:text-gray-400">
+              {{ item.name }}
+            </span>
+            <mat-icon
+              class="text-gray-600! dark:text-gray-400! size-[1em]! leading-none! text-base! icon-filled"
+              aria-hidden="true"
+              [matTooltip]="item.description"
+            >
+              info
+            </mat-icon>
+          </dt>
+        </div>
+        }
+      </dl>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #tooltipTemplate let-chartImage="chartImage">
+  <div
+    #tooltipElement
+    [class]="
+      'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-64 absolute left-0 top-1 transition-opacity z-3 ' +
+      (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+    "
+    [style.transform]="
+      getTooltipTransform(
+        tooltip?.caretX ?? 0,
+        tooltipElement.offsetWidth,
+        chartImage.offsetWidth
+      )
+    "
+  >
+    <h3 class="text-body-large font-medium my-2 px-3">
+      {{ tooltip?.title?.[0] }}
+    </h3>
+    <mat-divider class="border-outline-variant!" />
+    <div class="p-3">
+      @for (item of tooltip?.dataPoints; track item; let j = $index) {
+      <div class="flex items-center w-full justify-between gap-x-2">
+        <div class="flex items-center space-x-2">
+          <span
+            class="h-1 w-3 shrink-0 rounded-sm"
+            [style.background]="
+                tooltip?.labelColors?.[j]?.borderColor?.toString()
+              "
+            aria-hidden="true"
+          ></span>
+          <span class="text-body-medium">{{ item?.dataset?.label }}</span>
+        </div>
+        <span class="text-body-medium font-medium text-right"
+          >{{ valueFormatter(item?.raw) }}</span
+        >
+      </div>
+      }
+    </div>
+  </div>
+</ng-template>

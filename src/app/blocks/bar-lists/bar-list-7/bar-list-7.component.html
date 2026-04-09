@@ -1,0 +1,47 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-lists/bar-list-7`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg">
+  <mat-card appearance="outlined" class="border-dashed!">
+    <mat-card-header>
+      <mat-card-subtitle>{{ label }}</mat-card-subtitle>
+      <mat-card-title class="text-display-small! font-display-small!"
+        >{{ values().end }}</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content />
+  </mat-card>
+
+  <mat-card appearance="outlined" class="mt-4">
+    <mat-card-header class="block!">
+      <mat-card-title>
+        <div class="flex justify-between items-center gap-2">
+          Locations @if (selectedItem()) {
+          <mat-chip-set>
+            <mat-chip (removed)="clearSelectedItem()">
+              {{ selectedItem() }}
+              <button
+                matChipRemove
+                [attr.aria-label]="'remove ' + selectedItem()"
+              >
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-chip>
+          </mat-chip-set>
+          }
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mt-6">
+        <ngm-dev-block-ui-bar-list
+          [data]="filteredData()"
+          [valueFormatter]="valueFormatter"
+          (valueChange)="handleBarClick($event)"
+        />
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

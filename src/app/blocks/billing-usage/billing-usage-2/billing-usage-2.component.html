@@ -1,0 +1,124 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update billing-usage/billing-usage-2`
+-->
+
+<div class="max-w-2xl mx-auto p-6">
+  <h3 class="text-xl font-bold">Settings</h3>
+  <p class="mt-2 text-base text-gray-600">
+    Manage your personal details, workspace governance and notifications.
+  </p>
+  <mat-tab-group
+    dynamicHeight
+    class="mt-6"
+    mat-stretch-tabs="false"
+    mat-align-tabs="start"
+  >
+    <!-- Usage Tab -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="flex items-center gap-2">
+          <mat-icon>data_usage</mat-icon>
+          Usage
+        </span>
+      </ng-template>
+
+      <div class="mt-6">
+        <!-- Usage Metrics -->
+        <div class="space-y-6">
+          @for (metric of usageMetrics; track metric.id) {
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <div>
+                <h4 class="text-sm font-medium">{{ metric.name }}</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">
+                  {{ formatValue(metric.value) }}{{ metric.unit ? ' ' +
+                  metric.unit : '' }} / {{ formatValue(metric.limit) }}{{
+                  metric.unit ? ' ' + metric.unit : '' }}
+                </p>
+              </div>
+              <span
+                class="text-sm font-medium"
+                [ngClass]="{
+                    'text-error': getUsagePercentage(metric) >= 90,
+                    'text-warning':
+                      getUsagePercentage(metric) >= 75 &&
+                      getUsagePercentage(metric) < 90,
+                    'text-primary': getUsagePercentage(metric) < 75,
+                  }"
+              >
+                {{ getUsagePercentage(metric).toFixed(0) }}%
+              </span>
+            </div>
+            <mat-progress-bar
+              [color]="getProgressBarColor(getUsagePercentage(metric))"
+              [value]="getUsagePercentage(metric)"
+              class="rounded-full"
+            />
+          </div>
+          }
+        </div>
+
+        <!-- Upgrade Banner -->
+        <div class="mt-8 rounded-lg bg-surface-container p-4">
+          <div class="flex items-start gap-4">
+            <mat-icon class="text-primary">trending_up</mat-icon>
+            <div class="flex-1">
+              <h3 class="text-base font-medium mb-1">Want to upgrade?</h3>
+              <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+                Upgrade to our Pro plan to get more storage, bandwidth, and
+                requests.
+              </p>
+              <div class="flex items-center gap-4">
+                <button matButton="filled">Upgrade now</button>
+                <a href="#" matButton="outlined">
+                  Compare plans
+                  <mat-icon>open_in_new</mat-icon>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+    <!-- Receipts Tab -->
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="flex items-center gap-2">
+          <mat-icon>receipt_long</mat-icon>
+          Receipts
+        </span>
+      </ng-template>
+
+      <div class="mt-6">
+        <!-- Receipts List -->
+        <div class="divide-y divide-outline-variant">
+          @for (receipt of receipts; track receipt.id) {
+          <div class="flex items-center justify-between py-4">
+            <div class="flex items-center gap-3">
+              <mat-icon class="text-gray-600 dark:text-gray-400"
+                >description</mat-icon
+              >
+              <span>{{ receipt.month }}</span>
+            </div>
+            <a [href]="receipt.href" matButton> Receipt </a>
+          </div>
+          }
+        </div>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <!-- Help Text -->
+  <p class="mt-6 text-sm text-gray-600 dark:text-gray-400">
+    Need help? Reach out to our
+    <a
+      href="#"
+      class="text-primary hover:underline inline-flex items-center gap-1"
+    >
+      help desk
+      <mat-icon class="size-4! [font-size:16px]!">open_in_new</mat-icon>
+    </a>
+    if you need assistance.
+  </p>
+</div>

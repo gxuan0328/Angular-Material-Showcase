@@ -1,0 +1,152 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-tooltips/chart-tooltip-10`
+-->
+
+<div class="mx-auto max-w-7xl">
+  <div class="flex justify-center mb-12">
+    <div
+      class="bg-surface rounded-md border border-outline-variant shadow-sm min-w-60"
+    >
+      <div class="px-6 py-4">
+        <div class="flex items-center gap-6">
+          <div class="relative flex items-center justify-center">
+            <ngm-dev-block-ui-progress-circle
+              [value]="75"
+              [radius]="45"
+              variant="default"
+            >
+              <ngm-dev-block-ui-progress-circle
+                [value]="25"
+                [radius]="36"
+                variant="success"
+              />
+            </ngm-dev-block-ui-progress-circle>
+          </div>
+          <div class="space-y-1">
+            <div>
+              <div class="text-label-small text-gray-500 dark:text-gray-400">
+                Effort
+              </div>
+              <div class="text-body-medium font-medium text-primary">75%</div>
+            </div>
+            <div>
+              <div class="text-label-small text-gray-500 dark:text-gray-400">
+                Recovery
+              </div>
+              <div
+                class="text-body-medium font-medium text-emerald-600 dark:text-emerald-400"
+              >
+                25%
+              </div>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <div>
+              <div class="text-label-small text-gray-500 dark:text-gray-400">
+                Strain
+              </div>
+              <div class="text-body-medium font-medium">0.8</div>
+            </div>
+            <div>
+              <div class="text-label-small text-gray-500 dark:text-gray-400">
+                Sleep
+              </div>
+              <div class="text-body-medium font-medium">95%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center mb-12 gap-x-2">
+    <div class="border-t border-outline-variant grow"></div>
+    <button matButton="tonal" (click)="toggleDemo()">
+      {{ showDemo() ? 'Hide Demo' : 'Show Demo' }}
+    </button>
+    <div class="border-t border-outline-variant grow"></div>
+  </div>
+
+  @if (showDemo()) {
+  <div class="mt-6 h-72 relative" #chartImage>
+    <div
+      #tooltipElement
+      [class]="
+          'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-60 absolute left-0 top-1 transition-all z-3 ' +
+          (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+        "
+      [style.transform]="
+          getTooltipTransform(
+            tooltip?.caretX ?? 0,
+            tooltipElement.offsetWidth,
+            chartImage.offsetWidth
+          )
+        "
+    >
+      <div class="px-6 py-4">
+        <div class="flex items-center gap-6">
+          <div class="relative flex items-center justify-center">
+            <ngm-dev-block-ui-progress-circle
+              [value]="Number(tooltip?.dataPoints?.[0]?.raw)"
+              [radius]="45"
+              variant="default"
+            >
+              <ngm-dev-block-ui-progress-circle
+                [value]="100 - (Number(tooltip?.dataPoints?.[0]?.raw) % 100)"
+                [radius]="36"
+                variant="success"
+              />
+            </ngm-dev-block-ui-progress-circle>
+          </div>
+          <div class="space-y-1">
+            <div>
+              <div class="text-label-small text-gray-500 dark:text-gray-400">
+                Effort
+              </div>
+              <div class="text-body-medium font-medium text-primary">
+                {{ Number(tooltip?.dataPoints?.[0]?.raw) }}%
+              </div>
+            </div>
+            <div>
+              <div class="text-label-small text-gray-500 dark:text-gray-400">
+                Recovery
+              </div>
+              <div
+                class="text-body-medium font-medium text-emerald-600 dark:text-emerald-400"
+              >
+                {{ 100 - (Number(tooltip?.dataPoints?.[0]?.raw) % 100) }}%
+              </div>
+            </div>
+          </div>
+          <div class="space-y-1">
+            <div>
+              <div class="text-label-small text-gray-500 dark:text-gray-400">
+                Strain
+              </div>
+              <div class="text-body-medium font-medium">
+                {{ (Number(tooltip?.dataPoints?.[0]?.raw) / 100).toFixed(1) }}
+              </div>
+            </div>
+            <div>
+              <div class="text-label-small text-gray-500 dark:text-gray-400">
+                Sleep
+              </div>
+              <div class="text-body-medium font-medium">
+                {{ 80 + (Number(tooltip?.dataPoints?.[0]?.raw) % 20) }}%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <canvas
+      class="z-2 relative"
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType"
+    ></canvas>
+  </div>
+  }
+</div>

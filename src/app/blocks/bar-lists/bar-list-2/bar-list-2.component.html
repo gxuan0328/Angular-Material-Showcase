@@ -1,0 +1,32 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-lists/bar-list-2`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header class="block!">
+      <mat-card-title>
+        <div class="flex justify-between items-center gap-2">
+          {{ title }}
+          <span
+            class="float-right text-xs font-medium uppercase text-gray-600 dark:text-gray-400"
+            >{{ subtitle }}</span
+          >
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mt-6 pt-6 border-t border-outline-variant overflow-hidden">
+        <ngm-dev-block-ui-bar-list
+          [data]="pages().slice(0, 5)"
+          [valueFormatter]="valueFormatter"
+          [sortOrder]="'descending'"
+        />
+      </div>
+      <div class="px-6 flex justify-center">
+        <button matButton="tonal" (click)="openDialog()">Show more</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

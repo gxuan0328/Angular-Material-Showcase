@@ -1,0 +1,103 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update line-charts/line-chart-7`
+-->
+
+<div class="max-w-7xl mx-auto">
+  <h3 class="font-medium text-headline-medium! mb-1">
+    ETF performance comparison
+  </h3>
+  <p class="text-body-medium text-gray-600 dark:text-gray-400 leading-6 mb-8">
+    Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+    eirmod tempor invidunt.
+  </p>
+
+  <!-- Date Range Filter Section -->
+  <mat-card>
+    <mat-card-header>
+      <mat-card-subtitle>Filter by Date Range</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mt-6 flex gap-2 items-baseline">
+        <mat-form-field appearance="outline">
+          <mat-label>Select Date Range</mat-label>
+          <mat-date-range-input
+            [formGroup]="dateRangeForm"
+            [rangePicker]="rangePicker"
+            [min]="minDate()"
+            [max]="maxDate()"
+          >
+            <input
+              matStartDate
+              formControlName="start"
+              placeholder="Start date"
+            />
+            <input matEndDate formControlName="end" placeholder="End date" />
+          </mat-date-range-input>
+          <mat-datepicker-toggle matIconSuffix [for]="rangePicker" />
+          <mat-date-range-picker #rangePicker />
+          <button
+            matIconButton
+            matSuffix
+            (click)="resetDateFilter()"
+            matTooltip="Reset"
+          >
+            <mat-icon>refresh</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Chart Section -->
+  <div class="h-72 md:h-96 relative mt-6" #chartImageDesktop>
+    <!-- Tooltip -->
+    <div
+      #tooltipElementDesktop
+      [class]="
+        'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-opacity z-3 ' +
+        (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+      "
+      [style.transform]="
+        getTooltipTransform(
+          tooltip?.caretX ?? 0,
+          tooltipElementDesktop.offsetWidth,
+          chartImageDesktop.offsetWidth
+        )
+      "
+    >
+      <h3 class="text-body-large font-medium my-2 px-3">
+        {{ tooltip?.title?.[0] }}
+      </h3>
+      <mat-divider class="border-outline-variant!" />
+      <div class="p-3">
+        @for (item of tooltip?.dataPoints; track item; let j = $index) {
+        <div class="flex items-center w-full justify-between gap-x-2">
+          <div class="flex items-center space-x-2">
+            <span
+              class="h-1 w-3 shrink-0 rounded-sm"
+              [style.background]="
+                  tooltip?.labelColors?.[j]?.borderColor?.toString()
+                "
+              aria-hidden="true"
+            ></span>
+            <span class="text-body-medium">{{ item?.dataset?.label }}</span>
+          </div>
+          <span class="text-body-medium font-medium text-right"
+            >{{ formatCurrency({ value: item?.raw }) }}</span
+          >
+        </div>
+        }
+      </div>
+    </div>
+
+    <canvas
+      class="z-2 relative"
+      baseChart
+      [data]="chartData()"
+      [options]="chartOptions"
+      [plugins]="chartPlugins"
+      [type]="chartType"
+    ></canvas>
+  </div>
+</div>

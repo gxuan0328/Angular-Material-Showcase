@@ -1,0 +1,87 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-charts/bar-chart-8`
+-->
+
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>Requests</mat-card-title>
+    <mat-card-subtitle
+      >Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+      eirmod tempor invidunt.</mat-card-subtitle
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <div class="border-t border-outline-variant pt-6 mt-6">
+      <ul class="flex flex-wrap gap-x-20 gap-y-10">
+        @for (item of summary; track item.name) {
+        <li>
+          <div class="flex items-center space-x-2">
+            <span
+              class="size-3 shrink-0 rounded-sm"
+              [class]="item.color"
+            ></span>
+            <p class="font-semibold">{{ item.total | number }}</p>
+          </div>
+          <p
+            class="whitespace-nowrap text-body-medium text-gray-600 dark:text-gray-400"
+          >
+            {{ item.name }}
+          </p>
+        </li>
+        }
+      </ul>
+
+      <div class="mt-10 h-72 relative" #chartImage>
+        <div
+          #tooltipElement
+          [class]="
+            'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 ' +
+            (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+          "
+          [style.transform]="
+            getTooltipTransform(
+              tooltip?.caretX ?? 0,
+              tooltipElement.offsetWidth,
+              chartImage.offsetWidth
+            )
+          "
+        >
+          <h3 class="text-body-large font-medium my-2 px-3">
+            {{ tooltip?.title?.[0] }}
+          </h3>
+          <mat-divider class="border-outline-variant!" />
+          <div class="p-3">
+            @for (item of tooltip?.dataPoints; track item; let i = $index) {
+            <div class="flex items-center w-full justify-between gap-x-2">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="h-1 w-3 shrink-0 rounded-sm"
+                  [style.background]="
+                      tooltip?.labelColors?.[i]?.borderColor?.toString()
+                    "
+                  aria-hidden="true"
+                ></span>
+                <span class="text-body-medium font-body-small"
+                  >{{ item?.dataset?.label }}</span
+                >
+              </div>
+              <span class="text-body-medium font-medium text-right"
+                >{{ item?.formattedValue }}</span
+              >
+            </div>
+            }
+          </div>
+        </div>
+
+        <canvas
+          class="z-2 relative"
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [type]="'bar'"
+        ></canvas>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

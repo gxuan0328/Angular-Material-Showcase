@@ -1,0 +1,14 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-charts/bar-chart-9`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.tabs-overrides(
+    (
+      divider-height: 0,
+    )
+  );
+}

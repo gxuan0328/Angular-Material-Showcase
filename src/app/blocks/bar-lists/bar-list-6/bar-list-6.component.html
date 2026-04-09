@@ -1,0 +1,30 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-lists/bar-list-6`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Locations</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group
+        fitInkBarToContent
+        mat-stretch-tabs="false"
+        mat-align-tabs="start"
+      >
+        @for (t of tabs(); track t.name) {
+        <mat-tab [label]="t.name">
+          <div class="mt-6">
+            <ngm-dev-block-ui-bar-list
+              [data]="t.data"
+              [valueFormatter]="valueFormatter"
+            />
+          </div>
+        </mat-tab>
+        }
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

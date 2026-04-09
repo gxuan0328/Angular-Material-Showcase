@@ -1,0 +1,17 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-13`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.tabs-overrides(
+    (
+      container-height: 109px,
+      active-indicator-height: 0,
+      active-ripple-color: transparent,
+      inactive-ripple-color: transparent,
+    )
+  );
+}

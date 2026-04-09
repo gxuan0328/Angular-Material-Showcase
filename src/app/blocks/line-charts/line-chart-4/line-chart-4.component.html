@@ -1,0 +1,77 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update line-charts/line-chart-4`
+-->
+
+<div class="mx-auto max-w-2xl">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-subtitle>Portfolio performance</mat-card-subtitle>
+      <mat-card-title class="font-medium! text-display-small!"
+        >{{ portfolioValue }}</mat-card-title
+      >
+    </mat-card-header>
+    <mat-card-content>
+      <p class="mb-6 text-body-medium font-medium">
+        <span class="text-green-700 dark:text-green-400">
+          {{ dailyChange.value }} ({{ dailyChange.percent }})
+        </span>
+        <span class="font-normal text-gray-600 dark:text-gray-400 ml-1">
+          Past 24 hours
+        </span>
+      </p>
+
+      <!-- Chart -->
+      <div class="h-72 md:h-96 relative" #chartImageDesktop>
+        <!-- tooltip -->
+        <div
+          #tooltipElementDesktop
+          [class]="
+            'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-opacity z-3 ' +
+            (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+          "
+          [style.transform]="
+            getTooltipTransform(
+              tooltip?.caretX ?? 0,
+              tooltipElementDesktop.offsetWidth,
+              chartImageDesktop.offsetWidth
+            )
+          "
+        >
+          <h3 class="text-body-large font-medium my-2 px-3">
+            {{ tooltip?.title?.[0] }}
+          </h3>
+          <mat-divider class="border-outline-variant!" />
+          <div class="p-3">
+            @for (item of tooltip?.dataPoints; track item; let j = $index) {
+            <div class="flex items-center w-full justify-between gap-x-2">
+              <div class="flex items-center space-x-2">
+                <span
+                  class="h-1 w-3 shrink-0 rounded-sm"
+                  [style.background]="
+                      tooltip?.labelColors?.[j]?.borderColor?.toString()
+                    "
+                  aria-hidden="true"
+                ></span>
+                <span class="text-body-medium">{{ item?.dataset?.label }}</span>
+              </div>
+              <span class="text-body-medium font-medium text-right"
+                >{{ formatCurrency({ value: item?.raw }) }}K</span
+              >
+            </div>
+            }
+          </div>
+        </div>
+
+        <canvas
+          class="z-2 relative"
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          [plugins]="chartPlugins"
+          [type]="chartType"
+        ></canvas>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

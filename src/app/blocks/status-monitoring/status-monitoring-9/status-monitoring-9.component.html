@@ -1,0 +1,112 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update status-monitoring/status-monitoring-9`
+-->
+
+<div class="space-y-6">
+  <h1 class="text-lg font-semibold">All services are online</h1>
+  <p class="text-sm text-gray-600 dark:text-gray-400">
+    Last updated on Apr 14 at 02:45pm PST
+  </p>
+
+  <mat-card appearance="outlined" class="mt-10">
+    <mat-card-content class="space-y-6">
+      <div>
+        <p class="flex justify-between text-sm font-medium">
+          <span class="flex items-center gap-2 font-medium">
+            <mat-icon
+              class="size-[1em]! text-xl! leading-none! text-emerald-500!"
+              >check_circle</mat-icon
+            >
+            <span class="text-on-surface"> Payment Gateway </span>
+          </span>
+          <span class="text-on-surface"> 98.2% uptime </span>
+        </p>
+
+        <ngm-dev-block-ui-tracker
+          [data]="trackerDataBlocks"
+          [tooltipTemplate]="tooltipTemplate"
+          class="mt-3 hidden w-full lg:flex"
+        />
+        <ngm-dev-block-ui-tracker
+          [data]="trackerDataBlocksMedium"
+          [tooltipTemplate]="tooltipTemplate"
+          class="mt-3 hidden w-full sm:flex lg:hidden"
+        />
+        <ngm-dev-block-ui-tracker
+          [data]="trackerDataBlocksSmall"
+          [tooltipTemplate]="tooltipTemplate"
+          class="mt-3 flex w-full sm:hidden"
+        />
+
+        <div
+          class="mt-3 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400"
+        >
+          <span class="hidden lg:block">90 days ago</span>
+          <span class="hidden sm:block lg:hidden">60 days ago</span>
+          <span class="sm:hidden">30 days ago</span>
+          <span>Today</span>
+        </div>
+      </div>
+
+      <div class="h-px w-full bg-outline-variant" aria-hidden="true"></div>
+
+      <div>
+        <p class="flex justify-between text-sm font-medium">
+          <span class="flex items-center gap-2">
+            <mat-icon
+              class="size-[1em]! text-xl! leading-none! text-emerald-500!"
+              >check_circle</mat-icon
+            >
+            <span class="text-on-surface"> Authentication API </span>
+          </span>
+          <span class="text-on-surface"> 99.5% uptime </span>
+        </p>
+
+        <ngm-dev-block-ui-tracker
+          [data]="trackerDataComponents"
+          [tooltipTemplate]="tooltipTemplate"
+          class="mt-3 hidden w-full lg:flex"
+        />
+        <ngm-dev-block-ui-tracker
+          [data]="trackerDataComponentsMedium"
+          [tooltipTemplate]="tooltipTemplate"
+          class="mt-3 hidden w-full sm:flex lg:hidden"
+        />
+        <ngm-dev-block-ui-tracker
+          [data]="trackerDataComponentsSmall"
+          [tooltipTemplate]="tooltipTemplate"
+          class="mt-3 flex w-full sm:hidden"
+        />
+
+        <div
+          class="mt-3 flex items-center justify-between text-sm text-gray-600 dark:text-gray-400"
+        >
+          <span class="hidden lg:block">90 days ago</span>
+          <span class="hidden sm:block lg:hidden">60 days ago</span>
+          <span class="sm:hidden">30 days ago</span>
+          <span>Today</span>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<ng-template #tooltipTemplate let-trackerBlock>
+  <div
+    class="min-w-44 max-w-52 rounded-lg shadow-md bg-surface border border-outline-variant dark:shadow-gray-500/10 flex space-x-2 p-2"
+  >
+    <div
+      [class]="'w-1 shrink-0 rounded ' + trackerBlock.color"
+      aria-hidden="true"
+    ></div>
+    <div class="space-y-1">
+      <p class="text-sm font-medium text-gray-900 dark:text-gray-50">
+        {{ trackerBlock.data?.status }}
+      </p>
+      <p class="text-xs text-gray-500 dark:text-gray-500">
+        {{ trackerBlock.tooltip }}
+      </p>
+    </div>
+  </div>
+</ng-template>

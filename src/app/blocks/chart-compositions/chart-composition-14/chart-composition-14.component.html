@@ -1,0 +1,306 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-14`
+-->
+
+<div class="p-6">
+  <!-- Header -->
+  <h1 class="text-xl font-semibold">System monitoring</h1>
+  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
+    All your system metrics in one overview.
+  </p>
+
+  <!-- Upper Cards Section -->
+  <div class="grid grid-cols-1 gap-6 mt-6 sm:grid-cols-2">
+    <!-- Uptime Summary Card -->
+    <mat-card appearance="outlined" class="overflow-hidden">
+      <mat-card-header
+        class="block! bg-gray-50 dark:bg-gray-900 border-b border-outline-variant mb-3 pb-3!"
+      >
+        <mat-card-subtitle>
+          <div class="flex items-center justify-between">
+            Uptime summary
+            <button matIconButton [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="px-0!">
+        <div class="p-4">
+          <p class="text-3xl font-semibold">95.9%</p>
+          <p class="text-sm leading-6 text-gray-600 dark:text-gray-400">
+            Avg. uptime in the last month
+          </p>
+
+          <div class="mt-6">
+            <ngm-dev-block-ui-category-bar
+              [values]="uptimeValues"
+              [colors]="uptimeColors"
+              [showLabels]="false"
+            />
+          </div>
+
+          <ul role="list" class="mt-6 space-y-3">
+            <li class="flex w-full items-center justify-between gap-2">
+              <div class="flex w-full items-center gap-2 truncate">
+                <span
+                  class="size-2.5 shrink-0 rounded-sm bg-blue-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span
+                  class="truncate whitespace-nowrap text-sm text-gray-600 dark:text-gray-400"
+                >
+                  Days with 90.1% uptime
+                </span>
+              </div>
+              <span class="whitespace-nowrap text-sm font-semibold">
+                90.1% (239)
+              </span>
+            </li>
+            <li class="flex w-full items-center justify-between gap-2">
+              <div class="flex w-full items-center gap-2 truncate">
+                <span
+                  class="size-2.5 shrink-0 rounded-sm bg-red-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span
+                  class="truncate whitespace-nowrap text-sm text-gray-600 dark:text-gray-400"
+                >
+                  Days with 8% downtime
+                </span>
+              </div>
+              <span class="whitespace-nowrap text-sm font-semibold">
+                8% (11)
+              </span>
+            </li>
+            <li class="flex w-full items-center justify-between gap-2">
+              <div class="flex w-full items-center gap-2 truncate">
+                <span
+                  class="size-2.5 shrink-0 rounded-sm bg-gray-500"
+                  aria-hidden="true"
+                >
+                </span>
+                <span
+                  class="truncate whitespace-nowrap text-sm text-gray-600 dark:text-gray-400"
+                >
+                  Days with 1.9% downtime
+                </span>
+              </div>
+              <span class="whitespace-nowrap text-sm font-semibold">
+                1.9% (11)
+              </span>
+            </li>
+          </ul>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Incident Summary Card -->
+    <mat-card appearance="outlined" class="overflow-hidden">
+      <mat-card-header
+        class="block! bg-gray-50 dark:bg-gray-900 border-b border-outline-variant mb-3 pb-3!"
+      >
+        <mat-card-subtitle>
+          <div class="flex items-center justify-between">
+            Incident summary
+            <button matIconButton [matMenuTriggerFor]="menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </div>
+        </mat-card-subtitle>
+      </mat-card-header>
+      <div class="p-4">
+        <p class="text-3xl font-semibold">8min 45s</p>
+        <p class="text-sm leading-6 text-gray-600 dark:text-gray-400">
+          Avg. time to resolve incident (MTTR)
+        </p>
+
+        <div class="mt-6">
+          <ngm-dev-block-ui-category-bar
+            [values]="incidentValues"
+            [colors]="incidentColors"
+            [showLabels]="false"
+          />
+        </div>
+
+        <p class="mt-6 text-sm font-semibold">Current month</p>
+        <ul role="list" class="mt-2 space-y-3">
+          <li class="flex w-full items-center justify-between gap-2">
+            <div class="flex w-full items-center gap-2 truncate">
+              <span
+                class="size-2.5 shrink-0 rounded-sm bg-blue-500"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="truncate whitespace-nowrap text-sm text-gray-600 dark:text-gray-400"
+              >
+                % of incidents solved
+              </span>
+            </div>
+            <span class="whitespace-nowrap text-sm font-semibold">
+              91.2% (87)
+            </span>
+          </li>
+          <li class="flex w-full items-center justify-between gap-2">
+            <div class="flex w-full items-center gap-2 truncate">
+              <span
+                class="size-2.5 shrink-0 rounded-sm bg-gray-500"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="truncate whitespace-nowrap text-sm text-gray-600 dark:text-gray-400"
+              >
+                % of incidents unsolved
+              </span>
+            </div>
+            <span class="whitespace-nowrap text-sm font-semibold">
+              8.8% (8)
+            </span>
+          </li>
+        </ul>
+
+        <mat-divider class="my-6!" />
+
+        <ngm-dev-block-ui-category-bar
+          [values]="[93.4, 6.6]"
+          [colors]="['blue', 'gray']"
+          [showLabels]="false"
+        />
+        <p class="mt-6 text-sm font-semibold">Previous month</p>
+        <ul role="list" class="mt-2 space-y-3">
+          <li class="flex w-full items-center justify-between gap-2">
+            <div class="flex w-full items-center gap-2 truncate">
+              <span
+                class="size-2.5 shrink-0 rounded-sm bg-blue-500"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="truncate whitespace-nowrap text-sm text-gray-600 dark:text-gray-400"
+              >
+                % of incidents solved
+              </span>
+            </div>
+            <span class="whitespace-nowrap text-sm font-semibold">
+              93.4% (82)
+            </span>
+          </li>
+          <li class="flex w-full items-center justify-between gap-2">
+            <div class="flex w-full items-center gap-2 truncate">
+              <span
+                class="size-2.5 shrink-0 rounded-sm bg-gray-500"
+                aria-hidden="true"
+              >
+              </span>
+              <span
+                class="truncate whitespace-nowrap text-sm text-gray-600 dark:text-gray-400"
+              >
+                % of incidents unsolved
+              </span>
+            </div>
+            <span class="whitespace-nowrap text-sm font-semibold">
+              6.6% (6)
+            </span>
+          </li>
+        </ul>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Log Monitoring Card -->
+  <mat-card appearance="outlined" class="mt-6 overflow-hidden">
+    <mat-card-header
+      class="block! bg-gray-50 dark:bg-gray-900 border-b border-outline-variant mb-3 pb-3!"
+    >
+      <mat-card-subtitle>
+        <div class="flex! items-center justify-between">
+          Log monitoring
+          <button matIconButton [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+        </div>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="px-0!">
+      <div class="p-4">
+        <div class="h-64 relative" #chartImage>
+          <ng-container
+            *ngTemplateOutlet="
+              tooltipTemplate;
+              context: { chartImage }
+            "
+          ></ng-container>
+          <canvas
+            baseChart
+            [data]="chartData"
+            [options]="chartOptions"
+            [type]="chartType"
+            [plugins]="chartplugins"
+          >
+          </canvas>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon>edit</mat-icon>
+    Edit
+  </button>
+  <button mat-menu-item>
+    <mat-icon>refresh</mat-icon>
+    Refresh
+  </button>
+  <mat-divider />
+  <button mat-menu-item>
+    <mat-icon>delete</mat-icon>
+    Delete
+  </button>
+</mat-menu>
+<ng-template #tooltipTemplate let-chartImage="chartImage">
+  <div
+    #tooltipElement
+    [class]="
+      'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-52 absolute left-0 top-1 transition-opacity z-3 ' +
+      (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+    "
+    [style.transform]="
+      getTooltipTransform(
+        tooltip?.caretX ?? 0,
+        tooltipElement.offsetWidth,
+        chartImage.offsetWidth
+      )
+    "
+  >
+    <h3 class="text-body-large font-medium my-2 px-3">
+      {{ tooltip?.title?.[0] }}
+    </h3>
+    <mat-divider class="border-outline-variant!" />
+    <div class="p-3">
+      @for (item of tooltip?.dataPoints; track item; let j = $index) {
+      <div class="flex items-center w-full justify-between gap-x-2">
+        <div class="flex items-center space-x-2">
+          <span
+            class="h-1 w-3 shrink-0 rounded-sm"
+            [style.background]="
+                tooltip?.labelColors?.[j]?.borderColor?.toString()
+              "
+            aria-hidden="true"
+          ></span>
+          <span class="text-body-medium">{{ item?.dataset?.label }}</span>
+        </div>
+        <span class="text-body-medium font-medium text-right"
+          >{{ valueFormatter(item?.raw) }}</span
+        >
+      </div>
+      }
+    </div>
+  </div>
+</ng-template>

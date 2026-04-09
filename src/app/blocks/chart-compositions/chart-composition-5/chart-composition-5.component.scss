@@ -1,0 +1,14 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-5`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.tabs-overrides(
+    (
+      container-height: 84px,
+    )
+  );
+}

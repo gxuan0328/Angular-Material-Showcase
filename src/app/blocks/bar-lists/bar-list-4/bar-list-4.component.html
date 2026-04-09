@@ -1,0 +1,71 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-lists/bar-list-4`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-content class="p-6">
+      <h3 class="font-medium">{{ title }}</h3>
+
+      <mat-progress-bar
+        class="mt-6 rounded-full"
+        mode="determinate"
+        [value]="progress"
+      />
+
+      <ul role="list" class="mt-4 flex items-center justify-between">
+        <li class="flex space-x-2.5">
+          <span class="flex w-0.5 bg-primary" aria-hidden="true"></span>
+          <div class="space-y-0.5">
+            <p class="text-sm text-gray-600 dark:text-gray-400">Fulfilled</p>
+            <p class="font-semibold">
+              1,543
+              <span class="font-normal text-gray-600 dark:text-gray-400"
+                >(78.2%)</span
+              >
+            </p>
+          </div>
+        </li>
+        <li class="flex justify-end space-x-2.5">
+          <div class="space-y-0.5">
+            <p class="text-right text-sm text-gray-600 dark:text-gray-400">
+              Open
+            </p>
+            <p class="font-semibold">
+              431
+              <span class="font-normal text-gray-600 dark:text-gray-400"
+                >(21.8%)</span
+              >
+            </p>
+          </div>
+          <span class="flex w-0.5 bg-outline-variant" aria-hidden="true"></span>
+        </li>
+      </ul>
+
+      <div class="mt-6 flex items-center justify-between px-4">
+        <p class="text-xs font-medium uppercase tracking-wide">Open orders</p>
+        <p class="text-xs font-medium uppercase tracking-wide">Order date</p>
+      </div>
+
+      <mat-nav-list class="density-2">
+        @for (item of orders().slice(0, 5); track item.name; let last = $last) {
+        <a mat-list-item>
+          <span matListItemTitle
+            >{{ item.name }}
+            <span class="tabular-nums float-right">{{ item.date }}</span></span
+          >
+        </a>
+        @if (!last) {
+        <mat-divider class="border-outline-variant!" />
+        } }
+      </mat-nav-list>
+
+      <div
+        class="absolute inset-x-0 bottom-0 flex justify-center rounded-b-lg bg-gradient-to-t from-surface to-transparent py-7 rounded-b-mat-card"
+      >
+        <button matButton="tonal" (click)="openDialog()">Show more</button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,44 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-lists/bar-list-1`
+-->
+
+<div class="sm:mx-auto sm:max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header class="block!">
+      <mat-card-title>
+        <div class="flex justify-between items-center gap-2">
+          {{ title }}
+          <span
+            class="text-xs font-medium uppercase text-gray-600 dark:text-gray-400"
+            >{{ subtitle }}</span
+          >
+        </div>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div
+        class="mt-6 pt-6 border-t border-outline-variant overflow-hidden"
+        [class]="listContainerClass()"
+      >
+        <ngm-dev-block-ui-bar-list
+          [data]="pages()"
+          [valueFormatter]="formatNumber"
+          [sortOrder]="'descending'"
+        />
+      </div>
+      <div
+        [class]="
+          'flex justify-center w-full ' +
+          (collapsed()
+            ? 'absolute inset-x-0 bottom-0 rounded-b-lg bg-gradient-to-t from-surface to-transparent py-7 rounded-b-mat-card'
+            : 'px-6 pb-7')
+        "
+      >
+        <button matButton="tonal" (click)="collapsed.set(!collapsed())">
+          {{ ctaLabel() }}
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

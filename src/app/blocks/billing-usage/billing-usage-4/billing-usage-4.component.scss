@@ -1,0 +1,31 @@
+/*
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update billing-usage/billing-usage-4`
+*/
+
+@use '@angular/material' as mat;
+
+:host {
+  @include mat.table-overrides(
+    (
+      row-item-outline-color: var(--mat-sys-outline-variant),
+      row-item-container-height: 48px,
+    )
+  );
+
+  .custom-status-chip-set {
+    @include mat.chips-overrides(
+      (
+        label-text-line-height: normal,
+        outline-color: transparent,
+        label-text-color: currentColor,
+        with-icon-icon-color: currentColor,
+        hover-state-layer-opacity: 0,
+        label-text-font: var(--mat-sys-label-medium-font),
+        label-text-size: var(--mat-sys-label-medium-size),
+        label-text-tracking: var(--mat-sys-label-medium-tracking),
+        container-height: 24px,
+      )
+    );
+  }
+}

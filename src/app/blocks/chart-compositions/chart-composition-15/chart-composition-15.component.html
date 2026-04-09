@@ -1,0 +1,170 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-15`
+-->
+
+<div class="p-6">
+  <!-- Header -->
+  <h1 class="text-xl font-semibold">Cloud monitoring</h1>
+  <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
+    All your metrics in one overview.
+  </p>
+
+  <!-- Stats Grid with Spark Charts -->
+  <mat-card appearance="outlined" class="mt-6 p-0! overflow-hidden">
+    <div
+      class="grid grid-cols-1 gap-px bg-outline-variant sm:grid-cols-2 lg:grid-cols-3"
+    >
+      @for (stat of stats; track stat.name) {
+      <div class="group relative">
+        <!-- Hover overlay -->
+        <div
+          class="absolute inset-0 z-10 hidden bg-surface/40 opacity-0 backdrop-blur-xl transition-opacity duration-100 group-hover:opacity-100 sm:block"
+        ></div>
+
+        <!-- Card content -->
+        <div
+          class="relative z-0 flex w-full flex-wrap items-baseline justify-between gap-x-4 bg-surface px-4 py-4 sm:px-6 sm:py-6 xl:px-8"
+        >
+          <dt
+            class="text-sm leading-6 font-medium text-gray-600 dark:text-gray-400"
+          >
+            {{ stat.name }}
+          </dt>
+          <dd
+            [class]="
+                'text-xs font-medium ' +
+                (stat.changeType === 'negative'
+                  ? 'text-red-600 dark:text-red-400'
+                  : 'text-emerald-600 dark:text-emerald-400')
+              "
+          >
+            {{ stat.change }}
+          </dd>
+          <dd
+            class="mt-0.5 w-full flex-none text-3xl font-semibold tracking-tight"
+          >
+            {{ stat.value }}
+          </dd>
+
+          <!-- Spark Chart -->
+          <div class="mt-4 h-12 w-full">
+            <canvas
+              baseChart
+              [data]="stat.chartData"
+              [options]="sparkChartOptions"
+              [type]="chartType"
+            >
+            </canvas>
+          </div>
+
+          <!-- Mobile actions -->
+          <div
+            class="flex w-full items-center justify-end gap-2 sm:hidden density-3 pt-4"
+          >
+            <a matButton> Edit alarm </a>
+            <span class="h-6 w-px bg-outline-variant" aria-hidden="true"></span>
+            <a matButton> View more </a>
+          </div>
+        </div>
+
+        <!-- Hover state actions -->
+        <div
+          class="absolute inset-0 z-50 m-auto hidden cursor-pointer sm:flex sm:items-center sm:justify-center sm:gap-2"
+        >
+          <button
+            matButton="outlined"
+            class="opacity-0 transition-opacity duration-100 group-hover:opacity-100"
+          >
+            Edit alarm
+          </button>
+          <button
+            matButton="filled"
+            class="border-none opacity-0 transition-opacity duration-100 group-hover:opacity-100"
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+      }
+    </div>
+  </mat-card>
+
+  <!-- Data Table -->
+  <div class="mt-8">
+    <div
+      class="overflow-x-auto rounded-lg shadow-sm ring-1 ring-outline-variant"
+    >
+      <table
+        mat-table
+        [dataSource]="tableData"
+        class="w-full border-transparent"
+      >
+        <!-- Table Header -->
+        <ng-container matColumnDef="Time period">
+          <th mat-header-cell *matHeaderCellDef class="bg-outline-variant">
+            Time period
+          </th>
+          <td mat-cell *matCellDef="let item">{{ item['Time period'] }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Overall costs">
+          <th mat-header-cell *matHeaderCellDef class="text-right">
+            Overall costs
+          </th>
+          <td mat-cell *matCellDef="let item" class="text-right">
+            {{ item['Overall costs'] }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Active workspaces">
+          <th mat-header-cell *matHeaderCellDef class="text-right">
+            Active workspaces
+          </th>
+          <td mat-cell *matCellDef="let item" class="text-right">
+            {{ item['Active workspaces'] }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Active users">
+          <th mat-header-cell *matHeaderCellDef class="text-right">
+            Active users
+          </th>
+          <td mat-cell *matCellDef="let item" class="text-right">
+            {{ item['Active users'] }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Uptime">
+          <th mat-header-cell *matHeaderCellDef class="text-right">Uptime</th>
+          <td mat-cell *matCellDef="let item" class="text-right">
+            {{ item.Uptime }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Response time">
+          <th mat-header-cell *matHeaderCellDef class="text-right">
+            Response time
+          </th>
+          <td mat-cell *matCellDef="let item" class="text-right">
+            {{ item['Response time'] }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="MTTR">
+          <th mat-header-cell *matHeaderCellDef class="text-right">MTTR</th>
+          <td mat-cell *matCellDef="let item" class="text-right">
+            {{ item.MTTR }}
+          </td>
+        </ng-container>
+
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns"
+          class="bg-gray-50! dark:bg-gray-900!"
+        ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,96 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-tooltips/chart-tooltip-9`
+-->
+
+<div class="mx-auto max-w-7xl">
+  <div class="flex justify-center mb-12">
+    <div
+      class="bg-surface rounded-md border border-outline-variant shadow-sm min-w-56"
+    >
+      <div
+        class="flex items-center justify-between border-b border-outline-variant px-3 py-2 text-body-medium"
+      >
+        <span>May 24</span>
+        <span class="text-gray-500 dark:text-gray-400">12pm</span>
+      </div>
+      <div class="space-y-2 px-3 py-2">
+        <div class="flex items-center gap-2 text-body-small">
+          <span class="h-1 w-3 rounded-sm bg-violet-500"></span>
+          <div class="flex w-full items-center justify-between">
+            <span class="font-medium">$89,342</span>
+            <span class="text-gray-500 dark:text-gray-400">Revenue</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2 text-body-small">
+          <span class="h-1 w-3 rounded-sm bg-blue-500"></span>
+          <div class="flex w-full items-center justify-between">
+            <span class="font-medium">$67,830</span>
+            <span class="text-gray-500 dark:text-gray-400">Profit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center mb-12 gap-x-2">
+    <div class="border-t border-outline-variant grow"></div>
+    <button matButton="tonal" (click)="toggleDemo()">
+      {{ showDemo() ? 'Hide Demo' : 'Show Demo' }}
+    </button>
+    <div class="border-t border-outline-variant grow"></div>
+  </div>
+
+  @if (showDemo()) {
+  <div class="mt-6 h-72 relative" #chartImage>
+    <div
+      #tooltipElement
+      [class]="
+          'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-56 absolute left-0 top-1 transition-all z-3 ' +
+          (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+        "
+      [style.transform]="
+          getTooltipTransform(
+            tooltip?.caretX ?? 0,
+            tooltipElement.offsetWidth,
+            chartImage.offsetWidth
+          )
+        "
+    >
+      <div
+        class="flex items-center justify-between border-b border-outline-variant px-3 py-2 text-body-medium"
+      >
+        <span>{{ tooltip?.title?.[0] }}</span>
+        <span class="text-gray-500 dark:text-gray-400">12pm</span>
+      </div>
+      <div class="space-y-2 px-3 py-2">
+        @for ( point of tooltip?.dataPoints; track point.datasetIndex; let i =
+        $index ) {
+        <div class="flex items-center gap-2 text-body-small">
+          <span
+            class="h-1 w-3 rounded-sm"
+            [style.background]="
+                  tooltip?.labelColors?.[i]?.borderColor?.toString()
+                "
+          ></span>
+          <div class="flex w-full items-center justify-between">
+            <span class="font-medium">{{ formatCurrency(point?.raw) }}</span>
+            <span class="text-gray-500 dark:text-gray-400"
+              >{{ point?.dataset?.label }}</span
+            >
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+
+    <canvas
+      class="z-2 relative"
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType"
+    ></canvas>
+  </div>
+  }
+</div>

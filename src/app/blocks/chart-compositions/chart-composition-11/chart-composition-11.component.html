@@ -1,0 +1,219 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-compositions/chart-composition-11`
+-->
+
+<div class="p-6">
+  <!-- Header with Status -->
+  <div class="flex items-center gap-3">
+    <span
+      class="shrink-0 animate-pulse rounded-full bg-emerald-600/30 p-1"
+      aria-hidden="true"
+    >
+      <span class="block size-2 rounded-full bg-emerald-600"></span>
+    </span>
+    <h1 class="text-2xl font-semibold">monitor.app.com</h1>
+  </div>
+
+  <div class="mt-2 flex items-center gap-2">
+    <span class="text-sm font-medium text-emerald-600 dark:text-emerald-400">
+      Up
+    </span>
+    <span class="size-1 shrink-0 rounded-full bg-on-surface-variant"></span>
+    <span class="text-sm text-gray-600 dark:text-gray-400">
+      Checking every 5 minutes
+    </span>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="mt-10 flex flex-wrap items-center gap-1">
+    <button matButton>
+      <mat-icon>send</mat-icon>
+      Send test alert
+    </button>
+    <button matButton [disabled]="true">
+      <mat-icon>shield</mat-icon>
+      Incidents
+    </button>
+    <button matButton>
+      <mat-icon>pause</mat-icon>
+      Pause
+    </button>
+    <button matButton>
+      <mat-icon>settings</mat-icon>
+      Configure
+    </button>
+  </div>
+
+  <!-- Summary Cards -->
+  <dl class="mt-4 grid grid-cols-1 gap-6 sm:grid-cols-3">
+    @for (item of summary; track item.value) {
+    <mat-card appearance="outlined">
+      <mat-card-content>
+        <dt class="text-sm text-gray-600 dark:text-gray-400">
+          {{ item.name }}
+        </dt>
+        <dd class="mt-2 text-lg font-semibold">{{ item.value }}</dd>
+      </mat-card-content>
+    </mat-card>
+    }
+  </dl>
+
+  <!-- Response Times Chart Card -->
+  <mat-card class="mt-6" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Response times</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="mt-6 py-6 border-t border-outline-variant">
+        <div
+          class="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+        >
+          <!-- Region Select -->
+          <div>
+            <mat-form-field appearance="outline" class="w-full sm:w-fit">
+              <mat-select value="europe" aria-label="Select region">
+                <mat-option value="north-america">North America</mat-option>
+                <mat-option value="europe">Europe</mat-option>
+                <mat-option value="asia">Asia</mat-option>
+                <mat-option value="australia">Australia</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- Time Period Toggle -->
+          <mat-button-toggle-group
+            [value]="selectedPeriod"
+            (valueChange)="selectedPeriod = $event"
+            class="w-full sm:w-fit"
+          >
+            <mat-button-toggle value="day" class="w-full">
+              Day
+            </mat-button-toggle>
+            <mat-button-toggle value="week" class="w-full">
+              Week
+            </mat-button-toggle>
+            <mat-button-toggle value="month" class="w-full">
+              Month
+            </mat-button-toggle>
+            <mat-button-toggle value="year" [disabled]="true" class="w-full">
+              Year
+            </mat-button-toggle>
+          </mat-button-toggle-group>
+        </div>
+
+        <!-- Desktop Chart -->
+        <div class="mt-6 hidden sm:block">
+          <div class="h-80 relative" #chartImage>
+            <!-- Custom Tooltip -->
+            <div
+              #tooltipElement
+              [class]="
+                'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-56 absolute left-0 top-1 transition-opacity z-3 ' +
+                (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+              "
+              [style.transform]="
+                getTooltipTransform(
+                  tooltip?.caretX ?? 0,
+                  tooltipElement.offsetWidth,
+                  chartImage.offsetWidth
+                )
+              "
+            >
+              <h3 class="text-body-large font-medium my-2 px-3">
+                {{ tooltip?.title?.[0] }}
+              </h3>
+              <mat-divider class="border-outline-variant!" />
+              <div class="p-3">
+                @for (item of tooltip?.dataPoints; track item; let j = $index) {
+                <div class="flex items-center w-full justify-between gap-x-2">
+                  <div class="flex items-center space-x-2">
+                    <span
+                      class="h-1 w-3 shrink-0 rounded-sm"
+                      [style.background]="
+                          tooltip?.labelColors?.[j]?.borderColor?.toString()
+                        "
+                      aria-hidden="true"
+                    ></span>
+                    <span class="text-body-medium"
+                      >{{ item?.dataset?.label }}</span
+                    >
+                  </div>
+                  <span class="text-body-medium font-medium text-right"
+                    >{{ getFormattedValue(item?.raw) }}</span
+                  >
+                </div>
+                }
+              </div>
+            </div>
+            <canvas
+              class="z-2 relative"
+              baseChart
+              [data]="chartData"
+              [options]="chartOptions"
+              [plugins]="chartPlugins"
+              [type]="chartType"
+            >
+            </canvas>
+          </div>
+        </div>
+
+        <!-- Mobile Chart -->
+        <div class="mt-6 sm:hidden">
+          <div class="h-80 relative" #mobileChartImage>
+            <!-- Custom Tooltip for Mobile -->
+            <div
+              #mobileTooltipElement
+              [class]="
+                'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-56 absolute left-0 top-1 transition-opacity z-3 ' +
+                (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+              "
+              [style.transform]="
+                getTooltipTransform(
+                  tooltip?.caretX ?? 0,
+                  mobileTooltipElement.offsetWidth,
+                  mobileChartImage.offsetWidth
+                )
+              "
+            >
+              <h3 class="text-body-large font-medium my-2 px-3">
+                {{ tooltip?.title?.[0] }}
+              </h3>
+              <mat-divider class="border-outline-variant!" />
+              <div class="p-3">
+                @for (item of tooltip?.dataPoints; track item; let j = $index) {
+                <div class="flex items-center w-full justify-between gap-x-2">
+                  <div class="flex items-center space-x-2">
+                    <span
+                      class="h-1 w-3 shrink-0 rounded-sm"
+                      [style.background]="
+                          tooltip?.labelColors?.[j]?.borderColor?.toString()
+                        "
+                      aria-hidden="true"
+                    ></span>
+                    <span class="text-body-medium"
+                      >{{ item?.dataset?.label }}</span
+                    >
+                  </div>
+                  <span class="text-body-medium font-medium text-right"
+                    >{{ getFormattedValue(item?.raw) }}</span
+                  >
+                </div>
+                }
+              </div>
+            </div>
+            <canvas
+              class="z-2 relative"
+              baseChart
+              [data]="chartData"
+              [options]="mobileChartOptions"
+              [plugins]="chartPlugins"
+              [type]="chartType"
+            >
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

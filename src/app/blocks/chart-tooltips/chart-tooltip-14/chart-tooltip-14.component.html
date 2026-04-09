@@ -1,0 +1,83 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update chart-tooltips/chart-tooltip-14`
+-->
+
+<div class="mx-auto max-w-7xl">
+  <div class="flex justify-center mb-12">
+    <div
+      class="bg-surface rounded-md border border-outline-variant shadow-sm min-w-56 text-body-medium"
+    >
+      <div class="space-y-2 p-2">
+        <div class="flex gap-2.5">
+          <span class="w-1 rounded bg-blue-500"></span>
+          <div class="space-y-1">
+            <div class="text-gray-600 dark:text-gray-400">Running</div>
+            <div class="font-medium">169 bpm</div>
+          </div>
+        </div>
+        <div class="flex gap-2.5">
+          <span class="w-1 rounded bg-cyan-500"></span>
+          <div class="space-y-1">
+            <div class="text-gray-600 dark:text-gray-400">Cycling</div>
+            <div class="font-medium">145 bpm</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex justify-center items-center mb-12 gap-x-2">
+    <div class="border-t border-outline-variant grow"></div>
+    <button matButton="tonal" (click)="toggleDemo()">
+      {{ showDemo() ? 'Hide Demo' : 'Show Demo' }}
+    </button>
+    <div class="border-t border-outline-variant grow"></div>
+  </div>
+
+  @if (showDemo()) {
+  <div class="mt-6 h-72 relative" #chartImage>
+    <div
+      #tooltipElement
+      [class]="
+          'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-56 absolute left-0 top-1 transition-all z-3 text-body-medium ' +
+          (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+        "
+      [style.transform]="
+          getTooltipTransform(
+            tooltip?.caretX ?? 0,
+            tooltipElement.offsetWidth,
+            chartImage.offsetWidth
+          )
+        "
+    >
+      <div class="space-y-2 p-2">
+        @for ( point of tooltip?.dataPoints; track point.datasetIndex; let i =
+        $index ) {
+        <div class="flex gap-2.5">
+          <span
+            class="w-1 rounded"
+            [style.background]="
+                  tooltip?.labelColors?.[i]?.borderColor?.toString()
+                "
+          ></span>
+          <div class="space-y-1">
+            <div class="text-gray-600 dark:text-gray-400">
+              {{ point?.dataset?.label }}
+            </div>
+            <div class="font-medium">{{ point?.raw }} bpm</div>
+          </div>
+        </div>
+        }
+      </div>
+    </div>
+    <canvas
+      class="z-2 relative"
+      baseChart
+      [data]="chartData"
+      [options]="chartOptions"
+      [type]="chartType"
+    ></canvas>
+  </div>
+  }
+</div>

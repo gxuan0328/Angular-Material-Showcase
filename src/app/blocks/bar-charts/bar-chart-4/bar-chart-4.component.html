@@ -1,0 +1,110 @@
+<!--
+	Installed from https://ui.angular-material.dev/
+	Update this file using `npx @ngm-dev/cli update bar-charts/bar-chart-4`
+-->
+
+<div class="mx-auto max-w-lg">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>Online payments</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group class="mt-4">
+        @for (tab of regions; track tab.name; let idx = $index) {
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <div>
+              <p class="text-body-medium text-gray-600 dark:text-gray-400">
+                {{ tab.name }}
+              </p>
+              <p class="text-title-medium font-bold">{{ tab.total }}</p>
+              <p class="text-label-medium text-gray-600 dark:text-gray-400">
+                <span
+                  [class]="
+                      tab.changeType === 'positive'
+                        ? 'text-emerald-600'
+                        : 'text-red-600'
+                    "
+                  >{{ tab.change }}</span
+                >
+                vs last period
+              </p>
+            </div>
+          </ng-template>
+          <div class="mt-6 h-48 relative" #chartImage>
+            <div
+              #tooltipElement
+              [class]="
+                  'bg-surface rounded-md border border-outline-variant shadow-sm pointer-events-none min-w-40 absolute left-0 top-1 transition-all z-3 ' +
+                  (tooltip?.opacity === 1 ? 'opacity-100' : 'opacity-0')
+                "
+              [style.transform]="
+                  getTooltipTransform(
+                    tooltip?.caretX ?? 0,
+                    tooltipElement.offsetWidth,
+                    chartImage.offsetWidth
+                  )
+                "
+            >
+              <h3 class="text-body-large font-medium my-2 px-3">
+                {{ tooltip?.title?.[0] }}
+              </h3>
+              <mat-divider class="border-outline-variant!" />
+              <div class="p-3">
+                @for ( item of tooltip?.dataPoints; track item; let i = $index )
+                {
+                <div class="flex items-center w-full justify-between">
+                  <div class="flex items-center space-x-2">
+                    <span
+                      class="h-1 w-3 shrink-0 rounded-sm"
+                      [style.background]="
+                            tooltip?.labelColors?.[i]?.borderColor?.toString()
+                          "
+                      aria-hidden="true"
+                    ></span>
+                    <span class="text-body-medium font-body-small"
+                      >{{ item?.dataset?.label }}</span
+                    >
+                  </div>
+                  <span class="text-body-medium font-medium text-right"
+                    >{{ item?.formattedValue }}</span
+                  >
+                </div>
+                }
+              </div>
+            </div>
+
+            <canvas
+              class="z-2 relative"
+              baseChart
+              [data]="tab.chartData"
+              [options]="chartOptions"
+              [type]="'bar'"
+            ></canvas>
+          </div>
+          <mat-list class="mt-2">
+            @for (item of tab.chartData.datasets; track item.label) {
+            <mat-list-item class="density-2">
+              <span
+                class="h-1! w-3! rounded-sm bg-outline-variant"
+                aria-hidden="true"
+                matListItemIcon
+                [style.background]="item.borderColor?.toString()"
+              ></span>
+              <span class="flex items-center justify-between w-full">
+                <span class="text-body-medium font-body-small"
+                  >{{ item.label }}</span
+                >
+                <span class="text-body-medium font-medium text-right"
+                  >{{ getTotal(item.data) }}</span
+                >
+              </span>
+            </mat-list-item>
+            }
+          </mat-list>
+        </mat-tab>
+        }
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>
