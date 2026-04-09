@@ -170,8 +170,7 @@ export const CATALOG_ROUTES: Routes = [
   {
     path: 'stacked-lists',
     title: 'Stacked Lists · Catalog',
-    loadComponent: () =>
-      import('./blocks/stacked-lists.page').then(m => m.StackedListsCatalogPage),
+    loadComponent: () => import('./blocks/stacked-lists.page').then(m => m.StackedListsCatalogPage),
   },
   {
     path: 'grid-lists',
@@ -197,9 +196,7 @@ export const CATALOG_ROUTES: Routes = [
     path: 'account-user-management',
     title: 'Account & User Management · Catalog',
     loadComponent: () =>
-      import('./blocks/account-user-management.page').then(
-        m => m.AccountUserManagementCatalogPage,
-      ),
+      import('./blocks/account-user-management.page').then(m => m.AccountUserManagementCatalogPage),
   },
   {
     path: 'file-upload',

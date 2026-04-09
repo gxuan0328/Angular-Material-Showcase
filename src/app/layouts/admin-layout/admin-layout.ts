@@ -23,17 +23,17 @@ interface NavItem {
 
 const NAV_ITEMS: readonly NavItem[] = [
   { id: 'dashboard', label: '儀表板', icon: 'dashboard', path: '/app/dashboard', exact: true },
-  { id: 'users', label: '使用者管理', icon: 'group', path: '/app/users', soon: true },
-  { id: 'billing', label: '計費與用量', icon: 'credit_card', path: '/app/billing', soon: true },
-  { id: 'reports', label: '報表分析', icon: 'insights', path: '/app/reports', soon: true },
-  { id: 'settings', label: '設定', icon: 'settings', path: '/app/settings', soon: true },
+  { id: 'users', label: '使用者管理', icon: 'group', path: '/app/users' },
+  { id: 'teams', label: '團隊與成員', icon: 'groups', path: '/app/teams' },
   {
     id: 'notifications',
     label: '通知中心',
     icon: 'notifications',
     path: '/app/notifications',
-    soon: true,
   },
+  { id: 'billing', label: '計費與用量', icon: 'credit_card', path: '/app/billing', soon: true },
+  { id: 'reports', label: '報表分析', icon: 'insights', path: '/app/reports', soon: true },
+  { id: 'settings', label: '設定', icon: 'settings', path: '/app/settings', soon: true },
 ] as const;
 
 /**

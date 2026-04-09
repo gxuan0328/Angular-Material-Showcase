@@ -1,0 +1,154 @@
+<div class="user-new">
+  <header class="user-new__header">
+    <a routerLink="/app/users" class="user-new__back">
+      <mat-icon>arrow_back</mat-icon>
+      <span>返回使用者列表</span>
+    </a>
+    <h1 class="user-new__title">新增使用者</h1>
+    <p class="user-new__subtitle">依序填寫基本資料、角色與通知偏好，最後確認後送出邀請。</p>
+  </header>
+
+  @if (errorCode()) {
+  <p class="user-new__error" role="alert">
+    <mat-icon>error_outline</mat-icon>
+    {{ errorMessage() }}
+  </p>
+  }
+
+  <mat-card appearance="outlined" class="user-new__card">
+    <mat-stepper orientation="vertical" linear class="user-new__stepper">
+      <!-- Step 1: basics -->
+      <mat-step [stepControl]="basicsForm" label="基本資料">
+        <form [formGroup]="basicsForm" class="user-new__form">
+          <mat-form-field appearance="outline">
+            <mat-label>姓名</mat-label>
+            <input matInput type="text" formControlName="displayName" autocomplete="name" />
+            @if (basicsForm.controls.displayName.hasError('required') &&
+            basicsForm.controls.displayName.touched) {
+            <mat-error>請輸入姓名</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>工作信箱</mat-label>
+            <input matInput type="email" formControlName="email" autocomplete="email" />
+            @if (basicsForm.controls.email.hasError('required') &&
+            basicsForm.controls.email.touched) {
+            <mat-error>請輸入電子郵件</mat-error>
+            } @else if (basicsForm.controls.email.hasError('email')) {
+            <mat-error>電子郵件格式不正確</mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>預設團隊標籤</mat-label>
+            <mat-select formControlName="tagPreset">
+              <mat-option value="engineering">工程團隊</mat-option>
+              <mat-option value="design">設計團隊</mat-option>
+              <mat-option value="bi">商業分析</mat-option>
+              <mat-option value="ops">營運團隊</mat-option>
+              <mat-option value="marketing">行銷團隊</mat-option>
+              <mat-option value="finance">財務團隊</mat-option>
+              <mat-option value="customer-success">客戶成功</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="user-new__step-actions">
+            <button mat-flat-button color="primary" matStepperNext type="button">
+              下一步
+              <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- Step 2: role -->
+      <mat-step [stepControl]="roleForm" label="指派角色">
+        <form [formGroup]="roleForm" class="user-new__form">
+          <mat-radio-group class="user-new__roles" formControlName="role" aria-label="使用者角色">
+            @for (option of roleOptions; track option.value) {
+            <mat-radio-button [value]="option.value" class="user-new__role">
+              <div class="user-new__role-body">
+                <strong>{{ option.label }}</strong>
+                <span>{{ option.description }}</span>
+              </div>
+            </mat-radio-button>
+            }
+          </mat-radio-group>
+
+          <div class="user-new__step-actions">
+            <button mat-button matStepperPrevious type="button">上一步</button>
+            <button mat-flat-button color="primary" matStepperNext type="button">
+              下一步
+              <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- Step 3: preferences -->
+      <mat-step [stepControl]="preferencesForm" label="通知偏好">
+        <form [formGroup]="preferencesForm" class="user-new__form">
+          <mat-slide-toggle formControlName="emailNotifications"> 電子郵件通知 </mat-slide-toggle>
+          <mat-slide-toggle formControlName="inAppNotifications"> 站內即時通知 </mat-slide-toggle>
+          <mat-slide-toggle formControlName="weeklyDigest"> 每週摘要電子報 </mat-slide-toggle>
+
+          <div class="user-new__step-actions">
+            <button mat-button matStepperPrevious type="button">上一步</button>
+            <button mat-flat-button color="primary" matStepperNext type="button">
+              下一步
+              <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+            </button>
+          </div>
+        </form>
+      </mat-step>
+
+      <!-- Step 4: confirm -->
+      <mat-step label="確認">
+        <div class="user-new__summary">
+          <h2>請確認邀請內容</h2>
+          <mat-divider />
+          <dl>
+            <div>
+              <dt>姓名</dt>
+              <dd>{{ basicsForm.controls.displayName.value || '—' }}</dd>
+            </div>
+            <div>
+              <dt>工作信箱</dt>
+              <dd>{{ basicsForm.controls.email.value || '—' }}</dd>
+            </div>
+            <div>
+              <dt>角色</dt>
+              <dd>{{ selectedRoleDescription() }}</dd>
+            </div>
+            <div>
+              <dt>通知</dt>
+              <dd>
+                @if (preferencesForm.controls.emailNotifications.value) { 電子郵件 } @if
+                (preferencesForm.controls.inAppNotifications.value) { · 站內 } @if
+                (preferencesForm.controls.weeklyDigest.value) { · 週報 }
+              </dd>
+            </div>
+          </dl>
+
+          <div class="user-new__step-actions">
+            <button mat-button matStepperPrevious type="button">上一步</button>
+            <button
+              mat-flat-button
+              color="primary"
+              type="button"
+              [disabled]="loading()"
+              (click)="submit()"
+            >
+              @if (loading()) {
+              <mat-spinner diameter="20" />
+              } @else {
+              <span>建立並寄送邀請</span>
+              }
+            </button>
+          </div>
+        </div>
+      </mat-step>
+    </mat-stepper>
+  </mat-card>
+</div>

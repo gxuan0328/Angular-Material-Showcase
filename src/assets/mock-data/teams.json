@@ -1,0 +1,52 @@
+{
+  "teams": [
+    {
+      "id": "t-engineering",
+      "name": "工程團隊",
+      "description": "平台開發與基礎設施",
+      "memberCount": 12,
+      "lead": "u-002",
+      "members": ["u-002", "u-008", "u-013", "u-017", "u-019", "u-022", "u-026", "u-032"]
+    },
+    {
+      "id": "t-design",
+      "name": "設計團隊",
+      "description": "產品設計與使用者體驗",
+      "memberCount": 4,
+      "lead": "u-007",
+      "members": ["u-007", "u-014", "u-027"]
+    },
+    {
+      "id": "t-bi",
+      "name": "商業分析",
+      "description": "資料分析與商業智慧",
+      "memberCount": 5,
+      "lead": "u-004",
+      "members": ["u-004", "u-005", "u-024", "u-035"]
+    },
+    {
+      "id": "t-ops",
+      "name": "營運團隊",
+      "description": "客戶成功與維運監控",
+      "memberCount": 5,
+      "lead": "u-003",
+      "members": ["u-003", "u-015", "u-021", "u-028", "u-029"]
+    },
+    {
+      "id": "t-marketing",
+      "name": "行銷團隊",
+      "description": "內容行銷與成長策略",
+      "memberCount": 4,
+      "lead": "u-016",
+      "members": ["u-009", "u-016", "u-023", "u-034"]
+    },
+    {
+      "id": "t-finance",
+      "name": "財務團隊",
+      "description": "財務會計與合規審核",
+      "memberCount": 3,
+      "lead": "u-012",
+      "members": ["u-012", "u-025", "u-033"]
+    }
+  ]
+}

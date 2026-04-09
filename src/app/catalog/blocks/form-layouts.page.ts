@@ -19,12 +19,48 @@ import { FormLayout5Component } from '../../blocks/form-layouts/form-layout-5/fo
 import { FormLayout6Component } from '../../blocks/form-layouts/form-layout-6/form-layout-6.component';
 
 const VARIANTS: readonly BlockVariant[] = [
-  { id: 'form-layout-1', label: 'Form Layout 01 — 單欄標準表單', registryCategory: 'form-layouts', component: FormLayout1Component, isFree: false },
-  { id: 'form-layout-2', label: 'Form Layout 02 — 含章節分組', registryCategory: 'form-layouts', component: FormLayout2Component, isFree: false },
-  { id: 'form-layout-3', label: 'Form Layout 03 — 雙欄並排表單', registryCategory: 'form-layouts', component: FormLayout3Component, isFree: false },
-  { id: 'form-layout-4', label: 'Form Layout 04 — 卡片式表單', registryCategory: 'form-layouts', component: FormLayout4Component, isFree: false },
-  { id: 'form-layout-5', label: 'Form Layout 05 — 含側邊說明', registryCategory: 'form-layouts', component: FormLayout5Component, isFree: false },
-  { id: 'form-layout-6', label: 'Form Layout 06 — 含步驟指示器', registryCategory: 'form-layouts', component: FormLayout6Component, isFree: false },
+  {
+    id: 'form-layout-1',
+    label: 'Form Layout 01 — 單欄標準表單',
+    registryCategory: 'form-layouts',
+    component: FormLayout1Component,
+    isFree: false,
+  },
+  {
+    id: 'form-layout-2',
+    label: 'Form Layout 02 — 含章節分組',
+    registryCategory: 'form-layouts',
+    component: FormLayout2Component,
+    isFree: false,
+  },
+  {
+    id: 'form-layout-3',
+    label: 'Form Layout 03 — 雙欄並排表單',
+    registryCategory: 'form-layouts',
+    component: FormLayout3Component,
+    isFree: false,
+  },
+  {
+    id: 'form-layout-4',
+    label: 'Form Layout 04 — 卡片式表單',
+    registryCategory: 'form-layouts',
+    component: FormLayout4Component,
+    isFree: false,
+  },
+  {
+    id: 'form-layout-5',
+    label: 'Form Layout 05 — 含側邊說明',
+    registryCategory: 'form-layouts',
+    component: FormLayout5Component,
+    isFree: false,
+  },
+  {
+    id: 'form-layout-6',
+    label: 'Form Layout 06 — 含步驟指示器',
+    registryCategory: 'form-layouts',
+    component: FormLayout6Component,
+    isFree: false,
+  },
 ];
 
 const API: ApiDocumentation = {
@@ -72,8 +108,7 @@ const META: CatalogBlockMeta = {
   title: 'Form Layouts',
   category: 'application',
   subcategory: 'Forms',
-  summary:
-    '表單版面範本集合，提供單欄、雙欄、分組、卡片式、含側邊說明等多種常見表單佈局骨架。',
+  summary: '表單版面範本集合，提供單欄、雙欄、分組、卡片式、含側邊說明等多種常見表單佈局骨架。',
   tags: ['form', 'layout', 'settings'],
   status: 'shipped',
   variants: VARIANTS,

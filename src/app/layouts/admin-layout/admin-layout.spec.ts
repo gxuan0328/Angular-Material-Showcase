@@ -24,23 +24,25 @@ describe('AdminLayout', () => {
     expect(el.querySelector('router-outlet')).toBeTruthy();
   });
 
-  it('shows all six nav items with expected labels', async () => {
+  it('shows all seven nav items with expected labels', async () => {
     const fixture = TestBed.createComponent(AdminLayout);
     await fixture.whenStable();
     const el: HTMLElement = fixture.nativeElement;
     const items = el.querySelectorAll('.admin-layout__nav-item');
-    expect(items.length).toBe(6);
+    expect(items.length).toBe(7);
     const labels = Array.from(items).map(item => (item as HTMLElement).textContent?.trim() ?? '');
     expect(labels.some(l => l.includes('儀表板'))).toBe(true);
     expect(labels.some(l => l.includes('使用者管理'))).toBe(true);
+    expect(labels.some(l => l.includes('團隊與成員'))).toBe(true);
+    expect(labels.some(l => l.includes('通知中心'))).toBe(true);
     expect(labels.some(l => l.includes('設定'))).toBe(true);
   });
 
-  it('marks M3/M4 nav items as soon', async () => {
+  it('marks M4 nav items as soon', async () => {
     const fixture = TestBed.createComponent(AdminLayout);
     await fixture.whenStable();
     const soonItems = fixture.nativeElement.querySelectorAll('.admin-layout__nav-item--soon');
-    // dashboard is live; five others are coming-soon
-    expect(soonItems.length).toBe(5);
+    // M3: dashboard + users + teams + notifications live; billing/reports/settings are M4 soon
+    expect(soonItems.length).toBe(3);
   });
 });

@@ -23,16 +23,76 @@ import { AccountUserManagement9Component } from '../../blocks/account-user-manag
 import { AccountUserManagement10Component } from '../../blocks/account-user-management/account-user-management-10/account-user-management-10.component';
 
 const VARIANTS: readonly BlockVariant[] = [
-  { id: 'account-user-management-1', label: 'Account Management 01 — 個人資料設定', registryCategory: 'account-user-management', component: AccountUserManagement1Component, isFree: false },
-  { id: 'account-user-management-2', label: 'Account Management 02 — 密碼變更', registryCategory: 'account-user-management', component: AccountUserManagement2Component, isFree: false },
-  { id: 'account-user-management-3', label: 'Account Management 03 — 雙因子驗證設定', registryCategory: 'account-user-management', component: AccountUserManagement3Component, isFree: false },
-  { id: 'account-user-management-4', label: 'Account Management 04 — 登入裝置管理', registryCategory: 'account-user-management', component: AccountUserManagement4Component, isFree: false },
-  { id: 'account-user-management-5', label: 'Account Management 05 — 團隊成員邀請', registryCategory: 'account-user-management', component: AccountUserManagement5Component, isFree: false },
-  { id: 'account-user-management-6', label: 'Account Management 06 — 權限角色設定', registryCategory: 'account-user-management', component: AccountUserManagement6Component, isFree: false },
-  { id: 'account-user-management-7', label: 'Account Management 07 — 通知偏好設定', registryCategory: 'account-user-management', component: AccountUserManagement7Component, isFree: false },
-  { id: 'account-user-management-8', label: 'Account Management 08 — API Token 管理', registryCategory: 'account-user-management', component: AccountUserManagement8Component, isFree: false },
-  { id: 'account-user-management-9', label: 'Account Management 09 — 資料下載與刪除', registryCategory: 'account-user-management', component: AccountUserManagement9Component, isFree: false },
-  { id: 'account-user-management-10', label: 'Account Management 10 — 組織層級設定', registryCategory: 'account-user-management', component: AccountUserManagement10Component, isFree: false },
+  {
+    id: 'account-user-management-1',
+    label: 'Account Management 01 — 個人資料設定',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement1Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-2',
+    label: 'Account Management 02 — 密碼變更',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement2Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-3',
+    label: 'Account Management 03 — 雙因子驗證設定',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement3Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-4',
+    label: 'Account Management 04 — 登入裝置管理',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement4Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-5',
+    label: 'Account Management 05 — 團隊成員邀請',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement5Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-6',
+    label: 'Account Management 06 — 權限角色設定',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement6Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-7',
+    label: 'Account Management 07 — 通知偏好設定',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement7Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-8',
+    label: 'Account Management 08 — API Token 管理',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement8Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-9',
+    label: 'Account Management 09 — 資料下載與刪除',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement9Component,
+    isFree: false,
+  },
+  {
+    id: 'account-user-management-10',
+    label: 'Account Management 10 — 組織層級設定',
+    registryCategory: 'account-user-management',
+    component: AccountUserManagement10Component,
+    isFree: false,
+  },
 ];
 
 const API: ApiDocumentation = {

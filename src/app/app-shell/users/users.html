@@ -1,0 +1,180 @@
+<div class="users">
+  <header class="users__header">
+    <div>
+      <p class="users__eyebrow">管理後台 · 人員</p>
+      <h1 class="users__title">使用者管理</h1>
+      <p class="users__subtitle">
+        共 {{ stats().total }} 位成員 · 啟用 {{ stats().active }} · 邀請中 {{ stats().invited }} ·
+        停用 {{ stats().suspended }}
+      </p>
+    </div>
+    <div class="users__header-actions">
+      <button mat-stroked-button type="button">
+        <mat-icon>download</mat-icon>
+        <span>匯出 CSV</span>
+      </button>
+      <button mat-flat-button color="primary" type="button" routerLink="/app/users/new">
+        <mat-icon>person_add</mat-icon>
+        <span>新增使用者</span>
+      </button>
+    </div>
+  </header>
+
+  @if (busy()) {
+  <mat-progress-bar mode="indeterminate" aria-label="處理中" />
+  }
+
+  <mat-card appearance="outlined" class="users__filters">
+    <form [formGroup]="filterForm" class="users__filters-form">
+      <mat-form-field appearance="outline" class="users__field users__field--search">
+        <mat-label>搜尋姓名、Email 或標籤</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput type="text" formControlName="search" />
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="users__field">
+        <mat-label>狀態</mat-label>
+        <mat-select formControlName="status">
+          @for (option of statusOptions; track option.value) {
+          <mat-option [value]="option.value">{{ option.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="users__field">
+        <mat-label>角色</mat-label>
+        <mat-select formControlName="role">
+          @for (option of roleOptions; track option.value) {
+          <mat-option [value]="option.value">{{ option.label }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-button type="button" (click)="resetFilters()">清除條件</button>
+    </form>
+  </mat-card>
+
+  @if (hasSelection()) {
+  <mat-card appearance="outlined" class="users__bulk-bar">
+    <mat-card-content class="users__bulk-content">
+      <span class="users__bulk-count">
+        <mat-icon>check_circle</mat-icon>
+        已選取 {{ selection.selected.length }} 位使用者
+      </span>
+      <div class="users__bulk-actions">
+        <button mat-button type="button" (click)="selection.clear()">取消選取</button>
+        <button mat-stroked-button color="warn" type="button" (click)="bulkRemove()">
+          <mat-icon>person_off</mat-icon>
+          批次停用
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  }
+
+  <mat-card appearance="outlined" class="users__table-card">
+    <table
+      mat-table
+      matSort
+      [dataSource]="dataSource()"
+      [trackBy]="rowTrack"
+      class="users__table"
+      (matSortChange)="sortChange($event)"
+    >
+      <ng-container matColumnDef="select">
+        <th mat-header-cell *matHeaderCellDef class="users__col-select">
+          <mat-checkbox
+            (change)="toggleAll()"
+            [checked]="isAllSelected()"
+            [indeterminate]="hasSelection() && !isAllSelected()"
+            aria-label="全選"
+          />
+        </th>
+        <td mat-cell *matCellDef="let user" class="users__col-select">
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="selection.toggle(user)"
+            [checked]="selection.isSelected(user)"
+            [attr.aria-label]="'選取 ' + user.displayName"
+          />
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="displayName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>使用者</th>
+        <td mat-cell *matCellDef="let user">
+          <div class="users__user-cell">
+            <span class="users__avatar" aria-hidden="true">{{ user.avatar }}</span>
+            <div class="users__user-text">
+              <strong>{{ user.displayName }}</strong>
+              <span>{{ user.email }}</span>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>角色</th>
+        <td mat-cell *matCellDef="let user">{{ roleLabel(user.role) }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>狀態</th>
+        <td mat-cell *matCellDef="let user">
+          <span class="users__status users__status--{{ user.status }}">
+            {{ statusLabel(user.status) }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="tags">
+        <th mat-header-cell *matHeaderCellDef>標籤</th>
+        <td mat-cell *matCellDef="let user">
+          <mat-chip-set class="users__tags">
+            @for (tag of user.tags; track tag) {
+            <mat-chip class="users__tag">{{ tag }}</mat-chip>
+            }
+          </mat-chip-set>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastLoginAt">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>上次登入</th>
+        <td mat-cell *matCellDef="let user">
+          @if (user.lastLoginAt) { {{ user.lastLoginAt | date: 'yyyy/MM/dd HH:mm' }} } @else {
+          <span class="users__never">—</span>
+          }
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="users__col-actions">動作</th>
+        <td mat-cell *matCellDef="let user" class="users__col-actions">
+          <button mat-icon-button type="button" matTooltip="檢視詳情" (click)="viewDetail(user)">
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            color="warn"
+            type="button"
+            matTooltip="刪除"
+            (click)="deleteRow(user)"
+          >
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="users__row"></tr>
+    </table>
+
+    @if (api.filteredUsers().length === 0 && api.loaded()) {
+    <div class="users__empty" role="status">
+      <mat-icon>search_off</mat-icon>
+      <p>找不到符合條件的使用者</p>
+      <button mat-stroked-button type="button" (click)="resetFilters()">清除篩選條件</button>
+    </div>
+    }
+  </mat-card>
+</div>

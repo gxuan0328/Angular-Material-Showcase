@@ -20,13 +20,55 @@ import { FileUpload6DropzoneComponent } from '../../blocks/file-upload/file-uplo
 import { FileUpload7DropzoneComponent } from '../../blocks/file-upload/file-upload-7/file-upload-7.component';
 
 const VARIANTS: readonly BlockVariant[] = [
-  { id: 'file-upload-1', label: 'File Upload 01 — 基本上傳按鈕', registryCategory: 'file-upload', component: FileUpload1Component, isFree: false },
-  { id: 'file-upload-2', label: 'File Upload 02 — Dropzone 拖放區', registryCategory: 'file-upload', component: FileUpload2DropzoneComponent, isFree: false },
-  { id: 'file-upload-3', label: 'File Upload 03 — 多檔拖放上傳', registryCategory: 'file-upload', component: FileUpload3DropzoneComponent, isFree: false },
-  { id: 'file-upload-4', label: 'File Upload 04 — 含預覽的拖放區', registryCategory: 'file-upload', component: FileUpload4DropzoneComponent, isFree: false },
-  { id: 'file-upload-5', label: 'File Upload 05 — 大尺寸拖放區', registryCategory: 'file-upload', component: FileUpload5DropzoneComponent, isFree: false },
-  { id: 'file-upload-6', label: 'File Upload 06 — 內嵌卡片拖放區', registryCategory: 'file-upload', component: FileUpload6DropzoneComponent, isFree: false },
-  { id: 'file-upload-7', label: 'File Upload 07 — 緊湊型拖放區', registryCategory: 'file-upload', component: FileUpload7DropzoneComponent, isFree: false },
+  {
+    id: 'file-upload-1',
+    label: 'File Upload 01 — 基本上傳按鈕',
+    registryCategory: 'file-upload',
+    component: FileUpload1Component,
+    isFree: false,
+  },
+  {
+    id: 'file-upload-2',
+    label: 'File Upload 02 — Dropzone 拖放區',
+    registryCategory: 'file-upload',
+    component: FileUpload2DropzoneComponent,
+    isFree: false,
+  },
+  {
+    id: 'file-upload-3',
+    label: 'File Upload 03 — 多檔拖放上傳',
+    registryCategory: 'file-upload',
+    component: FileUpload3DropzoneComponent,
+    isFree: false,
+  },
+  {
+    id: 'file-upload-4',
+    label: 'File Upload 04 — 含預覽的拖放區',
+    registryCategory: 'file-upload',
+    component: FileUpload4DropzoneComponent,
+    isFree: false,
+  },
+  {
+    id: 'file-upload-5',
+    label: 'File Upload 05 — 大尺寸拖放區',
+    registryCategory: 'file-upload',
+    component: FileUpload5DropzoneComponent,
+    isFree: false,
+  },
+  {
+    id: 'file-upload-6',
+    label: 'File Upload 06 — 內嵌卡片拖放區',
+    registryCategory: 'file-upload',
+    component: FileUpload6DropzoneComponent,
+    isFree: false,
+  },
+  {
+    id: 'file-upload-7',
+    label: 'File Upload 07 — 緊湊型拖放區',
+    registryCategory: 'file-upload',
+    component: FileUpload7DropzoneComponent,
+    isFree: false,
+  },
 ];
 
 const API: ApiDocumentation = {

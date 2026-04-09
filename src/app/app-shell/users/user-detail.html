@@ -1,0 +1,135 @@
+<div class="user-detail">
+  @if (user()) {
+  <header class="user-detail__header">
+    <div class="user-detail__heading">
+      <a routerLink="/app/users" class="user-detail__back">
+        <mat-icon>arrow_back</mat-icon>
+        <span>返回使用者列表</span>
+      </a>
+      <h1 class="user-detail__title">{{ user()!.displayName }}</h1>
+      <p class="user-detail__subtitle">{{ user()!.email }}</p>
+    </div>
+    <div class="user-detail__header-actions">
+      <button mat-stroked-button type="button">
+        <mat-icon>mail</mat-icon>
+        <span>寄送訊息</span>
+      </button>
+      <button mat-flat-button color="warn" type="button" (click)="deleteUser()">
+        <mat-icon>delete</mat-icon>
+        <span>刪除使用者</span>
+      </button>
+    </div>
+  </header>
+
+  <section class="user-detail__body">
+    <aside class="user-detail__summary">
+      <mat-card appearance="outlined">
+        <mat-card-content class="user-detail__summary-content">
+          <div class="user-detail__avatar" aria-hidden="true">{{ user()!.avatar }}</div>
+          <h2 class="user-detail__name">{{ user()!.displayName }}</h2>
+          <p class="user-detail__email">{{ user()!.email }}</p>
+          <div class="user-detail__status user-detail__status--{{ user()!.status }}">
+            {{ statusLabel(user()!.status) }}
+          </div>
+
+          <mat-divider />
+
+          <dl class="user-detail__meta">
+            <div>
+              <dt>角色</dt>
+              <dd>{{ roleLabel(user()!.role) }}</dd>
+            </div>
+            <div>
+              <dt>建立日期</dt>
+              <dd>{{ user()!.createdAt | date: 'yyyy/MM/dd' }}</dd>
+            </div>
+            <div>
+              <dt>上次登入</dt>
+              <dd>
+                @if (user()!.lastLoginAt) { {{ user()!.lastLoginAt | date: 'yyyy/MM/dd HH:mm' }} }
+                @else { — }
+              </dd>
+            </div>
+            <div>
+              <dt>標籤</dt>
+              <dd>
+                <mat-chip-set class="user-detail__tags">
+                  @for (tag of user()!.tags; track tag) {
+                  <mat-chip>{{ tag }}</mat-chip>
+                  }
+                </mat-chip-set>
+              </dd>
+            </div>
+          </dl>
+        </mat-card-content>
+      </mat-card>
+    </aside>
+
+    <div class="user-detail__tabs">
+      <mat-tab-group animationDuration="200ms">
+        <mat-tab label="活動">
+          <mat-list class="user-detail__audit">
+            @for (entry of audit(); track entry.at) {
+            <mat-list-item>
+              <mat-icon matListItemIcon>history</mat-icon>
+              <span matListItemTitle>{{ entry.action }}</span>
+              <span matListItemLine>
+                {{ entry.actor }} · {{ entry.at | date: 'yyyy/MM/dd HH:mm' }}
+              </span>
+            </mat-list-item>
+            }
+          </mat-list>
+        </mat-tab>
+
+        <mat-tab label="權限">
+          <mat-list class="user-detail__permissions">
+            @for (permission of permissions(); track permission.id) {
+            <mat-list-item>
+              <mat-icon matListItemIcon>
+                {{ permission.granted ? 'check_circle' : 'block' }}
+              </mat-icon>
+              <span matListItemTitle>{{ permission.label }}</span>
+              <span matListItemLine>{{ permission.description }}</span>
+              <mat-slide-toggle
+                matListItemMeta
+                [checked]="permission.granted"
+                [disabled]="true"
+                [attr.aria-label]="permission.label"
+              />
+            </mat-list-item>
+            }
+          </mat-list>
+        </mat-tab>
+
+        <mat-tab label="裝置">
+          <mat-list class="user-detail__devices">
+            @for (device of devices(); track device.id) {
+            <mat-list-item>
+              <mat-icon matListItemIcon>
+                {{ device.device.includes('iPhone') ? 'smartphone' : 'laptop_mac' }}
+              </mat-icon>
+              <span matListItemTitle>
+                {{ device.device }} @if (device.current) {
+                <mat-chip class="user-detail__device-current">目前裝置</mat-chip>
+                }
+              </span>
+              <span matListItemLine>
+                {{ device.browser }} · {{ device.location }} · {{ device.lastUsed | date:
+                'yyyy/MM/dd HH:mm' }}
+              </span>
+            </mat-list-item>
+            }
+          </mat-list>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </section>
+  } @else if (loaded()) {
+  <div class="user-detail__not-found" role="alert">
+    <mat-icon>person_off</mat-icon>
+    <h2>找不到使用者</h2>
+    <p>此帳號可能已被刪除或 ID 不正確。</p>
+    <a mat-flat-button color="primary" routerLink="/app/users">返回使用者列表</a>
+  </div>
+  }
+</div>

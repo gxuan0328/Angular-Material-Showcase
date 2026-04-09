@@ -1,0 +1,124 @@
+{
+  "notifications": [
+    {
+      "id": "n-001",
+      "type": "system",
+      "severity": "info",
+      "title": "資料同步已完成",
+      "message": "來自 Google Analytics 4 的每日資料已於 09:00 完成同步。",
+      "read": false,
+      "timestamp": "2026-04-09T09:02:00+08:00",
+      "href": "/app/reports"
+    },
+    {
+      "id": "n-002",
+      "type": "billing",
+      "severity": "warning",
+      "title": "付款方式即將到期",
+      "message": "您的 VISA **** 4242 將於 2026-04-30 到期，請更新付款資訊以避免服務中斷。",
+      "read": false,
+      "timestamp": "2026-04-09T08:30:00+08:00",
+      "href": "/app/billing"
+    },
+    {
+      "id": "n-003",
+      "type": "system",
+      "severity": "error",
+      "title": "API 限流警示",
+      "message": "過去 1 小時內 /api/events 端點超過 5,000 次呼叫，已觸發限流保護。",
+      "read": false,
+      "timestamp": "2026-04-09T07:45:00+08:00",
+      "href": "/app/reports"
+    },
+    {
+      "id": "n-004",
+      "type": "invite",
+      "severity": "info",
+      "title": "新團隊成員邀請",
+      "message": "Ivy Lai (ivy.lai@glacier.io) 已接受邀請並加入 Glacier Analytics。",
+      "read": true,
+      "timestamp": "2026-04-08T22:10:00+08:00",
+      "href": "/app/users/u-009"
+    },
+    {
+      "id": "n-005",
+      "type": "billing",
+      "severity": "success",
+      "title": "月度發票已付款",
+      "message": "Orbit Labs 的 $1,280 USD 月度發票已成功扣款。",
+      "read": true,
+      "timestamp": "2026-04-08T18:15:00+08:00",
+      "href": "/app/billing/invoices"
+    },
+    {
+      "id": "n-006",
+      "type": "system",
+      "severity": "info",
+      "title": "新版功能上線",
+      "message": "Glacier Analytics v2.4 新增「自訂看板版面」功能，立即前往體驗。",
+      "read": false,
+      "timestamp": "2026-04-08T14:00:00+08:00",
+      "href": "/app/dashboard"
+    },
+    {
+      "id": "n-007",
+      "type": "system",
+      "severity": "warning",
+      "title": "儲存空間使用率 82%",
+      "message": "目前方案的儲存空間已使用 82%，建議升級至 Business 方案或清理舊資料。",
+      "read": false,
+      "timestamp": "2026-04-08T10:30:00+08:00",
+      "href": "/app/billing/usage"
+    },
+    {
+      "id": "n-008",
+      "type": "invite",
+      "severity": "info",
+      "title": "角色變更請求",
+      "message": "Nina Yeh 要求將角色從 viewer 升級為 analyst，請在使用者管理中審核。",
+      "read": true,
+      "timestamp": "2026-04-07T16:00:00+08:00",
+      "href": "/app/users/u-014"
+    },
+    {
+      "id": "n-009",
+      "type": "system",
+      "severity": "success",
+      "title": "資料備份完成",
+      "message": "每週資料備份已成功上傳至 S3 glacier-backups-tw bucket。",
+      "read": true,
+      "timestamp": "2026-04-07T03:00:00+08:00",
+      "href": ""
+    },
+    {
+      "id": "n-010",
+      "type": "billing",
+      "severity": "info",
+      "title": "Q1 季度帳單已出",
+      "message": "您的 2026 Q1 用量報表已生成，合計 $12,960 USD。",
+      "read": false,
+      "timestamp": "2026-04-06T10:00:00+08:00",
+      "href": "/app/billing/invoices"
+    },
+    {
+      "id": "n-011",
+      "type": "system",
+      "severity": "error",
+      "title": "Webhook 失敗",
+      "message": "傳送至 https://hooks.slack.com/… 的 Webhook 在過去 24 小時內失敗 12 次。",
+      "read": false,
+      "timestamp": "2026-04-06T08:45:00+08:00",
+      "href": "/app/settings/integrations"
+    },
+    {
+      "id": "n-012",
+      "type": "invite",
+      "severity": "info",
+      "title": "新裝置登入",
+      "message": "您的帳號於 Chrome 147 · macOS 上新增了一個已登入的裝置。",
+      "read": true,
+      "timestamp": "2026-04-05T19:30:00+08:00",
+      "href": "/app/settings/security"
+    }
+  ]
+}
