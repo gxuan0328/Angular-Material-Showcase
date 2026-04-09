@@ -3,12 +3,16 @@
   grid-template-columns: 280px 1fr;
   grid-template-rows: 56px 1fr;
   min-height: 100vh;
-  transition: grid-template-columns 200ms ease;
 }
 
-/* When nav is hidden, collapse the sidebar column */
+/* When nav is hidden, switch to single-column layout */
 :host(.catalog-layout--nav-hidden) {
-  grid-template-columns: 0 1fr;
+  grid-template-columns: 1fr;
+}
+
+:host(.catalog-layout--nav-hidden) .catalog-layout__topbar,
+:host(.catalog-layout--nav-hidden) .catalog-layout__body {
+  grid-column: 1 / -1;
 }
 
 .catalog-layout__topbar {
