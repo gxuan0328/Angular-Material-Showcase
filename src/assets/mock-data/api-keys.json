@@ -1,0 +1,8 @@
+[
+  { "id": "key-001", "label": "Production API", "prefix": "sk_live_", "lastFour": "Xf9a", "scopes": ["read", "write", "admin"], "createdAt": "2025-03-15T08:00:00Z", "lastUsedAt": "2025-12-01T14:30:00Z" },
+  { "id": "key-002", "label": "Staging API", "prefix": "sk_test_", "lastFour": "Bm2c", "scopes": ["read", "write"], "createdAt": "2025-04-20T10:00:00Z", "lastUsedAt": "2025-11-28T09:15:00Z" },
+  { "id": "key-003", "label": "CI/CD Pipeline", "prefix": "sk_live_", "lastFour": "Qn7e", "scopes": ["read"], "createdAt": "2025-06-01T12:00:00Z", "lastUsedAt": "2025-12-01T22:00:00Z" },
+  { "id": "key-004", "label": "Mobile App", "prefix": "pk_live_", "lastFour": "Wd3r", "scopes": ["read"], "createdAt": "2025-07-10T14:00:00Z", "lastUsedAt": "2025-11-30T18:00:00Z" },
+  { "id": "key-005", "label": "Webhook Signing", "prefix": "whsec_", "lastFour": "Lk8p", "scopes": ["webhook"], "createdAt": "2025-08-05T16:00:00Z", "lastUsedAt": "2025-12-01T03:00:00Z" },
+  { "id": "key-006", "label": "Data Export", "prefix": "sk_live_", "lastFour": "Jt4v", "scopes": ["read", "export"], "createdAt": "2025-09-22T11:00:00Z", "lastUsedAt": null }
+]

@@ -1,0 +1,77 @@
+[
+  {
+    "id": "storage",
+    "label": "儲存空間",
+    "value": 67,
+    "limit": 100,
+    "unit": "GB",
+    "series": [
+      { "month": "2025-01", "value": 32 }, { "month": "2025-02", "value": 35 },
+      { "month": "2025-03", "value": 38 }, { "month": "2025-04", "value": 42 },
+      { "month": "2025-05", "value": 45 }, { "month": "2025-06", "value": 48 },
+      { "month": "2025-07", "value": 50 }, { "month": "2025-08", "value": 54 },
+      { "month": "2025-09", "value": 58 }, { "month": "2025-10", "value": 60 },
+      { "month": "2025-11", "value": 63 }, { "month": "2025-12", "value": 67 }
+    ]
+  },
+  {
+    "id": "api-calls",
+    "label": "API 呼叫次數",
+    "value": 182000,
+    "limit": 500000,
+    "unit": "次/月",
+    "series": [
+      { "month": "2025-01", "value": 120000 }, { "month": "2025-02", "value": 128000 },
+      { "month": "2025-03", "value": 135000 }, { "month": "2025-04", "value": 142000 },
+      { "month": "2025-05", "value": 148000 }, { "month": "2025-06", "value": 155000 },
+      { "month": "2025-07", "value": 160000 }, { "month": "2025-08", "value": 165000 },
+      { "month": "2025-09", "value": 170000 }, { "month": "2025-10", "value": 174000 },
+      { "month": "2025-11", "value": 178000 }, { "month": "2025-12", "value": 182000 }
+    ]
+  },
+  {
+    "id": "seats",
+    "label": "成員人數",
+    "value": 18,
+    "limit": 25,
+    "unit": "人",
+    "series": [
+      { "month": "2025-01", "value": 10 }, { "month": "2025-02", "value": 11 },
+      { "month": "2025-03", "value": 12 }, { "month": "2025-04", "value": 12 },
+      { "month": "2025-05", "value": 13 }, { "month": "2025-06", "value": 14 },
+      { "month": "2025-07", "value": 15 }, { "month": "2025-08", "value": 15 },
+      { "month": "2025-09", "value": 16 }, { "month": "2025-10", "value": 17 },
+      { "month": "2025-11", "value": 17 }, { "month": "2025-12", "value": 18 }
+    ]
+  },
+  {
+    "id": "data-export",
+    "label": "資料匯出",
+    "value": 45,
+    "limit": 100,
+    "unit": "次/月",
+    "series": [
+      { "month": "2025-01", "value": 20 }, { "month": "2025-02", "value": 22 },
+      { "month": "2025-03", "value": 25 }, { "month": "2025-04", "value": 28 },
+      { "month": "2025-05", "value": 30 }, { "month": "2025-06", "value": 32 },
+      { "month": "2025-07", "value": 34 }, { "month": "2025-08", "value": 36 },
+      { "month": "2025-09", "value": 38 }, { "month": "2025-10", "value": 40 },
+      { "month": "2025-11", "value": 42 }, { "month": "2025-12", "value": 45 }
+    ]
+  },
+  {
+    "id": "webhooks",
+    "label": "Webhook 端點",
+    "value": 8,
+    "limit": 20,
+    "unit": "個",
+    "series": [
+      { "month": "2025-01", "value": 3 }, { "month": "2025-02", "value": 3 },
+      { "month": "2025-03", "value": 4 }, { "month": "2025-04", "value": 4 },
+      { "month": "2025-05", "value": 5 }, { "month": "2025-06", "value": 5 },
+      { "month": "2025-07", "value": 6 }, { "month": "2025-08", "value": 6 },
+      { "month": "2025-09", "value": 7 }, { "month": "2025-10", "value": 7 },
+      { "month": "2025-11", "value": 8 }, { "month": "2025-12", "value": 8 }
+    ]
+  }
+]

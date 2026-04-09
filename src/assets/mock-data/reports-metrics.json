@@ -1,0 +1,29 @@
+{
+  "kpis": [
+    { "id": "total-revenue", "label": "總營收", "value": 284500, "delta": 12.3, "unit": "USD" },
+    { "id": "active-users", "label": "活躍使用者", "value": 12840, "delta": 8.7, "unit": "人" },
+    { "id": "conversion-rate", "label": "轉換率", "value": 3.82, "delta": -0.4, "unit": "%" },
+    { "id": "avg-session", "label": "平均工作階段", "value": 4.6, "delta": 1.2, "unit": "分鐘" }
+  ],
+  "series": [
+    { "date": "2025-07-01", "dimension": "revenue", "value": 38200 },
+    { "date": "2025-08-01", "dimension": "revenue", "value": 39500 },
+    { "date": "2025-09-01", "dimension": "revenue", "value": 41000 },
+    { "date": "2025-10-01", "dimension": "revenue", "value": 43800 },
+    { "date": "2025-11-01", "dimension": "revenue", "value": 46200 },
+    { "date": "2025-12-01", "dimension": "revenue", "value": 48500 },
+    { "date": "2025-07-01", "dimension": "users", "value": 9800 },
+    { "date": "2025-08-01", "dimension": "users", "value": 10200 },
+    { "date": "2025-09-01", "dimension": "users", "value": 10800 },
+    { "date": "2025-10-01", "dimension": "users", "value": 11400 },
+    { "date": "2025-11-01", "dimension": "users", "value": 12100 },
+    { "date": "2025-12-01", "dimension": "users", "value": 12840 }
+  ],
+  "topItems": [
+    { "id": "dashboard", "label": "儀表板", "value": 34200, "unit": "次瀏覽" },
+    { "id": "user-mgmt", "label": "使用者管理", "value": 21800, "unit": "次瀏覽" },
+    { "id": "reports", "label": "報表分析", "value": 18400, "unit": "次瀏覽" },
+    { "id": "billing", "label": "計費與用量", "value": 12600, "unit": "次瀏覽" },
+    { "id": "settings", "label": "設定", "value": 9800, "unit": "次瀏覽" }
+  ]
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "id": "starter",
+    "name": "Starter",
+    "priceMonthly": 0,
+    "priceYearly": 0,
+    "currency": "USD",
+    "features": ["5 位使用者", "10 GB 儲存空間", "社群支援", "基本報表"],
+    "seatLimit": 5
+  },
+  {
+    "id": "growth",
+    "name": "Growth",
+    "priceMonthly": 49,
+    "priceYearly": 470,
+    "currency": "USD",
+    "features": ["25 位使用者", "100 GB 儲存空間", "Email 支援", "進階報表", "API 存取", "自訂整合"],
+    "seatLimit": 25,
+    "recommended": true
+  },
+  {
+    "id": "scale",
+    "name": "Scale",
+    "priceMonthly": 199,
+    "priceYearly": 1910,
+    "currency": "USD",
+    "features": ["無限使用者", "1 TB 儲存空間", "24/7 專屬支援", "完整報表", "API 存取", "自訂整合", "SSO / SAML", "SLA 保障"],
+    "seatLimit": 9999
+  }
+]

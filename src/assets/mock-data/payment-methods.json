@@ -1,0 +1,5 @@
+[
+  { "id": "pm-001", "brand": "visa", "last4": "4242", "expMonth": 12, "expYear": 2027, "isDefault": true },
+  { "id": "pm-002", "brand": "mastercard", "last4": "8888", "expMonth": 6, "expYear": 2026, "isDefault": false },
+  { "id": "pm-003", "brand": "ach", "last4": "1234", "expMonth": 0, "expYear": 0, "isDefault": false }
+]

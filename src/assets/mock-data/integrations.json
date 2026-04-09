@@ -1,0 +1,14 @@
+[
+  { "id": "int-001", "name": "Slack", "category": "messaging", "icon": "chat", "connected": true, "connectedAt": "2025-06-15T10:00:00Z" },
+  { "id": "int-002", "name": "Microsoft Teams", "category": "messaging", "icon": "groups", "connected": false, "connectedAt": null },
+  { "id": "int-003", "name": "Grafana", "category": "observability", "icon": "monitoring", "connected": true, "connectedAt": "2025-04-10T08:00:00Z" },
+  { "id": "int-004", "name": "Datadog", "category": "observability", "icon": "analytics", "connected": false, "connectedAt": null },
+  { "id": "int-005", "name": "PagerDuty", "category": "observability", "icon": "notifications_active", "connected": true, "connectedAt": "2025-05-20T14:00:00Z" },
+  { "id": "int-006", "name": "AWS S3", "category": "storage", "icon": "cloud_upload", "connected": false, "connectedAt": null },
+  { "id": "int-007", "name": "Google Cloud Storage", "category": "storage", "icon": "cloud", "connected": false, "connectedAt": null },
+  { "id": "int-008", "name": "Okta", "category": "auth", "icon": "security", "connected": false, "connectedAt": null },
+  { "id": "int-009", "name": "Auth0", "category": "auth", "icon": "verified_user", "connected": false, "connectedAt": null },
+  { "id": "int-010", "name": "GitHub", "category": "messaging", "icon": "code", "connected": true, "connectedAt": "2025-03-01T12:00:00Z" },
+  { "id": "int-011", "name": "Jira", "category": "messaging", "icon": "bug_report", "connected": false, "connectedAt": null },
+  { "id": "int-012", "name": "Sentry", "category": "observability", "icon": "error", "connected": false, "connectedAt": null }
+]
