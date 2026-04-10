@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet, NavigationEnd } from '@angular/router';
+import { BreakpointObserver } from '@angular/cdk/layout';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatListModule } from '@angular/material/list';
@@ -7,6 +8,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter } from 'rxjs';
 
 import { AuthStore } from '../../core/auth/auth-store';
 import { ThemeToggle } from '../../core/theme/theme-toggle';
@@ -38,8 +41,7 @@ const NAV_ITEMS: readonly NavItem[] = [
 
 /**
  * Admin shell — left sidenav + topbar with theme controls and a user menu.
- * After M4, all 7 nav items point at live /app/* routes.
- * Signing out returns the user to /auth/sign-in.
+ * Responsive: mobile uses overlay drawer, desktop uses side mode.
  */
 @Component({
   selector: 'app-admin-layout',
@@ -64,10 +66,42 @@ const NAV_ITEMS: readonly NavItem[] = [
 })
 export class AdminLayout {
   private readonly router = inject(Router);
+  private readonly breakpointObserver = inject(BreakpointObserver);
   protected readonly auth = inject(AuthStore);
 
   protected readonly navItems = NAV_ITEMS;
   protected readonly sidenavOpen = signal<boolean>(true);
+  protected readonly isMobile = signal<boolean>(false);
+  protected readonly sidenavMode = signal<'side' | 'over'>('side');
+
+  constructor() {
+    // Responsive sidenav mode
+    this.breakpointObserver
+      .observe('(max-width: 768px)')
+      .pipe(takeUntilDestroyed())
+      .subscribe(result => {
+        this.isMobile.set(result.matches);
+        if (result.matches) {
+          this.sidenavMode.set('over');
+          this.sidenavOpen.set(false);
+        } else {
+          this.sidenavMode.set('side');
+          this.sidenavOpen.set(true);
+        }
+      });
+
+    // Close overlay sidenav on route change (mobile only)
+    this.router.events
+      .pipe(
+        filter(e => e instanceof NavigationEnd),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => {
+        if (this.isMobile()) {
+          this.sidenavOpen.set(false);
+        }
+      });
+  }
 
   protected toggleSidenav(): void {
     this.sidenavOpen.update(open => !open);

@@ -1,9 +1,10 @@
 <mat-sidenav-container class="admin-layout__container" autosize>
   <mat-sidenav
     class="admin-layout__sidenav"
-    mode="side"
+    [mode]="sidenavMode()"
     [opened]="sidenavOpen()"
-    [disableClose]="true"
+    [disableClose]="!isMobile()"
+    (closedStart)="sidenavOpen.set(false)"
   >
     <div class="admin-layout__brand-block">
       <span class="material-symbols-outlined admin-layout__logo" aria-hidden="true">ac_unit</span>

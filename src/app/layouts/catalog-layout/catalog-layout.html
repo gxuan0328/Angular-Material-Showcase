@@ -17,11 +17,17 @@
     <app-theme-toggle />
   </div>
 </header>
-@if (!navHidden()) {
+<!-- Backdrop for mobile overlay -->
+<div
+  class="catalog-layout__backdrop"
+  (click)="hideNav()"
+  [attr.aria-hidden]="navHidden()"
+></div>
+<div class="catalog-layout__content-area">
   <aside id="catalog-nav" class="catalog-layout__nav" aria-label="元件目錄導覽">
     <app-catalog-nav />
   </aside>
-}
-<section class="catalog-layout__body">
-  <router-outlet />
-</section>
+  <section class="catalog-layout__body">
+    <router-outlet />
+  </section>
+</div>
