@@ -50,3 +50,8 @@ dist/
 
 # Environment secrets
 .env
+.env.*
+!.env.example
+
+# MCP local config (contains machine-specific paths)
+.mcp.json

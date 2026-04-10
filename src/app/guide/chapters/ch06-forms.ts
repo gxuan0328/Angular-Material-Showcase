@@ -949,15 +949,15 @@ export class MultiStepRegister {
           language: 'typescript',
           code: `// ❌ Pitfall 2: reset() produces null values
 const fb = inject(FormBuilder);
-const form = fb.group({ name: ['Jason'] });
+const form = fb.group({ name: ['Alice'] });
 form.reset();
 console.log(form.value.name); // null — breaks downstream code
 
 // ✅ Fix: use NonNullableFormBuilder
 const nnfb = inject(NonNullableFormBuilder);
-const form = nnfb.group({ name: ['Jason'] });
+const form = nnfb.group({ name: ['Alice'] });
 form.reset();
-console.log(form.value.name); // 'Jason' — initial value preserved
+console.log(form.value.name); // 'Alice' — initial value preserved
 
 // ❌ Pitfall 3: .value excludes disabled fields
 form.controls.email.disable();
