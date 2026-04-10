@@ -12,6 +12,8 @@ interface NavSection {
 }
 
 interface NavGroup {
+  /** Unique key: "category:subcategory" — prevents cross-category collisions */
+  readonly groupKey: string;
   readonly subcategory: string;
   readonly entries: readonly CatalogRegistryEntry[];
 }
@@ -28,7 +30,7 @@ export class CatalogNav {
   private readonly router = inject(Router);
   readonly currentId = input<string>('');
 
-  /** Tracks which subcategory groups are currently expanded. */
+  /** Tracks which groups are expanded by their unique groupKey. */
   protected readonly expandedGroups = signal<ReadonlySet<string>>(new Set());
 
   protected readonly sections = computed<readonly NavSection[]>(() => {
@@ -36,18 +38,17 @@ export class CatalogNav {
       {
         category: 'application',
         title: 'Application',
-        groups: this.groupBySubcategory(CATALOG_REGISTRY.filter(e => e.category === 'application')),
+        groups: this.buildGroups('application', CATALOG_REGISTRY.filter(e => e.category === 'application')),
       },
       {
         category: 'marketing',
         title: 'Marketing',
-        groups: this.groupBySubcategory(CATALOG_REGISTRY.filter(e => e.category === 'marketing')),
+        groups: this.buildGroups('marketing', CATALOG_REGISTRY.filter(e => e.category === 'marketing')),
       },
     ];
   });
 
   constructor() {
-    // Collapse all groups except the one containing the active route on navigation
     this.router.events
       .pipe(
         filter(e => e instanceof NavigationEnd),
@@ -55,21 +56,20 @@ export class CatalogNav {
       )
       .subscribe(() => this.focusActiveGroup());
 
-    // Also run once on init
     this.focusActiveGroup();
   }
 
-  protected isGroupExpanded(subcategory: string): boolean {
-    return this.expandedGroups().has(subcategory);
+  protected isGroupExpanded(groupKey: string): boolean {
+    return this.expandedGroups().has(groupKey);
   }
 
-  protected toggleGroup(subcategory: string): void {
+  protected toggleGroup(groupKey: string): void {
     this.expandedGroups.update(set => {
       const next = new Set(set);
-      if (next.has(subcategory)) {
-        next.delete(subcategory);
+      if (next.has(groupKey)) {
+        next.delete(groupKey);
       } else {
-        next.add(subcategory);
+        next.add(groupKey);
       }
       return next;
     });
@@ -82,12 +82,12 @@ export class CatalogNav {
     const activeId = match[1];
     const entry = CATALOG_REGISTRY.find(e => e.id === activeId);
     if (entry) {
-      // Only keep the active entry's subcategory expanded
-      this.expandedGroups.set(new Set([entry.subcategory]));
+      const key = `${entry.category}:${entry.subcategory}`;
+      this.expandedGroups.set(new Set([key]));
     }
   }
 
-  private groupBySubcategory(entries: readonly CatalogRegistryEntry[]): readonly NavGroup[] {
+  private buildGroups(category: string, entries: readonly CatalogRegistryEntry[]): readonly NavGroup[] {
     const map = new Map<string, CatalogRegistryEntry[]>();
     for (const entry of entries) {
       const list = map.get(entry.subcategory) ?? [];
@@ -95,6 +95,7 @@ export class CatalogNav {
       map.set(entry.subcategory, list);
     }
     return Array.from(map.entries()).map(([subcategory, list]) => ({
+      groupKey: `${category}:${subcategory}`,
       subcategory,
       entries: list,
     }));

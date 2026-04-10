@@ -2,42 +2,44 @@
   @for (section of sections(); track section.category) {
   <section class="catalog-nav__section">
     <h2 class="catalog-nav__section-title">{{ section.title }}</h2>
-    @for (group of section.groups; track group.subcategory) {
+    @for (group of section.groups; track group.groupKey) {
     <div class="catalog-nav__group">
       <button
         type="button"
         class="catalog-nav__group-toggle"
-        [class.catalog-nav__group-toggle--expanded]="isGroupExpanded(group.subcategory)"
-        [attr.aria-expanded]="isGroupExpanded(group.subcategory)"
-        (click)="toggleGroup(group.subcategory)"
+        [class.catalog-nav__group-toggle--expanded]="isGroupExpanded(group.groupKey)"
+        [attr.aria-expanded]="isGroupExpanded(group.groupKey)"
+        (click)="toggleGroup(group.groupKey)"
       >
         <span class="catalog-nav__group-title">{{ group.subcategory }}</span>
         <span
           class="catalog-nav__group-chevron"
-          [class.catalog-nav__group-chevron--open]="isGroupExpanded(group.subcategory)"
+          [class.catalog-nav__group-chevron--open]="isGroupExpanded(group.groupKey)"
         >›</span>
       </button>
-      <ul
-        class="catalog-nav__list"
-        [class.catalog-nav__list--collapsed]="!isGroupExpanded(group.subcategory)"
+      <div
+        class="catalog-nav__list-wrapper"
+        [class.catalog-nav__list-wrapper--collapsed]="!isGroupExpanded(group.groupKey)"
       >
-        @for (entry of group.entries; track entry.id) {
-        <li>
-          <a
-            class="catalog-nav__link"
-            [class.catalog-nav__link--coming-soon]="entry.status === 'coming-soon'"
-            [routerLink]="['/catalog', entry.id]"
-            routerLinkActive="catalog-nav__link--active"
-            [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <span class="catalog-nav__link-label">{{ entry.title }}</span>
-            @if (entry.status === 'coming-soon') {
-            <span class="catalog-nav__badge" aria-label="即將推出">soon</span>
-            }
-          </a>
-        </li>
-        }
-      </ul>
+        <ul class="catalog-nav__list">
+          @for (entry of group.entries; track entry.id) {
+          <li>
+            <a
+              class="catalog-nav__link"
+              [class.catalog-nav__link--coming-soon]="entry.status === 'coming-soon'"
+              [routerLink]="['/catalog', entry.id]"
+              routerLinkActive="catalog-nav__link--active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+              <span class="catalog-nav__link-label">{{ entry.title }}</span>
+              @if (entry.status === 'coming-soon') {
+              <span class="catalog-nav__badge" aria-label="即將推出">soon</span>
+              }
+            </a>
+          </li>
+          }
+        </ul>
+      </div>
     </div>
     }
   </section>
