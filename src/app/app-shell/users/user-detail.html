@@ -10,7 +10,7 @@
       <p class="user-detail__subtitle">{{ user()!.email }}</p>
     </div>
     <div class="user-detail__header-actions">
-      <button mat-stroked-button type="button">
+      <button mat-stroked-button type="button" (click)="sendMessage()">
         <mat-icon>mail</mat-icon>
         <span>寄送訊息</span>
       </button>

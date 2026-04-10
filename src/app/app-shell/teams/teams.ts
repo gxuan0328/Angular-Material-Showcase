@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { RouterLink } from '@angular/router';
 
 import { MockTeam, MockTeamsApi } from '../../core/mock-api/mock-teams';
@@ -85,11 +86,11 @@ interface ResolvedTeam {
             </mat-card-content>
 
             <mat-card-actions>
-              <button mat-button type="button">
+              <button mat-button type="button" (click)="onTeamAction(entry.team.name, '團隊設定')">
                 <mat-icon>settings</mat-icon>
                 團隊設定
               </button>
-              <button mat-button color="primary" type="button">
+              <button mat-button color="primary" type="button" (click)="onTeamAction(entry.team.name, '邀請成員')">
                 <mat-icon>person_add</mat-icon>
                 邀請成員
               </button>
@@ -104,6 +105,7 @@ interface ResolvedTeam {
   host: { class: 'teams-host' },
 })
 export class Teams implements OnInit {
+  private readonly snackBar = inject(MatSnackBar);
   protected readonly teamsApi = inject(MockTeamsApi);
   private readonly usersApi = inject(MockUsersApi);
 
@@ -136,6 +138,10 @@ export class Teams implements OnInit {
       default:
         return 'groups';
     }
+  }
+
+  protected onTeamAction(teamName: string, action: string): void {
+    this.snackBar.open(`${teamName} — ${action}功能開發中`, '關閉', { duration: 3000 });
   }
 
   protected roleLabel(role: string): string {

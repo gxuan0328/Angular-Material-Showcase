@@ -6,6 +6,7 @@ import {
   OnInit,
   signal,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { DatePipe } from '@angular/common';
@@ -112,14 +113,16 @@ export class Users implements OnInit {
   protected readonly hasSelection = computed<boolean>(() => this.selection.hasValue());
 
   constructor() {
-    this.filterForm.valueChanges.subscribe(value => {
-      this.api.setFilters({
-        search: value.search ?? '',
-        status: (value.status ?? 'all') as UserStatus | 'all',
-        role: (value.role ?? 'all') as UserRole | 'all',
+    this.filterForm.valueChanges
+      .pipe(takeUntilDestroyed())
+      .subscribe(value => {
+        this.api.setFilters({
+          search: value.search ?? '',
+          status: (value.status ?? 'all') as UserStatus | 'all',
+          role: (value.role ?? 'all') as UserRole | 'all',
+        });
+        this.selection.clear();
       });
-      this.selection.clear();
-    });
   }
 
   async ngOnInit(): Promise<void> {

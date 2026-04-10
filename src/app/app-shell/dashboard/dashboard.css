@@ -74,6 +74,18 @@
   padding: 0.625rem 0.75rem;
   border: 1px solid var(--mat-sys-outline-variant, #c4c6d0);
   border-radius: 10px;
+  cursor: pointer;
+  transition: background 150ms ease, border-color 150ms ease;
+  user-select: none;
+}
+
+.dashboard__onboarding-step:hover {
+  background: var(--mat-sys-surface-container, #f3f4f6);
+  border-color: var(--mat-sys-primary, #005cbb);
+}
+
+.dashboard__onboarding-step:active {
+  background: var(--mat-sys-surface-container-high, #e9e7eb);
 }
 
 .dashboard__onboarding-step--done {
@@ -339,6 +351,12 @@
     flex-direction: column;
   }
   .dashboard__title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+  }
+  .dashboard__kpi-row {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+  .dashboard__lists {
+    grid-template-columns: 1fr;
   }
 }

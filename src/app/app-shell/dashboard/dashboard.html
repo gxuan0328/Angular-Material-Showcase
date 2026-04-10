@@ -32,7 +32,16 @@
 
       <ul class="dashboard__onboarding-steps" role="list">
         @for (step of onboarding.steps(); track step.id) {
-        <li class="dashboard__onboarding-step" [class.dashboard__onboarding-step--done]="step.done">
+        <li
+          class="dashboard__onboarding-step"
+          [class.dashboard__onboarding-step--done]="step.done"
+          (click)="onStepClick(step)"
+          role="button"
+          tabindex="0"
+          (keydown.enter)="onStepClick(step)"
+          (keydown.space)="onStepClick(step)"
+          [attr.aria-pressed]="step.done"
+        >
           <mat-icon class="dashboard__onboarding-step-icon">{{ stepIcon(step) }}</mat-icon>
           <div class="dashboard__onboarding-step-text">
             <strong>{{ step.title }}</strong>
@@ -45,7 +54,7 @@
 
     <mat-card-actions align="end">
       <button mat-button type="button" (click)="dismissOnboarding()">稍後提醒</button>
-      <button mat-flat-button type="button" color="primary">
+      <button mat-flat-button type="button" color="primary" (click)="onContinue()">
         繼續下一步
         <mat-icon iconPositionEnd>arrow_forward</mat-icon>
       </button>

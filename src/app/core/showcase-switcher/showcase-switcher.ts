@@ -15,6 +15,7 @@ const ROUTES: readonly ShowcaseRoute[] = [
   { label: 'Landing', icon: 'language', path: '/', tooltip: '行銷 Landing Page' },
   { label: 'Catalog', icon: 'grid_view', path: '/catalog', tooltip: '元件目錄' },
   { label: 'App', icon: 'dashboard', path: '/app/dashboard', tooltip: 'SaaS 管理後台' },
+  { label: 'Guide', icon: 'school', path: '/guide', tooltip: 'Angular 深度教學指南' },
 ];
 
 /**
@@ -125,6 +126,23 @@ const ROUTES: readonly ShowcaseRoute[] = [
 
     .switcher__fab {
       flex-shrink: 0;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 639.98px) {
+      :host {
+        bottom: 1rem;
+        right: 1rem;
+      }
+
+      .switcher__panel {
+        max-width: calc(100vw - 2rem);
+      }
+
+      .switcher__item {
+        padding: 0.375rem 0.625rem;
+        font-size: 0.8125rem;
+      }
     }
   `,
 })

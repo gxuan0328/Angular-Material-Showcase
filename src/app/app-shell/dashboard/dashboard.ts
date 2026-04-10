@@ -19,6 +19,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { BaseChartDirective } from 'ng2-charts';
 import { ChartConfiguration } from 'chart.js';
 
+import { Router } from '@angular/router';
+
 import { MockDashboardApi } from '../../core/mock-api/mock-dashboard';
 import { ChartPaletteService, withAlpha } from '../../core/charts/chart-palette';
 import { OnboardingStore, OnboardingStep } from './onboarding-store';
@@ -52,6 +54,7 @@ import { OnboardingStore, OnboardingStep } from './onboarding-store';
   host: { class: 'dashboard-host' },
 })
 export class Dashboard implements OnInit {
+  private readonly router = inject(Router);
   protected readonly dashboard = inject(MockDashboardApi);
   protected readonly palette = inject(ChartPaletteService);
   protected readonly onboarding = inject(OnboardingStore);
@@ -96,6 +99,17 @@ export class Dashboard implements OnInit {
 
   protected resetOnboarding(): void {
     this.onboarding.reset();
+  }
+
+  protected onStepClick(step: OnboardingStep): void {
+    this.onboarding.toggleStep(step.id);
+  }
+
+  protected async onContinue(): Promise<void> {
+    const next = this.onboarding.nextIncompleteStep();
+    if (next?.href) {
+      await this.router.navigate([next.href]);
+    }
   }
 
   protected formatKpi(value: number, unit: string): string {

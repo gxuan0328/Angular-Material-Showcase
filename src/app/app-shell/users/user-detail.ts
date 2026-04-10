@@ -19,6 +19,8 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { MockUser, MockUsersApi, UserRole, UserStatus } from '../../core/mock-api/mock-users';
 import { ConfirmDestructiveDialog } from '../../core/dialogs/confirm-destructive-dialog';
 
@@ -74,6 +76,7 @@ const AUDIT_BY_ROLE: Readonly<Record<UserRole, readonly string[]>> = {
 export class UserDetail implements OnInit {
   private readonly api = inject(MockUsersApi);
   private readonly router = inject(Router);
+  private readonly snackBar = inject(MatSnackBar);
   private readonly confirmDialog = inject(ConfirmDestructiveDialog);
 
   /** `id` comes from the route param via withComponentInputBinding(). */
@@ -183,6 +186,14 @@ export class UserDetail implements OnInit {
       suspended: '已停用',
     };
     return labels[status];
+  }
+
+  protected sendMessage(): void {
+    const u = this.user();
+    if (u) {
+      window.open(`mailto:${u.email}?subject=Glacier Analytics — 訊息`, '_blank');
+      this.snackBar.open(`已開啟郵件用戶端寄送至 ${u.email}`, '關閉', { duration: 3000 });
+    }
   }
 
   protected async deleteUser(): Promise<void> {

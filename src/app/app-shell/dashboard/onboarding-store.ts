@@ -16,12 +16,14 @@ const DEFAULT_STEPS: readonly OnboardingStep[] = [
     title: '連結資料來源',
     description: '接上你的數據倉儲或 GA4 以開始追蹤真實指標。',
     done: false,
+    href: '/app/settings',
   },
   {
     id: 'invite-team',
     title: '邀請團隊成員',
     description: '建立多使用者工作區，設定角色與權限。',
     done: false,
+    href: '/app/users',
   },
   {
     id: 'create-dashboard',
@@ -34,8 +36,9 @@ const DEFAULT_STEPS: readonly OnboardingStep[] = [
     title: '設定指標警示',
     description: '當關鍵指標偏離閾值時收到通知。',
     done: false,
+    href: '/app/notifications',
   },
-] as const;
+];
 
 /**
  * Lightweight store that persists whether the onboarding checklist has been
@@ -57,7 +60,18 @@ export class OnboardingStore {
 
   reset(): void {
     this._dismissed.set(false);
+    this._steps.set(DEFAULT_STEPS);
     this.writeToStorage(false);
+  }
+
+  toggleStep(id: string): void {
+    this._steps.update(steps =>
+      steps.map(s => (s.id === id ? { ...s, done: !s.done } : s)),
+    );
+  }
+
+  nextIncompleteStep(): OnboardingStep | undefined {
+    return this._steps().find(s => !s.done);
   }
 
   private readFromStorage(): boolean {
