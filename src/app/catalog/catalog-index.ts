@@ -131,6 +131,30 @@ interface IndexSection {
       background: #fef3c7;
       color: #92400e;
     }
+
+    @media (max-width: 959.98px) {
+      :host { gap: 1.5rem; }
+      .catalog-index__header h1 { font-size: 1.75rem; }
+      .catalog-index__grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 0.75rem;
+      }
+    }
+
+    @media (max-width: 639.98px) {
+      :host { gap: 1.25rem; }
+      .catalog-index__header h1 { font-size: 1.375rem; }
+      .catalog-index__section-title { font-size: 1.0625rem; }
+      .catalog-index__grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      .catalog-index__link {
+        padding: 0.75rem;
+        gap: 0.375rem;
+      }
+      .catalog-index__card-title { font-size: 0.875rem; }
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -99,10 +99,27 @@
 
 /* Mobile adjustments */
 @media (max-width: 639.98px) {
+  .live-style-editor__toolbar {
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+  .live-style-editor__toggle {
+    font-size: 0.75rem;
+  }
   .live-style-editor__header-hint {
     display: none;
   }
   .live-style-editor__editor-wrapper {
-    min-height: 120px;
+    min-height: 100px;
+    max-height: 240px;
+  }
+  .live-style-editor__textarea {
+    font-size: 0.75rem;
+    min-height: 100px;
+    max-height: 240px;
+  }
+  .live-style-editor__line-numbers {
+    font-size: 0.6875rem;
+    min-width: 2rem;
   }
 }

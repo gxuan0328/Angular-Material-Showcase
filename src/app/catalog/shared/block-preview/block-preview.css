@@ -16,3 +16,10 @@
   resize: vertical;
   max-width: 100%;
 }
+
+@media (max-width: 639.98px) {
+  .block-preview__viewport {
+    min-height: 160px;
+    resize: none;
+  }
+}
