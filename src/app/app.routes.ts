@@ -22,6 +22,12 @@ export const routes: Routes = [
     loadChildren: () => import('./app-shell/app-shell.routes').then(m => m.APP_SHELL_ROUTES),
   },
   {
+    path: 'guide',
+    loadComponent: () =>
+      import('./layouts/guide-layout/guide-layout').then(m => m.GuideLayout),
+    loadChildren: () => import('./guide/guide.routes').then(m => m.GUIDE_ROUTES),
+  },
+  {
     path: 'auth',
     loadComponent: () => import('./layouts/auth-layout/auth-layout').then(m => m.AuthLayout),
     loadChildren: () => import('./auth/auth.routes').then(m => m.AUTH_ROUTES),

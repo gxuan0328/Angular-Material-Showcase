@@ -1,0 +1,33 @@
+<header class="guide-layout__topbar">
+  <div class="guide-layout__topbar-left">
+    <button
+      mat-icon-button
+      type="button"
+      (click)="toggleNav()"
+      [matTooltip]="navHidden() ? '顯示目錄' : '隱藏目錄'"
+    >
+      <mat-icon>{{ navHidden() ? 'menu' : 'menu_open' }}</mat-icon>
+    </button>
+    <a class="guide-layout__brand" routerLink="/guide">
+      <mat-icon class="guide-layout__brand-icon">school</mat-icon>
+      <span>Angular 深度教學指南</span>
+    </a>
+  </div>
+  <div class="guide-layout__theme-controls">
+    <app-theme-palette-selector />
+    <app-theme-toggle />
+  </div>
+</header>
+<div
+  class="guide-layout__backdrop"
+  (click)="hideNav()"
+  [attr.aria-hidden]="navHidden()"
+></div>
+<div class="guide-layout__content-area">
+  <aside id="guide-nav" class="guide-layout__nav" aria-label="教學目錄導覽">
+    <app-guide-nav />
+  </aside>
+  <section class="guide-layout__body">
+    <router-outlet />
+  </section>
+</div>

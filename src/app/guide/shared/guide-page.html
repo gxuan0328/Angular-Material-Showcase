@@ -1,0 +1,97 @@
+@let ch = chapter();
+
+<header class="guide-page__heading">
+  <p class="guide-page__breadcrumb">
+    <a routerLink="/guide">教學指南</a> · <span>{{ categoryLabel() }}</span>
+  </p>
+  <div class="guide-page__title-row">
+    <mat-icon class="guide-page__title-icon">{{ ch.icon }}</mat-icon>
+    <div>
+      <span class="guide-page__chapter-label">Chapter {{ ch.number }}</span>
+      <h1 class="guide-page__title">{{ ch.title }}</h1>
+    </div>
+  </div>
+  <p class="guide-page__subtitle">{{ ch.subtitle }}</p>
+  <div class="guide-page__meta">
+    <mat-chip-set>
+      @for (tag of ch.tags; track tag) {
+        <mat-chip>{{ tag }}</mat-chip>
+      }
+    </mat-chip-set>
+    <span class="guide-page__time">
+      <mat-icon class="guide-page__time-icon">schedule</mat-icon>
+      約 {{ ch.estimatedMinutes }} 分鐘
+    </span>
+  </div>
+</header>
+
+<!-- Table of Contents -->
+<nav class="guide-page__toc" aria-label="章節目錄">
+  <h2 class="guide-page__toc-title">本章目錄</h2>
+  <ol class="guide-page__toc-list">
+    @for (section of ch.sections; track section.id) {
+      <li>
+        <a
+          class="guide-page__toc-link"
+          (click)="scrollTo(section.id)"
+          (keydown.enter)="scrollTo(section.id)"
+          tabindex="0"
+          role="link"
+        >{{ section.title }}</a>
+      </li>
+    }
+  </ol>
+</nav>
+
+<!-- Chapter Sections -->
+@for (section of ch.sections; track section.id) {
+  <section class="guide-page__section" [id]="section.id">
+    <h2 class="guide-page__section-title">{{ section.title }}</h2>
+    <div class="guide-page__section-content" [innerHTML]="section.content"></div>
+
+    <!-- Code Examples -->
+    @if (section.codeExamples && section.codeExamples.length > 0) {
+      @for (example of section.codeExamples; track example.filename) {
+        <div class="guide-page__code-block">
+          <div class="guide-page__code-header">
+            <span class="guide-page__code-filename">{{ example.filename }}</span>
+            <span class="guide-page__code-lang">{{ example.language }}</span>
+          </div>
+          <pre class="guide-page__code-pre"><code>{{ example.code }}</code></pre>
+          @if (example.annotation) {
+            <p class="guide-page__code-annotation">{{ example.annotation }}</p>
+          }
+        </div>
+      }
+    }
+
+    <!-- Tips -->
+    @if (section.tips && section.tips.length > 0) {
+      @for (tip of section.tips; track $index) {
+        <div class="guide-page__tip guide-page__tip--{{ tip.type }}">
+          <div class="guide-page__tip-header">
+            <mat-icon class="guide-page__tip-icon">{{ tipIcon(tip.type) }}</mat-icon>
+            <span class="guide-page__tip-label">{{ tipLabel(tip.type) }}</span>
+          </div>
+          <div class="guide-page__tip-content" [innerHTML]="tip.content"></div>
+        </div>
+      }
+    }
+  </section>
+}
+
+<!-- Prev/Next Navigation -->
+<nav class="guide-page__pager" aria-label="章節前後頁">
+  @if (previousEntry(); as prev) {
+    <a class="guide-page__pager-link" [routerLink]="['/guide', prev.id]">
+      ← Chapter {{ prev.number }}: {{ prev.title }}
+    </a>
+  } @else {
+    <span></span>
+  }
+  @if (nextEntry(); as next) {
+    <a class="guide-page__pager-link" [routerLink]="['/guide', next.id]">
+      Chapter {{ next.number }}: {{ next.title }} →
+    </a>
+  }
+</nav>
