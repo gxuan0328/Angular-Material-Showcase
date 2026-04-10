@@ -84,6 +84,42 @@ export const GUIDE_REGISTRY: readonly GuideRegistryEntry[] = [
     category: 'advanced',
     estimatedMinutes: 45,
   },
+  {
+    id: 'rendering-engine',
+    number: 9,
+    title: '渲染引擎與變更偵測',
+    subtitle: 'Zone.js 原理、CD 演算法、OnPush 內部、Zoneless 架構',
+    icon: 'memory',
+    category: 'framework-core',
+    estimatedMinutes: 60,
+  },
+  {
+    id: 'ivy-compiler',
+    number: 10,
+    title: 'Ivy 編譯器與模板解析',
+    subtitle: 'AOT/JIT、模板編譯流程、指令碼生成、tree-shaking',
+    icon: 'build_circle',
+    category: 'framework-core',
+    estimatedMinutes: 55,
+  },
+  {
+    id: 'view-hierarchy',
+    number: 11,
+    title: '視圖階層與動態元件',
+    subtitle: 'LView/TView、ElementRef、ViewContainerRef、ng-content、Renderer2',
+    icon: 'account_tree',
+    category: 'framework-core',
+    estimatedMinutes: 55,
+  },
+  {
+    id: 'signal-internals',
+    number: 12,
+    title: 'Signal 響應式核心機制',
+    subtitle: 'ReactiveNode、依賴追蹤圖、computed 快取、effect 排程',
+    icon: 'bolt',
+    category: 'framework-core',
+    estimatedMinutes: 55,
+  },
 ];
 
 export function findGuideEntry(id: string): GuideRegistryEntry | undefined {
@@ -105,5 +141,6 @@ export function getGuideCategories(): readonly { category: GuideCategory; label:
     { category: 'fundamentals', label: '基礎概念', entries: GUIDE_REGISTRY.filter(e => e.category === 'fundamentals') },
     { category: 'intermediate', label: '進階應用', entries: GUIDE_REGISTRY.filter(e => e.category === 'intermediate') },
     { category: 'advanced', label: '高階實踐', entries: GUIDE_REGISTRY.filter(e => e.category === 'advanced') },
+    { category: 'framework-core', label: '框架核心', entries: GUIDE_REGISTRY.filter(e => e.category === 'framework-core') },
   ];
 }

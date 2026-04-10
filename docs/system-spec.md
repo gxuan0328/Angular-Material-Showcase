@@ -1,7 +1,7 @@
 # Angular Material Block Showcase — 系統規格文件
 
-> **文件版本**：1.3.0  
-> **最後更新**：2026-04-10  
+> **文件版本**：1.4.0  
+> **最後更新**：2026-04-11  
 > **適用版本**：Angular 21.2.8 / Angular Material 21.2.6 / Tailwind CSS v4.1.12
 
 ---
@@ -771,6 +771,10 @@ Settings 使用 `SettingsShell` 作為 sub-layout，包含五個子頁：
 | 6 | `/guide/forms` | 表單與驗證 | 進階 | 45m |
 | 7 | `/guide/testing` | 測試策略 | 高階 | 50m |
 | 8 | `/guide/performance` | 效能最佳化 | 高階 | 45m |
+| 9 | `/guide/rendering-engine` | 渲染引擎與變更偵測 | 框架核心 | 60m |
+| 10 | `/guide/ivy-compiler` | Ivy 編譯器與模板解析 | 框架核心 | 55m |
+| 11 | `/guide/view-hierarchy` | 視圖階層與動態元件 | 框架核心 | 55m |
+| 12 | `/guide/signal-internals` | Signal 響應式核心機制 | 框架核心 | 55m |
 
 #### 3.6.3 每章內容結構
 

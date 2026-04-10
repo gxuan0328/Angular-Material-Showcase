@@ -46,4 +46,24 @@ export const GUIDE_ROUTES: Routes = [
     title: '效能最佳化 · Guide',
     loadComponent: () => import('./chapters/ch08-performance').then(m => m.Ch08Performance),
   },
+  {
+    path: 'rendering-engine',
+    title: '渲染引擎與變更偵測 · Guide',
+    loadComponent: () => import('./chapters/ch09-rendering-engine').then(m => m.Ch09RenderingEngine),
+  },
+  {
+    path: 'ivy-compiler',
+    title: 'Ivy 編譯器與模板解析 · Guide',
+    loadComponent: () => import('./chapters/ch10-ivy-compiler').then(m => m.Ch10IvyCompiler),
+  },
+  {
+    path: 'view-hierarchy',
+    title: '視圖階層與動態元件 · Guide',
+    loadComponent: () => import('./chapters/ch11-view-hierarchy').then(m => m.Ch11ViewHierarchy),
+  },
+  {
+    path: 'signal-internals',
+    title: 'Signal 響應式核心機制 · Guide',
+    loadComponent: () => import('./chapters/ch12-signal-internals').then(m => m.Ch12SignalInternals),
+  },
 ];

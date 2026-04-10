@@ -634,7 +634,55 @@ export class FormState {
       ],
     },
 
-    // ─── Section 8: DI Pitfalls ───
+    // ─── Section 8b: Injector Resolution Algorithm (Deep-dive) ───
+    {
+      id: 'injector-resolution-algorithm',
+      title: 'Injector 解析演算法（框架內部）',
+      content: `
+<p>當 Angular 遇到 <code>inject(MyService)</code> 呼叫時，解析器會按照以下<strong>由內而外</strong>的順序搜尋 Provider：</p>
+<ol>
+<li><strong>Node Injector</strong> — 當前元件的 <code>providers</code> 或 <code>viewProviders</code> 陣列</li>
+<li><strong>Element Injector 鏈</strong> — 沿 DOM 樹向上走訪父元件的 Element Injector</li>
+<li><strong>Environment Injector</strong> (Module Injector) — <code>providedIn: 'root'</code> 或 Route 的 <code>providers</code></li>
+<li><strong>Platform Injector</strong> — 由 <code>bootstrapApplication()</code> 提供的平台級服務</li>
+<li><strong>Null Injector</strong> — 若仍找不到，拋出 <code>NullInjectorError</code>（除非標記為 <code>optional</code>）</li>
+</ol>
+<p><strong>Resolution Modifiers</strong> 會改變查找路徑：</p>
+<table>
+<tr><th>修飾符</th><th>行為</th></tr>
+<tr><td><code>@Self()</code></td><td>只查找當前 Node Injector，不向上走訪</td></tr>
+<tr><td><code>@SkipSelf()</code></td><td>跳過當前 Node，從父元件開始查找</td></tr>
+<tr><td><code>@Host()</code></td><td>查找到 Host Element 為止（不穿越 ng-content 邊界）</td></tr>
+<tr><td><code>@Optional()</code></td><td>找不到時回傳 <code>null</code>，不拋出錯誤</td></tr>
+</table>
+<p>在 <strong>Standalone 模式</strong>下，Node Injector 和 Environment Injector 是兩條獨立的查找鏈。Route 的 <code>providers</code> 建立 child EnvironmentInjector，為 lazy-loaded feature 提供隔離的注入作用域。</p>`,
+      diagrams: [
+        {
+          id: 'injector-chain',
+          caption: 'Injector 查找鏈 — 由 Node 到 Platform',
+          content: `inject(MyService) called in ChildComponent
+│
+├─ 1. Node Injector (ChildComponent.providers)  → NOT FOUND
+│
+├─ 2. Element Injector (ParentComponent.providers) → NOT FOUND
+│
+├─ 3. Element Injector (AppComponent.providers) → NOT FOUND
+│
+├─ 4. Environment Injector (Root)
+│     └─ @Injectable({providedIn:'root'})        → FOUND ✓
+│
+├─ 5. Platform Injector
+│
+└─ 6. Null Injector → throw NullInjectorError`
+        },
+      ],
+      tips: [
+        { type: 'dotnet-comparison', content: '.NET DI 使用 <code>IServiceCollection</code> 加入服務，解析時由 <code>IServiceProvider</code> 依 Scope 查找。Angular 的 Injector 階層類似 .NET 的 Scoped lifetime，但更細粒度——每個元件都可以是一個 scope 邊界。' },
+        { type: 'best-practice', content: '絕大多數服務應使用 <code>providedIn: \'root\'</code>（等同 .NET Singleton）。僅在需要元件級隔離時才使用 <code>providers: [MyService]</code>（等同 .NET Transient/Scoped）。' },
+      ],
+    },
+
+    // ─── Section 9: DI Pitfalls ───
     {
       id: 'di-pitfalls',
       title: '常見陷阱',

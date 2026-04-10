@@ -77,6 +77,50 @@
         </div>
       }
     }
+
+    <!-- Diagrams -->
+    @if (section.diagrams && section.diagrams.length > 0) {
+      @for (diagram of section.diagrams; track diagram.id) {
+        <figure class="guide-page__diagram">
+          <pre class="guide-page__diagram-content">{{ diagram.content }}</pre>
+          <figcaption class="guide-page__diagram-caption">{{ diagram.caption }}</figcaption>
+        </figure>
+      }
+    }
+
+    <!-- Exercises -->
+    @if (section.exercises && section.exercises.length > 0) {
+      @for (exercise of section.exercises; track exercise.id) {
+        <div class="guide-page__exercise">
+          <div class="guide-page__exercise-header">
+            <mat-icon class="guide-page__exercise-icon">fitness_center</mat-icon>
+            <strong>練習：{{ exercise.title }}</strong>
+          </div>
+          <div class="guide-page__exercise-statement" [innerHTML]="exercise.statement"></div>
+          <pre class="guide-page__code-pre"><code>{{ exercise.initialCode }}</code></pre>
+          <button
+            class="guide-page__exercise-toggle"
+            (click)="toggleExercise(exercise.id)"
+          >
+            <mat-icon>{{ isExerciseExpanded(exercise.id) ? 'visibility_off' : 'visibility' }}</mat-icon>
+            {{ isExerciseExpanded(exercise.id) ? '隱藏解答' : '顯示解答' }}
+          </button>
+          @if (isExerciseExpanded(exercise.id)) {
+            <div class="guide-page__exercise-solution">
+              <div class="guide-page__exercise-hints">
+                <strong>提示：</strong>
+                <ul>
+                  @for (hint of exercise.hints; track $index) {
+                    <li>{{ hint }}</li>
+                  }
+                </ul>
+              </div>
+              <pre class="guide-page__code-pre"><code>{{ exercise.solution }}</code></pre>
+            </div>
+          }
+        </div>
+      }
+    }
   </section>
 }
 

@@ -1,7 +1,7 @@
 # Angular Material Block Showcase — 系統維運手冊
 
-> **文件版本**：1.3.0  
-> **最後更新**：2026-04-10  
+> **文件版本**：1.4.0  
+> **最後更新**：2026-04-11  
 > **適用版本**：Angular 21.2.8 / Angular Material 21.2.6 / Tailwind CSS v4.1.12
 
 ---
@@ -216,7 +216,7 @@ src/
 │   │   │   ├── guide-page.ts     # 章節頁面外殼元件
 │   │   │   ├── guide-page.html
 │   │   │   └── guide-page.css
-│   │   └── chapters/            # 8 章教學內容
+│   │   └── chapters/            # 12 章教學內容
 │   │       ├── ch01-components.ts
 │   │       ├── ch02-dependency-injection.ts
 │   │       ├── ch03-routing.ts
@@ -224,7 +224,11 @@ src/
 │   │       ├── ch05-http-client.ts
 │   │       ├── ch06-forms.ts
 │   │       ├── ch07-testing.ts
-│   │       └── ch08-performance.ts
+│   │       ├── ch08-performance.ts
+│   │       ├── ch09-rendering-engine.ts   # v1.4.0 框架核心
+│   │       ├── ch10-ivy-compiler.ts
+│   │       ├── ch11-view-hierarchy.ts
+│   │       └── ch12-signal-internals.ts
 │   │
 │   ├── layouts/                 # 五大 Layout
 │   │   ├── landing-layout/

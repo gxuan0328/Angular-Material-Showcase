@@ -4,7 +4,7 @@ import { RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 
-import { GuideChapter } from '../models/guide-chapter';
+import { GuideChapter, GuideExercise } from '../models/guide-chapter';
 import { getNextGuideEntry, getPreviousGuideEntry } from './guide-registry';
 
 @Component({
@@ -22,10 +22,29 @@ export class GuidePage {
   protected readonly previousEntry = computed(() => getPreviousGuideEntry(this.chapter().id));
   protected readonly nextEntry = computed(() => getNextGuideEntry(this.chapter().id));
 
+  protected readonly expandedExercises = new Set<string>();
+
   protected readonly categoryLabel = computed(() => {
     const cat = this.chapter().category;
-    return cat === 'fundamentals' ? '基礎概念' : cat === 'intermediate' ? '進階應用' : '高階實踐';
+    switch (cat) {
+      case 'fundamentals': return '基礎概念';
+      case 'intermediate': return '進階應用';
+      case 'advanced': return '高階實踐';
+      case 'framework-core': return '框架核心';
+    }
   });
+
+  protected toggleExercise(id: string): void {
+    if (this.expandedExercises.has(id)) {
+      this.expandedExercises.delete(id);
+    } else {
+      this.expandedExercises.add(id);
+    }
+  }
+
+  protected isExerciseExpanded(id: string): boolean {
+    return this.expandedExercises.has(id);
+  }
 
   protected scrollTo(sectionId: string): void {
     const el = this.document.getElementById(sectionId);

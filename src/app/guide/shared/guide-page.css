@@ -208,6 +208,91 @@
   line-height: 1.6;
 }
 
+/* Diagrams */
+.guide-page__diagram {
+  margin: 0;
+  border: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.guide-page__diagram-content {
+  margin: 0;
+  padding: 1rem;
+  background: #1e293b;
+  color: #94a3b8;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+}
+.guide-page__diagram-caption {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--mat-sys-on-surface-variant, #4b5563);
+  background: var(--mat-sys-surface-container, #f3f4f6);
+  border-top: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
+  text-align: center;
+}
+
+/* Exercises */
+.guide-page__exercise {
+  border: 2px solid var(--mat-sys-primary, #005cbb);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.guide-page__exercise-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  color: var(--mat-sys-primary, #005cbb);
+}
+.guide-page__exercise-icon {
+  font-size: 1.25rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+.guide-page__exercise-statement {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+.guide-page__exercise-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--mat-sys-outline, #d1d5db);
+  border-radius: 8px;
+  background: var(--mat-sys-surface-container, #f3f4f6);
+  color: var(--mat-sys-on-surface, #1f2937);
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  align-self: flex-start;
+}
+.guide-page__exercise-toggle:hover {
+  background: var(--mat-sys-surface-container-high, #e5e7eb);
+}
+.guide-page__exercise-solution {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--mat-sys-outline-variant, #e0e0e0);
+}
+.guide-page__exercise-hints {
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+.guide-page__exercise-hints ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.5rem;
+}
+
 /* Pager */
 .guide-page__pager {
   display: flex;

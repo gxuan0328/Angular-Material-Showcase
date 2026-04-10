@@ -11,7 +11,7 @@ export interface GuideChapter {
   readonly sections: readonly GuideSection[];
 }
 
-export type GuideCategory = 'fundamentals' | 'intermediate' | 'advanced';
+export type GuideCategory = 'fundamentals' | 'intermediate' | 'advanced' | 'framework-core';
 
 /** A section within a chapter containing explanatory text and code examples */
 export interface GuideSection {
@@ -20,6 +20,8 @@ export interface GuideSection {
   readonly content: string;
   readonly codeExamples?: readonly GuideCodeExample[];
   readonly tips?: readonly GuideTip[];
+  readonly diagrams?: readonly GuideDiagram[];
+  readonly exercises?: readonly GuideExercise[];
 }
 
 /** An inline code example with language, filename, and annotated source */
@@ -34,4 +36,21 @@ export interface GuideCodeExample {
 export interface GuideTip {
   readonly type: 'tip' | 'warning' | 'best-practice' | 'dotnet-comparison';
   readonly content: string;
+}
+
+/** An inline diagram rendered as ASCII art or SVG */
+export interface GuideDiagram {
+  readonly id: string;
+  readonly caption: string;
+  readonly content: string;
+}
+
+/** An interactive exercise with hints and solution */
+export interface GuideExercise {
+  readonly id: string;
+  readonly title: string;
+  readonly statement: string;
+  readonly initialCode: string;
+  readonly hints: readonly string[];
+  readonly solution: string;
 }

@@ -672,7 +672,52 @@ bootstrapApplication(App, {
       ],
     },
 
-    // ─── Section 8: Common Pitfalls ───
+    // ─── Section 8b: Lifecycle Trigger Mechanism (Deep-dive) ───
+    {
+      id: 'lifecycle-trigger-mechanism',
+      title: '生命週期鉤子觸發機制（框架內部）',
+      content: `
+<p>生命週期鉤子的觸發與 Angular 的<strong>變更偵測循環（Change Detection Cycle）</strong>緊密耦合。每次 CD 走訪到一個元件時，框架會依照固定順序執行以下步驟：</p>
+<ol>
+<li><strong>更新 Input bindings</strong> — 如果父元件傳入的 Input 參考值有變化，觸發 <code>ngOnChanges()</code></li>
+<li><strong>首次初始化</strong> — 僅在第一次 CD 時觸發 <code>ngOnInit()</code></li>
+<li><strong>自訂髒檢查</strong> — 每次 CD 都觸發 <code>ngDoCheck()</code>（⚠️ 極高頻率）</li>
+<li><strong>Content 投射完成</strong> — <code>ngAfterContentInit()</code>（首次）+ <code>ngAfterContentChecked()</code>（每次）</li>
+<li><strong>更新 View bindings</strong> — 處理模板中的 property bindings 和 text interpolations</li>
+<li><strong>遞迴子元件</strong> — 對子元件重複步驟 1-5</li>
+<li><strong>View 初始化完成</strong> — <code>ngAfterViewInit()</code>（首次）+ <code>ngAfterViewChecked()</code>（每次）</li>
+</ol>
+<p>在 <strong>OnPush 模式</strong>下，步驟 1 只在 Input reference 改變、DOM 事件觸發、或手動 <code>markForCheck()</code> 時才會進入。這是效能優化的關鍵——跳過未標記為 dirty 的子樹。</p>
+<p>在 <strong>Zoneless 模式</strong>下，Signal mutation 直接通知 <code>ChangeDetectionScheduler</code>，僅排程一次 microtask CD。生命週期鉤子的觸發順序不變，但觸發頻率大幅降低。</p>`,
+      diagrams: [
+        {
+          id: 'cd-lifecycle-order',
+          caption: '變更偵測循環中生命週期鉤子的執行順序',
+          content: `CD Cycle enters ParentComponent
+│
+├─ 1. Update Input bindings → ngOnChanges()
+├─ 2. First time? → ngOnInit()
+├─ 3. ngDoCheck()
+├─ 4. ngAfterContentInit() / ngAfterContentChecked()
+├─ 5. Update template bindings
+├─ 6. ┌─ CD enters ChildComponent
+│     │  ├─ ngOnChanges() (if inputs changed)
+│     │  ├─ ngOnInit() (first time)
+│     │  ├─ ngDoCheck()
+│     │  ├─ ngAfterContentInit/Checked()
+│     │  ├─ Update template bindings
+│     │  └─ ngAfterViewInit/Checked()
+│     └─ Return to parent
+└─ 7. ngAfterViewInit() / ngAfterViewChecked()`
+        },
+      ],
+      tips: [
+        { type: 'warning', content: '<code>ngDoCheck()</code> 在每次 CD 循環都會觸發，包括父元件或兄弟元件的事件。在此鉤子中執行昂貴運算會嚴重影響效能。優先使用 <code>computed()</code> 或 <code>effect()</code> 取代。' },
+        { type: 'tip', content: '在 Zoneless + OnPush 組合下，CD 僅在 signal mutation 相關的元件路徑上執行，大幅減少不必要的鉤子呼叫。這是 Angular 21+ 推薦的效能最佳配置。' },
+      ],
+    },
+
+    // ─── Section 9: Common Pitfalls ───
     {
       id: 'common-pitfalls',
       title: '常見陷阱',

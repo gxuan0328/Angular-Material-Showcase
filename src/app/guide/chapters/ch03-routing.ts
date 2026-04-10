@@ -713,7 +713,59 @@ export class SelectivePreloading implements PreloadingStrategy {
       ],
     },
 
-    // ─── Section 8: Routing Pitfalls ───
+    // ─── Section 8b: Route Matching Algorithm (Deep-dive) ───
+    {
+      id: 'route-matching-algorithm',
+      title: '路由匹配演算法（框架內部）',
+      content: `
+<p>Angular Router 使用 <strong>first-match wins</strong> 策略。當 URL 變化時，Router 會從 <code>Routes</code> 陣列的第一筆開始，依序嘗試匹配：</p>
+<ol>
+<li><strong>消耗 URL 段落</strong> — 路由的 <code>path</code> 嘗試消耗 URL 中對應的段落數量。<code>path: ''</code> 消耗 0 個段落（空路徑）。</li>
+<li><strong>pathMatch 判斷</strong> — <code>'prefix'</code>（預設）：只要前綴匹配即可。<code>'full'</code>：必須消耗剩餘的所有段落。</li>
+<li><strong>CanMatch 守衛</strong> — 若配置了 <code>canMatch</code>，在確認路徑匹配後、載入元件前執行。若回傳 <code>false</code>，視為不匹配，繼續嘗試下一筆路由。</li>
+<li><strong>子路由遞迴</strong> — 若路由有 <code>children</code> 或 <code>loadChildren</code>，剩餘的 URL 段落交給子路由繼續匹配。若子路由全部不匹配，整條路徑視為失敗，回溯至父層繼續嘗試。</li>
+<li><strong>Wildcard</strong> — <code>path: '**'</code> 匹配任何剩餘段落，通常放在陣列最後作為 404 兜底。</li>
+</ol>
+<p><strong>關鍵陷阱</strong>：<code>path: ''</code> 配合 <code>loadChildren</code> 時，空路徑會匹配所有 URL 作為前綴，然後將完整 URL 交給子路由。若子路由也沒有匹配，Router 才會回溯。這就是為什麼路由順序至關重要——更具體的路由必須放在更通用的路由之前。</p>`,
+      codeExamples: [
+        {
+          filename: 'route-matching-example.ts',
+          language: 'typescript',
+          code: `// URL: /admin/users/42
+// Step 1: Try path: '' → consumes 0 segments → remaining: /admin/users/42
+//         children have no 'admin' route → BACKTRACK
+// Step 2: Try path: 'admin' → consumes 1 segment → remaining: /users/42
+//         loadChildren → admin.routes
+//         Step 2a: Try path: 'users' → consumes 1 → remaining: /42
+//                  children: path: ':id' → consumes 1 → remaining: (empty)
+//                  MATCH ✓ → render AdminLayout > UsersPage > UserDetail(42)`,
+          annotation: '路由匹配是遞迴的深度優先搜尋，first-match wins。',
+        },
+      ],
+      diagrams: [
+        {
+          id: 'route-matching-flow',
+          caption: '路由匹配演算法流程',
+          content: `URL: /catalog/badges
+│
+├─ Route[0] path: '' (LandingLayout)
+│  └─ Children: path: '' only → remaining 'catalog/badges' unmatched → BACKTRACK
+│
+├─ Route[1] path: 'catalog' (CatalogLayout) → consumes 'catalog'
+│  └─ Children: path: 'badges' → consumes 'badges' → remaining: (empty)
+│     └─ MATCH ✓ → CatalogLayout > BadgesCatalogPage
+│
+├─ Route[2] path: 'app' → NOT TRIED (already matched)
+└─ Route[**] path: '**' → NOT TRIED`
+        },
+      ],
+      tips: [
+        { type: 'warning', content: '永遠將 <code>path: \'**\'</code> 放在路由陣列的<strong>最後一筆</strong>。放在中間會攔截所有後續路由。' },
+        { type: 'best-practice', content: '使用 <code>canMatch</code> 取代 <code>canActivate</code> 做認證守衛。<code>canMatch</code> 在匹配階段即判斷，讓未授權的 URL 可以 fall through 到其他路由（例如公開頁面），而非硬性重定向。' },
+      ],
+    },
+
+    // ─── Section 9: Routing Pitfalls ───
     {
       id: 'routing-pitfalls',
       title: '常見陷阱',
