@@ -14,6 +14,6 @@ services:
       - NGROK_AUTHTOKEN=${NGROK_AUTHTOKEN:-}
     command: http app:80 --log stdout
     ports:
-      - "4040:4040"  # ngrok web inspector
+      - "4040:4040"
     depends_on:
       - app
