@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting...</title>
+    <script>
+      // SPA fallback for GitHub Pages
+      // Stores the current path and redirects to index.html
+      // The app will restore the route on load
+      var segmentCount = 1; // /Angular-Material-Showcase/ = 1 segment
+      var loc = window.location;
+      var pathSegmentsToKeep = loc.pathname
+        .split('/')
+        .slice(0, 1 + segmentCount)
+        .join('/');
+      var remainingPath = loc.pathname
+        .slice(pathSegmentsToKeep.length);
+      sessionStorage.setItem('spa-redirect', remainingPath + loc.search + loc.hash);
+      loc.replace(
+        pathSegmentsToKeep + '/?spa-redirect' + encodeURIComponent(remainingPath + loc.search + loc.hash)
+      );
+    </script>
+  </head>
+  <body></body>
+</html>
