@@ -12,6 +12,7 @@
 .block-preview__viewport {
   min-height: 240px;
   padding: 0;
-  overflow: auto;
+  overflow: hidden;
   resize: vertical;
+  max-width: 100%;
 }

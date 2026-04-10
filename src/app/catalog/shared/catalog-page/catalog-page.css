@@ -94,3 +94,23 @@
 .catalog-page__pager-link:hover {
   background: var(--mat-sys-surface-container-high, #e5e7eb);
 }
+
+/* ===== Mobile (< 640px) ===== */
+@media (max-width: 639.98px) {
+  :host {
+    gap: 1.25rem;
+  }
+  .catalog-page__title {
+    font-size: 1.5rem;
+  }
+  .catalog-page__tags {
+    flex-wrap: wrap;
+  }
+  .catalog-page__pager {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .catalog-page__pager-link {
+    text-align: center;
+  }
+}

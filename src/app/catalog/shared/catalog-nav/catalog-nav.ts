@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, effect, inject, input, signal } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { ChangeDetectionStrategy, Component, computed, inject, input, signal } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive, NavigationEnd } from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { filter } from 'rxjs';
 
 import { CATALOG_REGISTRY, CatalogRegistryEntry } from '../catalog-registry';
 
@@ -45,17 +47,16 @@ export class CatalogNav {
   });
 
   constructor() {
-    // Auto-expand the group containing the active route entry
-    effect(() => {
-      const url = this.router.url;
-      const match = url.match(/\/catalog\/([^/?#]+)/);
-      if (!match) return;
-      const activeId = match[1];
-      const entry = CATALOG_REGISTRY.find(e => e.id === activeId);
-      if (entry) {
-        this.expandedGroups.set(new Set([entry.subcategory]));
-      }
-    });
+    // Collapse all groups except the one containing the active route on navigation
+    this.router.events
+      .pipe(
+        filter(e => e instanceof NavigationEnd),
+        takeUntilDestroyed(),
+      )
+      .subscribe(() => this.focusActiveGroup());
+
+    // Also run once on init
+    this.focusActiveGroup();
   }
 
   protected isGroupExpanded(subcategory: string): boolean {
@@ -68,11 +69,22 @@ export class CatalogNav {
       if (next.has(subcategory)) {
         next.delete(subcategory);
       } else {
-        // Allow multiple groups open simultaneously
         next.add(subcategory);
       }
       return next;
     });
+  }
+
+  private focusActiveGroup(): void {
+    const url = this.router.url;
+    const match = url.match(/\/catalog\/([^/?#]+)/);
+    if (!match) return;
+    const activeId = match[1];
+    const entry = CATALOG_REGISTRY.find(e => e.id === activeId);
+    if (entry) {
+      // Only keep the active entry's subcategory expanded
+      this.expandedGroups.set(new Set([entry.subcategory]));
+    }
   }
 
   private groupBySubcategory(entries: readonly CatalogRegistryEntry[]): readonly NavGroup[] {
