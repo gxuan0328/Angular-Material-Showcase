@@ -28,6 +28,14 @@
   }
 </section>
 
+<!-- Live Style Editor — injects CSS into the preview zone above -->
+@if (hasVariants()) {
+<section class="catalog-page__zone catalog-page__zone--live-editor" aria-labelledby="zone-live-editor">
+  <h2 id="zone-live-editor" class="catalog-page__zone-title">客製化樣式</h2>
+  <app-live-style-editor (styleChange)="onLiveStyleChange($event)" />
+</section>
+}
+
 <section class="catalog-page__zone" aria-labelledby="zone-code">
   <h2 id="zone-code" class="catalog-page__zone-title">原始碼</h2>
   @if (hasVariants()) {

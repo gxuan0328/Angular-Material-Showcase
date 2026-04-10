@@ -1,0 +1,61 @@
+<div class="live-style-editor__toolbar">
+  <button
+    mat-stroked-button
+    type="button"
+    class="live-style-editor__toggle"
+    (click)="toggleEditor()"
+    [matTooltip]="editorOpen() ? '關閉即時樣式編輯器' : '開啟即時樣式編輯器'"
+  >
+    <mat-icon>{{ editorOpen() ? 'code_off' : 'code' }}</mat-icon>
+    <span>{{ editorOpen() ? '關閉編輯器' : '即時樣式編輯' }}</span>
+  </button>
+
+  @if (editorOpen()) {
+    <div class="live-style-editor__actions">
+      <button
+        mat-icon-button
+        type="button"
+        matTooltip="重設為預設"
+        (click)="resetCode()"
+      >
+        <mat-icon>restart_alt</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        type="button"
+        matTooltip="清除所有樣式"
+        (click)="clearCode()"
+      >
+        <mat-icon>delete_sweep</mat-icon>
+      </button>
+    </div>
+  }
+</div>
+
+@if (editorOpen()) {
+  <div class="live-style-editor__panel">
+    <div class="live-style-editor__header">
+      <mat-icon class="live-style-editor__header-icon">palette</mat-icon>
+      <span class="live-style-editor__header-title">即時 CSS 編輯器</span>
+      <span class="live-style-editor__header-hint">修改後即時套用至上方預覽區</span>
+    </div>
+    <div class="live-style-editor__editor-wrapper">
+      <div class="live-style-editor__line-numbers" aria-hidden="true">
+        @for (n of [].constructor(lineCount()); track $index) {
+          <span>{{ $index + 1 }}</span>
+        }
+      </div>
+      <textarea
+        class="live-style-editor__textarea"
+        [ngModel]="cssCode()"
+        (ngModelChange)="onCodeChange($event)"
+        spellcheck="false"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="off"
+        aria-label="CSS 程式碼編輯區"
+        placeholder="/* 在此輸入 CSS */"
+      ></textarea>
+    </div>
+  </div>
+}
