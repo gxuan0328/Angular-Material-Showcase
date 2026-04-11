@@ -113,49 +113,46 @@
 }
 .guide-page__section-content {
   font-size: 0.9375rem;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--mat-sys-on-surface, #1f2937);
   letter-spacing: 0.01em;
 }
 
-/* === Section content typography (innerHTML rendered) === */
+/* === Section content typography (innerHTML rendered via ::ng-deep) === */
 
-/* Sub-headings (h3/h4/h5 inside sections) */
-.guide-page__section-content h3,
-.guide-page__section-content h4,
-.guide-page__section-content h5 {
+:host ::ng-deep .guide-page__section-content h3,
+:host ::ng-deep .guide-page__section-content h4,
+:host ::ng-deep .guide-page__section-content h5 {
   font-weight: 700;
   color: var(--mat-sys-on-surface, #111827);
-  margin: 1.5rem 0 0.5rem;
+  margin: 1.75rem 0 0.625rem;
   line-height: 1.4;
 }
-.guide-page__section-content h3 { font-size: 1.125rem; }
-.guide-page__section-content h4 {
+:host ::ng-deep .guide-page__section-content h3 { font-size: 1.125rem; }
+:host ::ng-deep .guide-page__section-content h4 {
   font-size: 1rem;
-  padding-left: 0.625rem;
+  padding-left: 0.75rem;
   border-left: 3px solid var(--mat-sys-primary, #005cbb);
 }
-.guide-page__section-content h5 { font-size: 0.9375rem; }
-.guide-page__section-content h3:first-child,
-.guide-page__section-content h4:first-child,
-.guide-page__section-content h5:first-child {
+:host ::ng-deep .guide-page__section-content h5 { font-size: 0.9375rem; }
+:host ::ng-deep .guide-page__section-content > h3:first-child,
+:host ::ng-deep .guide-page__section-content > h4:first-child,
+:host ::ng-deep .guide-page__section-content > h5:first-child,
+:host ::ng-deep .guide-page__section-content > p:first-child {
   margin-top: 0;
 }
 
-/* Paragraphs */
-.guide-page__section-content p {
+:host ::ng-deep .guide-page__section-content p {
   margin: 0 0 1rem;
-  text-align: justify;
-  text-justify: inter-ideograph;
+  line-height: 1.85;
 }
-.guide-page__section-content p:last-child {
+:host ::ng-deep .guide-page__section-content p:last-child {
   margin-bottom: 0;
 }
 
-/* Inline code */
-.guide-page__section-content code {
+:host ::ng-deep .guide-page__section-content code {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.8125em;
+  font-size: 0.85em;
   padding: 0.125em 0.375em;
   border-radius: 4px;
   background: var(--mat-sys-surface-container-high, #e5e7eb);
@@ -163,101 +160,107 @@
   word-break: break-word;
 }
 
-/* Bold highlight */
-.guide-page__section-content strong {
+:host ::ng-deep .guide-page__section-content strong {
   font-weight: 700;
   color: var(--mat-sys-on-surface, #111827);
 }
 
-/* Lists */
-.guide-page__section-content ul,
-.guide-page__section-content ol {
-  margin: 0.5rem 0 1rem 0;
+:host ::ng-deep .guide-page__section-content ul,
+:host ::ng-deep .guide-page__section-content ol {
+  margin: 0.75rem 0 1.25rem 0;
   padding-left: 2rem;
   list-style-position: outside;
 }
-.guide-page__section-content ul {
+:host ::ng-deep .guide-page__section-content ul {
   list-style-type: disc;
 }
-.guide-page__section-content ol {
+:host ::ng-deep .guide-page__section-content ol {
   list-style-type: decimal;
 }
-.guide-page__section-content ul ul,
-.guide-page__section-content ol ol,
-.guide-page__section-content ul ol,
-.guide-page__section-content ol ul {
-  margin: 0.375rem 0 0.5rem 0;
+:host ::ng-deep .guide-page__section-content ul ul,
+:host ::ng-deep .guide-page__section-content ol ol,
+:host ::ng-deep .guide-page__section-content ul ol,
+:host ::ng-deep .guide-page__section-content ol ul {
+  margin: 0.5rem 0 0.5rem 0;
   padding-left: 1.5rem;
 }
-.guide-page__section-content ul ul {
+:host ::ng-deep .guide-page__section-content ul ul {
   list-style-type: circle;
 }
-.guide-page__section-content li {
-  margin-bottom: 0.5rem;
+:host ::ng-deep .guide-page__section-content li {
+  margin-bottom: 0.625rem;
   line-height: 1.75;
-  padding-left: 0.25rem;
+  padding-left: 0.375rem;
 }
-.guide-page__section-content li:last-child {
+:host ::ng-deep .guide-page__section-content li:last-child {
   margin-bottom: 0;
 }
-.guide-page__section-content li code {
-  font-size: 0.8em;
+:host ::ng-deep .guide-page__section-content li code {
+  font-size: 0.85em;
 }
-.guide-page__section-content li::marker {
+:host ::ng-deep .guide-page__section-content li::marker {
   color: var(--mat-sys-primary, #005cbb);
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* Tables */
-.guide-page__section-content table {
+:host ::ng-deep .guide-page__section-content table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0.75rem 0;
+  margin: 1rem 0 1.25rem;
   font-size: 0.875rem;
+  border: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
+  border-radius: 6px;
+  overflow: hidden;
 }
-.guide-page__section-content th,
-.guide-page__section-content td {
-  padding: 0.5rem 0.75rem;
+:host ::ng-deep .guide-page__section-content th,
+:host ::ng-deep .guide-page__section-content td {
+  padding: 0.625rem 0.875rem;
   text-align: left;
   border-bottom: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
   vertical-align: top;
+  line-height: 1.6;
 }
-.guide-page__section-content th {
+:host ::ng-deep .guide-page__section-content th {
   font-weight: 700;
   font-size: 0.8125rem;
   background: var(--mat-sys-surface-container, #f3f4f6);
   color: var(--mat-sys-on-surface, #111827);
   white-space: nowrap;
 }
-.guide-page__section-content td code {
-  font-size: 0.75rem;
+:host ::ng-deep .guide-page__section-content tr:last-child td {
+  border-bottom: none;
+}
+:host ::ng-deep .guide-page__section-content td code {
+  font-size: 0.8em;
   padding: 0.0625em 0.3125em;
 }
-.guide-page__section-content tr:hover {
+:host ::ng-deep .guide-page__section-content tr:hover {
   background: color-mix(in srgb, var(--mat-sys-surface-container, #f3f4f6) 50%, transparent);
 }
 
-/* Horizontal rule */
-.guide-page__section-content hr {
+:host ::ng-deep .guide-page__section-content hr {
   border: none;
   border-top: 1px solid var(--mat-sys-outline-variant, #e0e0e0);
-  margin: 1rem 0;
+  margin: 1.25rem 0;
 }
 
-/* Blockquote */
-.guide-page__section-content blockquote {
-  margin: 0.75rem 0;
-  padding: 0.75rem 1rem;
+:host ::ng-deep .guide-page__section-content blockquote {
+  margin: 1rem 0;
+  padding: 0.875rem 1.125rem;
   border-left: 3px solid var(--mat-sys-primary, #005cbb);
   background: color-mix(in srgb, var(--mat-sys-primary-container, #dbeafe) 30%, transparent);
   border-radius: 0 6px 6px 0;
-  font-style: italic;
   color: var(--mat-sys-on-surface-variant, #4b5563);
 }
+:host ::ng-deep .guide-page__section-content blockquote p {
+  margin-bottom: 0.5rem;
+}
+:host ::ng-deep .guide-page__section-content blockquote p:last-child {
+  margin-bottom: 0;
+}
 
-/* Pre blocks inside content (rare, for inline code blocks) */
-.guide-page__section-content pre {
-  margin: 0.75rem 0;
+:host ::ng-deep .guide-page__section-content pre {
+  margin: 1rem 0;
   padding: 0.875rem 1rem;
   background: #1e293b;
   color: #e2e8f0;
@@ -267,24 +270,47 @@
   line-height: 1.6;
   overflow-x: auto;
 }
-.guide-page__section-content pre code {
+:host ::ng-deep .guide-page__section-content pre code {
   background: none;
   padding: 0;
   color: inherit;
   font-size: inherit;
 }
 
+/* Tip content innerHTML */
+:host ::ng-deep .guide-page__tip-content code {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.85em;
+  padding: 0.0625em 0.375em;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--mat-sys-on-surface, #111827);
+}
+:host ::ng-deep .guide-page__tip-content strong {
+  font-weight: 700;
+}
+:host ::ng-deep .guide-page__tip-content p {
+  margin: 0 0 0.5rem;
+}
+:host ::ng-deep .guide-page__tip-content p:last-child {
+  margin-bottom: 0;
+}
+
 /* Mobile table responsive */
 @media (max-width: 639.98px) {
-  .guide-page__section-content table {
+  :host ::ng-deep .guide-page__section-content table {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     font-size: 0.8125rem;
   }
-  .guide-page__section-content th,
-  .guide-page__section-content td {
-    padding: 0.375rem 0.5rem;
+  :host ::ng-deep .guide-page__section-content th,
+  :host ::ng-deep .guide-page__section-content td {
+    padding: 0.5rem 0.625rem;
+  }
+  :host ::ng-deep .guide-page__section-content ul,
+  :host ::ng-deep .guide-page__section-content ol {
+    padding-left: 1.5rem;
   }
 }
 
@@ -376,17 +402,7 @@
 }
 .guide-page__tip-content {
   font-size: 0.875rem;
-  line-height: 1.6;
-}
-.guide-page__tip-content code {
-  font-family: 'JetBrains Mono', ui-monospace, monospace;
-  font-size: 0.8em;
-  padding: 0.0625em 0.3125em;
-  border-radius: 3px;
-  background: rgba(0, 0, 0, 0.06);
-}
-.guide-page__tip-content strong {
-  font-weight: 700;
+  line-height: 1.7;
 }
 
 /* Diagrams */
